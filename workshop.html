@@ -115,6 +115,24 @@
 
     .hero-inner { position: relative; z-index: 2; max-width: 900px; }
 
+    /* ── HERO INTERACTIVE BG ──────────────────── */
+    #heroCanvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 1;
+    }
+    #heroGlow {
+      position: absolute;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216,98,42,0.18) 0%, rgba(216,98,42,0.04) 45%, transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 1;
+      opacity: 0;
+      transition: opacity .5s ease;
+      will-change: left, top;
+    }
+
     /* "This page was built in 10 min" banner */
     .proof-banner {
       display: inline-flex; align-items: center; gap: 12px;
@@ -645,6 +663,8 @@
 
   <!-- ═══ HERO ════════════════════════════════════════════════════ -->
   <section id="hero">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div id="heroGlow" aria-hidden="true"></div>
     <div class="hero-inner">
 
       <div class="proof-banner">
@@ -1202,6 +1222,117 @@
       });
     },{threshold:.5});
     document.querySelectorAll('[data-count]').forEach(el=>cobs.observe(el));
+
+    /* ── HERO PARTICLES ─────────────────────── */
+    (function(){
+      const canvas = document.getElementById('heroCanvas');
+      const ctx    = canvas.getContext('2d');
+      const hero   = document.getElementById('hero');
+      const glow   = document.getElementById('heroGlow');
+      let W, H, hx = -9999, hy = -9999, glowLx = -9999, glowLy = -9999;
+
+      function resize(){
+        W = canvas.width  = hero.offsetWidth;
+        H = canvas.height = hero.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', ()=>{ resize(); init(); });
+
+      /* Mouse tracking relative to hero */
+      hero.addEventListener('mousemove', e => {
+        const r = hero.getBoundingClientRect();
+        hx = e.clientX - r.left;
+        hy = e.clientY - r.top;
+        glow.style.left    = hx + 'px';
+        glow.style.top     = hy + 'px';
+        glow.style.opacity = '1';
+      });
+      hero.addEventListener('mouseleave', () => {
+        hx = -9999; hy = -9999;
+        glow.style.opacity = '0';
+      });
+
+      /* Particle class */
+      const COLORS = [
+        [216, 98,  42],  /* orange */
+        [232, 137, 78],  /* orange mid */
+        [245, 207, 168], /* pale */
+        [251, 247, 242], /* off-white */
+      ];
+      function Particle(){
+        this.reset = function(){
+          this.bx = Math.random() * W;
+          this.by = Math.random() * H;
+          this.x  = this.bx;
+          this.y  = this.by;
+          this.vx = (Math.random() - .5) * .25;
+          this.vy = (Math.random() - .5) * .25;
+          const c = COLORS[Math.floor(Math.random() * COLORS.length)];
+          this.r  = Math.random() * 1.8 + .4;
+          this.a  = Math.random() * .45 + .08;
+          this.col = `rgba(${c[0]},${c[1]},${c[2]},`;
+        };
+        this.reset();
+        this.update = function(){
+          this.bx += this.vx;
+          this.by += this.vy;
+          if(this.bx < 0 || this.bx > W) this.vx *= -1;
+          if(this.by < 0 || this.by > H) this.vy *= -1;
+          /* Repulsion from mouse */
+          const dx   = this.bx - hx;
+          const dy   = this.by - hy;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          const R    = 140;
+          if(dist < R && dist > 0){
+            const f = (R - dist) / R;
+            this.x += ((this.bx + (dx/dist)*f*50) - this.x) * .12;
+            this.y += ((this.by + (dy/dist)*f*50) - this.y) * .12;
+          } else {
+            this.x += (this.bx - this.x) * .08;
+            this.y += (this.by - this.y) * .08;
+          }
+        };
+        this.draw = function(){
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+          ctx.fillStyle = this.col + this.a + ')';
+          ctx.fill();
+        };
+      }
+
+      let pts = [];
+      function init(){
+        pts = [];
+        const count = Math.min(Math.floor(W * H / 14000), 90);
+        for(let i=0; i<count; i++){ const p=new Particle(); pts.push(p); }
+      }
+      init();
+
+      /* Draw thin lines between close particles */
+      function drawLines(){
+        for(let i=0;i<pts.length;i++){
+          for(let j=i+1;j<pts.length;j++){
+            const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+            const d=Math.sqrt(dx*dx+dy*dy);
+            if(d<110){
+              ctx.beginPath();
+              ctx.moveTo(pts[i].x,pts[i].y);
+              ctx.lineTo(pts[j].x,pts[j].y);
+              ctx.strokeStyle=`rgba(216,98,42,${(1-d/110)*.07})`;
+              ctx.lineWidth=.6;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      (function loop(){
+        ctx.clearRect(0,0,W,H);
+        drawLines();
+        pts.forEach(p=>{ p.update(); p.draw(); });
+        requestAnimationFrame(loop);
+      })();
+    })();
 
     /* ── FAQ ACCORDION ──────────────────────── */
     document.querySelectorAll('.faq-q').forEach(btn=>{
