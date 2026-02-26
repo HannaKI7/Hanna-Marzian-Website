@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanna Marzian – Brand Style Guide v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ── HANNA MARZIAN · NEUE BRAND PALETTE v2 ── */
+    /* Abgeleitet vom Instagram-Feed: warm, erdig, authentisch */
+
+    /* Akzent – Burnt Orange (Instagram-Highlight-Farbe) */
+    --orange:       #D8622A;
+    --orange-mid:   #E8894E;
+    --orange-pale:  #F5CFA8;
+    --orange-deep:  #B84E1E;
+
+    /* Dunkle Töne – Warm Brown statt Cold Black */
+    --warm-black:   #160C05;
+    --warm-dark:    #2A1608;
+    --warm-brown:   #472B18;
+    --mid-brown:    #6B4530;
+
+    /* Neutrale Töne – Warm Sand & Beige */
+    --tan:          #A88960;
+    --sand:         #D0B896;
+    --beige:        #EDE4D7;
+    --cream:        #F6F0E6;
+    --off-white:    #FBF7F2;
+
+    /* Text-Grautöne */
+    --warm-gray:    #7A6A5A;
+    --mid-gray:     #BDB0A0;
+    --light-gray:   #D8CFC4;
+
+    /* ── TYPOGRAFIE ── */
+    --font-heading: 'Cormorant', Georgia, serif;
+    --font-body:    'DM Sans', system-ui, sans-serif;
+    --font-accent:  'Montserrat', sans-serif;
+
+    /* ── SPACING ── */
+    --sp-xs:  4px;
+    --sp-sm:  8px;
+    --sp-md:  16px;
+    --sp-lg:  32px;
+    --sp-xl:  64px;
+    --sp-2xl: 96px;
+    --sp-3xl: 128px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--warm-black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 0 var(--sp-lg); }
+  .section { padding: var(--sp-3xl) 0; border-bottom: 1px solid var(--beige); }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: var(--sp-lg);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--orange);
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.2;
+    margin-bottom: var(--sp-sm);
+  }
+  h3 {
+    font-family: var(--font-accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--warm-brown);
+    margin-bottom: var(--sp-md);
+  }
+  p {
+    color: var(--warm-gray);
+    max-width: 600px;
+    margin-bottom: var(--sp-md);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-xl); align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-lg); }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-md); }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--warm-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--sp-xl) var(--sp-2xl);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(216,98,42,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(237,228,215,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-tag {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: var(--sp-xl);
+  }
+  .cover h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(52px, 8vw, 104px);
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 1.0;
+    margin-bottom: var(--sp-lg);
+    letter-spacing: -1px;
+  }
+  .cover h1 em {
+    font-style: italic;
+    color: var(--orange-mid);
+  }
+  .cover-sub {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: var(--warm-gray);
+    margin-bottom: var(--sp-2xl);
+    max-width: 480px;
+    line-height: 1.8;
+  }
+  .cover-meta {
+    display: flex;
+    gap: var(--sp-xl);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: var(--sp-lg);
+  }
+  .cover-meta-item span {
+    display: block;
+    font-family: var(--font-accent);
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 4px;
+  }
+  .cover-meta-item strong {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--sand);
+  }
+
+  /* ── BRAND STORY BLOCK ── */
+  .brand-story {
+    background: var(--beige);
+    border-radius: 2px;
+    padding: var(--sp-xl);
+    border-left: 4px solid var(--orange);
+    margin-bottom: var(--sp-xl);
+  }
+  .brand-story p {
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--warm-brown);
+    max-width: 100%;
+    margin: 0;
+  }
+  .brand-story strong { color: var(--orange); font-style: normal; }
+
+  .brand-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-md); margin-top: var(--sp-xl); }
+  .pillar {
+    padding: var(--sp-xl) var(--sp-lg);
+    background: var(--off-white);
+    border: 1px solid var(--beige);
+    border-top: 3px solid var(--orange);
+    border-radius: 1px;
+  }
+  .pillar-icon { font-size: 28px; margin-bottom: var(--sp-md); display: block; }
+  .pillar h4 {
+    font-family: var(--font-accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--warm-black);
+    margin-bottom: var(--sp-sm);
+  }
+  .pillar p { font-size: 14px; color: var(--warm-gray); margin: 0; max-width: none; }
+
+  /* ── COLOR SYSTEM ── */
+  .palette-group { margin-bottom: var(--sp-xl); }
+  .palette-group-label {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid-brown);
+    margin-bottom: var(--sp-md);
+  }
+  .swatches { display: flex; gap: var(--sp-sm); flex-wrap: wrap; }
+  .swatch-card {
+    width: 160px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--beige);
+  }
+  .swatch-color { height: 100px; width: 100%; }
+  .swatch-info {
+    padding: 10px 14px;
+    background: var(--off-white);
+  }
+  .swatch-name {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--warm-brown);
+    margin-bottom: 3px;
+  }
+  .swatch-hex {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--warm-gray);
+  }
+  .swatch-role {
+    font-size: 11px;
+    color: var(--mid-gray);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  /* Color usage guide */
+  .color-usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-lg); margin-top: var(--sp-xl); }
+  .color-usage-card {
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .color-usage-bg {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-lg);
+    position: relative;
+  }
+  .color-usage-text {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+    position: relative; z-index: 1;
+  }
+  .color-usage-text em { font-style: italic; }
+  .color-usage-label {
+    padding: 10px 16px;
+    font-family: var(--font-accent);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--off-white);
+    border: 1px solid var(--beige);
+    border-top: none;
+    color: var(--warm-gray);
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-specimen { padding: var(--sp-xl) 0; border-bottom: 1px solid var(--beige); }
+  .type-specimen:last-child { border-bottom: none; }
+  .type-meta {
+    display: flex;
+    gap: var(--sp-lg);
+    margin-bottom: var(--sp-md);
+    flex-wrap: wrap;
+  }
+  .type-meta-item span {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--warm-gray);
+    font-family: var(--font-accent);
+    margin-bottom: 2px;
+  }
+  .type-meta-item strong {
+    font-size: 13px;
+    color: var(--warm-brown);
+    font-weight: 400;
+  }
+
+  .type-h1 { font-family: var(--font-heading); font-size: 72px; font-weight: 500; line-height: 1.05; color: var(--warm-black); letter-spacing: -1px; }
+  .type-h2 { font-family: var(--font-heading); font-size: 48px; font-weight: 400; line-height: 1.15; color: var(--warm-black); }
+  .type-h3 { font-family: var(--font-heading); font-size: 32px; font-weight: 400; line-height: 1.3; color: var(--warm-brown); }
+  .type-label { font-family: var(--font-accent); font-size: 10px; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase; color: var(--orange); }
+  .type-body { font-family: var(--font-body); font-size: 17px; line-height: 1.8; color: var(--warm-gray); max-width: 560px; }
+  .type-bold { font-family: var(--font-body); font-size: 17px; font-weight: 700; line-height: 1.6; color: var(--warm-black); }
+  .type-small { font-family: var(--font-body); font-size: 14px; line-height: 1.65; color: var(--warm-gray); }
+  .type-italic { font-family: var(--font-heading); font-size: 42px; font-style: italic; font-weight: 300; color: var(--orange); }
+
+  /* Instagram-style bold text (for social media content) */
+  .type-impact {
+    font-family: var(--font-body);
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--warm-black);
+  }
+  .type-impact em { color: var(--orange); font-style: normal; }
+
+  /* ── LOGO SECTION ── */
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-md); margin-bottom: var(--sp-xl); }
+  .logo-var {
+    border-radius: 2px;
+    padding: var(--sp-xl) var(--sp-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-md);
+  }
+  .logo-var-label {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: var(--sp-sm);
+  }
+  .logo-svg-dark { display: block; }
+  .logo-svg-light { display: block; }
+
+  /* ── COMPONENTS ── */
+  .component-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-lg); }
+  .component-box {
+    background: var(--off-white);
+    border: 1px solid var(--beige);
+    border-radius: 2px;
+    padding: var(--sp-xl);
+  }
+  .component-box-dark {
+    background: var(--warm-dark);
+    border-radius: 2px;
+    padding: var(--sp-xl);
+  }
+  .component-label {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: var(--sp-lg);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 15px 34px;
+    border-radius: 1px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 200ms ease;
+  }
+  .btn-primary { background: var(--orange); color: var(--off-white); }
+  .btn-primary:hover { background: var(--orange-deep); }
+  .btn-dark { background: var(--warm-black); color: var(--off-white); }
+  .btn-dark:hover { background: var(--warm-brown); }
+  .btn-outline { background: transparent; color: var(--warm-black); border: 1.5px solid var(--warm-black); }
+  .btn-outline:hover { background: var(--warm-black); color: var(--off-white); }
+  .btn-outline-orange { background: transparent; color: var(--orange); border: 1.5px solid var(--orange); }
+  .btn-outline-orange:hover { background: var(--orange); color: var(--off-white); }
+  .btn-ghost { background: transparent; color: var(--off-white); border: 1px solid rgba(255,255,255,0.2); }
+  .btn-ghost:hover { border-color: var(--orange-mid); color: var(--orange-mid); }
+  .btn-group { display: flex; gap: var(--sp-sm); flex-wrap: wrap; align-items: center; }
+
+  /* Cards */
+  .card {
+    background: var(--off-white);
+    border: 1px solid var(--beige);
+    border-radius: 2px;
+    padding: var(--sp-xl);
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  }
+  .card:hover {
+    border-color: var(--orange-pale);
+    box-shadow: 0 8px 40px rgba(216,98,42,0.1);
+    transform: translateY(-3px);
+  }
+  .card-tag {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: var(--sp-md);
+  }
+  .card h4 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--warm-black);
+    margin-bottom: var(--sp-sm);
+    line-height: 1.3;
+  }
+  .card p { font-size: 14px; color: var(--warm-gray); margin: 0; max-width: none; }
+
+  .card-dark {
+    background: var(--warm-dark);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2px;
+    padding: var(--sp-xl);
+    transition: border-color 200ms ease;
+  }
+  .card-dark:hover { border-color: rgba(216,98,42,0.3); }
+  .card-dark .card-tag { color: var(--orange-mid); }
+  .card-dark h4 { color: var(--off-white); font-family: var(--font-heading); font-size: 24px; font-weight: 500; margin-bottom: var(--sp-sm); }
+  .card-dark p { color: var(--warm-gray); font-size: 14px; margin: 0; }
+
+  /* Form Inputs */
+  .input-group { display: flex; flex-direction: column; gap: var(--sp-sm); margin-bottom: var(--sp-lg); }
+  .input-label {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--warm-brown);
+  }
+  .input-field {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--warm-black);
+    background: var(--cream);
+    border: 1px solid var(--beige);
+    border-radius: 1px;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 200ms ease;
+    width: 100%;
+  }
+  .input-field:focus { border-color: var(--orange); }
+  .input-field::placeholder { color: var(--light-gray); }
+
+  /* ── INSTAGRAM GRID SECTION ── */
+  .ig-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin-bottom: var(--sp-xl);
+  }
+  .ig-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ig-cell-dark { background: var(--warm-dark); }
+  .ig-cell-brown { background: var(--warm-brown); }
+  .ig-cell-beige { background: var(--beige); }
+  .ig-cell-cream { background: var(--cream); }
+  .ig-cell-black { background: var(--warm-black); }
+  .ig-cell-tan { background: var(--tan); }
+
+  .ig-headline {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.15;
+    text-align: left;
+    width: 100%;
+  }
+  .ig-headline em { color: var(--orange); font-style: normal; }
+  .ig-headline.light { color: var(--off-white); }
+  .ig-headline.dark { color: var(--warm-black); }
+  .ig-sub {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(251,247,242,0.65);
+    line-height: 1.5;
+  }
+
+  /* ── VOICE & TONE ── */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-lg); margin-bottom: var(--sp-xl); }
+  .voice-card {
+    padding: var(--sp-xl);
+    border-radius: 2px;
+  }
+  .voice-card.yes { background: rgba(216,98,42,0.08); border: 1px solid rgba(216,98,42,0.2); }
+  .voice-card.no { background: rgba(122,106,90,0.06); border: 1px solid var(--beige); }
+  .voice-card h4 {
+    font-family: var(--font-accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-md);
+  }
+  .voice-card.yes h4 { color: var(--orange); }
+  .voice-card.no h4 { color: var(--warm-gray); }
+  .voice-list { list-style: none; padding: 0; }
+  .voice-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: var(--warm-gray);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .voice-list li::before { flex-shrink: 0; margin-top: 1px; }
+  .voice-card.yes .voice-list li::before { content: '✓'; color: var(--orange); font-weight: 700; }
+  .voice-card.no .voice-list li::before { content: '✕'; color: var(--mid-gray); font-weight: 700; }
+
+  /* Do/Don't examples */
+  .example-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-sm); margin-bottom: var(--sp-md); }
+  .example-box {
+    padding: var(--sp-lg);
+    border-radius: 2px;
+    border: 1px solid transparent;
+  }
+  .example-box.good { background: rgba(216,98,42,0.05); border-color: rgba(216,98,42,0.15); }
+  .example-box.bad { background: rgba(122,106,90,0.05); border-color: var(--beige); }
+  .example-box p {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--warm-brown);
+    margin: 0;
+    max-width: none;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .example-box-label {
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .good .example-box-label { color: var(--orange); }
+  .bad .example-box-label { color: var(--mid-gray); }
+
+  /* ── SPACING VIZ ── */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-lg);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--beige);
+  }
+  .spacing-bar {
+    background: var(--orange);
+    height: 14px;
+    border-radius: 1px;
+    flex-shrink: 0;
+    opacity: 0.65;
+  }
+  .spacing-label {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--warm-gray);
+    min-width: 80px;
+  }
+  .spacing-value {
+    font-family: var(--font-accent);
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--light-gray);
+  }
+
+  /* ── PHOTO DIRECTION ── */
+  .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-md); margin-bottom: var(--sp-xl); }
+  .photo-cell {
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--sp-lg);
+  }
+  .photo-cell-label {
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(251,247,242,0.65);
+    margin-bottom: 4px;
+  }
+  .photo-cell-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--off-white);
+    line-height: 1.3;
+  }
+
+  /* ── FOOTER ── */
+  .guide-footer {
+    background: var(--warm-black);
+    padding: var(--sp-xl) var(--sp-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--sp-md);
+  }
+  .guide-footer-logo {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--off-white);
+  }
+  .guide-footer-logo span { color: var(--orange); }
+  .guide-footer-note {
+    font-size: 12px;
+    color: var(--warm-gray);
+  }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 1px;
+  }
+  .badge-orange { background: var(--orange); color: var(--off-white); }
+  .badge-dark { background: var(--warm-brown); color: var(--sand); }
+  .badge-outline { border: 1px solid var(--orange); color: var(--orange); }
+  .badge-subtle { background: rgba(216,98,42,0.1); color: var(--orange-deep); }
+
+  /* ── MISC HELPERS ── */
+  .divider-orange {
+    width: 48px;
+    height: 3px;
+    background: var(--orange);
+    margin: var(--sp-lg) 0;
+    border-radius: 1px;
+  }
+  .highlight-text { color: var(--orange); font-weight: 700; }
+  .muted-text { color: var(--warm-gray); font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .grid-2, .component-grid, .color-usage-grid, .voice-grid { grid-template-columns: 1fr; }
+    .grid-3, .brand-pillars, .photo-grid { grid-template-columns: 1fr 1fr; }
+    .grid-4, .ig-grid { grid-template-columns: repeat(2, 1fr); }
+    .logo-grid { grid-template-columns: 1fr; }
+    .cover { padding: var(--sp-lg); }
+    .cover h1 { font-size: 52px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     COVER
+═══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-tag">Brand Style Guide · Version 2.0 · 2026</div>
+  <h1>
+    Hanna<br>
+    <em>Marzian.</em>
+  </h1>
+  <p class="cover-sub">
+    Persönliche Brand Identity für KI-Expertin und Content Creatorin Hanna Marzian. Warm, authentisch, direkt – wie ihr Instagram-Feed.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Primär-Akzent</span>
+      <strong>Burnt Orange #D8622A</strong>
+    </div>
+    <div class="cover-meta-item">
+      <span>Primär-Typografie</span>
+      <strong>Cormorant + DM Sans</strong>
+    </div>
+    <div class="cover-meta-item">
+      <span>Tonalität</span>
+      <strong>Warm · Erdig · Bold</strong>
+    </div>
+    <div class="cover-meta-item">
+      <span>Stand</span>
+      <strong>Februar 2026</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SEKTION 01: BRAND STRATEGIE
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section">
+    <div class="section-label">01 · Brand Strategie</div>
+    <h2>Wer ist Hanna Marzian?</h2>
+    <p style="margin-bottom: var(--sp-xl);">
+      Hanna Marzian ist KI-Expertin, Content Creatorin und Unternehmerin – sie zeigt Menschen, wie sie mit KI mehr Zeit gewinnen, mehr verdienen und ihr Leben vereinfachen. Ihr Stil: direkt, ehrlich, menschlich.
+    </p>
+
+    <div class="brand-story">
+      <p>
+        KI ist kein Zukunftstrend mehr. Es ist <strong>dein Hebel jetzt</strong> – und ich zeige dir, wie du ihn wirklich benutzt. Nicht theoretisch. Sondern heute.
+      </p>
+    </div>
+
+    <div class="brand-pillars">
+      <div class="pillar">
+        <span class="pillar-icon">🔥</span>
+        <h4>Authentizität</h4>
+        <p>Keine Filter, keine Masken. Hanna zeigt echte Einblicke, echte Zahlen, echtes Leben. Vertrauen entsteht durch Ehrlichkeit.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">⚡</span>
+        <h4>Pragmatismus</h4>
+        <p>Keine Theorie ohne Praxis. Jeder Content ist sofort umsetzbar – konkrete Tipps, direkte Ergebnisse, keine Floskeln.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">💡</span>
+        <h4>Empowerment</h4>
+        <p>Hanna gibt Wissen, kein Abhängigkeitsverhältnis. Ihr Ziel: Menschen befähigen, selbst die Kontrolle zu übernehmen.</p>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══════════════════════════════════════════
+     SEKTION 02: FARBPALETTE
+═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">02 · Farbpalette</div>
+    <h2>Warm. Erdig. Lebendig.</h2>
+    <p style="margin-bottom: var(--sp-xl);">
+      Die neue Palette spiegelt Hannas Instagram-Ästhetik wider: warme Brauntöne als Basis, lebendiges Orange als Akzent, helles Beige für Leichtigkeit. Keine kühlen Grautöne, kein reines Schwarz – alles hat einen warmen Unterton.
+    </p>
+
+    <!-- Akzent -->
+    <div class="palette-group">
+      <div class="palette-group-label">Akzent – Burnt Orange</div>
+      <div class="swatches">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#D8622A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Orange</div>
+            <div class="swatch-hex">#D8622A</div>
+            <div class="swatch-role">Primärer Akzent, Headlines, CTAs</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#E8894E;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Orange Mid</div>
+            <div class="swatch-hex">#E8894E</div>
+            <div class="swatch-role">Hover States, sekundäre Akzente</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#F5CFA8;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Orange Pale</div>
+            <div class="swatch-hex">#F5CFA8</div>
+            <div class="swatch-role">Hintergründe, Badges, Highlights</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#B84E1E;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Orange Deep</div>
+            <div class="swatch-hex">#B84E1E</div>
+            <div class="swatch-role">Hover aktiv, Borders, Emphasis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dunkle Töne -->
+    <div class="palette-group">
+      <div class="palette-group-label">Dunkle Töne – Warm Brown Darks</div>
+      <div class="swatches">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#160C05;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Warm Black</div>
+            <div class="swatch-hex">#160C05</div>
+            <div class="swatch-role">Footer, tiefste Hintergründe</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#2A1608;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Warm Dark</div>
+            <div class="swatch-hex">#2A1608</div>
+            <div class="swatch-role">Hero, dunkle Sections</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#472B18;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Warm Brown</div>
+            <div class="swatch-hex">#472B18</div>
+            <div class="swatch-role">Cards (dark), Sidebar</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#6B4530;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mid Brown</div>
+            <div class="swatch-hex">#6B4530</div>
+            <div class="swatch-role">Borders, Separatoren</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Helle Töne -->
+    <div class="palette-group">
+      <div class="palette-group-label">Helle Töne – Warm Beige & Cream</div>
+      <div class="swatches">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#EDE4D7; border: 1px solid #D8CFC4;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Beige</div>
+            <div class="swatch-hex">#EDE4D7</div>
+            <div class="swatch-role">Sections, Background Panels</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#F6F0E6; border: 1px solid #D8CFC4;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Cream</div>
+            <div class="swatch-hex">#F6F0E6</div>
+            <div class="swatch-role">Primärer Seitenhintergrund</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#FBF7F2; border: 1px solid #D8CFC4;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Off-White</div>
+            <div class="swatch-hex">#FBF7F2</div>
+            <div class="swatch-role">Card Hintergründe, Inputs</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#A88960;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Tan</div>
+            <div class="swatch-hex">#A88960</div>
+            <div class="swatch-role">Muted Accents, Borders</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grautöne -->
+    <div class="palette-group">
+      <div class="palette-group-label">Grautöne – Warm Neutrals</div>
+      <div class="swatches">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#7A6A5A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Warm Gray</div>
+            <div class="swatch-hex">#7A6A5A</div>
+            <div class="swatch-role">Fließtext, Body Copy</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#BDB0A0;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mid Gray</div>
+            <div class="swatch-hex">#BDB0A0</div>
+            <div class="swatch-role">Placeholder, Muted Text</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#D8CFC4; border: 1px solid #BDB0A0;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Light Gray</div>
+            <div class="swatch-hex">#D8CFC4</div>
+            <div class="swatch-role">Borders, Dividers, Lines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Usage -->
+    <h3>Farbverwendung – Do's &amp; Don'ts</h3>
+    <div class="color-usage-grid">
+      <div class="color-usage-card">
+        <div class="color-usage-bg" style="background: var(--warm-dark);">
+          <div class="color-usage-text" style="color: var(--off-white);">
+            KI spart dir <em style="color: var(--orange);">jede Woche 71 €</em>
+          </div>
+        </div>
+        <div class="color-usage-label" style="color: var(--orange);">✓ SO – Orange Highlight auf dunklem BG</div>
+      </div>
+      <div class="color-usage-card">
+        <div class="color-usage-bg" style="background: var(--beige);">
+          <div class="color-usage-text" style="color: var(--warm-black);">
+            Was wäre wenn<br><em style="color: var(--orange);">KI</em> dein Team ist?
+          </div>
+        </div>
+        <div class="color-usage-label" style="color: var(--orange);">✓ SO – Orange Keyword auf hellem BG</div>
+      </div>
+      <div class="color-usage-card">
+        <div class="color-usage-bg" style="background: var(--cream);">
+          <div class="color-usage-text" style="color: var(--orange);">
+            Ganzer Text in Orange
+          </div>
+        </div>
+        <div class="color-usage-label" style="color: var(--warm-gray);">✕ NICHT – Orange für langen Text</div>
+      </div>
+      <div class="color-usage-card">
+        <div class="color-usage-bg" style="background: #444;">
+          <div class="color-usage-text" style="color: var(--off-white);">
+            Kalter Grau-Hintergrund
+          </div>
+        </div>
+        <div class="color-usage-label" style="color: var(--warm-gray);">✕ NICHT – Kühle, unwarme Töne</div>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══════════════════════════════════════════
+     SEKTION 03: TYPOGRAFIE
+═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">03 · Typografie</div>
+    <h2>Zwei Stimmen. Eine Persönlichkeit.</h2>
+    <p style="margin-bottom: var(--sp-xl);">
+      Cormorant für die elegante, persönliche Seite. DM Sans für klare, direkte Kommunikation. Montserrat für Labels, Tags und Metadaten. Die Kombination schafft eine Balance aus Premium-Gefühl und Zugänglichkeit.
+    </p>
+
+    <!-- Cormorant -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-meta-item"><span>Familie</span><strong>Cormorant</strong></div>
+        <div class="type-meta-item"><span>Klasse</span><strong>Serif / Editorial</strong></div>
+        <div class="type-meta-item"><span>Verwendung</span><strong>Hauptüberschriften, Quotes, Preise</strong></div>
+        <div class="type-meta-item"><span>Quelle</span><strong>Google Fonts · kostenlos</strong></div>
+      </div>
+      <div class="type-h1">Fülle ist dein<br>Geburtsrecht.</div>
+      <div class="type-italic" style="margin-top: 16px;">Authentisch. Direkt. Wirkungsvoll.</div>
+    </div>
+
+    <!-- DM Sans -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-meta-item"><span>Familie</span><strong>DM Sans</strong></div>
+        <div class="type-meta-item"><span>Klasse</span><strong>Grotesque Sans-Serif</strong></div>
+        <div class="type-meta-item"><span>Verwendung</span><strong>Body Text, UI, Bold Headlines, Social</strong></div>
+        <div class="type-meta-item"><span>Quelle</span><strong>Google Fonts · kostenlos</strong></div>
+      </div>
+      <div class="type-impact">ChatGPT hat mir gezeigt,<br>wie ich <em>jede Woche 71 €</em> spare.</div>
+      <div class="type-body" style="margin-top: 20px;">KI ist kein Ersatz für Kreativität – es ist der Hebel, mit dem du mehr aus deiner Zeit machst. Ohne Burnout. Ohne endlose To-Do-Listen. Mit Strategie.</div>
+    </div>
+
+    <!-- Montserrat -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-meta-item"><span>Familie</span><strong>Montserrat</strong></div>
+        <div class="type-meta-item"><span>Klasse</span><strong>Geometric Sans-Serif</strong></div>
+        <div class="type-meta-item"><span>Verwendung</span><strong>Labels, Badges, Navigation, Eyebrows</strong></div>
+        <div class="type-meta-item"><span>Quelle</span><strong>Google Fonts · kostenlos</strong></div>
+      </div>
+      <div class="type-label">Für KI-Interessierte · Workshop · März 2026</div>
+      <div class="type-small" style="margin-top: 12px;">Einmalige Zahlung · Sofortiger Zugang · Zufriedenheitsgarantie</div>
+    </div>
+
+    <!-- Typografie-Hierarchie -->
+    <h3 style="margin-top: var(--sp-xl);">Hierarchie &amp; Anwendung</h3>
+    <div style="border-top: 1px solid var(--beige);">
+      <div style="display:flex; align-items:baseline; gap:24px; padding: 16px 0; border-bottom: 1px solid var(--beige);">
+        <span style="font-family:var(--font-accent);font-size:10px;color:var(--mid-gray);min-width:80px;letter-spacing:1.5px;text-transform:uppercase;">H1 Hero</span>
+        <span style="font-family:var(--font-heading);font-size:52px;font-weight:500;color:var(--warm-black);line-height:1;">In 3 Tagen live.</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:24px; padding: 16px 0; border-bottom: 1px solid var(--beige);">
+        <span style="font-family:var(--font-accent);font-size:10px;color:var(--mid-gray);min-width:80px;letter-spacing:1.5px;text-transform:uppercase;">H1 Impact</span>
+        <span style="font-family:var(--font-body);font-size:48px;font-weight:800;color:var(--warm-black);line-height:1;"><span style="color:var(--orange);">Anti</span>Hooks</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:24px; padding: 16px 0; border-bottom: 1px solid var(--beige);">
+        <span style="font-family:var(--font-accent);font-size:10px;color:var(--mid-gray);min-width:80px;letter-spacing:1.5px;text-transform:uppercase;">H2</span>
+        <span style="font-family:var(--font-heading);font-size:38px;font-weight:500;color:var(--warm-black);">Das Zeitfenster schließt sich.</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:24px; padding: 16px 0; border-bottom: 1px solid var(--beige);">
+        <span style="font-family:var(--font-accent);font-size:10px;color:var(--mid-gray);min-width:80px;letter-spacing:1.5px;text-transform:uppercase;">H3</span>
+        <span style="font-family:var(--font-heading);font-size:26px;font-weight:400;color:var(--warm-brown);">Für wen ist das?</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:24px; padding: 16px 0; border-bottom: 1px solid var(--beige);">
+        <span style="font-family:var(--font-accent);font-size:10px;color:var(--mid-gray);min-width:80px;letter-spacing:1.5px;text-transform:uppercase;">Label</span>
+        <span style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--orange);">Workshop · 09.–11. März 2026</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:24px; padding: 16px 0; border-bottom: 1px solid var(--beige);">
+        <span style="font-family:var(--font-accent);font-size:10px;color:var(--mid-gray);min-width:80px;letter-spacing:1.5px;text-transform:uppercase;">Body</span>
+        <span style="font-family:var(--font-body);font-size:16px;font-weight:300;color:var(--warm-gray);line-height:1.75;max-width:520px;">KI hat im letzten Jahr die Webdesign-Branche auf den Kopf gestellt. Was früher exklusiv für Unternehmen mit großem Budget war, ist jetzt für jeden erreichbar.</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:24px; padding: 16px 0;">
+        <span style="font-family:var(--font-accent);font-size:10px;color:var(--mid-gray);min-width:80px;letter-spacing:1.5px;text-transform:uppercase;">Quote</span>
+        <span style="font-family:var(--font-heading);font-size:26px;font-style:italic;font-weight:400;color:var(--warm-brown);max-width:520px;">"Ich dachte immer, KI ist was für Tech-Nerds. Und dann hat mir Hanna in 3 Stunden gezeigt, was möglich ist."</span>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══════════════════════════════════════════
+     SEKTION 04: LOGO
+═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">04 · Logo &amp; Wortmarke</div>
+    <h2>Die Wortmarke.</h2>
+    <p style="margin-bottom: var(--sp-xl);">Die Wortmarke kombiniert Cormorant (Vor- und Nachname) mit einem orange Akzent auf dem Punkt oder einem Key-Buchstaben. Auf hellen und dunklen Hintergründen einsetzbar.</p>
+
+    <div class="logo-grid">
+      <!-- Dark Background -->
+      <div class="logo-var" style="background: var(--warm-dark);">
+        <svg width="260" height="56" viewBox="0 0 260 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Hanna Marzian Logo hell auf dunkel">
+          <text x="0" y="44" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#FBF7F2">Hanna </text>
+          <text x="132" y="44" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#D8622A">Marzian</text>
+        </svg>
+        <div class="logo-var-label" style="color: var(--warm-gray);">Hell auf Dunkel · Primärvariante</div>
+      </div>
+      <!-- Light Background -->
+      <div class="logo-var" style="background: var(--cream); border: 1px solid var(--beige);">
+        <svg width="260" height="56" viewBox="0 0 260 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Hanna Marzian Logo dunkel auf hell">
+          <text x="0" y="44" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#160C05">Hanna </text>
+          <text x="132" y="44" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#D8622A">Marzian</text>
+        </svg>
+        <div class="logo-var-label" style="color: var(--warm-gray);">Dunkel auf Hell · Sekundärvariante</div>
+      </div>
+      <!-- Instagram / Square -->
+      <div class="logo-var" style="background: var(--warm-black);">
+        <div style="text-align:center;">
+          <div style="font-family:'Georgia',serif; font-size:52px; font-weight:700; color:var(--off-white); line-height:1;">HM</div>
+          <div style="font-family:'Georgia',serif; font-size:14px; font-weight:400; color:var(--orange); letter-spacing:3px; margin-top:6px; text-transform:uppercase;">Marzian</div>
+        </div>
+        <div class="logo-var-label" style="color: var(--warm-gray);">Monogramm · Instagram / Avatar</div>
+      </div>
+      <!-- Hanna.KI Variante -->
+      <div class="logo-var" style="background: var(--beige); border: 1px solid var(--light-gray);">
+        <div style="text-align:center;">
+          <div style="font-family:'Georgia',serif; font-size:38px; font-weight:400; color:var(--warm-black); line-height:1;">
+            Hanna<span style="color:var(--orange);">.</span>KI
+          </div>
+          <div style="font-family:'Arial',sans-serif; font-size:10px; font-weight:700; color:var(--warm-gray); letter-spacing:3px; margin-top:8px; text-transform:uppercase;">KI Expertin &amp; Coach</div>
+        </div>
+        <div class="logo-var-label" style="color: var(--warm-gray);">Hanna.KI Variante · Workshop/Kurs</div>
+      </div>
+    </div>
+
+    <div style="background: var(--beige); padding: var(--sp-lg); border-radius: 2px; margin-top: var(--sp-lg);">
+      <h3>Logo-Regeln</h3>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--sp-md);">
+        <div>
+          <div style="font-family:var(--font-accent);font-size:10px;color:var(--orange);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">✓ Erlaubt</div>
+          <ul style="list-style:none;padding:0;font-size:14px;color:var(--warm-gray);line-height:2;">
+            <li>→ Helles Logo auf dunklem Hintergrund</li>
+            <li>→ Dunkles Logo auf hellem/beige Hintergrund</li>
+            <li>→ Orange Akzent immer auf "Marzian" oder Punkt</li>
+            <li>→ Mindestgröße: 180px Breite</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-family:var(--font-accent);font-size:10px;color:var(--mid-gray);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">✕ Nicht erlaubt</div>
+          <ul style="list-style:none;padding:0;font-size:14px;color:var(--warm-gray);line-height:2;">
+            <li>→ Logo strecken oder verzerren</li>
+            <li>→ Farben eigenständig ändern</li>
+            <li>→ Orange als Hintergrundfarbe für Logo</li>
+            <li>→ Logo auf komplexen Foto-Hintergründen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══════════════════════════════════════════
+     SEKTION 05: UI COMPONENTS
+═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">05 · UI Komponenten</div>
+    <h2>Buttons, Cards &amp; Inputs.</h2>
+    <p style="margin-bottom: var(--sp-xl);">Alle Komponenten folgen der warmen Palette. Buttons sind kantig (border-radius: 1–2px) – kein Runding, kein Overly-Polished. Frisch, direkt, klar.</p>
+
+    <div class="component-grid">
+      <!-- Buttons hell -->
+      <div class="component-box">
+        <div class="component-label">Buttons · Heller Kontext</div>
+        <div class="btn-group">
+          <a class="btn btn-primary">Jetzt starten →</a>
+          <a class="btn btn-dark">Mehr erfahren</a>
+        </div>
+        <div class="btn-group" style="margin-top: var(--sp-sm);">
+          <a class="btn btn-outline">Anfrage stellen</a>
+          <a class="btn btn-outline-orange">Workshop ansehen</a>
+        </div>
+      </div>
+      <!-- Buttons dunkel -->
+      <div class="component-box-dark">
+        <div class="component-label" style="color:var(--warm-gray);">Buttons · Dunkler Kontext</div>
+        <div class="btn-group">
+          <a class="btn btn-primary">Jetzt anmelden →</a>
+          <a class="btn btn-ghost">Mehr erfahren</a>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span class="badge badge-orange">Neu</span>
+          <span class="badge badge-dark">Workshop</span>
+          <span class="badge badge-subtle">Limitiert</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <h3 style="margin-top: var(--sp-xl);">Cards</h3>
+    <div class="grid-3" style="margin-bottom: var(--sp-xl);">
+      <div class="card">
+        <div class="card-tag">Workshop</div>
+        <h4>In 3 Tagen zur fertigen Website</h4>
+        <p>Live-Workshop mit individuellem Support. Kein Vorwissen nötig.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Kurs</div>
+        <h4>ChatGPT Masterclass</h4>
+        <p>Von Grundlagen bis zu Profi-Prompts. Alles was du brauchst.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Kostenlos</div>
+        <h4>5 KI-Prompts die dein Leben ändern</h4>
+        <p>Direkt umsetzbar. Sofort spürbar. Gratis downloaden.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card-dark">
+        <div class="card-tag">Premium</div>
+        <h4>1:1 KI-Coaching</h4>
+        <p>Individueller Support für dein Business.</p>
+      </div>
+      <div class="card-dark">
+        <div class="card-tag">Community</div>
+        <h4>Hanna's KI-Kreis</h4>
+        <p>Exklusive Gruppe mit wöchentlichen Challenges.</p>
+      </div>
+      <div class="card-dark">
+        <div class="card-tag">Live</div>
+        <h4>Monatlicher KI-Roundtable</h4>
+        <p>Aktuelle Trends, Tools und Cases live besprochen.</p>
+      </div>
+    </div>
+
+    <!-- Inputs -->
+    <h3 style="margin-top: var(--sp-xl);">Formular-Elemente</h3>
+    <div class="component-grid">
+      <div class="component-box">
+        <div class="input-group">
+          <label class="input-label">Dein Name</label>
+          <input class="input-field" type="text" placeholder="Anna Musterfrau">
+        </div>
+        <div class="input-group">
+          <label class="input-label">E-Mail Adresse</label>
+          <input class="input-field" type="email" placeholder="anna@beispiel.de">
+        </div>
+        <a class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;">Jetzt anmelden →</a>
+      </div>
+      <div class="component-box">
+        <div style="background: var(--beige); padding: var(--sp-lg); border-radius: 2px; border-left: 3px solid var(--orange);">
+          <div style="font-family:var(--font-accent);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Info-Box</div>
+          <p style="font-size:14px;margin:0;">Alle Sessions werden aufgezeichnet. Du kannst verpasste Inhalte jederzeit nachholen.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; align-items:center; gap:12px;">
+          <div style="width:40px;height:40px;background:var(--orange-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🎯</div>
+          <div>
+            <div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm-brown);margin-bottom:2px;">Zufriedenheitsgarantie</div>
+            <div style="font-size:13px;color:var(--warm-gray);">Geld zurück wenn du nicht zufrieden bist.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══════════════════════════════════════════
+     SEKTION 06: SOCIAL MEDIA / INSTAGRAM
+═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">06 · Social Media &amp; Instagram</div>
+    <h2>Der Feed-Stil.</h2>
+    <p style="margin-bottom: var(--sp-xl);">
+      Der Instagram-Feed lebt von drei Grundtypen: <strong>dunkle Story-Posts</strong> (warmes Dunkelbraun, orangefarbene Highlights), <strong>helle Statement-Posts</strong> (Beige/Cream Hintergrund, schwarzer Text, orange Keyword) und <strong>Foto-Posts</strong> (warme Lichtführung, authentisch, kein Studioglanz).
+    </p>
+
+    <div class="ig-grid">
+      <!-- Post 1: Dark with orange headline -->
+      <div class="ig-cell ig-cell-dark">
+        <div class="ig-headline light">
+          <em>Anti</em>Hooks<br>
+          <span style="font-size:14px;font-weight:400;color:rgba(251,247,242,0.5);line-height:1.5;">Wenn du willst, dass Menschen von deinem Content besessen sind</span>
+        </div>
+      </div>
+      <!-- Post 2: Dark, orange text highlight -->
+      <div class="ig-cell ig-cell-brown">
+        <div class="ig-headline light" style="font-size:18px;font-weight:600;">
+          ChatGPT hat mir gezeigt, wie ich <em>jede Woche 71 €</em> beim Kauf von Lebensmitteln sparen kann
+        </div>
+      </div>
+      <!-- Post 3: Light beige -->
+      <div class="ig-cell ig-cell-beige">
+        <div class="ig-headline dark" style="font-size:20px;font-weight:700;text-align:center;">
+          Wenn du glaubst, dass du mit <em>KI</em> zu spät bist
+        </div>
+      </div>
+      <!-- Post 4: Dark, orange headline only -->
+      <div class="ig-cell ig-cell-dark">
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-body);font-size:38px;font-weight:800;color:var(--orange);line-height:1;">Fülle</div>
+          <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--off-white);margin-top:6px;">ist dein Geburtsrecht</div>
+        </div>
+      </div>
+      <!-- Post 5: Dark photo style -->
+      <div class="ig-cell ig-cell-black">
+        <div class="ig-headline light" style="font-size:16px;font-weight:500;">
+          Anstatt Netflix zu glotzen kannst du in <em>45 Minuten</em> ein digitales Produkt erstellen
+        </div>
+      </div>
+      <!-- Post 6: Cream, bold orange -->
+      <div class="ig-cell ig-cell-cream">
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-body);font-size:36px;font-weight:800;color:var(--orange);line-height:1;">Ab&shy;mah&shy;nung</div>
+          <div style="font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--warm-black);margin-top:8px;">von 19.500 €</div>
+        </div>
+      </div>
+      <!-- Post 7: Medium brown -->
+      <div class="ig-cell ig-cell-brown">
+        <div class="ig-headline light" style="font-size:16px;font-weight:500;">
+          Ich habe ChatGPT gefragt:<br>„Was würdest du tun, wenn du für einen Tag ein MENSCH sein könntest?"
+        </div>
+      </div>
+      <!-- Post 8: Warm dark -->
+      <div class="ig-cell ig-cell-dark">
+        <div class="ig-headline light" style="font-size:16px;font-weight:500;">
+          Mein Alltag fühlte sich <em>monatelang chaotisch</em> an – bis ich KI meine Aufgaben zeigte
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--sp-xl);">Post-Formate &amp; Regeln</h3>
+    <div class="grid-3" style="margin-top: var(--sp-md);">
+      <div style="padding: var(--sp-lg); background: var(--beige); border-radius: 2px; border-top: 3px solid var(--orange);">
+        <div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Dark Story Posts</div>
+        <ul style="list-style:none;padding:0;font-size:13px;color:var(--warm-gray);line-height:2.2;">
+          <li>→ Hintergrund: #2A1608 oder dunkles Foto</li>
+          <li>→ Text: Off-White (#FBF7F2)</li>
+          <li>→ Highlight-Wörter: Orange #D8622A</li>
+          <li>→ Typ: Storys, persönliche Einblicke</li>
+        </ul>
+      </div>
+      <div style="padding: var(--sp-lg); background: var(--beige); border-radius: 2px; border-top: 3px solid var(--warm-brown);">
+        <div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm-brown);margin-bottom:12px;">Light Statement Posts</div>
+        <ul style="list-style:none;padding:0;font-size:13px;color:var(--warm-gray);line-height:2.2;">
+          <li>→ Hintergrund: Cream #F6F0E6 oder Beige</li>
+          <li>→ Text: Warm Black (#160C05)</li>
+          <li>→ Highlight-Wörter: Orange oder Bold</li>
+          <li>→ Typ: Zitate, Stats, Tipps</li>
+        </ul>
+      </div>
+      <div style="padding: var(--sp-lg); background: var(--beige); border-radius: 2px; border-top: 3px solid var(--tan);">
+        <div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tan);margin-bottom:12px;">Foto Posts</div>
+        <ul style="list-style:none;padding:0;font-size:13px;color:var(--warm-gray);line-height:2.2;">
+          <li>→ Warme Lichtführung, kein Blitz</li>
+          <li>→ Natürliche Settings (Auto, Küche, Büro)</li>
+          <li>→ Authentisch, kein überproduziertes Styling</li>
+          <li>→ Orange Elemente wenn möglich sichtbar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══════════════════════════════════════════
+     SEKTION 07: VOICE & TONE
+═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">07 · Voice &amp; Tone</div>
+    <h2>Wie Hanna spricht.</h2>
+    <p style="margin-bottom: var(--sp-xl);">
+      Direkt, ehrlich, menschlich. Keine Fachsprachen-Orgien, keine leeren Buzzwords. Hanna spricht wie eine kluge Freundin: sie erklärt, ermutigt und zeigt den konkreten nächsten Schritt.
+    </p>
+
+    <div class="voice-grid">
+      <div class="voice-card yes">
+        <h4>So klingt Hanna</h4>
+        <ul class="voice-list">
+          <li>Direkt und konkret: "In 45 Minuten kannst du das umsetzen."</li>
+          <li>Persönlich und ehrlich: "Ich habe das selbst ausprobiert – und es hat mich schockiert."</li>
+          <li>Ermächtigend: "Das kannst du. Heute. Jetzt."</li>
+          <li>Mit echten Zahlen: "Jede Woche 71 €. Das ist real."</li>
+          <li>Neugier weckend ohne Clickbait: "Der letzte Satz hat mich am meisten schockiert."</li>
+          <li>Nahbar mit Humor: authentische Reaktionen zeigen</li>
+        </ul>
+      </div>
+      <div class="voice-card no">
+        <h4>So klingt Hanna nicht</h4>
+        <ul class="voice-list">
+          <li>Übertriebene Superlative: "Das REVOLUTIONIERT ALLES!!!"</li>
+          <li>Distanziert-formal: "Laut diverser Studien zeigt sich..."</li>
+          <li>Vage ohne Substanz: "KI ist super wichtig für die Zukunft."</li>
+          <li>Schulmeisternd: "Du solltest unbedingt..." / "Man muss..."</li>
+          <li>Fremdes Wording: "Euch" statt "dir", "wir" statt "ich"</li>
+          <li>Überproduziert: sterile Studio-Ästhetik, perfekte Filter</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Beispiele: Do vs. Don't</h3>
+    <div class="example-pair">
+      <div class="example-box good">
+        <div class="example-box-label">✓ So</div>
+        <p>"ChatGPT hat mir gezeigt, wie ich jede Woche 71 € beim Kauf von Lebensmitteln sparen kann."</p>
+      </div>
+      <div class="example-box bad">
+        <div class="example-box-label">✕ Nicht so</div>
+        <p>"KI-Technologien ermöglichen es Verbrauchern, durch intelligente Nutzung erhebliche Einsparungen zu erzielen."</p>
+      </div>
+    </div>
+    <div class="example-pair">
+      <div class="example-box good">
+        <div class="example-box-label">✓ So</div>
+        <p>"Mein Alltag fühlte sich monatelang chaotisch an. Und dann habe ich ChatGPT meine Aufgaben gezeigt."</p>
+      </div>
+      <div class="example-box bad">
+        <div class="example-box-label">✕ Nicht so</div>
+        <p>"Wir zeigen Euch, wie ihr durch den Einsatz von KI-Tools eure tägliche Produktivität steigern könnt."</p>
+      </div>
+    </div>
+    <div class="example-pair">
+      <div class="example-box good">
+        <div class="example-box-label">✓ So</div>
+        <p>"Anstatt Netflix zu glotzen kannst du in 45 Minuten ein digitales Produkt erstellen, mit dem du jeden Monat dein Haus bezahlen kannst."</p>
+      </div>
+      <div class="example-box bad">
+        <div class="example-box-label">✕ Nicht so</div>
+        <p>"Digitale Produkte bieten enormes Einkommenspotential für alle, die bereit sind, in ihre Weiterbildung zu investieren."</p>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══════════════════════════════════════════
+     SEKTION 08: ABSTÄNDE
+═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">08 · Abstände &amp; Spacing</div>
+    <h2>Konsistente Abstände.</h2>
+    <p style="margin-bottom: var(--sp-xl);">Alle Abstände folgen einem 8px-Raster. Der gesamte visuellen Sprache wird viel Luft gegönnt – keine überfüllten Layouts.</p>
+
+    <div>
+      <div class="spacing-row">
+        <span class="spacing-label">--sp-xs</span>
+        <div class="spacing-bar" style="width:4px;"></div>
+        <span class="spacing-value">4px · Micro-Abstände, Icon-Gaps</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--sp-sm</span>
+        <div class="spacing-bar" style="width:8px;"></div>
+        <span class="spacing-value">8px · Inline-Gaps, Button-Icons</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--sp-md</span>
+        <div class="spacing-bar" style="width:16px;"></div>
+        <span class="spacing-value">16px · Absätze, Form-Gaps</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--sp-lg</span>
+        <div class="spacing-bar" style="width:32px;"></div>
+        <span class="spacing-value">32px · Section-Padding (small)</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--sp-xl</span>
+        <div class="spacing-bar" style="width:64px;"></div>
+        <span class="spacing-value">64px · Card-Padding, Component-Gap</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--sp-2xl</span>
+        <div class="spacing-bar" style="width:96px;"></div>
+        <span class="spacing-value">96px · Section-Padding (medium)</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--sp-3xl</span>
+        <div class="spacing-bar" style="width:128px;"></div>
+        <span class="spacing-value">128px · Section-Padding (large)</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .page -->
+
+<!-- ═══════════════════════════════════════════
+     GUIDE FOOTER
+═══════════════════════════════════════════ -->
+<div class="guide-footer">
+  <div class="guide-footer-logo">Hanna <span>Marzian</span></div>
+  <div class="guide-footer-note">Brand Style Guide v2 · Stand Februar 2026 · Erstellt mit Claude Code</div>
+  <div style="font-family:var(--font-accent);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);">Streng vertraulich</div>
+</div>
+
+</body>
+</html>
