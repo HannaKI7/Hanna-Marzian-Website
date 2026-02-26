@@ -421,19 +421,19 @@
     }
     .value-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
     .value-desc { font-size: 15px; font-weight: 300; color: var(--mist); }
-    .value-price { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--gray); white-space: nowrap; text-decoration: line-through; opacity: 0.5; }
+    .value-price { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--white); white-space: nowrap; text-decoration: line-through; opacity: 0.75; }
     .value-total {
       margin-top: 48px; padding: 40px 52px;
       background: rgba(216,98,42,0.06); border: 1px solid rgba(216,98,42,0.2);
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px;
     }
-    .value-total-label { font-size: 13px; font-weight: 500; letter-spacing: 1px; color: var(--gray); }
-    .value-total-price {
-      display: flex; align-items: baseline; gap: 16px;
-    }
-    .value-total-was { font-family: var(--serif); font-size: 28px; color: var(--gray); text-decoration: line-through; opacity: 0.5; }
-    .value-total-is { font-family: var(--serif); font-size: 64px; font-weight: 600; color: var(--gold-l); line-height: 1; }
-    .value-total-eur { font-size: 24px; font-weight: 300; color: var(--gold); align-self: flex-start; margin-top: 8px; }
+    .value-total-label { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--white); margin-bottom: 8px; }
+    .value-total-was { font-family: var(--serif); font-size: 28px; color: var(--white); text-decoration: line-through; opacity: 0.65; }
+    .value-today-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+    .value-total-price { display: flex; align-items: baseline; gap: 10px; }
+    .value-total-is { font-family: var(--serif); font-size: 80px; font-weight: 600; color: var(--gold-l); line-height: 1; }
+    .value-total-eur { font-size: 28px; font-weight: 300; color: var(--gold); align-self: flex-start; margin-top: 10px; }
+    .value-ki-note { font-size: 12px; font-weight: 300; color: var(--gray); margin-top: 10px; font-style: italic; }
 
     /* ── FOMO SECTION ─────────────────────────── */
     #fomo {
@@ -956,12 +956,15 @@
       <div class="value-total rv d3">
         <div>
           <div class="value-total-label">Gesamtwert</div>
-          <div style="font-size:13px;color:var(--gray);margin-top:4px;font-weight:300;">Was du heute bezahlst:</div>
+          <div class="value-total-was">7.593 €</div>
         </div>
-        <div class="value-total-price">
-          <span class="value-total-was">7.593 €</span>
-          <span class="value-total-is">88</span>
-          <span class="value-total-eur">€</span>
+        <div>
+          <div class="value-today-label">Was du heute bezahlst:</div>
+          <div class="value-total-price">
+            <span class="value-total-is">88</span>
+            <span class="value-total-eur">€</span>
+          </div>
+          <div class="value-ki-note">(dank nicht mir, sondern KI)</div>
         </div>
       </div>
     </div>
