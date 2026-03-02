@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI Website Workshop – 3D Produkt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #160C05;
+      --charcoal: #2A1608;
+      --dark:     #472B18;
+      --gold:     #D8622A;
+      --gold-l:   #E8894E;
+      --gold-p:   #F5CFA8;
+      --cream:    #F6F0E6;
+      --white:    #FBF7F2;
+      --gray:     #A0907E;
+    }
+
+    body {
+      background: var(--black);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Ambient background glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 55%, rgba(216,98,42,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ─── SCENE ─────────────────────────────────── */
+    .scene {
+      perspective: 1400px;
+      perspective-origin: 50% 42%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── FLOAT WRAPPER ─────────────────────────── */
+    .float-wrap {
+      animation: float 5.5s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-20px); }
+    }
+
+    /* ─── BOX ────────────────────────────────────── */
+    /*
+      Dimensions: W=280 H=380 D=90
+      Face positions (centered approach):
+        front/back: left=0, top=0, w=280, h=380 → translateZ(D/2=45)
+        right/left: left=(W-D)/2=95, top=0, w=90, h=380 → rotateY(±90) translateZ(W/2=140)
+        top/bottom: left=0, top=(H-D)/2=145, w=280, h=90 → rotateX(∓90) translateZ(H/2=190)
+    */
+    .box {
+      width: 280px;
+      height: 380px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rock 9s ease-in-out infinite;
+    }
+
+    @keyframes rock {
+      0%, 100% { transform: rotateX(-12deg) rotateY(-26deg); }
+      50%       { transform: rotateX(-10deg) rotateY(-10deg); }
+    }
+
+    /* ─── FACES ──────────────────────────────────── */
+    .face { position: absolute; }
+
+    /* FRONT */
+    .front {
+      left: 0; top: 0;
+      width: 280px; height: 380px;
+      transform: translateZ(45px);
+      background: linear-gradient(155deg, #2e1a0a 0%, #3a1e0c 40%, #472B18 100%);
+      overflow: hidden;
+    }
+
+    /* BACK */
+    .back {
+      left: 0; top: 0;
+      width: 280px; height: 380px;
+      transform: rotateY(180deg) translateZ(45px);
+      background: #1a0c05;
+    }
+
+    /* RIGHT (visible spine) */
+    .right {
+      left: 95px; top: 0;
+      width: 90px; height: 380px;
+      transform: rotateY(90deg) translateZ(140px);
+      background: linear-gradient(180deg, #251205 0%, #1e0d06 100%);
+      overflow: hidden;
+    }
+
+    /* LEFT */
+    .left {
+      left: 95px; top: 0;
+      width: 90px; height: 380px;
+      transform: rotateY(-90deg) translateZ(140px);
+      background: #160c05;
+    }
+
+    /* TOP (visible lid) */
+    .top {
+      left: 0; top: 145px;
+      width: 280px; height: 90px;
+      transform: rotateX(-90deg) translateZ(190px);
+      background: linear-gradient(90deg, #2A1608 0%, #3d1e0b 50%, #2A1608 100%);
+      overflow: hidden;
+    }
+
+    /* BOTTOM */
+    .bottom {
+      left: 0; top: 145px;
+      width: 280px; height: 90px;
+      transform: rotateX(90deg) translateZ(190px);
+      background: #160C05;
+    }
+
+    /* ─── FRONT FACE DESIGN ───────────────────────── */
+    .front-frame {
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(216,98,42,0.30);
+    }
+
+    /* Gold corner brackets */
+    .corner {
+      position: absolute;
+      width: 12px; height: 12px;
+      border-color: var(--gold);
+      border-style: solid;
+      opacity: 0.9;
+    }
+    .c-tl { top: -1px; left: -1px;   border-width: 2px 0 0 2px; }
+    .c-tr { top: -1px; right: -1px;  border-width: 2px 2px 0 0; }
+    .c-bl { bottom: -1px; left: -1px;  border-width: 0 0 2px 2px; }
+    .c-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    /* ── Lid separation line (box realism) */
+    .front-lid-line {
+      position: absolute;
+      left: 14px; right: 14px;
+      top: 108px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(216,98,42,0.20), rgba(216,98,42,0.40), rgba(216,98,42,0.20), transparent);
+    }
+
+    /* ── Content area ── */
+    .front-content {
+      position: absolute;
+      inset: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .front-eyebrow {
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .front-rule {
+      width: 36px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin-bottom: 16px;
+    }
+
+    .front-kicker {
+      font-family: 'Cormorant', serif;
+      font-size: 11px;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 1.5px;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+
+    .front-title {
+      font-family: 'Cormorant', serif;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .front-title em {
+      font-style: italic;
+      color: var(--gold-l);
+    }
+
+    .front-sub {
+      font-size: 6.5px;
+      font-weight: 400;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 22px;
+    }
+
+    /* Diamond ornament */
+    .front-ornament {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .front-ornament-line {
+      width: 28px; height: 1px;
+      background: rgba(216,98,42,0.35);
+    }
+    .front-ornament-diamond {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.8;
+    }
+
+    .front-date {
+      font-family: 'Cormorant', serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: var(--cream);
+      margin-bottom: 5px;
+    }
+
+    .front-type {
+      font-size: 6.5px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold-p);
+      opacity: 0.65;
+    }
+
+    /* Price tag – bottom right */
+    .front-price {
+      position: absolute;
+      bottom: 22px;
+      right: 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 1px;
+    }
+    .price-amount {
+      font-family: 'Cormorant', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--gold-l);
+      line-height: 1;
+    }
+    .price-eur {
+      font-family: 'Cormorant', serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gold-l);
+      margin-top: 3px;
+      opacity: 0.8;
+    }
+
+    /* Badge – top right */
+    .front-badge {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(216,98,42,0.40);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(45deg);
+    }
+    .badge-inner {
+      transform: rotate(-45deg);
+      text-align: center;
+    }
+    .badge-num {
+      font-family: 'Cormorant', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold-l);
+      line-height: 1;
+    }
+    .badge-label {
+      font-size: 4.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    /* Shine overlay on front */
+    .front-shine {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(255,255,255,0.055) 0%,
+        rgba(255,255,255,0.02) 30%,
+        transparent 55%
+      );
+      pointer-events: none;
+    }
+
+    /* Edge highlight between front and right */
+    .front-edge-highlight {
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px; height: 100%;
+      background: linear-gradient(180deg, transparent, rgba(216,98,42,0.25) 30%, rgba(216,98,42,0.15) 70%, transparent);
+    }
+
+    /* ─── SPINE (RIGHT) DESIGN ───────────────────── */
+    .spine-accent {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+      opacity: 0.7;
+    }
+
+    .spine-accent-r {
+      right: 0; left: auto;
+      opacity: 0.2;
+      width: 1px;
+    }
+
+    .spine-text-wrap {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spine-text {
+      white-space: nowrap;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: rgba(216,98,42,0.65);
+      transform: rotate(90deg);
+    }
+
+    /* ─── TOP FACE DESIGN ────────────────────────── */
+    .top-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top-text {
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(216,98,42,0.50);
+    }
+
+    .top-rule-l, .top-rule-r {
+      position: absolute;
+      top: 50%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(216,98,42,0.25));
+      width: 30px;
+    }
+    .top-rule-l { left: 20px; transform: scaleX(-1); }
+    .top-rule-r { right: 20px; }
+
+    /* Lid edge highlight */
+    .top-front-edge {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(216,98,42,0.30) 30%, rgba(216,98,42,0.30) 70%, transparent);
+    }
+
+    /* ─── GROUND SHADOW ──────────────────────────── */
+    .shadow-wrap {
+      position: absolute;
+      bottom: -72px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px; height: 24px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 72%);
+      animation: shadowPulse 5.5s ease-in-out infinite;
+    }
+
+    @keyframes shadowPulse {
+      0%, 100% { opacity: 0.55; transform: translateX(-50%) scaleX(1); }
+      50%       { opacity: 0.32; transform: translateX(-50%) scaleX(0.82); }
+    }
+
+    /* ─── REDUCED MOTION ─────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .float-wrap, .box, .shadow-wrap { animation: none; }
+      .box { transform: rotateX(-12deg) rotateY(-22deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scene">
+    <div class="float-wrap">
+      <div class="box">
+
+        <!-- ── FRONT ─────────────────────────────── -->
+        <div class="face front">
+
+          <!-- Decorative frame -->
+          <div class="front-frame">
+            <div class="corner c-tl"></div>
+            <div class="corner c-tr"></div>
+            <div class="corner c-bl"></div>
+            <div class="corner c-br"></div>
+          </div>
+
+          <!-- Box lid separation -->
+          <div class="front-lid-line"></div>
+
+          <!-- 3-Tage badge -->
+          <div class="front-badge">
+            <div class="badge-inner">
+              <div class="badge-num">3</div>
+              <div class="badge-label">Tage</div>
+            </div>
+          </div>
+
+          <!-- Main content -->
+          <div class="front-content">
+            <div class="front-eyebrow">Hanna Marzian</div>
+            <div class="front-rule"></div>
+            <div class="front-kicker">KI-gestützt &amp; live</div>
+            <div class="front-title">Website<br><em>Workshop</em></div>
+            <div class="front-sub">In 3 Tagen zur fertigen<br>Premium-Website</div>
+            <div class="front-ornament">
+              <div class="front-ornament-line"></div>
+              <div class="front-ornament-diamond"></div>
+              <div class="front-ornament-line"></div>
+            </div>
+            <div class="front-date">10. – 12. März 2026</div>
+            <div class="front-type">Online · Live</div>
+          </div>
+
+          <!-- Price -->
+          <div class="front-price">
+            <span class="price-amount">189</span>
+            <span class="price-eur">€</span>
+          </div>
+
+          <!-- Light shine -->
+          <div class="front-shine"></div>
+          <div class="front-edge-highlight"></div>
+        </div>
+
+        <!-- ── BACK ──────────────────────────────── -->
+        <div class="face back"></div>
+
+        <!-- ── RIGHT (SPINE) ─────────────────────── -->
+        <div class="face right">
+          <div class="spine-accent"></div>
+          <div class="spine-accent spine-accent-r"></div>
+          <div class="spine-text-wrap">
+            <span class="spine-text">KI Website Workshop · 2026</span>
+          </div>
+        </div>
+
+        <!-- ── LEFT ─────────────────────────────── -->
+        <div class="face left"></div>
+
+        <!-- ── TOP (LID) ─────────────────────────── -->
+        <div class="face top">
+          <div class="top-inner">
+            <div class="top-rule-l"></div>
+            <span class="top-text">Hanna Marzian</span>
+            <div class="top-rule-r"></div>
+          </div>
+          <div class="top-front-edge"></div>
+        </div>
+
+        <!-- ── BOTTOM ────────────────────────────── -->
+        <div class="face bottom"></div>
+
+      </div>
+    </div>
+
+    <!-- Ground shadow -->
+    <div class="shadow-wrap"></div>
+  </div>
+
+</body>
+</html>
