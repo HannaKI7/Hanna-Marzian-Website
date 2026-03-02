@@ -8,26 +8,27 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ── RESET + ROOT ─────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:       #0D0B0A;
-      --charcoal:    #1E1A17;
-      --warm-dark:   #2C2420;
-      --gold:        #C09B5E;
-      --gold-light:  #D9BC8B;
-      --gold-pale:   #EFE0C4;
-      --blush:       #CDB4AC;
-      --cream:       #F7F3EE;
-      --white:       #FDFCFA;
-      --mist:        #EAE5DF;
-      --mid-gray:    #8A7F78;
+      --black:       #160C05;
+      --charcoal:    #2A1608;
+      --warm-dark:   #3D2010;
+      --gold:        #D8622A;
+      --gold-light:  #E8894E;
+      --gold-pale:   #F5CFA8;
+      --blush:       #D0B896;
+      --cream:       #F6F0E6;
+      --white:       #FBF7F2;
+      --mist:        #EDE4D7;
+      --mid-gray:    #A88960;
       --font-serif:  'Cormorant', Georgia, serif;
       --font-sans:   'Montserrat', system-ui, sans-serif;
+      --font-body:   'DM Sans', system-ui, sans-serif;
       --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -649,9 +650,10 @@
       cursor: none;
     }
     .bento-cell:hover {
-      border-color: rgba(192,155,94,0.2);
+      border-color: rgba(216,98,42,0.3);
       transform: translateY(-5px);
     }
+    a.bento-cell { cursor: none; color: inherit; }
     .bento-cell.span2 { grid-column: span 2; }
 
     .bento-bg-num {
@@ -997,7 +999,7 @@
 
       <div class="hero-actions">
         <a href="https://instagram.com/hanna.gpt" class="btn-gold" target="_blank" rel="noopener">
-          DM: SYSTEM
+          MEHR ERFAHREN
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a href="#method" class="btn-ghost">
@@ -1006,20 +1008,6 @@
         </a>
       </div>
 
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-val">100K+</span>
-          <span class="stat-lbl">Follower</span>
-        </div>
-        <div class="stat">
-          <span class="stat-val">DACH</span>
-          <span class="stat-lbl">Community</span>
-        </div>
-        <div class="stat">
-          <span class="stat-val">Hanna.KI</span>
-          <span class="stat-lbl">Brand</span>
-        </div>
-      </div>
 
       <div class="scroll-cue">
         <div class="scroll-cue-line"></div>
@@ -1036,17 +1024,17 @@
   <!-- ═══ MARQUEE ════════════════════════════════════════════ -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
+      <span class="marquee-item">100k Follower <span class="marquee-sep"></span></span>
       <span class="marquee-item">KI leicht umsetzbar <span class="marquee-sep"></span></span>
       <span class="marquee-item">Mehr Zeit für das Wesentliche <span class="marquee-sep"></span></span>
       <span class="marquee-item">KI ohne Technik-Studium <span class="marquee-sep"></span></span>
       <span class="marquee-item">Weniger Aufwand. Mehr Ergebnis. <span class="marquee-sep"></span></span>
-      <span class="marquee-item">Hanna Marzian <span class="marquee-sep"></span></span>
       <span class="marquee-item">Für Selbstständige &amp; Unternehmer <span class="marquee-sep"></span></span>
+      <span class="marquee-item">100k Follower <span class="marquee-sep"></span></span>
       <span class="marquee-item">KI leicht umsetzbar <span class="marquee-sep"></span></span>
       <span class="marquee-item">Mehr Zeit für das Wesentliche <span class="marquee-sep"></span></span>
       <span class="marquee-item">KI ohne Technik-Studium <span class="marquee-sep"></span></span>
       <span class="marquee-item">Weniger Aufwand. Mehr Ergebnis. <span class="marquee-sep"></span></span>
-      <span class="marquee-item">Hanna Marzian <span class="marquee-sep"></span></span>
       <span class="marquee-item">Für Selbstständige &amp; Unternehmer <span class="marquee-sep"></span></span>
     </div>
   </div>
@@ -1135,37 +1123,45 @@
     </div>
 
     <div class="bento">
-      <div class="bento-cell span2 rv">
+      <a href="https://www.instagram.com/hanna.gpt/" class="bento-cell span2 rv" target="_blank" rel="noopener" style="text-decoration:none;display:block;">
         <span class="bento-bg-num">01</span>
-        <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <div class="bento-title">1:1 KI-Begleitung</div>
-        <p class="bento-text">Wir schauen gemeinsam auf dein Business und finden heraus, wo KI dir sofort Zeit spart. Keine Theorie – konkrete Umsetzung, die zu dir und deinem Alltag passt.</p>
-        <span class="bento-badge">Persönlich &amp; individuell</span>
-      </div>
+        <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <div class="bento-title">Instagram</div>
+        <p class="bento-text">100K+ Selbstständige folgen für klare, praxisnahe KI-Tipps – täglich neue Impulse, direkt umsetzbar.</p>
+        <span class="bento-badge">Kostenlos folgen · @hanna.gpt</span>
+      </a>
 
-      <div class="bento-cell rv d1">
+      <a href="https://t.me/+DR89i3Cp1h80NGVi" class="bento-cell rv d1" target="_blank" rel="noopener" style="text-decoration:none;display:block;">
         <span class="bento-bg-num">02</span>
-        <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        <div class="bento-title">Online-Kurs</div>
-        <p class="bento-text">Schritt-für-Schritt-Anleitungen, die zeigen wie KI in deinem Business funktioniert. Kein Vorwissen nötig.</p>
-        <span class="bento-badge">Selbst &amp; eigenes Tempo</span>
-      </div>
+        <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 6.75a2.25 2.25 0 0 0 .126 4.21l3.918 1.176 2.148 6.454a.75.75 0 0 0 1.28.24l2.565-3.048 4.988 3.699a2.252 2.252 0 0 0 3.457-1.39L23.25 4.5a2.25 2.25 0 0 0-2.052-2.067z"/></svg>
+        <div class="bento-title">Telegram Community</div>
+        <p class="bento-text">Die besten Deals und vorzeitigen Zugriff auf neue Angebote – exklusiv für Community-Mitglieder.</p>
+        <span class="bento-badge">Jetzt beitreten</span>
+      </a>
 
-      <div class="bento-cell rv d1">
+      <a href="Website Workshop/workshop.html" class="bento-cell rv d1" style="text-decoration:none;display:block;">
         <span class="bento-bg-num">03</span>
-        <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <div class="bento-title">Community &amp; Content</div>
-        <p class="bento-text">100K+ Selbstständige folgen Hanna für klare, praxisnahe KI-Tipps – direkt auf Instagram.</p>
-        <span class="bento-badge">Kostenlos folgen</span>
-      </div>
+        <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <div class="bento-title">Premium Website Workshop</div>
+        <p class="bento-text">In 3 Tagen zur fertigen, professionellen Website – mit KI. Ohne Vorkenntnisse, ohne Agentur.</p>
+        <span class="bento-badge">Workshop ansehen</span>
+      </a>
 
-      <div class="bento-cell span2 rv d2">
+      <a href="https://alfima.com/hannagpt/grow-gpt" class="bento-cell span2 rv d2" target="_blank" rel="noopener" style="text-decoration:none;display:block;">
         <span class="bento-bg-num">04</span>
         <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        <div class="bento-title">Echte Ergebnisse</div>
-        <p class="bento-text">Weniger Zeit mit Routineaufgaben. Mehr Fokus auf das, was dein Business wirklich weiterbringt. Und das merkt man – schon in den ersten Wochen.</p>
-        <span class="bento-badge">Sofort spürbar</span>
-      </div>
+        <div class="bento-title">GrowGPT</div>
+        <p class="bento-text">Das Programm für alle, die KI als echten Wachstumshebel nutzen wollen – strukturiert, praxisnah, mit direkter Unterstützung.</p>
+        <span class="bento-badge">Mehr erfahren</span>
+      </a>
+
+      <a href="https://alfima.com/hannagpt/kick-start-in-die-sichtbarkeit-in-nur-30-tagen" class="bento-cell span2 rv d3" target="_blank" rel="noopener" style="text-decoration:none;display:block;">
+        <span class="bento-bg-num">05</span>
+        <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div class="bento-title">Kickstart in die Sichtbarkeit auf Instagram</div>
+        <p class="bento-text">In 30 Tagen von unsichtbar zu sichtbar – mit einem klaren System, das funktioniert.</p>
+        <span class="bento-badge">In 30 Tagen starten</span>
+      </a>
     </div>
   </section>
 
