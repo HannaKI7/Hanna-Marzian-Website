@@ -656,6 +656,77 @@
       .cur { display: none; }
       body { cursor: auto; }
     }
+
+    /* ── VISUAL ENRICHMENT ──────────────────────── */
+
+    /* Gold ornamental section divider */
+    .gold-divider {
+      height: 1px; position: relative;
+      background: linear-gradient(to right, transparent, rgba(216,98,42,0.4) 20%, rgba(216,98,42,0.4) 80%, transparent);
+    }
+    .gold-divider::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 8px; height: 8px;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(216,98,42,0.6);
+    }
+
+    /* Ambient glow helper */
+    .sec-glow {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(216,98,42,0.09) 0%, transparent 65%);
+    }
+
+    /* Large decorative background text */
+    .deco-bg {
+      position: absolute; font-family: var(--serif); font-style: italic;
+      font-weight: 700; pointer-events: none; user-select: none;
+      color: rgba(216,98,42,0.03); letter-spacing: -6px; line-height: 0.85;
+      z-index: 0;
+    }
+
+    /* Float animations */
+    @keyframes floatUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+    .float-a { animation: floatUp 8s ease-in-out infinite; }
+    .float-b { animation: floatUp 11s ease-in-out infinite; animation-delay: -5s; }
+
+    /* Dot-grid overlay for light sections */
+    #whom { position: relative; overflow: hidden; }
+    #whom::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: radial-gradient(circle, rgba(216,98,42,0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    #whom .whom-inner { position: relative; z-index: 1; }
+
+    /* Diagonal stripe texture */
+    #value { position: relative; overflow: hidden; }
+    #value::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: repeating-linear-gradient(
+        -45deg, transparent, transparent 80px,
+        rgba(216,98,42,0.018) 80px, rgba(216,98,42,0.018) 81px
+      );
+    }
+    #value .value-inner { position: relative; z-index: 1; }
+
+    /* Sections need overflow + position for deco elements */
+    #what { position: relative; overflow: hidden; }
+    #format { position: relative; overflow: hidden; }
+
+    /* Large decorative quote mark */
+    .deco-quot {
+      position: absolute; font-family: var(--serif); font-size: 280px;
+      font-weight: 700; line-height: 0.7; pointer-events: none; user-select: none;
+      color: rgba(216,98,42,0.05); z-index: 0;
+    }
+
+    /* Corner accent lines */
+    .corner-acc { position: absolute; width: 22px; height: 22px; pointer-events: none; }
+    .corner-acc.tl { top: 14px; left: 14px; border-top: 2px solid rgba(216,98,42,0.5); border-left: 2px solid rgba(216,98,42,0.5); }
+    .corner-acc.br { bottom: 14px; right: 14px; border-bottom: 2px solid rgba(216,98,42,0.5); border-right: 2px solid rgba(216,98,42,0.5); }
   </style>
 </head>
 <body>
@@ -775,6 +846,9 @@
       <div class="sec-eyebrow rv">Das Versprechen</div>
 
       <div class="proof-callout rv d1">
+        <div class="corner-acc tl"></div>
+        <div class="corner-acc br"></div>
+        <div class="deco-quot" style="top:-30px; left:12px;">„</div>
         <div class="proof-callout-tag">Weltpremiere</div>
         <p class="proof-callout-text">
           Was früher <strong>Monate, eine Agentur und 5.000–15.000 €</strong> kostete, baust du jetzt selbst. Mit einem Prompt. Besser.
@@ -804,6 +878,8 @@
       </div>
     </div>
   </section>
+
+  <div class="gold-divider"></div>
 
   <!-- ═══ FOR WHOM ════════════════════════════════════════════════ -->
   <section id="whom">
@@ -857,9 +933,13 @@
     </div>
   </section>
 
+  <div class="gold-divider"></div>
+
   <!-- ═══ WORKSHOP FORMAT ════════════════════════════════════════ -->
   <section id="format" style="background: var(--charcoal); padding: 140px 48px;">
-    <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="sec-glow float-a" style="width:600px; height:600px; top:-150px; right:-200px;"></div>
+    <div class="deco-bg" style="font-size:320px; bottom:-60px; left:-20px;">Live</div>
+    <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
       <div class="sec-eyebrow rv">Das erwartet dich</div>
       <h2 class="rv d1" style="font-family: var(--serif); font-size: clamp(40px, 4.5vw, 72px); font-weight: 500; line-height: 1.12; color: var(--white); margin-bottom: 72px;">
         Struktur, die<br><em style="font-style:italic; color: var(--gold-l);">wirklich funktioniert.</em>
@@ -966,9 +1046,14 @@
     </div>
   </section>
 
+  <div class="gold-divider"></div>
+
   <!-- ═══ SKILL UNLOCKED ══════════════════════════════════════════ -->
   <section id="skill" style="background: var(--black); padding: 140px 48px; overflow: hidden; position: relative;">
     <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:800px; height:800px; background:radial-gradient(circle, rgba(216,98,42,0.05) 0%, transparent 65%); pointer-events:none;"></div>
+    <div class="sec-glow float-a" style="width:500px; height:500px; top:-120px; right:-160px;"></div>
+    <div class="sec-glow float-b" style="width:300px; height:300px; bottom:60px; left:-100px;"></div>
+    <div class="deco-bg" style="font-size:480px; bottom:-80px; right:-60px;">KI</div>
     <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
 
       <div class="sec-eyebrow rv" style="justify-content:center;">Das ist erst der Anfang</div>
@@ -1036,9 +1121,12 @@
     </div>
   </section>
 
+  <div class="gold-divider"></div>
+
   <!-- ═══ HOSTS ══════════════════════════════════════════════════ -->
-  <section id="hosts" style="background: var(--charcoal); padding: 140px 48px;">
-    <div style="max-width: 1100px; margin: 0 auto;">
+  <section id="hosts" style="background: var(--charcoal); padding: 140px 48px; position: relative; overflow: hidden;">
+    <div class="sec-glow float-b" style="width:700px; height:700px; top:50%; right:-300px; transform:translateY(-50%);"></div>
+    <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
       <div class="sec-eyebrow rv">Deine Hosts</div>
       <h2 class="rv d1" style="font-family: var(--serif); font-size: clamp(40px, 4.5vw, 72px); font-weight: 500; line-height: 1.12; color: var(--white); margin-bottom: 72px;">
         Zwei Menschen.<br><em style="font-style:italic; color: var(--gold-l);">Eine Mission.</em>
@@ -1084,8 +1172,13 @@
     </div>
   </section>
 
+  <div class="gold-divider"></div>
+
   <!-- ═══ WHAT YOU GET ════════════════════════════════════════════ -->
   <section id="what">
+    <div class="sec-glow" style="width:700px; height:700px; top:50%; right:-280px; transform:translateY(-50%);"></div>
+    <div class="sec-glow float-b" style="width:400px; height:400px; top:-100px; left:-150px;"></div>
+    <div class="deco-bg" style="font-size:380px; top:-40px; left:-40px;">01</div>
     <div class="what-inner">
       <div class="what-header">
         <div class="sec-eyebrow rv" style="justify-content:center;">Der Kurs</div>
@@ -1262,7 +1355,9 @@
 
   <!-- ═══ FOMO ═════════════════════════════════════════════════════ -->
   <section id="fomo">
-    <div class="fomo-inner">
+    <div class="sec-glow float-a" style="width:600px; height:600px; top:50%; left:-200px; transform:translateY(-50%);"></div>
+    <div class="deco-bg" style="font-size:300px; bottom:-40px; right:-30px;">Jetzt</div>
+    <div class="fomo-inner" style="position: relative; z-index: 1;">
       <div class="fomo-grid">
         <div>
           <div class="sec-eyebrow rv">Warum jetzt?</div>
@@ -1295,6 +1390,8 @@
       </div>
     </div>
   </section>
+
+  <div class="gold-divider"></div>
 
   <!-- ═══ FAQ ══════════════════════════════════════════════════════ -->
   <section id="faq">
