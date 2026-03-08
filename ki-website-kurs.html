@@ -366,34 +366,34 @@
       display: flex; align-items: flex-start; gap: 24px;
     }
     .whom-not-icon { width: 24px; height: 24px; color: var(--gray); flex-shrink: 0; margin-top: 2px; }
-    .whom-not-text { font-size: 14px; font-weight: 400; line-height: 1.8; color: var(--mist); }
+    .whom-not-text { font-size: 14px; font-weight: 400; line-height: 1.8; color: var(--charcoal); }
     .whom-not-text strong { font-weight: 600; color: var(--black); }
 
     /* ── WHAT YOU GET ─────────────────────────── */
     #what {
-      background: var(--black); padding: 140px 48px;
+      background: var(--mist); padding: 140px 48px;
     }
     .what-inner { max-width: 1100px; margin: 0 auto; }
     .what-header { text-align: center; margin-bottom: 96px; }
     .what-h2 {
       font-family: var(--serif); font-size: clamp(40px, 4.5vw, 72px);
-      font-weight: 500; line-height: 1.12; color: var(--white);
+      font-weight: 500; line-height: 1.12; color: var(--black);
     }
     .what-h2 em { font-style: italic; color: var(--gold-l); }
-    .what-sub { font-size: 15px; font-weight: 400; color: var(--mist); max-width: 560px; margin: 24px auto 0; line-height: 1.8; }
+    .what-sub { font-size: 15px; font-weight: 400; color: var(--charcoal); max-width: 560px; margin: 24px auto 0; line-height: 1.8; }
 
     /* 3-day timeline */
     .days { display: flex; flex-direction: column; gap: 2px; }
     .day-row {
       display: grid; grid-template-columns: 200px 1fr;
-      background: var(--charcoal); border: 1px solid rgba(255,255,255,0.04);
+      background: var(--white); border: 1px solid rgba(0,0,0,0.07);
       overflow: hidden; transition: border-color .35s;
     }
-    .day-row:hover { border-color: rgba(216,98,42,0.2); }
+    .day-row:hover { border-color: rgba(216,98,42,0.3); }
     .day-label {
-      background: var(--dark); padding: 48px 40px;
+      background: var(--cream); padding: 48px 40px;
       display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
-      border-right: 1px solid rgba(255,255,255,0.04);
+      border-right: 1px solid rgba(0,0,0,0.07);
       position: relative;
     }
     .day-label::after {
@@ -403,15 +403,15 @@
       transition: opacity .35s;
     }
     .day-row:hover .day-label::after { opacity: 1; }
-    .day-num { font-family: var(--serif); font-size: 48px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; opacity: 0.5; }
+    .day-num { font-family: var(--serif); font-size: 48px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; opacity: 0.6; }
     .day-date { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
-    .day-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--white); margin-top: 8px; }
+    .day-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--black); margin-top: 8px; }
 
     .day-content { padding: 48px 52px; }
     .day-items { display: flex; flex-direction: column; gap: 16px; }
     .day-item {
       display: flex; align-items: flex-start; gap: 16px;
-      font-size: 14px; font-weight: 400; line-height: 1.7; color: var(--white);
+      font-size: 14px; font-weight: 400; line-height: 1.7; color: var(--charcoal);
     }
     .day-item-check {
       width: 18px; height: 18px; border: 1px solid var(--gold);
@@ -422,32 +422,32 @@
 
     /* ── VALUE STACK ──────────────────────────── */
     #value {
-      background: var(--charcoal); padding: 140px 48px;
+      background: var(--cream); padding: 140px 48px;
     }
     .value-inner { max-width: 1000px; margin: 0 auto; }
     .value-h2 {
       font-family: var(--serif); font-size: clamp(40px, 4vw, 64px); font-weight: 500;
-      line-height: 1.15; color: var(--white); text-align: center; margin-bottom: 80px;
+      line-height: 1.15; color: var(--black); text-align: center; margin-bottom: 80px;
     }
     .value-h2 em { font-style: italic; color: var(--gold-l); }
 
     .value-list { display: flex; flex-direction: column; gap: 0; }
     .value-item {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 28px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
       gap: 24px;
     }
-    .value-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
-    .value-desc { font-size: 15px; font-weight: 400; color: var(--mist); }
-    .value-price { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--white); white-space: nowrap; text-decoration: line-through; opacity: 0.75; }
+    .value-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+    .value-desc { font-size: 15px; font-weight: 400; color: var(--charcoal); }
+    .value-price { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--dark); white-space: nowrap; text-decoration: line-through; opacity: 0.75; }
     .value-total {
       margin-top: 48px; padding: 40px 52px;
       background: rgba(216,98,42,0.06); border: 1px solid rgba(216,98,42,0.2);
       display: flex; align-items: center; justify-content: space-between; gap: 32px;
     }
-    .value-total-label { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--white); margin-bottom: 8px; }
-    .value-total-was { font-family: var(--serif); font-size: 28px; color: var(--white); text-decoration: line-through; opacity: 0.65; }
-    .value-today-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+    .value-total-label { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+    .value-total-was { font-family: var(--serif); font-size: 28px; color: var(--gray); text-decoration: line-through; opacity: 0.85; }
+    .value-today-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 12px; }
     .value-total-price { display: flex; align-items: baseline; gap: 10px; }
     .value-total-is { font-family: var(--serif); font-size: 80px; font-weight: 600; color: var(--gold-l); line-height: 1; }
     .value-total-eur { font-size: 28px; font-weight: 300; color: var(--gold); align-self: flex-start; margin-top: 10px; }
@@ -539,30 +539,30 @@
     .cta-guarantee svg { width: 18px; height: 18px; color: var(--gold); }
 
     /* ── FAQ ──────────────────────────────────── */
-    #faq { background: var(--charcoal); padding: 120px 48px; }
+    #faq { background: var(--cream); padding: 120px 48px; }
     .faq-inner { max-width: 800px; margin: 0 auto; }
     .faq-h2 {
       font-family: var(--serif); font-size: clamp(32px, 3.5vw, 52px); font-weight: 500;
-      color: var(--white); text-align: center; margin-bottom: 72px;
+      color: var(--black); text-align: center; margin-bottom: 72px;
     }
     .faq-list { display: flex; flex-direction: column; gap: 2px; }
-    .faq-item { background: var(--dark); border: 1px solid rgba(255,255,255,0.04); overflow: hidden; }
+    .faq-item { background: var(--white); border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
     .faq-q {
       width: 100%; text-align: left; background: none; border: none;
       padding: 28px 36px; cursor: none;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      font-family: var(--sans); font-size: 15px; font-weight: 400; color: var(--white);
+      font-family: var(--sans); font-size: 15px; font-weight: 400; color: var(--black);
       transition: color .25s;
     }
-    .faq-q:hover { color: var(--gold-l); }
-    .faq-q svg { width: 20px; height: 20px; color: var(--gold); flex-shrink: 0; transition: transform .35s var(--expo); }
+    .faq-q:hover { color: var(--gold); }
+    .faq-q svg { width: 20px; height: 20px; stroke: var(--black); color: var(--black); flex-shrink: 0; transition: transform .35s var(--expo); }
     .faq-item.open .faq-q svg { transform: rotate(45deg); }
     .faq-a {
       max-height: 0; overflow: hidden;
       transition: max-height .5s var(--expo);
     }
     .faq-item.open .faq-a { max-height: 300px; }
-    .faq-a-inner { padding: 0 36px 28px; font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--mist); }
+    .faq-a-inner { padding: 0 36px 28px; font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--charcoal); }
 
     /* ── FINAL CTA ────────────────────────────── */
     #final {
@@ -740,7 +740,7 @@
     <div class="sticky-text">Website Kurs · <span>Start: 16. März</span></div>
     <div class="sticky-right">
       <span class="sticky-price">nur 222 €</span>
-      <a href="https://DEIN-ZAHLUNGSLINK.de" class="sticky-btn" target="_blank" rel="noopener">Jetzt anmelden</a>
+      <a href="https://alfima.com/hannagpt/ki-website-workshop" class="sticky-btn" target="_blank" rel="noopener">Jetzt anmelden</a>
     </div>
   </div>
 
@@ -752,7 +752,7 @@
 
       <div class="proof-banner">
         <span class="dot"></span>
-        Diese Seite wurde in 10 Minuten mit KI erstellt (Design, Text, alles).
+        Für Coaches, Creator, Unternehmer und deine Mitarbeiter
       </div>
 
       <h1 class="hero-h1">
@@ -782,7 +782,7 @@
       </div>
 
       <div class="hero-cta">
-        <a href="https://DEIN-ZAHLUNGSLINK.de" class="btn-primary" target="_blank" rel="noopener">
+        <a href="https://alfima.com/hannagpt/ki-website-workshop" class="btn-primary" target="_blank" rel="noopener">
           Jetzt Platz sichern, 222 €
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -793,7 +793,7 @@
 
 
       <div class="countdown-wrap">
-        <div class="countdown-label">Verkaufsstart in</div>
+        <div class="countdown-label">Start in</div>
         <div class="countdown">
           <div class="cd-unit">
             <div class="cd-num" id="cd-days">--</div>
@@ -849,7 +849,7 @@
         <div class="corner-acc tl"></div>
         <div class="corner-acc br"></div>
         <div class="deco-quot" style="top:-30px; left:12px;">„</div>
-        <div class="proof-callout-tag">Weltpremiere</div>
+        <div class="proof-callout-tag">Das ist kaum zu glauben:</div>
         <p class="proof-callout-text">
           Was früher <strong>Monate, eine Agentur und 5.000–15.000 €</strong> kostete, baust du jetzt selbst. Mit einem Prompt. Besser.
         </p>
@@ -858,24 +858,6 @@
         </p>
       </div>
 
-      <div class="proof-stats">
-        <div class="ps-cell rv">
-          <span class="ps-val" data-count="10" data-suffix=" Min.">--</span>
-          <span class="ps-lbl">Erstellungszeit dieser Seite</span>
-        </div>
-        <div class="ps-cell rv d1">
-          <span class="ps-val" data-count="5000" data-prefix="ab " data-suffix=" €">--</span>
-          <span class="ps-lbl">Webdesigner-Preis dafür</span>
-        </div>
-        <div class="ps-cell rv d2">
-          <span class="ps-val" data-count="1" data-suffix=" Prompt">--</span>
-          <span class="ps-lbl">Dein fertiges Ergebnis</span>
-        </div>
-        <div class="ps-cell rv d3">
-          <span class="ps-val">222 €</span>
-          <span class="ps-lbl">Dein Investment heute</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -888,7 +870,7 @@
       <h2 class="whom-h2 rv d1">
         Dieser Kurs ist für dich,<br>
         wenn du mehr willst als eine schöne Website:<br>
-        du willst eine, die <em>wirklich verkauft.</em>
+        <em>Du willst ein Markenzeichen, das dein Angebot so richtig geil in Szene setzt.</em>
       </h2>
 
       <div class="whom-grid">
@@ -914,8 +896,8 @@
         </div>
         <div class="whom-card rv d3">
           <svg class="whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          <div class="whom-title">Online-Shops &amp; Kreative</div>
-          <p class="whom-text">Dein Produkt oder deine Arbeit verdient eine Bühne, die beeindruckt. Nicht eine Seite vom Template-Baukasten.</p>
+          <div class="whom-title">Führungskräfte &amp; ihre Mitarbeiter</div>
+          <p class="whom-text">Du willst den wohl wichtigsten KI-Skill 2026 in deinem Team? Das hier geht weit über Website-Erstellung hinaus. Wer das beherrscht, baut digitale Assets, die für das Unternehmen arbeiten.</p>
         </div>
         <div class="whom-card rv d3">
           <svg class="whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -930,123 +912,6 @@
           <strong>Nicht geeignet für:</strong> Menschen, die glauben, dass KI zu kompliziert ist. Dieser Kurs beweist das Gegenteil.
         </p>
       </div>
-    </div>
-  </section>
-
-  <div class="gold-divider"></div>
-
-  <!-- ═══ WORKSHOP FORMAT ════════════════════════════════════════ -->
-  <section id="format" style="background: var(--charcoal); padding: 140px 48px;">
-    <div class="sec-glow float-a" style="width:600px; height:600px; top:-150px; right:-200px;"></div>
-    <div class="deco-bg" style="font-size:320px; bottom:-60px; left:-20px;">Live</div>
-    <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
-      <div class="sec-eyebrow rv">Das erwartet dich</div>
-      <h2 class="rv d1" style="font-family: var(--serif); font-size: clamp(40px, 4.5vw, 72px); font-weight: 500; line-height: 1.12; color: var(--white); margin-bottom: 72px;">
-        Struktur, die<br><em style="font-style:italic; color: var(--gold-l);">wirklich funktioniert.</em>
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="format-grid">
-
-        <!-- Tägliche Tutorials -->
-        <div class="rv d1" style="background: var(--dark); border: 1px solid rgba(255,255,255,0.04); border-top: 3px solid var(--gold); padding: 44px 40px; position: relative; overflow: hidden;">
-          <span style="position:absolute; top:20px; right:24px; font-family:var(--serif); font-size:64px; font-weight:300; color:rgba(216,98,42,0.07); line-height:1;">01</span>
-          <svg style="width:36px; height:36px; color:var(--gold); margin-bottom:24px; display:block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          <div style="font-family:var(--serif); font-size:26px; font-weight:500; color:var(--white); margin-bottom:16px;">Tägliche Video-Tutorials</div>
-          <p style="font-size:14px; font-weight:300; line-height:1.85; color:var(--gray);">
-            Alle Videos werden am <strong style="color:var(--white); font-weight:500;">16. März freigeschaltet</strong>, direkt mit dem Kursstart. Du arbeitest in deinem eigenen Tempo und bereitest dich auf die 3 Live Calls vor.
-          </p>
-          <div style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(216,98,42,0.12); border:1px solid rgba(216,98,42,0.3); padding:7px 16px;">
-            <svg style="width:13px; height:13px; color:var(--gold); flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span style="font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-l);">Zugang ab 16. März</span>
-          </div>
-        </div>
-
-        <!-- Live Q&A -->
-        <div class="rv d2" style="background: var(--dark); border: 1px solid rgba(255,255,255,0.04); border-top: 3px solid var(--gold); padding: 44px 40px; position: relative; overflow: hidden;">
-          <span style="position:absolute; top:20px; right:24px; font-family:var(--serif); font-size:64px; font-weight:300; color:rgba(216,98,42,0.07); line-height:1;">02</span>
-          <svg style="width:36px; height:36px; color:var(--gold); margin-bottom:24px; display:block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <div style="font-family:var(--serif); font-size:26px; font-weight:500; color:var(--white); margin-bottom:16px;">3 Live Q&amp;A Calls</div>
-          <p style="font-size:14px; font-weight:300; line-height:1.85; color:var(--gray);">
-            Es gibt 3 Live-Sessions: 16. März um 20:00 Uhr (Onboarding), 19. März um 10:30 Uhr (Q&amp;A) und 24. März um 10:30 Uhr (Abschluss Q&amp;A). Wir klären gemeinsam offene Fragen, loggen uns bei dir ein und setzen Dinge direkt mit dir um.
-          </p>
-        </div>
-
-        <!-- Garantiertes Ergebnis -->
-        <div class="rv d3" style="background: rgba(216,98,42,0.08); border: 1px solid rgba(216,98,42,0.25); border-top: 3px solid var(--gold); padding: 44px 40px; position: relative; overflow: hidden;">
-          <span style="position:absolute; top:20px; right:24px; font-family:var(--serif); font-size:64px; font-weight:300; color:rgba(216,98,42,0.1); line-height:1;">03</span>
-          <svg style="width:36px; height:36px; color:var(--gold); margin-bottom:24px; display:block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <div style="font-family:var(--serif); font-size:26px; font-weight:500; color:var(--gold-l); margin-bottom:16px;">Garantiertes Ergebnis</div>
-          <p style="font-size:14px; font-weight:300; line-height:1.85; color:var(--mist);">
-            Du gehst aus dem Kurs mit einer fertigen Website raus, die in Design, Qualität und SEO mit einer 10.000 € Website mithalten kann. Kein Prototyp. Kein „fast fertig". Live.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ VALUE STACK (moved up) ════════════════════════════════ -->
-  <section id="value">
-    <div class="value-inner">
-      <h2 class="value-h2 rv">Was du hier bekommst<br><em>und was es wirklich wert ist.</em></h2>
-
-      <div class="value-list">
-        <div class="value-item rv">
-          <span class="value-desc">Website + Salespage + Funnel (Agentur-Preis)</span>
-          <span class="value-price">7.000–15.000 €</span>
-        </div>
-        <div class="value-item rv d1">
-          <span class="value-desc">Website Kurs mit 3 Live Q&amp;A Calls</span>
-          <span class="value-price">997 €</span>
-        </div>
-        <div class="value-item rv d1">
-          <span class="value-desc">Conversion- &amp; Sales-Optimierung inklusive</span>
-          <span class="value-price">600 €</span>
-        </div>
-        <div class="value-item rv d2">
-          <span class="value-desc">SEO-Vollsetup inklusive</span>
-          <span class="value-price">800 €</span>
-        </div>
-        <div class="value-item rv d2">
-          <span class="value-desc">Tool-Einsparungen (Website-Builder, Funnel-Tools, Design-Abo...)</span>
-          <span class="value-price">800–1.200 €/Jahr</span>
-        </div>
-        <div class="value-item rv d2">
-          <span class="value-desc">Zugang zu allen Aufzeichnungen</span>
-          <span class="value-price">297 €</span>
-        </div>
-        <div class="value-item rv d3">
-          <span class="value-desc">Private Telegram-Gruppe (direkter Draht zu Hanna + Community)</span>
-          <span class="value-price">inklusive</span>
-        </div>
-      </div>
-
-      <div class="value-total rv d3">
-        <div>
-          <div class="value-total-label">Gesamtwert</div>
-          <div class="value-total-was">9.694 €+</div>
-        </div>
-        <div>
-          <div class="value-today-label">Was du heute bezahlst:</div>
-          <div class="value-total-price">
-            <span class="value-total-is">222</span>
-            <span class="value-total-eur">€</span>
-          </div>
-          <div class="value-ki-note">(dank nicht mir, sondern KI)</div>
-        </div>
-      </div>
-
-      <!-- KI-Tool Hinweis -->
-      <div class="rv d4" style="margin-top: 32px; padding: 24px 36px; background: rgba(216,98,42,0.08); border: 1px solid rgba(216,98,42,0.25); border-left: 4px solid var(--gold); display: flex; align-items: flex-start; gap: 18px;">
-        <svg style="width:22px; height:22px; color:var(--gold); flex-shrink:0; margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <div>
-          <div style="font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;">Hinweis: KI-Tool</div>
-          <p style="font-size: 14px; font-weight: 400; line-height: 1.8; color: var(--mist);">
-            Für den Workshop nutzen wir ein professionelles KI-Tool, das <strong style="color: var(--white); font-weight: 500;">zusätzlich 20 € pro Monat</strong> kostet. Du kannst es monatlich abschließen und jederzeit kündigen – kein Risiko, keine Mindestlaufzeit.
-          </p>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -1127,12 +992,129 @@
 
   <div class="gold-divider"></div>
 
+  <!-- ═══ WORKSHOP FORMAT ════════════════════════════════════════ -->
+  <section id="format" style="background: var(--charcoal); padding: 140px 48px;">
+    <div class="sec-glow float-a" style="width:600px; height:600px; top:-150px; right:-200px;"></div>
+    <div class="deco-bg" style="font-size:320px; bottom:-60px; left:-20px;">Live</div>
+    <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
+      <div class="sec-eyebrow rv">Das erwartet dich</div>
+      <h2 class="rv d1" style="font-family: var(--serif); font-size: clamp(40px, 4.5vw, 72px); font-weight: 500; line-height: 1.12; color: var(--white); margin-bottom: 72px;">
+        Struktur, die<br><em style="font-style:italic; color: var(--gold-l);">wirklich funktioniert.</em>
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="format-grid">
+
+        <!-- Tägliche Tutorials -->
+        <div class="rv d1" style="background: var(--dark); border: 1px solid rgba(255,255,255,0.04); border-top: 3px solid var(--gold); padding: 44px 40px; position: relative; overflow: hidden;">
+          <span style="position:absolute; top:20px; right:24px; font-family:var(--serif); font-size:64px; font-weight:300; color:rgba(216,98,42,0.07); line-height:1;">01</span>
+          <svg style="width:36px; height:36px; color:var(--gold); margin-bottom:24px; display:block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <div style="font-family:var(--serif); font-size:26px; font-weight:500; color:var(--white); margin-bottom:16px;">Tägliche Video-Tutorials</div>
+          <p style="font-size:14px; font-weight:300; line-height:1.85; color:var(--gray);">
+            Alle Videos werden am <strong style="color:var(--white); font-weight:500;">16. März freigeschaltet</strong>, direkt mit dem Kursstart. Du arbeitest in deinem eigenen Tempo und bereitest dich auf die 3 Live Calls vor.
+          </p>
+          <div style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(216,98,42,0.12); border:1px solid rgba(216,98,42,0.3); padding:7px 16px;">
+            <svg style="width:13px; height:13px; color:var(--gold); flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span style="font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-l);">Zugang ab 16. März</span>
+          </div>
+        </div>
+
+        <!-- Live Q&A -->
+        <div class="rv d2" style="background: var(--dark); border: 1px solid rgba(255,255,255,0.04); border-top: 3px solid var(--gold); padding: 44px 40px; position: relative; overflow: hidden;">
+          <span style="position:absolute; top:20px; right:24px; font-family:var(--serif); font-size:64px; font-weight:300; color:rgba(216,98,42,0.07); line-height:1;">02</span>
+          <svg style="width:36px; height:36px; color:var(--gold); margin-bottom:24px; display:block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div style="font-family:var(--serif); font-size:26px; font-weight:500; color:var(--white); margin-bottom:16px;">3 Live Q&amp;A Calls</div>
+          <p style="font-size:14px; font-weight:300; line-height:1.85; color:var(--gray);">
+            Es gibt 3 Live-Sessions: 16. März um 20:00 Uhr (Onboarding), 19. März um 10:30 Uhr (Q&amp;A) und 24. März um 10:30 Uhr (Abschluss Q&amp;A). Wir klären gemeinsam offene Fragen, loggen uns bei dir ein und setzen Dinge direkt mit dir um.
+          </p>
+        </div>
+
+        <!-- Garantiertes Ergebnis -->
+        <div class="rv d3" style="background: rgba(216,98,42,0.08); border: 1px solid rgba(216,98,42,0.25); border-top: 3px solid var(--gold); padding: 44px 40px; position: relative; overflow: hidden;">
+          <span style="position:absolute; top:20px; right:24px; font-family:var(--serif); font-size:64px; font-weight:300; color:rgba(216,98,42,0.1); line-height:1;">03</span>
+          <svg style="width:36px; height:36px; color:var(--gold); margin-bottom:24px; display:block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div style="font-family:var(--serif); font-size:26px; font-weight:500; color:var(--gold-l); margin-bottom:16px;">Garantiertes Ergebnis</div>
+          <p style="font-size:14px; font-weight:300; line-height:1.85; color:var(--mist);">
+            Du gehst aus dem Kurs mit einer fertigen Website, Salespage oder einem kompletten Funnel raus, inklusive aller Seiten und Unterseiten, die in Design, Qualität und SEO mit einer 10.000 € Agentur-Lösung mithalten kann. Kein Prototyp. Kein „fast fertig". Live.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VALUE STACK (moved up) ════════════════════════════════ -->
+  <section id="value">
+    <div class="value-inner">
+      <h2 class="value-h2 rv">Was du hier bekommst<br><em>und was es wirklich wert ist.</em></h2>
+
+      <div class="value-list">
+        <div class="value-item rv">
+          <span class="value-desc">Website + Salespage + Funnel (Agentur-Preis)</span>
+          <span class="value-price">7.000–15.000 €</span>
+        </div>
+        <div class="value-item rv d1">
+          <span class="value-desc">Website Kurs mit 3 Live Q&amp;A Calls</span>
+          <span class="value-price">997 €</span>
+        </div>
+        <div class="value-item rv d1">
+          <span class="value-desc">Conversion- &amp; Sales-Optimierung inklusive</span>
+          <span class="value-price">600 €</span>
+        </div>
+        <div class="value-item rv d2">
+          <span class="value-desc">SEO-Vollsetup inklusive</span>
+          <span class="value-price">800 €</span>
+        </div>
+        <div class="value-item rv d2">
+          <span class="value-desc">Tool-Einsparungen (Website-Builder, Funnel-Tools, Design-Abo...)</span>
+          <span class="value-price">800–1.200 €/Jahr</span>
+        </div>
+        <div class="value-item rv d2">
+          <span class="value-desc">Zugang zu allen Aufzeichnungen</span>
+          <span class="value-price">297 €</span>
+        </div>
+        <div class="value-item rv d3">
+          <span class="value-desc">Private Telegram-Gruppe (direkter Draht zu Hanna + Community)</span>
+          <span class="value-price">inklusive</span>
+        </div>
+      </div>
+
+      <div class="value-total rv d3">
+        <div>
+          <div class="value-total-label">Gesamtwert</div>
+          <div class="value-total-was">9.694 €+</div>
+        </div>
+        <div>
+          <div class="value-today-label">Was du heute bezahlst:</div>
+          <div class="value-total-price">
+            <span class="value-total-is">222</span>
+            <span class="value-total-eur">€</span>
+          </div>
+          <div class="value-ki-note">(dank nicht mir, sondern KI)</div>
+        </div>
+      </div>
+
+      <!-- KI-Tool Hinweis -->
+      <div class="rv d4" style="margin-top: 32px; padding: 24px 36px; background: rgba(216,98,42,0.08); border: 1px solid rgba(216,98,42,0.25); border-left: 4px solid var(--gold); display: flex; align-items: flex-start; gap: 18px;">
+        <svg style="width:22px; height:22px; color:var(--gold); flex-shrink:0; margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;">Hinweis: KI-Tool</div>
+          <p style="font-size: 14px; font-weight: 400; line-height: 1.8; color: var(--charcoal);">
+            Für den Workshop nutzen wir ein professionelles KI-Tool, das <strong style="color: var(--black); font-weight: 500;">zusätzlich 20 € pro Monat</strong> kostet. Du kannst es monatlich abschließen und jederzeit kündigen – kein Risiko, keine Mindestlaufzeit.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
   <!-- ═══ HOSTS ══════════════════════════════════════════════════ -->
-  <section id="hosts" style="background: var(--charcoal); padding: 140px 48px; position: relative; overflow: hidden;">
+  <section id="hosts" style="background: var(--cream); padding: 140px 48px; position: relative; overflow: hidden;">
     <div class="sec-glow float-b" style="width:700px; height:700px; top:50%; right:-300px; transform:translateY(-50%);"></div>
     <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
       <div class="sec-eyebrow rv">Deine Hosts</div>
-      <h2 class="rv d1" style="font-family: var(--serif); font-size: clamp(40px, 4.5vw, 72px); font-weight: 500; line-height: 1.12; color: var(--white); margin-bottom: 72px;">
+      <h2 class="rv d1" style="font-family: var(--serif); font-size: clamp(40px, 4.5vw, 72px); font-weight: 500; line-height: 1.12; color: var(--black); margin-bottom: 72px;">
         Zwei Menschen.<br><em style="font-style:italic; color: var(--gold-l);">Eine Mission.</em>
       </h2>
 
@@ -1148,9 +1130,9 @@
               <div style="font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-top: 6px;">KI-Influencerin &amp; Host</div>
             </div>
           </div>
-          <div style="background: var(--dark); padding: 32px 36px; border: 1px solid rgba(255,255,255,0.04); border-top: 2px solid var(--gold);">
-            <p style="font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--mist); margin: 0;">
-              In unter einem Jahr hat Hanna auf Instagram 100.000 Follower erreicht, weil sie den Zeitgeist trifft und ihrer Zeit voraus ist. Sie zeigt, was mit KI heute schon möglich ist, bevor es alle anderen merken. Genau das macht sie jetzt mit dem Thema Websites.
+          <div style="background: var(--white); padding: 32px 36px; border: 1px solid rgba(0,0,0,0.08); border-top: 2px solid var(--gold);">
+            <p style="font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--charcoal); margin: 0;">
+              In unter einem Jahr auf 100.000 Follower. Nicht durch Glück, sondern weil Hanna früher als alle anderen versteht, wohin sich KI entwickelt, und es zeigt, bevor es Mainstream wird. Sie baut keine Websites. Sie baut Systeme, die verkaufen. Und genau das bringt sie dir in diesem Kurs bei.
             </p>
           </div>
         </div>
@@ -1165,8 +1147,8 @@
               <div style="font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-top: 6px;">Gründer der KI-Agentur scale<sup style="font-size:7px;">2</sup> &amp; Co-Host</div>
             </div>
           </div>
-          <div style="background: var(--dark); padding: 32px 36px; border: 1px solid rgba(255,255,255,0.04); border-top: 2px solid var(--gold);">
-            <p style="font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--mist); margin: 0;">
+          <div style="background: var(--white); padding: 32px 36px; border: 1px solid rgba(0,0,0,0.08); border-top: 2px solid var(--gold);">
+            <p style="font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--charcoal); margin: 0;">
               Martin hat klassisches Online Marketing letztes Jahr hinter sich gelassen, um zu den Vorreitern in Sachen KI zu werden. Von Solopreneuren bis mehrfach 7-stelligen Unternehmen sorgt er dafür, dass ethische KI in der deutschen Unternehmerlandschaft vorangetrieben wird.
             </p>
           </div>
@@ -1346,7 +1328,7 @@
         <span class="price-eur">€</span>
       </div>
       <div class="cta-btns rv d3">
-        <a href="https://DEIN-ZAHLUNGSLINK.de" class="btn-primary" target="_blank" rel="noopener">
+        <a href="https://alfima.com/hannagpt/ki-website-workshop" class="btn-primary" target="_blank" rel="noopener">
           Jetzt anmelden &amp; Platz sichern
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -1356,46 +1338,6 @@
       </div>
     </div>
   </div>
-
-  <!-- ═══ FOMO ═════════════════════════════════════════════════════ -->
-  <section id="fomo">
-    <div class="sec-glow float-a" style="width:600px; height:600px; top:50%; left:-200px; transform:translateY(-50%);"></div>
-    <div class="deco-bg" style="font-size:300px; bottom:-40px; right:-30px;">Jetzt</div>
-    <div class="fomo-inner" style="position: relative; z-index: 1;">
-      <div class="fomo-grid">
-        <div>
-          <div class="sec-eyebrow rv">Warum jetzt?</div>
-          <h2 class="fomo-h2 rv d1">Jeder Monat ohne<br><em>Verkaufsmaschine kostet dich.</em></h2>
-          <p class="fomo-body rv d2">
-            Jeder Monat, in dem deine Website nichts aktiv verkauft, ist ein Monat mit unsichtbaren Verlusten. Kein Funnel, keine Salespage, kein System, das für dich arbeitet, während du schläfst. Gleichzeitig zahlst du weiter für Tools, die du hasst. Das lässt sich schneller ändern, als du denkst.
-          </p>
-        </div>
-
-        <div class="fomo-cards">
-          <div class="fomo-card rv d1">
-            <span class="fomo-card-num">01</span>
-            <svg class="fomo-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <div class="fomo-card-title">Eine Website, die nicht verkauft, ist Deko</div>
-            <p class="fomo-card-text">0,05 Sekunden reichen für ein Urteil. Wer auf deiner Seite landet und kein klares Angebot sieht, ist weg. Für immer. Eine Verkaufsmaschine hält ihn.</p>
-          </div>
-          <div class="fomo-card rv d2">
-            <span class="fomo-card-num">02</span>
-            <svg class="fomo-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            <div class="fomo-card-title">Tool-Kosten fressen deine Marge</div>
-            <p class="fomo-card-text">Website-Builder, Funnel-Tool, Design-Abo: zusammen locker 800–1.000 € im Jahr. Für Tools, die trotzdem Grenzen setzen. Der Kurs macht sie alle überflüssig.</p>
-          </div>
-          <div class="fomo-card rv d3">
-            <span class="fomo-card-num">03</span>
-            <svg class="fomo-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <div class="fomo-card-title">Limitierte Plätze</div>
-            <p class="fomo-card-text">Live Q&amp;A bedeutet: begrenzte Teilnehmerzahl. Wenn der Kurs voll ist, ist er voll. Keine Warteliste.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="gold-divider"></div>
 
   <!-- ═══ FAQ ══════════════════════════════════════════════════════ -->
   <section id="faq">
@@ -1414,14 +1356,14 @@
             Wie läuft der Kurs ab?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">Der Kurs startet am 16. März. Du bekommst dann Zugang zu allen Video-Tutorials und arbeitest in deinem eigenen Tempo. Dazu gibt es 3 Live Calls: 16. März um 20:00 Uhr (Onboarding), 19. März um 10:30 Uhr (Q&amp;A) und 24. März um 10:30 Uhr (Abschluss Q&amp;A). Die Calls finden online statt, du siehst Hannas Bildschirm, machst alles mit und stellst deine Fragen direkt. Alle Inhalte werden aufgezeichnet, du kannst dir Videos und Calls jederzeit nochmal anschauen.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Der Kurs startet am 16. März. Du bekommst dann Zugang zu allen Video-Tutorials und arbeitest in deinem eigenen Tempo. Dazu gibt es 3 Live Calls: 16. März um 20:00 Uhr (Onboarding), 19. März um 10:30 Uhr (Q&amp;A) und 24. März um 10:30 Uhr (Abschluss Q&amp;A). Die Calls finden online statt, du machst alles mit und stellst deine Fragen direkt. Alle Inhalte werden aufgezeichnet, du kannst dir Videos und Calls jederzeit nochmal anschauen.</div></div>
         </div>
         <div class="faq-item rv d1">
           <button class="faq-q" aria-expanded="false">
-            Bekomme ich wirklich eine fertige Website?
+            Bekomme ich wirklich eine fertige Website, Salespage oder einen Funnel?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">Ja. Das ist das Versprechen. Du gehst mit einer live Website raus, mit echter Domain, echtem Content, echtem Design. Kein Prototyp, kein "fast fertig".</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Ja. Das ist das Versprechen. Du gehst mit einem fertigen Ergebnis raus – Website, Salespage oder kompletter Funnel mit allen Seiten und Unterseiten. Echte Domain, echter Content, echtes Design. Kein Prototyp, kein „fast fertig".</div></div>
         </div>
         <div class="faq-item rv d2">
           <button class="faq-q" aria-expanded="false">
@@ -1444,9 +1386,9 @@
   <!-- ═══ FINAL CTA ════════════════════════════════════════════════ -->
   <section id="final">
     <div class="final-inner">
-      <h2 class="final-h2 rv">Der Website Kurs wartet auf dich.</h2>
+      <h2 class="final-h2 rv">Dein Angebot verdient eine Bühne, die wirklich verkauft.</h2>
       <p class="final-sub rv d1">16.–24. März 2026 · Online · 222 € inkl. MwSt.</p>
-      <a href="https://DEIN-ZAHLUNGSLINK.de" class="final-btn rv d2" target="_blank" rel="noopener">
+      <a href="https://alfima.com/hannagpt/ki-website-workshop" class="final-btn rv d2" target="_blank" rel="noopener">
         Jetzt Platz sichern, 222 €
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
