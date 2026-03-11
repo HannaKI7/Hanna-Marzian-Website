@@ -48,6 +48,27 @@
       width: 100%;
     }
 
+    /* ── LOGO HEADER ──────────────────────────── */
+    .logo-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 28px 24px 0;
+    }
+
+    .logo-header-inner {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: 0.5px;
+    }
+
+    .logo-header-inner span {
+      font-style: italic;
+      color: var(--gold);
+    }
+
     /* ── EYEBROW ──────────────────────────────── */
     .eyebrow {
       font-family: var(--sans);
@@ -57,6 +78,7 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 20px;
+      text-align: center;
     }
 
     /* ── HEADLINE ─────────────────────────────── */
@@ -241,6 +263,10 @@
   </style>
 </head>
 <body>
+
+  <div class="logo-header">
+    <div class="logo-header-inner">Hanna <span>Marzian</span></div>
+  </div>
 
   <main>
 
