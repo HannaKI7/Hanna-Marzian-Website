@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maximilian Berg · Content to Cash – Dein Online-Kurs startet heute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#08101F;
+      --blue:#2563EB;
+      --cyan:#22D3EE;
+      --green:#10B981;
+      --white:#F8FAFF;
+      --muted:#8A9BB8;
+      --card:#111827;
+      --border:rgba(255,255,255,.07);
+      --serif:'Space Grotesk',system-ui,sans-serif;
+      --mono:'Space Mono',monospace;
+    }
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{font-family:var(--serif);background:var(--navy);color:var(--white);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 56px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,16,31,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .n-logo{font-size:16px;font-weight:700;color:var(--white);letter-spacing:-.3px}
+    .n-logo span{color:var(--cyan)}
+    .n-links{display:flex;gap:32px;list-style:none}
+    .n-links a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
+    .n-links a:hover{color:var(--white)}
+    .n-btn{font-size:12px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--navy);padding:11px 28px;text-decoration:none;border-radius:6px;transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1)}
+    .n-btn:hover{opacity:.85;transform:translateY(-2px)}
+
+    /* HERO */
+    #hero{min-height:100vh;padding:140px 56px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;overflow:hidden}
+    /* Grid bg */
+    #hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+    /* Glow orbs */
+    .orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+    .orb-1{width:500px;height:500px;background:rgba(37,99,235,.18);top:-100px;right:-100px;animation:float 8s ease-in-out infinite}
+    .orb-2{width:300px;height:300px;background:rgba(34,211,238,.12);bottom:0;left:20%;animation:float 10s ease-in-out infinite reverse}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
+    .hero-left{position:relative;z-index:2}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(34,211,238,.3);padding:6px 16px;border-radius:99px;font-size:11px;font-weight:600;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:28px;background:rgba(34,211,238,.06)}
+    .badge-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+    h1{font-size:clamp(38px,5vw,68px);font-weight:700;line-height:1.05;letter-spacing:-1.5px;margin-bottom:24px}
+    h1 .grad{background:linear-gradient(135deg,var(--white) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:16px;font-weight:300;color:var(--muted);line-height:1.75;max-width:460px;margin-bottom:40px}
+    .hero-sub strong{color:var(--white);font-weight:600}
+    .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:48px}
+    .btn-main{font-size:14px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--navy);padding:16px 40px;text-decoration:none;border-radius:8px;transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1)}
+    .btn-main:hover{opacity:.85;transform:translateY(-3px)}
+    .btn-sec{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(138,155,184,.3);padding-bottom:2px;transition:color .2s,border-color .2s}
+    .btn-sec:hover{color:var(--white);border-color:var(--white)}
+    .stats{display:flex;gap:40px}
+    .stat-num{font-size:32px;font-weight:700;color:var(--white);letter-spacing:-1px}
+    .stat-num span{color:var(--cyan)}
+    .stat-lbl{font-size:11px;color:var(--muted);font-weight:500;margin-top:2px}
+
+    /* HERO RIGHT */
+    .hero-right{position:relative;z-index:2}
+    .mockup{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5)}
+    .mock-bar{background:#1a2236;padding:14px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+    .mock-dot{width:10px;height:10px;border-radius:50%}
+    .mock-dot:nth-child(1){background:#FF5F56}
+    .mock-dot:nth-child(2){background:#FFBD2E}
+    .mock-dot:nth-child(3){background:#27C93F}
+    .mock-url{flex:1;background:rgba(255,255,255,.05);border-radius:4px;padding:5px 14px;font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:8px}
+    .mock-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+    .mock-stats{padding:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .ms-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px}
+    .ms-label{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .ms-val{font-size:22px;font-weight:700;color:var(--white);letter-spacing:-1px}
+    .ms-val.green{color:var(--green)}
+    .ms-val.cyan{color:var(--cyan)}
+    .ms-sub{font-size:10px;color:var(--green);margin-top:2px}
+
+    /* SCROLL REVEAL */
+    .rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+    .rv.in{opacity:1;transform:translateY(0)}
+    .rv-r{opacity:0;transform:translateX(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+    .rv-r.in{opacity:1;transform:translateX(0)}
+    .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
+
+    /* LOGOS STRIP */
+    .logo-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 56px;display:flex;align-items:center;gap:16px;overflow:hidden}
+    .strip-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin-right:8px}
+    .logo-scroll{display:flex;gap:48px;animation:scrollLeft 20s linear infinite;white-space:nowrap}
+    .logo-item{font-size:13px;font-weight:700;color:rgba(255,255,255,.2);letter-spacing:1px;text-transform:uppercase}
+    @keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* MODULE */
+    #module{padding:112px 56px;background:rgba(255,255,255,.02)}
+    .section-eyebrow{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+    .section-h{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-1px;line-height:1.15;margin-bottom:64px;max-width:560px}
+    .module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .mod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;position:relative;overflow:hidden;transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1)}
+    .mod-card:hover{border-color:rgba(37,99,235,.4);transform:translateY(-4px)}
+    .mod-num{font-family:var(--mono);font-size:11px;color:var(--blue);font-weight:700;letter-spacing:1px;margin-bottom:16px}
+    .mod-title{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+    .mod-text{font-size:13px;color:var(--muted);line-height:1.7}
+    .mod-bar{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--blue),var(--cyan));opacity:0;transition:opacity .3s}
+    .mod-card:hover .mod-bar{opacity:1}
+
+    /* CTA */
+    #cta{padding:112px 56px;text-align:center;position:relative;overflow:hidden}
+    #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(37,99,235,.15) 0%,transparent 65%);pointer-events:none}
+    .cta-inner{position:relative;max-width:640px;margin:0 auto}
+    .cta-tag{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:20px}
+    #cta h2{font-size:clamp(32px,5vw,60px);font-weight:700;letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px}
+    #cta p{font-size:16px;color:var(--muted);max-width:420px;margin:0 auto 40px;line-height:1.75}
+    .price-box{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:32px}
+    .price-old{font-size:20px;color:var(--muted);text-decoration:line-through}
+    .price-new{font-size:52px;font-weight:700;letter-spacing:-2px}
+    .price-tag{font-size:12px;color:var(--muted)}
+    .btn-cta-main{font-size:15px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--navy);padding:20px 64px;text-decoration:none;border-radius:10px;display:inline-block;transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+    .btn-cta-main:hover{opacity:.9;transform:translateY(-3px);box-shadow:0 20px 60px rgba(37,99,235,.4)}
+    .cta-note{font-size:11px;color:var(--muted);margin-top:16px}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:36px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .f-logo{font-size:14px;font-weight:700;color:var(--white)}
+    .f-logo span{color:var(--cyan)}
+    .f-links{display:flex;gap:24px}
+    .f-links a{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+    .f-links a:hover{color:var(--white)}
+    .f-copy{font-size:10px;color:rgba(138,155,184,.4)}
+
+    @media(max-width:900px){
+      #hero{grid-template-columns:1fr;padding:120px 24px 60px}
+      nav{padding:18px 24px}
+      .n-links{display:none}
+      .module-grid{grid-template-columns:1fr}
+      #module,#cta,footer,.logo-strip{padding-left:24px;padding-right:24px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="n-logo">Max<span>Berg</span></div>
+    <ul class="n-links">
+      <li><a href="#">Kurs-Inhalte</a></li>
+      <li><a href="#">Ergebnisse</a></li>
+      <li><a href="#">Über mich</a></li>
+    </ul>
+    <a href="#cta" class="n-btn">Jetzt einsteigen →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="hero-left">
+      <div class="badge"><span class="badge-dot"></span> Kurs-Doors open · 47 Plätze frei</div>
+      <h1>Von 0 auf<br><span class="grad">5.000 € / Monat</span><br>mit Content.</h1>
+      <p class="hero-sub">Du postest. Du arbeitest. Du wirst <strong>nicht bezahlt.</strong> In 90 Tagen ändere ich das. Mit einem System, das funktioniert, auch wenn du schläfst.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-main">Jetzt Platz sichern</a>
+        <a href="#module" class="btn-sec">Was lerne ich?</a>
+      </div>
+      <div class="stats">
+        <div><div class="stat-num">847<span>+</span></div><div class="stat-lbl">Absolventen</div></div>
+        <div><div class="stat-num">€<span>4.2M</span></div><div class="stat-lbl">Generierter Umsatz</div></div>
+        <div><div class="stat-num">90<span>T</span></div><div class="stat-lbl">Bis zum Ergebnis</div></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="mockup">
+        <div class="mock-bar">
+          <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+          <div class="mock-url">dashboard.maxberg.com</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80" alt="Dashboard" loading="lazy">
+        <div class="mock-stats">
+          <div class="ms-card"><div class="ms-label">Umsatz</div><div class="ms-val green">€ 5.240</div><div class="ms-sub">↑ +34%</div></div>
+          <div class="ms-card"><div class="ms-label">Reichweite</div><div class="ms-val cyan">182K</div><div class="ms-sub">↑ +21%</div></div>
+          <div class="ms-card"><div class="ms-label">Conv. Rate</div><div class="ms-val">4,7%</div><div class="ms-sub">↑ +1.2%</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO STRIP -->
+  <div class="logo-strip">
+    <span class="strip-label">Absolventen aus</span>
+    <div class="logo-scroll">
+      <span class="logo-item">Instagram</span>
+      <span class="logo-item">LinkedIn</span>
+      <span class="logo-item">TikTok</span>
+      <span class="logo-item">YouTube</span>
+      <span class="logo-item">Coaching</span>
+      <span class="logo-item">Beratung</span>
+      <span class="logo-item">Freelance</span>
+      <span class="logo-item">E-Commerce</span>
+      <!-- doubled for seamless loop -->
+      <span class="logo-item">Instagram</span>
+      <span class="logo-item">LinkedIn</span>
+      <span class="logo-item">TikTok</span>
+      <span class="logo-item">YouTube</span>
+      <span class="logo-item">Coaching</span>
+      <span class="logo-item">Beratung</span>
+      <span class="logo-item">Freelance</span>
+      <span class="logo-item">E-Commerce</span>
+    </div>
+  </div>
+
+  <!-- MODULE -->
+  <section id="module">
+    <div class="rv"><p class="section-eyebrow">// Kurs-Inhalte</p></div>
+    <div class="rv d1"><h2 class="section-h">Was du in 90 Tagen lernst.</h2></div>
+    <div class="module-grid">
+      <div class="mod-card rv d1">
+        <div class="mod-bar"></div>
+        <p class="mod-num">01 —</p>
+        <h3 class="mod-title">Positionierung & Nische</h3>
+        <p class="mod-text">Wer du bist, für wen du bist, warum ausgerechnet du. Das Fundament, ohne das alles andere bröckelt.</p>
+      </div>
+      <div class="mod-card rv d2">
+        <div class="mod-bar"></div>
+        <p class="mod-num">02 —</p>
+        <h3 class="mod-title">Content-System</h3>
+        <p class="mod-text">Ein wiederholbarer Prozess. 3 Posts pro Woche, 30 Minuten Aufwand. Mehr geht nicht, mehr braucht es nicht.</p>
+      </div>
+      <div class="mod-card rv d3">
+        <div class="mod-bar"></div>
+        <p class="mod-num">03 —</p>
+        <h3 class="mod-title">Angebot & Pricing</h3>
+        <p class="mod-text">Was du verkaufst, für welchen Preis, mit welchem Narrativ. Die Grundlage für jede Zahlung, die kommt.</p>
+      </div>
+      <div class="mod-card rv d4">
+        <div class="mod-bar"></div>
+        <p class="mod-num">04 —</p>
+        <h3 class="mod-title">Sales ohne Pitchen</h3>
+        <p class="mod-text">Kein hartes Verkaufen. Content, der Vertrauen aufbaut, bis der Kauf die logische Konsequenz ist.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-inner">
+      <span class="cta-tag rv">// Nur 47 Plätze</span>
+      <h2 class="rv d1">Bereit, endlich<br>bezahlt zu werden?</h2>
+      <p class="rv d2">Einmalig. Kein Abo. Lebenslanger Zugang. Du kommst rein, wenn Türen open sind.</p>
+      <div class="price-box rv d3">
+        <span class="price-old">€ 997</span>
+        <span class="price-new">€ 497</span>
+        <span class="price-tag">/ einmalig</span>
+      </div><br>
+      <a href="#" class="btn-cta-main rv d4">Jetzt Platz sichern →</a>
+      <p class="cta-note rv">30 Tage Geld-zurück-Garantie · Sofortiger Zugang · Keine Abofalle</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-logo">Max<span>Berg</span></div>
+    <nav class="f-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">Instagram</a>
+    </nav>
+    <p class="f-copy">&copy; 2026 Maximilian Berg</p>
+  </footer>
+
+  <script>
+    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+    document.querySelectorAll('.rv,.rv-r').forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>
