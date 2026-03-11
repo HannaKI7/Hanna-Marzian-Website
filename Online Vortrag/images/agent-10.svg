@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <defs>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333EA"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <filter id="nodeShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="aiGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feFlood flood-color="#9333EA" flood-opacity="0.4"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1a1a28" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1400" height="800" fill="#1a1a2e"/>
+  <rect width="1400" height="800" fill="url(#grid)"/>
+
+  <!-- TOP PATH: Own Ads -->
+  <text x="350" y="110" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#3B82F6">Eigene Ads</text>
+
+  <!-- BOTTOM PATH: Competitor -->
+  <text x="350" y="510" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#FF6B35">Competitor Ads</text>
+
+  <!-- CONNECTION LINES - Two parallel paths -->
+  <g fill="none" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <!-- Top path -->
+    <path d="M 260 200 L 350 200"/>
+    <path d="M 530 200 L 620 200"/>
+    <path d="M 800 200 L 890 200"/>
+    <!-- Bottom path -->
+    <path d="M 260 600 L 350 600"/>
+    <path d="M 530 600 L 620 600"/>
+    <path d="M 800 600 L 890 600"/>
+    <!-- Merge paths -->
+    <path d="M 1070 200 L 1130 200 L 1130 400 L 1200 400"/>
+    <path d="M 1070 600 L 1130 600 L 1130 400 L 1200 400"/>
+    <!-- Schedule branch -->
+    <path d="M 260 400 L 300 400 L 300 200 L 350 200" stroke-dasharray="8,4"/>
+    <path d="M 300 400 L 300 600 L 350 600" stroke-dasharray="8,4"/>
+  </g>
+
+  <g fill="#4F46E5">
+    <circle cx="260" cy="400" r="10"/>
+    <circle cx="350" cy="200" r="8"/>
+    <circle cx="530" cy="200" r="8"/>
+    <circle cx="620" cy="200" r="8"/>
+    <circle cx="800" cy="200" r="8"/>
+    <circle cx="890" cy="200" r="8"/>
+    <circle cx="1070" cy="200" r="8"/>
+    <circle cx="350" cy="600" r="8"/>
+    <circle cx="530" cy="600" r="8"/>
+    <circle cx="620" cy="600" r="8"/>
+    <circle cx="800" cy="600" r="8"/>
+    <circle cx="890" cy="600" r="8"/>
+    <circle cx="1070" cy="600" r="8"/>
+    <circle cx="1130" cy="400" r="6"/>
+    <circle cx="1200" cy="400" r="8"/>
+  </g>
+
+  <!-- Schedule Trigger -->
+  <g transform="translate(60, 320)" filter="url(#nodeShadow)">
+    <rect width="200" height="160" rx="16" fill="#262640"/>
+    <rect width="200" height="56" rx="16" fill="#3B82F6"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">⏰</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Schedule</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Täglich</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#93C5FD">08:00 Uhr</text>
+  </g>
+
+  <!-- TOP PATH NODES -->
+  <!-- Meta Ads API -->
+  <g transform="translate(350, 120)" filter="url(#nodeShadow)">
+    <rect width="180" height="160" rx="16" fill="#262640"/>
+    <rect width="180" height="56" rx="16" fill="#1877F2"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">📊</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Meta Ads</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">API</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#93C5FD">Performance</text>
+  </g>
+
+  <!-- Sheets -->
+  <g transform="translate(620, 120)" filter="url(#nodeShadow)">
+    <rect width="180" height="160" rx="16" fill="#262640"/>
+    <rect width="180" height="56" rx="16" fill="#34A853"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">📑</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Sheets</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Daten sammeln</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#4ADE80">Eigene Ads</text>
+  </g>
+
+  <!-- AI Performance (with glow) -->
+  <g transform="translate(890, 120)" filter="url(#aiGlow)">
+    <rect width="180" height="160" rx="16" fill="#262640" filter="url(#nodeShadow)"/>
+    <rect width="180" height="56" rx="16" fill="url(#aiGrad)"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">🤖</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">KI-Analyse</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Performance</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#C4B5FD">Optimieren</text>
+  </g>
+
+  <!-- BOTTOM PATH NODES -->
+  <!-- Apify -->
+  <g transform="translate(350, 520)" filter="url(#nodeShadow)">
+    <rect width="180" height="160" rx="16" fill="#262640"/>
+    <rect width="180" height="56" rx="16" fill="#FF6B35"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">🕷️</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Apify</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Ad Library</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#FDBA74">Scrape</text>
+  </g>
+
+  <!-- Sheets Competitor -->
+  <g transform="translate(620, 520)" filter="url(#nodeShadow)">
+    <rect width="180" height="160" rx="16" fill="#262640"/>
+    <rect width="180" height="56" rx="16" fill="#34A853"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">📑</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Sheets</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Daten sammeln</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#4ADE80">Competitor</text>
+  </g>
+
+  <!-- AI Inspiration (with glow) -->
+  <g transform="translate(890, 520)" filter="url(#aiGlow)">
+    <rect width="180" height="160" rx="16" fill="#262640" filter="url(#nodeShadow)"/>
+    <rect width="180" height="56" rx="16" fill="url(#aiGrad)"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">💡</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">KI-Analyse</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Inspiration</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#C4B5FD">Ideen</text>
+  </g>
+
+  <!-- Weekly Report Output -->
+  <g transform="translate(1120, 320)" filter="url(#nodeShadow)">
+    <rect width="180" height="160" rx="16" fill="#262640"/>
+    <rect width="180" height="56" rx="16" fill="#EA4335"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">📧</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Weekly</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Report</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#FCA5A5">Email</text>
+  </g>
+
+  <!-- Sticky Note -->
+  <g transform="translate(60, 550)">
+    <rect width="240" height="120" rx="12" fill="#FEF3C7" filter="url(#nodeShadow)"/>
+    <rect width="240" height="16" rx="12" fill="#F59E0B"/>
+    <text x="24" y="50" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#92400E">Ad Analyse</text>
+    <text x="24" y="75" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#92400E">Manager</text>
+    <text x="24" y="105" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#B45309">Eigene + Competitor</text>
+  </g>
+
+</svg>

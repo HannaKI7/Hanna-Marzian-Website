@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@hanna.gpt – Story Sequenz: Website Workshop</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      padding: 48px 24px;
+    }
+
+    .label-top {
+      color: #555;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .stories-wrapper {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .story-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .story-number-label {
+      color: #444;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    /* 9:16 Story Card */
+    .story-card {
+      position: relative;
+      width: 270px;
+      height: 480px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+
+    .story-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Story Bilder von Hanna/IMG_20251027_130159_640.jpg');
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.85);
+    }
+
+    /* Textbox: ganz schwarz, weißer Text – IG-Style */
+    .story-textbox {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 36px;
+      background: #000000;
+      padding: 20px 20px;
+      border-radius: 14px;
+    }
+
+    .story-textbox p {
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      text-align: center;
+    }
+
+    .story-textbox p + p {
+      margin-top: 8px;
+    }
+
+    .story-textbox p strong {
+      font-weight: 800;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="label-top">@hanna.gpt &mdash; Website Workshop &middot; Story Sequenz</p>
+
+  <div class="stories-wrapper">
+
+    <!-- STORY 1 -->
+    <div class="story-item">
+      <span class="story-number-label">Story 01</span>
+      <div class="story-card story-card-1">
+        <div class="story-bg"></div>
+        <div class="story-textbox">
+          <p>Ich bin vor einigen Wochen über eine bahnbrechende Neuheit gestoßen.</p>
+          <p>Sie wird soo vieles verändern.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY 2 -->
+    <div class="story-item">
+      <span class="story-number-label">Story 02</span>
+      <div class="story-card story-card-2">
+        <div class="story-bg"></div>
+        <div class="story-textbox">
+          <p>Wie viel hat deine letzte Website gekostet?</p>
+          <p>Wie viele Kunden hat sie seitdem gebracht?</p>
+          <p>KI verändert dieses Spiel gerade.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY 3 -->
+    <div class="story-item">
+      <span class="story-number-label">Story 03</span>
+      <div class="story-card story-card-3">
+        <div class="story-bg"></div>
+        <div class="story-textbox">
+          <p>In den nächsten Tagen erfährst du mehr.</p>
+          <p>Das wird genial! 🤩</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

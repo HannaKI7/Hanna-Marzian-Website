@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aufnahme-Notizen – KI Website Workshop</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0F0A06;
+    --bg-card:   #1C1108;
+    --bg-hover:  #241609;
+    --orange:    #E8894E;
+    --orange-d:  #D8622A;
+    --orange-p:  rgba(232,137,78,0.12);
+    --white:     #F5EDE0;
+    --gray:      #8A7A68;
+    --gray-l:    #C5B49E;
+    --divider:   rgba(255,255,255,0.07);
+    --tag-bg:    rgba(232,137,78,0.15);
+
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-acc:  'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,10,6,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--divider);
+    padding: 12px 32px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .nav-label {
+    font-family: var(--font-acc);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-right: 8px;
+  }
+  .nav-btn {
+    font-family: var(--font-acc);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--gray-l);
+    background: var(--divider);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 5px 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .nav-btn:hover {
+    background: var(--orange-p);
+    border-color: var(--orange-d);
+    color: var(--orange);
+  }
+
+  /* ── LAYOUT ── */
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--divider);
+    margin-bottom: 8px;
+  }
+  .intro-eyebrow {
+    font-family: var(--font-acc);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .intro h1 {
+    font-family: var(--font-acc);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .intro p {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 540px;
+  }
+
+  /* ── MODULE ── */
+  .module {
+    padding: 48px 0 0;
+  }
+  .module-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .module-num {
+    font-family: var(--font-acc);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--orange-d);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .module-title {
+    font-family: var(--font-acc);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+  }
+  .module-divider {
+    height: 1px;
+    background: linear-gradient(to right, var(--orange-d), transparent);
+    margin-bottom: 24px;
+    opacity: 0.4;
+  }
+
+  /* ── VIDEO CARD ── */
+  .video-card {
+    background: var(--bg-card);
+    border: 1px solid var(--divider);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+  }
+  .video-card:hover {
+    border-color: rgba(232,137,78,0.25);
+  }
+
+  .video-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .video-id {
+    font-family: var(--font-acc);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    background: var(--tag-bg);
+    padding: 4px 12px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .video-title {
+    font-family: var(--font-acc);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    flex: 1;
+    min-width: 200px;
+  }
+  .video-dur {
+    font-family: var(--font-acc);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--gray);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--divider);
+    border-radius: 20px;
+    padding: 4px 12px;
+    white-space: nowrap;
+  }
+
+  /* ── BULLETS ── */
+  .bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bullets li {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    font-size: 19px;
+    color: var(--gray-l);
+    line-height: 1.5;
+  }
+  .bullets li::before {
+    content: '→';
+    color: var(--orange);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .bullets li strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+  .bullets li em {
+    color: var(--orange);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* Sub-bullets */
+  .bullets .sub {
+    margin-top: 6px;
+    margin-left: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .bullets .sub li {
+    font-size: 17px;
+    color: var(--gray);
+  }
+  .bullets .sub li::before {
+    content: '·';
+    color: var(--gray);
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .section-end {
+    height: 1px;
+    background: var(--divider);
+    margin: 48px 0 0;
+  }
+
+  /* ── LAST MODULE (pitch) ── */
+  .module-pitch .video-card {
+    background: #1A0F06;
+    border-color: rgba(232,137,78,0.2);
+  }
+  .module-pitch .video-card:hover {
+    border-color: rgba(232,137,78,0.45);
+  }
+
+  /* ── SCROLL TO TOP ── */
+  .back-top {
+    display: block;
+    text-align: center;
+    margin-top: 64px;
+    font-family: var(--font-acc);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+  }
+  .back-top:hover { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-btn" href="kurs-konzept.html" style="margin-right:8px; border-color: rgba(232,137,78,0.3);">← Kurskonzept</a>
+  <span class="nav-label">Springe zu</span>
+  <a class="nav-btn" href="#m1">M1 – Warum</a>
+  <a class="nav-btn" href="#m2">M2 – Setup</a>
+  <a class="nav-btn" href="#m3">M3 – Website bauen</a>
+  <a class="nav-btn" href="#m4">M4 – Live schalten</a>
+  <a class="nav-btn" href="#m5">M5 – SEO</a>
+  <a class="nav-btn" href="#m6">M6 – Abschluss</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="intro-eyebrow">Aufnahme-Notizen · KI Website Workshop</div>
+    <h1>Du sprichst frei – das hier ist dein Anker</h1>
+    <p>Für jedes Video: kurze Stichpunkte was rein muss. Kein Skript, kein Ablesen. Nur damit du nichts vergisst.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MODUL 1                                    -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="module" id="m1">
+    <div class="module-header">
+      <span class="module-num">Modul 01</span>
+      <span class="module-title">Warum das alles verändert</span>
+    </div>
+    <div class="module-divider"></div>
+
+    <!-- 1.1 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">1.1</span>
+        <span class="video-title">Willkommen – Was dich erwartet</span>
+        <span class="video-dur">~3 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Kurz vorstellen: wer du bist, ein Satz</li>
+        <li>Was am Ende rauskommt: <strong>fertige, professionelle Website</strong> – ohne Code</li>
+        <li>Sechs Module, nach jedem ein konkretes Ergebnis</li>
+        <li>Ehrlichkeit: <em>„Das hätte ich früher gebraucht"</em></li>
+        <li>Kein Vorwissen nötig – wenn du eine App öffnen kannst, reicht das</li>
+        <li>Abschluss mit Energie: <em>„Fangen wir an."</em></li>
+      </ul>
+    </div>
+
+    <!-- 1.2 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">1.2</span>
+        <span class="video-title">Das Werkzeug, das alles ändert</span>
+        <span class="video-dur">~5 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Der Unterschied klar machen:</li>
+        <ul class="sub bullets">
+          <li><strong>ChatGPT</strong> = erklärt dir wie man kocht</li>
+          <li><strong>Claude Code</strong> = kocht für dich, räumt auf, kauft Zutaten</li>
+        </ul>
+        <li>Claude Code schreibt, bearbeitet und speichert Dateien – selbstständig</li>
+        <li>Nicht nur antworten – es <em>macht etwas</em> auf deinem Computer</li>
+        <li>Analogie: <strong>ChatGPT = Taschenrechner / Claude Code = Buchhalter der alles für dich erledigt</strong></li>
+        <li>Kurz zeigen: einen Befehl eingeben, Claude schreibt eine Datei – live</li>
+        <li>Takeaway: Das ist kein Hype. Das verändert wie du arbeitest.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-end"></div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MODUL 2                                    -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="module" id="m2">
+    <div class="module-header">
+      <span class="module-num">Modul 02</span>
+      <span class="module-title">Einrichtung – einmal, dann nie wieder</span>
+    </div>
+    <div class="module-divider"></div>
+
+    <!-- 2.1 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">2.1</span>
+        <span class="video-title">Claude Code installieren</span>
+        <span class="video-dur">~4 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>claude.ai aufrufen → Download der <strong>Desktop App</strong> (nicht Terminal)</li>
+        <li>Installieren wie jede normale App</li>
+        <li>Beim ersten Start: einloggen oder Account anlegen</li>
+        <li>Zeigen: App ist offen, Interface sichtbar, alles bereit</li>
+        <li>Abschluss: <em>„Das war's. Eine Installation."</em></li>
+      </ul>
+    </div>
+
+    <!-- 2.2 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">2.2</span>
+        <span class="video-title">So sieht dein Arbeitsplatz aus</span>
+        <span class="video-dur">~3 Min</span>
+      </div>
+      <ul class="bullets">
+        <li><strong>Linkes Fenster:</strong> claude.ai im Browser – für Gespräche, Brainstorming, Recherche</li>
+        <li><strong>Rechtes Fenster:</strong> Claude Code Desktop App – baut die Website</li>
+        <li>Warum zwei? Browser = denken / Desktop App = bauen</li>
+        <li>Das Zwei-Fenster-Setup kurz live zeigen</li>
+        <li>Takeaway: So arbeitest du ab jetzt immer</li>
+      </ul>
+    </div>
+
+    <!-- 2.3 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">2.3</span>
+        <span class="video-title">Desktop App vs. Terminal – Was du brauchst</span>
+        <span class="video-dur">~2 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Terminal = schwarzes Fenster voller Code → <em>brauchst du NICHT</em></li>
+        <li>Desktop App = normales Chat-Interface, vertraut, einfach</li>
+        <li>Alle Videos hier nutzen nur die Desktop App</li>
+        <li>Terminal nur relevant wenn du Entwickler bist – das bist du nicht, und das ist gut so</li>
+      </ul>
+    </div>
+
+    <!-- 2.4 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">2.4</span>
+        <span class="video-title">Node.js installieren</span>
+        <span class="video-dur">~3 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>nodejs.org aufrufen → <strong>LTS-Version</strong> herunterladen (linke Schaltfläche)</li>
+        <li>Installieren, alle Standardoptionen unverändert lassen</li>
+        <li>Warum: Claude Code braucht es im Hintergrund zum Ausführen</li>
+        <li>Du wirst es nie direkt öffnen oder benutzen</li>
+        <li><em>„Einmal installiert, für immer erledigt."</em></li>
+      </ul>
+    </div>
+
+    <!-- 2.5 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">2.5</span>
+        <span class="video-title">Windows oder Mac?</span>
+        <span class="video-dur">~3 Min</span>
+      </div>
+      <ul class="bullets">
+        <li><strong>Mac-User:</strong> alles schon dabei – direkt weiter zu Video 2.6</li>
+        <li><strong>Windows-User:</strong> kurz Git nachinstallieren:</li>
+        <ul class="sub bullets">
+          <li>git-scm.com aufrufen</li>
+          <li>Herunterladen und installieren – alle Standardoptionen lassen</li>
+          <li>Warum: Claude Code nutzt Git im Hintergrund</li>
+        </ul>
+        <li>Danach: Windows und Mac identisch – kein Unterschied mehr</li>
+      </ul>
+    </div>
+
+    <!-- 2.6 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">2.6</span>
+        <span class="video-title">Erster Testrun</span>
+        <span class="video-dur">~3 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Claude Code Desktop App öffnen</li>
+        <li>Neues Projekt anlegen → Ordner auf dem Computer auswählen</li>
+        <li>Ersten Befehl eintippen: <em>„Erstell eine einfache HTML-Datei mit Hallo Welt"</em></li>
+        <li>Claude schreibt – live zusehen</li>
+        <li>Ordner aufmachen: Datei ist da</li>
+        <li>Datei im Browser öffnen: es funktioniert</li>
+        <li>Takeaway: <em>„Das war dein erster Schritt. So einfach ist das."</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-end"></div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MODUL 3                                    -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="module" id="m3">
+    <div class="module-header">
+      <span class="module-num">Modul 03</span>
+      <span class="module-title">Jetzt geht's ans Eingemachte</span>
+    </div>
+    <div class="module-divider"></div>
+
+    <!-- 3.1 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">3.1</span>
+        <span class="video-title">Wie Claude Code wirklich denkt</span>
+        <span class="video-dur">~6 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Claude Code denkt in <strong>Projekten</strong>, nicht in Gesprächen</li>
+        <li>Modell wählen:</li>
+        <ul class="sub bullets">
+          <li><strong>Sonnet</strong> = Standard, für normale Aufgaben</li>
+          <li><strong>Opus</strong> = für komplexe Dinge (langsamer, teurer)</li>
+        </ul>
+        <li>Projekt-Ordner anlegen: sauber strukturiert, ein Ordner pro Website</li>
+        <li><strong>Memory-Datei (CLAUDE.md) einrichten</strong> – das ist entscheidend:</li>
+        <ul class="sub bullets">
+          <li>Claude vergisst bei jedem Start wer du bist</li>
+          <li>Mit Memory-Datei: weiß immer den Kontext, dein Stil, dein Projekt</li>
+          <li>Reinschreiben: wer du bist, was du baust, welchen Ton du willst</li>
+        </ul>
+        <li>Live zeigen: Memory-Datei anlegen und füllen</li>
+      </ul>
+    </div>
+
+    <!-- 3.2 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">3.2</span>
+        <span class="video-title">Neue Website oder Überarbeitung?</span>
+        <span class="video-dur">~4 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Zwei Wege, beide funktionieren – du entscheidest dich jetzt:</li>
+        <li><strong>Neu von Null:</strong></li>
+        <ul class="sub bullets">
+          <li>Komplett frischer Start</li>
+          <li>Kein Altlast-Code, moderner Aufbau</li>
+          <li>Empfehlung für die meisten</li>
+        </ul>
+        <li><strong>Bestehende Website überarbeiten:</strong></li>
+        <ul class="sub bullets">
+          <li>Code importieren, Claude modernisiert ihn</li>
+          <li>Struktur und Inhalte bleiben, Optik wird besser</li>
+          <li>Geeignet wenn du mit der Struktur zufrieden bist</li>
+        </ul>
+        <li>Abschluss: <em>„Entscheid dich jetzt für deinen Weg – dann starten wir."</em></li>
+      </ul>
+    </div>
+
+    <!-- 3.3 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">3.3</span>
+        <span class="video-title">Brand Guidelines mit KI entwickeln</span>
+        <span class="video-dur">~6 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Claude stellt Fragen – du beantwortest sie:</li>
+        <ul class="sub bullets">
+          <li>Wer bist du? Was machst du?</li>
+          <li>Wen willst du ansprechen?</li>
+          <li>Wie klingst du? Professionell, locker, direkt?</li>
+        </ul>
+        <li>Aus deinen Antworten entwickelt Claude:</li>
+        <ul class="sub bullets">
+          <li>Farbpalette passend zu deiner Marke</li>
+          <li>Schrift-Empfehlungen</li>
+          <li>Tonalität mit Beispielsätzen</li>
+        </ul>
+        <li>Ergebnis in Memory-Datei speichern → Claude nutzt das jetzt immer</li>
+        <li>Live zeigen mit fiktivem Beispiel-Profil</li>
+        <li>Takeaway: <em>„Deine Marke ist jetzt in Worte gefasst. Das nutzen wir ab jetzt."</em></li>
+      </ul>
+    </div>
+
+    <!-- 3.4 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">3.4</span>
+        <span class="video-title">Die Website entsteht</span>
+        <span class="video-dur">~8 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Den kompletten Loop live zeigen:</li>
+        <ul class="sub bullets">
+          <li>Prompt eingeben: <em>„Bau meine Homepage mit Header, Über-mich, Angeboten, Kontakt"</em></li>
+          <li>Claude schreibt den Code</li>
+          <li>Datei im Browser öffnen und anschauen</li>
+          <li>Feedback geben: <em>„Mach die Überschrift größer, ändere die Farbe zu [X]"</em></li>
+          <li>Claude überarbeitet</li>
+        </ul>
+        <li>Zeigen: 3–4 Iterationen bis es gut aussieht</li>
+        <li>Wichtig betonen: <em>Beim ersten Mal ist es nie perfekt – das ist vollkommen normal</em></li>
+        <li>Iteration ist der Prozess, nicht der Fehler</li>
+        <li>Takeaway: <em>„Deine Website existiert. Das war Modul 3."</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-end"></div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MODUL 4                                    -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="module" id="m4">
+    <div class="module-header">
+      <span class="module-num">Modul 04</span>
+      <span class="module-title">Website live schalten</span>
+    </div>
+    <div class="module-divider"></div>
+
+    <!-- 4.1 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">4.1</span>
+        <span class="video-title">GitHub einrichten und verbinden</span>
+        <span class="video-dur">~5 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>github.com → kostenlosen Account anlegen</li>
+        <li>Neues Repository erstellen:</li>
+        <ul class="sub bullets">
+          <li>Name: deine-website (Kleinbuchstaben, Bindestriche)</li>
+          <li>Sichtbarkeit: <strong>Public</strong> – damit GitHub Pages funktioniert</li>
+        </ul>
+        <li>Claude Code mit GitHub verbinden (Befehl live zeigen)</li>
+        <li>Lokalen Website-Ordner mit dem Repository verbinden</li>
+        <li>Kurz erklären was ein Repository ist: <em>„Dein Cloud-Ordner für den Code"</em></li>
+      </ul>
+    </div>
+
+    <!-- 4.2 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">4.2</span>
+        <span class="video-title">Änderungen pushen – deine Website ist live</span>
+        <span class="video-dur">~4 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Ersten Push durchführen (live zeigen)</li>
+        <li>GitHub Pages aktivieren: <em>Settings → Pages → Branch: main</em></li>
+        <li>Warten (30–60 Sekunden) – URL erscheint</li>
+        <li>URL aufrufen: <strong>Website ist live im Internet</strong></li>
+        <li>Das Moment genießen: <em>„Das ist deine Website. Für jeden erreichbar."</em></li>
+        <li>Optional: eigene Domain verknüpfen – kurz zeigen wo das geht</li>
+        <li>Ab jetzt: jede Änderung einfach pushen → automatisch live</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-end"></div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MODUL 5                                    -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="module" id="m5">
+    <div class="module-header">
+      <span class="module-num">Modul 05</span>
+      <span class="module-title">SEO – dein stiller Vertrieb</span>
+    </div>
+    <div class="module-divider"></div>
+
+    <!-- 5.1 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">5.1</span>
+        <span class="video-title">Technische SEO in 15 Minuten</span>
+        <span class="video-dur">~8 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Kein Theorie-Video – direkt Ergebnisse zeigen</li>
+        <li>Befehl an Claude: <em>„Optimiere meine Website für SEO"</em></li>
+        <li>Was Claude automatisch macht:</li>
+        <ul class="sub bullets">
+          <li>Meta-Title und Meta-Description für jede Seite</li>
+          <li>Alt-Texte für alle Bilder</li>
+          <li>Überschriften-Struktur (H1, H2, H3) prüfen und korrigieren</li>
+          <li>Ladezeit optimieren</li>
+          <li>Mobile-Darstellung sicherstellen</li>
+        </ul>
+        <li>Google Search Console kurz erwähnen: kostenlos, zeigt wie Google dich sieht</li>
+        <li>Takeaway: <em>„Das war technische SEO. Erledigt in einem Prompt."</em></li>
+      </ul>
+    </div>
+
+    <!-- 5.2 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">5.2</span>
+        <span class="video-title">Blog als Kundenmagnet aufbauen</span>
+        <span class="video-dur">~6 Min</span>
+      </div>
+      <ul class="bullets">
+        <li>Warum Blog: Google liebt regelmäßigen Content → du wirst gefunden</li>
+        <li>Ohne Blog: Google kennt dich kaum. Mit Blog: Google empfiehlt dich</li>
+        <li>Blog-Struktur anlegen: Claude baut die Vorlage einmalig</li>
+        <li>Ersten Artikel schreiben:</li>
+        <ul class="sub bullets">
+          <li>Thema: häufigste Frage deiner Zielgruppe beantworten</li>
+          <li>Du gibst 3–5 Stichpunkte</li>
+          <li>Claude schreibt den Artikel – SEO-optimiert, fertig</li>
+        </ul>
+        <li>Pushen → Artikel ist live</li>
+        <li>Aufwand dauerhaft: <em>30–60 Minuten pro Artikel – komplett mit KI</em></li>
+        <li>Takeaway: <em>„Einmal aufsetzen. Dauerhaft profitieren."</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-end"></div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MODUL 6                                    -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="module module-pitch" id="m6">
+    <div class="module-header">
+      <span class="module-num">Modul 06</span>
+      <span class="module-title">Was jetzt kommt</span>
+    </div>
+    <div class="module-divider"></div>
+
+    <!-- 6.1 -->
+    <div class="video-card">
+      <div class="video-head">
+        <span class="video-id">6.1</span>
+        <span class="video-title">Du hast eine Website. Was als nächstes?</span>
+        <span class="video-dur">~5 Min</span>
+      </div>
+      <ul class="bullets">
+        <li><strong>Würdigung:</strong> Was du in diesem Kurs gebaut hast:</li>
+        <ul class="sub bullets">
+          <li>Eigene Website – ohne Programmierkenntnisse</li>
+          <li>Live im Internet, erreichbar für jeden</li>
+          <li>SEO-optimiert</li>
+          <li>Blog-fähig, wächst weiter</li>
+        </ul>
+        <li>Das war KI als Werkzeug für eine konkrete Aufgabe</li>
+        <li>Wer KI wirklich als <strong>Business-Hebel</strong> einsetzen will:</li>
+        <ul class="sub bullets">
+          <li>Folgeprogramm: KI in alle Bereiche des Business bringen</li>
+          <li><em>2.500 € · 10 Plätze (limitiert) · 1. Durchlauf · Raten möglich</em></li>
+          <li>Persönlich ansprechen – kein Druck, kein Pitch-Druck</li>
+        </ul>
+        <li>CTA: <em>„Wenn es sich für dich richtig anfühlt, schreib mir einfach."</em></li>
+        <li>Abschluss warm und authentisch – nicht verkäuferisch</li>
+      </ul>
+    </div>
+  </div>
+
+  <a class="back-top" href="#">↑ Nach oben</a>
+
+</div>
+
+</body>
+</html>

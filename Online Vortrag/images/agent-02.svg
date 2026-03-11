@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <defs>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333EA"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <filter id="nodeShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="aiGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feFlood flood-color="#9333EA" flood-opacity="0.4"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1a1a28" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1400" height="800" fill="#1a1a2e"/>
+  <rect width="1400" height="800" fill="url(#grid)"/>
+  <g fill="none" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <path d="M 280 400 L 380 400"/>
+    <path d="M 580 400 L 680 400"/>
+    <path d="M 880 400 L 980 400"/>
+    <path d="M 1180 400 L 1280 400"/>
+  </g>
+  <g fill="#4F46E5">
+    <circle cx="280" cy="400" r="8"/><circle cx="380" cy="400" r="8"/><circle cx="580" cy="400" r="8"/>
+    <circle cx="680" cy="400" r="8"/><circle cx="880" cy="400" r="8"/><circle cx="980" cy="400" r="8"/>
+    <circle cx="1180" cy="400" r="8"/>
+  </g>
+  <g transform="translate(80, 320)" filter="url(#nodeShadow)">
+    <rect width="200" height="160" rx="16" fill="#262640"/>
+    <rect width="200" height="56" rx="16" fill="#3B82F6"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">⏰</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Schedule</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Wöchentlich</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#93C5FD">Montag 8:00</text>
+  </g>
+  <g transform="translate(380, 320)" filter="url(#nodeShadow)">
+    <rect width="200" height="160" rx="16" fill="#262640"/>
+    <rect width="200" height="56" rx="16" fill="#E1306C"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">📱</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Instagram</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Competitor Scrape</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#F9A8D4">5 Accounts</text>
+  </g>
+  <g transform="translate(680, 320)" filter="url(#nodeShadow)">
+    <rect width="200" height="160" rx="16" fill="#262640"/>
+    <rect width="200" height="56" rx="16" fill="#34A853"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">📊</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Google Sheets</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Daten speichern</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#4ADE80">Metriken</text>
+  </g>
+  <g transform="translate(980, 320)" filter="url(#aiGlow)">
+    <rect width="200" height="160" rx="16" fill="#262640" filter="url(#nodeShadow)"/>
+    <rect width="200" height="56" rx="16" fill="url(#aiGrad)"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">🤖</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">KI-Analyse</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Trends erkennen</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#C4B5FD">Report</text>
+  </g>
+  <g transform="translate(80, 550)">
+    <rect width="280" height="140" rx="12" fill="#FEF3C7" filter="url(#nodeShadow)"/>
+    <rect width="280" height="16" rx="12" fill="#F59E0B"/>
+    <text x="24" y="55" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#92400E">Competitor</text>
+    <text x="24" y="85" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#92400E">Watcher</text>
+    <text x="24" y="120" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#B45309">Wöchentlicher Überblick</text>
+  </g>
+  <g transform="translate(1100, 550)">
+    <rect width="180" height="100" rx="16" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="3"/>
+    <text x="90" y="45" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="800" fill="#10B981">Autopilot</text>
+    <text x="90" y="75" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#6EE7B7">Monitoring</text>
+  </g>
+</svg>

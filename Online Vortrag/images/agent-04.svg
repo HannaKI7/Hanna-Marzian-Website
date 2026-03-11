@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <defs>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333EA"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <filter id="nodeShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="aiGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feFlood flood-color="#9333EA" flood-opacity="0.4"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1a1a28" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1400" height="800" fill="#1a1a2e"/>
+  <rect width="1400" height="800" fill="url(#grid)"/>
+
+  <!-- CONNECTION LINES -->
+  <g fill="none" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <path d="M 260 400 L 340 400"/>
+    <path d="M 520 400 L 600 400"/>
+    <path d="M 780 400 L 860 400"/>
+    <path d="M 1040 400 L 1120 400"/>
+  </g>
+
+  <g fill="#4F46E5">
+    <circle cx="260" cy="400" r="8"/>
+    <circle cx="340" cy="400" r="8"/>
+    <circle cx="520" cy="400" r="8"/>
+    <circle cx="600" cy="400" r="8"/>
+    <circle cx="780" cy="400" r="8"/>
+    <circle cx="860" cy="400" r="8"/>
+    <circle cx="1040" cy="400" r="8"/>
+    <circle cx="1120" cy="400" r="8"/>
+  </g>
+
+  <!-- NODE 1: Google Maps / LinkedIn -->
+  <g transform="translate(60, 320)" filter="url(#nodeShadow)">
+    <rect width="200" height="160" rx="16" fill="#262640"/>
+    <rect width="200" height="56" rx="16" fill="#4285F4"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">🗺️</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Google Maps</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Scraping</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#93C5FD">+ LinkedIn</text>
+  </g>
+
+  <!-- NODE 2: Clean & Enrich -->
+  <g transform="translate(340, 320)" filter="url(#nodeShadow)">
+    <rect width="180" height="160" rx="16" fill="#262640"/>
+    <rect width="180" height="56" rx="16" fill="#22C55E"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">🧹</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Clean</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Anreichern</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#4ADE80">Validieren</text>
+  </g>
+
+  <!-- NODE 3: KI Personalisierung (with glow) -->
+  <g transform="translate(600, 320)" filter="url(#aiGlow)">
+    <rect width="180" height="160" rx="16" fill="#262640" filter="url(#nodeShadow)"/>
+    <rect width="180" height="56" rx="16" fill="url(#aiGrad)"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">🤖</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">KI-Layer</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Personalisieren</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#C4B5FD">Icebreaker</text>
+  </g>
+
+  <!-- NODE 4: Email Verify -->
+  <g transform="translate(860, 320)" filter="url(#nodeShadow)">
+    <rect width="180" height="160" rx="16" fill="#262640"/>
+    <rect width="180" height="56" rx="16" fill="#06B6D4"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">✉️</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">MillionVerifier</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Email Check</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#67E8F9">Validieren</text>
+  </g>
+
+  <!-- NODE 5: Instantly -->
+  <g transform="translate(1120, 320)" filter="url(#nodeShadow)">
+    <rect width="180" height="160" rx="16" fill="#262640"/>
+    <rect width="180" height="56" rx="16" fill="#6366F1"/>
+    <rect y="44" width="180" height="12" fill="#262640"/>
+    <text x="90" y="38" text-anchor="middle" font-size="28">🚀</text>
+    <text x="90" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Instantly</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Email Kampagne</text>
+    <text x="90" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#A5B4FC">Senden</text>
+  </g>
+
+  <!-- Sticky Note -->
+  <g transform="translate(60, 550)">
+    <rect width="280" height="140" rx="12" fill="#FEF3C7" filter="url(#nodeShadow)"/>
+    <rect width="280" height="16" rx="12" fill="#F59E0B"/>
+    <text x="24" y="55" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#92400E">B2B Outreach</text>
+    <text x="24" y="85" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#92400E">Agent</text>
+    <text x="24" y="120" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#B45309">Lead Gen auf Autopilot</text>
+  </g>
+
+  <!-- Results Badge -->
+  <g transform="translate(1100, 550)">
+    <rect width="200" height="100" rx="16" fill="rgba(124, 58, 237, 0.2)" stroke="#7C3AED" stroke-width="3"/>
+    <text x="100" y="40" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="800" fill="#A78BFA">700 → 5 → 24k€</text>
+    <text x="100" y="70" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#C4B5FD">Kontakte → Calls</text>
+  </g>
+
+</svg>

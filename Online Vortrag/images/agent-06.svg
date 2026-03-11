@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <defs>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333EA"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <filter id="nodeShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="aiGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feFlood flood-color="#9333EA" flood-opacity="0.4"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1a1a28" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1400" height="800" fill="#1a1a2e"/>
+  <rect width="1400" height="800" fill="url(#grid)"/>
+
+  <!-- CONNECTION LINES -->
+  <g fill="none" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <path d="M 280 400 L 380 400"/>
+    <path d="M 580 400 L 680 400"/>
+    <path d="M 880 400 L 980 400"/>
+  </g>
+
+  <g fill="#4F46E5">
+    <circle cx="280" cy="400" r="8"/>
+    <circle cx="380" cy="400" r="8"/>
+    <circle cx="580" cy="400" r="8"/>
+    <circle cx="680" cy="400" r="8"/>
+    <circle cx="880" cy="400" r="8"/>
+    <circle cx="980" cy="400" r="8"/>
+  </g>
+
+  <!-- NODE 1: Telegram Trigger -->
+  <g transform="translate(80, 320)" filter="url(#nodeShadow)">
+    <rect width="200" height="160" rx="16" fill="#262640"/>
+    <rect width="200" height="56" rx="16" fill="#0088CC"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">💬</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Telegram</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Kundenfrage</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#7DD3FC">Webhook</text>
+  </g>
+
+  <!-- NODE 2: KI Agent (with glow) - BIGGER -->
+  <g transform="translate(380, 260)" filter="url(#aiGlow)">
+    <rect width="200" height="280" rx="16" fill="#262640" filter="url(#nodeShadow)"/>
+    <rect width="200" height="56" rx="16" fill="url(#aiGrad)"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">🤖</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">KI-Agent</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">mit Wissens-DB</text>
+    <rect x="15" y="135" width="170" height="30" rx="8" fill="#2e1e4a"/>
+    <text x="100" y="155" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#C4B5FD">RAG / Vector Store</text>
+    <text x="100" y="190" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#9ca3af">📄 PDFs</text>
+    <text x="100" y="210" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#9ca3af">🎬 Video-Transkripte</text>
+    <text x="100" y="230" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#9ca3af">❓ FAQ</text>
+    <text x="100" y="260" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#C4B5FD">Kurs-Inhalte</text>
+  </g>
+
+  <!-- NODE 3: Knowledge Base -->
+  <g transform="translate(680, 320)" filter="url(#nodeShadow)">
+    <rect width="200" height="160" rx="16" fill="#262640"/>
+    <rect width="200" height="56" rx="16" fill="#22C55E"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">📚</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Knowledge</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">Base</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#4ADE80">Pinecone</text>
+  </g>
+
+  <!-- NODE 4: Response -->
+  <g transform="translate(980, 320)" filter="url(#nodeShadow)">
+    <rect width="200" height="160" rx="16" fill="#262640"/>
+    <rect width="200" height="56" rx="16" fill="#0088CC"/>
+    <rect y="44" width="200" height="12" fill="#262640"/>
+    <text x="100" y="38" text-anchor="middle" font-size="28">✉️</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#fff">Antwort</text>
+    <text x="100" y="115" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#9ca3af">an Kunden</text>
+    <text x="100" y="145" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#7DD3FC">Automatisch</text>
+  </g>
+
+  <!-- Sticky Note -->
+  <g transform="translate(80, 570)">
+    <rect width="280" height="140" rx="12" fill="#FEF3C7" filter="url(#nodeShadow)"/>
+    <rect width="280" height="16" rx="12" fill="#F59E0B"/>
+    <text x="24" y="55" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#92400E">Customer</text>
+    <text x="24" y="85" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#92400E">Service Bot</text>
+    <text x="24" y="120" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#B45309">24/7 Support</text>
+  </g>
+
+  <!-- 24/7 Badge -->
+  <g transform="translate(1080, 550)">
+    <rect width="200" height="120" rx="16" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="3"/>
+    <text x="100" y="55" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="40" font-weight="800" fill="#10B981">24/7</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#6EE7B7">Automatisch</text>
+  </g>
+
+</svg>

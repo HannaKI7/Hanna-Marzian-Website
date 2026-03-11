@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 45">
+  <!-- Minimalist hanna.gpt wordmark with violet accent -->
+  <text x="0" y="32" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="600" fill="#1a1a2e" letter-spacing="-1">hanna</text>
+  <text x="72" y="32" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="600" fill="#7C3AED" letter-spacing="-1">.gpt</text>
+  <!-- Subtle violet underline accent -->
+  <rect x="72" y="36" width="42" height="2" rx="1" fill="#7C3AED"/>
+</svg>

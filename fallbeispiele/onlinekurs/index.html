@@ -3,276 +3,693 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maximilian Berg · Content to Cash – Dein Online-Kurs startet heute</title>
+  <title>Leon Möller · Keyboard spielen lernen – ohne Noten</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --navy:#08101F;
-      --blue:#2563EB;
-      --cyan:#22D3EE;
-      --green:#10B981;
-      --white:#F8FAFF;
-      --muted:#8A9BB8;
-      --card:#111827;
-      --border:rgba(255,255,255,.07);
-      --serif:'Space Grotesk',system-ui,sans-serif;
-      --mono:'Space Mono',monospace;
+      --ink:#FAF4EA;
+      --panel:#F0E8D6;
+      --card:#FFFFFF;
+      --amber:#C06A1E;
+      --gold:#D4920E;
+      --honey:#E8AD30;
+      --cream:#F3EBD8;
+      --warm:#EDE0C8;
+      --dark:#1A0E06;
+      --mid:#5C4A32;
+      --muted:#8A7056;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Nunito',system-ui,sans-serif;
     }
     html{scroll-behavior:smooth;overflow-x:hidden}
-    body{font-family:var(--serif);background:var(--navy);color:var(--white);overflow-x:hidden}
+    body{font-family:var(--sans);background:var(--ink);color:var(--dark);overflow-x:hidden}
+
+    /* GLOW LAYER */
+    .glow-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(100px);z-index:0}
 
     /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 56px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,16,31,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-    .n-logo{font-size:16px;font-weight:700;color:var(--white);letter-spacing:-.3px}
-    .n-logo span{color:var(--cyan)}
-    .n-links{display:flex;gap:32px;list-style:none}
-    .n-links a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
-    .n-links a:hover{color:var(--white)}
-    .n-btn{font-size:12px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--navy);padding:11px 28px;text-decoration:none;border-radius:6px;transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1)}
-    .n-btn:hover{opacity:.85;transform:translateY(-2px)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 64px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,padding .4s,border-color .5s;border-bottom:1px solid transparent}
+    nav.scrolled{background:rgba(250,244,234,.95);backdrop-filter:blur(20px);padding:16px 64px;border-bottom-color:rgba(192,106,30,.15);box-shadow:0 2px 20px rgba(26,14,6,.06)}
+    .n-logo{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--cream);letter-spacing:.5px;text-decoration:none}
+    .n-links{display:flex;gap:36px;list-style:none}
+    .n-links a{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7);text-decoration:none;transition:color .25s}
+    nav.scrolled .n-links a{color:var(--mid)}
+    .n-links a:hover{color:var(--honey)}
+    nav.scrolled .n-links a:hover{color:var(--amber)}
+    nav.scrolled .n-logo{color:var(--dark)}
+    .n-btn{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--amber);color:#fff;padding:13px 32px;text-decoration:none;transition:background .25s,transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+    .n-btn:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 8px 32px rgba(192,106,30,.3)}
 
     /* HERO */
-    #hero{min-height:100vh;padding:140px 56px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;overflow:hidden}
-    /* Grid bg */
-    #hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
-    /* Glow orbs */
-    .orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
-    .orb-1{width:500px;height:500px;background:rgba(37,99,235,.18);top:-100px;right:-100px;animation:float 8s ease-in-out infinite}
-    .orb-2{width:300px;height:300px;background:rgba(34,211,238,.12);bottom:0;left:20%;animation:float 10s ease-in-out infinite reverse}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
-    .hero-left{position:relative;z-index:2}
-    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(34,211,238,.3);padding:6px 16px;border-radius:99px;font-size:11px;font-weight:600;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:28px;background:rgba(34,211,238,.06)}
-    .badge-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-    h1{font-size:clamp(38px,5vw,68px);font-weight:700;line-height:1.05;letter-spacing:-1.5px;margin-bottom:24px}
-    h1 .grad{background:linear-gradient(135deg,var(--white) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero-sub{font-size:16px;font-weight:300;color:var(--muted);line-height:1.75;max-width:460px;margin-bottom:40px}
-    .hero-sub strong{color:var(--white);font-weight:600}
-    .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:48px}
-    .btn-main{font-size:14px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--navy);padding:16px 40px;text-decoration:none;border-radius:8px;transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1)}
-    .btn-main:hover{opacity:.85;transform:translateY(-3px)}
-    .btn-sec{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(138,155,184,.3);padding-bottom:2px;transition:color .2s,border-color .2s}
-    .btn-sec:hover{color:var(--white);border-color:var(--white)}
-    .stats{display:flex;gap:40px}
-    .stat-num{font-size:32px;font-weight:700;color:var(--white);letter-spacing:-1px}
-    .stat-num span{color:var(--cyan)}
-    .stat-lbl{font-size:11px;color:var(--muted);font-weight:500;margin-top:2px}
+    #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;background:#100A04}
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:140px 64px 80px;position:relative;z-index:2}
+    .hero-right{position:relative;overflow:hidden}
+    .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.85)}
+    .hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,#100A04 0%,rgba(16,10,4,.4) 45%,transparent 100%)}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);margin-bottom:28px;opacity:0;animation:fadeUp .8s .3s forwards}
+    .hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--amber)}
+    h1{font-family:var(--serif);font-size:clamp(50px,6.5vw,84px);font-weight:400;line-height:1.06;color:var(--cream);margin-bottom:12px;opacity:0;animation:fadeUp .9s .5s forwards}
+    h1 em{font-style:italic;color:var(--gold)}
+    .hero-tagline{font-family:var(--serif);font-size:clamp(18px,2vw,24px);font-weight:300;font-style:italic;color:var(--mid);margin-bottom:32px;opacity:0;animation:fadeUp .8s .65s forwards}
+    .hero-desc{font-size:15px;font-weight:400;color:rgba(243,235,216,.65);line-height:1.85;max-width:440px;margin-bottom:44px;opacity:0;animation:fadeUp .9s .8s forwards}
+    .hero-desc strong{color:var(--cream);font-weight:600}
+    .hero-actions{display:flex;gap:20px;align-items:center;margin-bottom:52px;opacity:0;animation:fadeUp .9s 1s forwards}
+    .btn-primary{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--amber);color:#fff;padding:18px 48px;text-decoration:none;transition:background .25s,transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
+    .btn-primary:hover{background:var(--gold);transform:translateY(-3px);box-shadow:0 16px 48px rgba(207,126,50,.4)}
+    .btn-ghost{font-size:12px;font-weight:600;letter-spacing:1px;color:var(--mid);text-decoration:none;border-bottom:1px solid var(--muted);padding-bottom:2px;transition:color .2s,border-color .2s}
+    .btn-ghost:hover{color:var(--cream);border-color:var(--cream)}
+    .hero-trust{display:flex;gap:36px;opacity:0;animation:fadeUp .9s 1.2s forwards}
+    .trust-item{display:flex;flex-direction:column}
+    .trust-num{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--cream);letter-spacing:-1px}
+    .trust-num span{color:var(--gold)}
+    .trust-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:2px}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-    /* HERO RIGHT */
-    .hero-right{position:relative;z-index:2}
-    .mockup{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5)}
-    .mock-bar{background:#1a2236;padding:14px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
-    .mock-dot{width:10px;height:10px;border-radius:50%}
-    .mock-dot:nth-child(1){background:#FF5F56}
-    .mock-dot:nth-child(2){background:#FFBD2E}
-    .mock-dot:nth-child(3){background:#27C93F}
-    .mock-url{flex:1;background:rgba(255,255,255,.05);border-radius:4px;padding:5px 14px;font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:8px}
-    .mock-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
-    .mock-stats{padding:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .ms-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px}
-    .ms-label{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-    .ms-val{font-size:22px;font-weight:700;color:var(--white);letter-spacing:-1px}
-    .ms-val.green{color:var(--green)}
-    .ms-val.cyan{color:var(--cyan)}
-    .ms-sub{font-size:10px;color:var(--green);margin-top:2px}
+    /* KEY DECORATION */
+    .key-deco{position:absolute;bottom:40px;right:64px;z-index:3;display:flex;gap:3px;opacity:.25;mix-blend-mode:screen}
+    .key{background:var(--cream);border-radius:0 0 3px 3px}
+    .key.w{width:18px;height:72px}
+    .key.b{width:11px;height:44px;background:var(--ink);position:relative;margin:0 -5.5px;z-index:2}
+
+    /* STRIP */
+    .strip{background:var(--panel);border-top:1px solid rgba(207,126,50,.12);border-bottom:1px solid rgba(207,126,50,.12);padding:22px 64px;display:flex;justify-content:center;gap:72px;flex-wrap:wrap}
+    .strip-item{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:1px;color:var(--mid);text-transform:uppercase}
+    .strip-item svg{color:var(--amber);flex-shrink:0}
 
     /* SCROLL REVEAL */
-    .rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+    .rv{opacity:0;transform:translateY(44px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
     .rv.in{opacity:1;transform:translateY(0)}
-    .rv-r{opacity:0;transform:translateX(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+    .rv-l{opacity:0;transform:translateX(-44px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+    .rv-l.in{opacity:1;transform:translateX(0)}
+    .rv-r{opacity:0;transform:translateX(44px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
     .rv-r.in{opacity:1;transform:translateX(0)}
-    .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}
+    .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.5s}.d5{transition-delay:.64s}.d6{transition-delay:.78s}
 
-    /* LOGOS STRIP */
-    .logo-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 56px;display:flex;align-items:center;gap:16px;overflow:hidden}
-    .strip-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin-right:8px}
-    .logo-scroll{display:flex;gap:48px;animation:scrollLeft 20s linear infinite;white-space:nowrap}
-    .logo-item{font-size:13px;font-weight:700;color:rgba(255,255,255,.2);letter-spacing:1px;text-transform:uppercase}
-    @keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    /* SECTION COMMON */
+    .s-eyebrow{font-family:var(--serif);font-size:13px;font-weight:400;font-style:italic;color:var(--amber);letter-spacing:.5px;display:block;margin-bottom:12px}
+    .s-head{font-family:var(--serif);font-size:clamp(30px,4vw,52px);font-weight:400;line-height:1.2;color:var(--dark);margin-bottom:20px}
+    .s-head em{font-style:italic;color:var(--amber)}
+    .s-sub{font-size:15px;font-weight:400;color:var(--mid);line-height:1.8;max-width:540px}
+    /* Hero overrides - stay light on dark bg */
+    .hero-left .s-eyebrow{color:var(--honey)}
+    .hero-left h1{color:var(--cream)}
+    .hero-left h1 em{color:var(--gold)}
+    .hero-left .hero-desc{color:rgba(243,235,216,.65)}
+    .hero-left .hero-desc strong{color:var(--cream)}
+    section{position:relative}
 
-    /* MODULE */
-    #module{padding:112px 56px;background:rgba(255,255,255,.02)}
-    .section-eyebrow{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
-    .section-h{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-1px;line-height:1.15;margin-bottom:64px;max-width:560px}
-    .module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-    .mod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;position:relative;overflow:hidden;transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1)}
-    .mod-card:hover{border-color:rgba(37,99,235,.4);transform:translateY(-4px)}
-    .mod-num{font-family:var(--mono);font-size:11px;color:var(--blue);font-weight:700;letter-spacing:1px;margin-bottom:16px}
-    .mod-title{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
-    .mod-text{font-size:13px;color:var(--muted);line-height:1.7}
-    .mod-bar{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--blue),var(--cyan));opacity:0;transition:opacity .3s}
-    .mod-card:hover .mod-bar{opacity:1}
+    /* PROBLEM */
+    #problem{padding:100px 64px;background:var(--panel)}
+    .prob-header{max-width:620px;margin-bottom:72px}
+    .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .prob-card{background:var(--card);padding:44px 36px;position:relative;overflow:hidden;border:1px solid rgba(192,106,30,.1);box-shadow:0 2px 16px rgba(26,14,6,.05);transition:border-color .4s,transform .5s cubic-bezier(.16,1,.3,1),box-shadow .4s}
+    .prob-card:hover{border-color:rgba(192,106,30,.25);transform:translateY(-4px);box-shadow:0 8px 32px rgba(26,14,6,.1)}
+    .prob-num{font-family:var(--serif);font-size:72px;font-weight:300;color:rgba(192,106,30,.12);line-height:1;margin-bottom:-16px;transition:color .4s}
+    .prob-card:hover .prob-num{color:rgba(192,106,30,.22)}
+    .prob-icon{width:40px;height:40px;color:var(--amber);margin-bottom:20px}
+    .prob-card h3{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--dark);margin-bottom:12px;line-height:1.3}
+    .prob-card p{font-size:13px;font-weight:400;color:var(--mid);line-height:1.75}
+    .prob-glow{position:absolute;bottom:-40px;right:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(207,126,50,.08),transparent 70%);pointer-events:none}
 
-    /* CTA */
-    #cta{padding:112px 56px;text-align:center;position:relative;overflow:hidden}
-    #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(37,99,235,.15) 0%,transparent 65%);pointer-events:none}
-    .cta-inner{position:relative;max-width:640px;margin:0 auto}
-    .cta-tag{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:20px}
-    #cta h2{font-size:clamp(32px,5vw,60px);font-weight:700;letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px}
-    #cta p{font-size:16px;color:var(--muted);max-width:420px;margin:0 auto 40px;line-height:1.75}
-    .price-box{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:32px}
-    .price-old{font-size:20px;color:var(--muted);text-decoration:line-through}
-    .price-new{font-size:52px;font-weight:700;letter-spacing:-2px}
-    .price-tag{font-size:12px;color:var(--muted)}
-    .btn-cta-main{font-size:15px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--navy);padding:20px 64px;text-decoration:none;border-radius:10px;display:inline-block;transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
-    .btn-cta-main:hover{opacity:.9;transform:translateY(-3px);box-shadow:0 20px 60px rgba(37,99,235,.4)}
-    .cta-note{font-size:11px;color:var(--muted);margin-top:16px}
+    /* PROMISE SECTION */
+    #promise{padding:100px 64px;overflow:hidden}
+    .promise-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .promise-img-wrap{position:relative}
+    .promise-img{width:100%;aspect-ratio:4/5;object-fit:cover}
+    .promise-img-border{position:absolute;inset:-8px;border:1px solid rgba(207,126,50,.2);pointer-events:none}
+    .promise-badge{position:absolute;bottom:-20px;right:-20px;background:var(--amber);padding:24px 28px;text-align:center}
+    .promise-badge .big{font-family:var(--serif);font-size:38px;font-weight:600;color:#fff;display:block;line-height:1}
+    .promise-badge .small{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(10,6,3,.7);margin-top:4px;display:block}
+    .promise-text .s-sub{margin-bottom:32px}
+    .promise-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+    .promise-list li{display:flex;align-items:flex-start;gap:14px;font-size:14px;color:var(--mid);line-height:1.6}
+    .promise-list li::before{content:'♩';color:var(--gold);font-size:18px;flex-shrink:0;margin-top:-1px}
+
+    /* MODULES */
+    #module{padding:100px 64px;background:var(--panel)}
+    .module-header{text-align:center;max-width:580px;margin:0 auto 72px}
+    .module-header .s-sub{margin:0 auto}
+    .module-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .mod{background:var(--card);padding:40px 32px;border:1px solid rgba(192,106,30,.1);box-shadow:0 2px 12px rgba(26,14,6,.04);position:relative;overflow:hidden;transition:border-color .4s,transform .5s cubic-bezier(.16,1,.3,1),box-shadow .4s;cursor:default}
+    .mod:hover{border-color:rgba(192,106,30,.28);transform:translateY(-5px);box-shadow:0 8px 32px rgba(26,14,6,.1)}
+    .mod-accent{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--amber),var(--honey));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .mod:hover .mod-accent{transform:scaleX(1)}
+    .mod-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+    .mod h3{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--dark);margin-bottom:12px;line-height:1.3}
+    .mod p{font-size:13px;font-weight:400;color:var(--mid);line-height:1.75}
+    .mod-num{position:absolute;bottom:24px;right:28px;font-family:var(--serif);font-size:56px;font-weight:600;color:rgba(192,106,30,.08);line-height:1}
+    .mod-glow{position:absolute;inset:0;background:radial-gradient(ellipse at bottom right,rgba(207,126,50,.05),transparent 60%);pointer-events:none;opacity:0;transition:opacity .4s}
+    .mod:hover .mod-glow{opacity:1}
+
+    /* INSTRUCTOR */
+    #instructor{padding:100px 64px;overflow:hidden}
+    .instructor-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .instr-img-wrap{position:relative;padding-top:40px;max-width:360px;margin:0 auto}
+    .instr-img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.9) contrast(1.05)}
+    .instr-quote{position:absolute;top:0;right:-24px;background:var(--amber);padding:20px 24px;max-width:240px}
+    .instr-quote p{font-family:var(--serif);font-size:15px;font-style:italic;color:#fff;line-height:1.5}
+    .instr-text .s-head{margin-bottom:12px}
+    .instr-role{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--amber);margin-bottom:28px}
+    .instr-bio{font-size:14px;font-weight:400;color:var(--mid);line-height:1.85;margin-bottom:16px}
+    .instr-bio strong{color:var(--dark);font-weight:600}
+    .instr-stats{display:flex;gap:32px;margin-top:36px;padding-top:32px;border-top:1px solid rgba(192,106,30,.15)}
+    .instr-stat .num{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--dark)}
+    .instr-stat .num span{color:var(--gold)}
+    .instr-stat .lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:2px}
+
+    /* TESTIMONIALS */
+    #testimonials{padding:100px 64px;background:var(--panel);overflow:hidden}
+    .testi-header{text-align:center;max-width:540px;margin:0 auto 72px}
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .testi-card{background:var(--card);border:1px solid rgba(192,106,30,.1);box-shadow:0 2px 16px rgba(26,14,6,.05);padding:40px 32px;position:relative;transition:border-color .4s,transform .5s cubic-bezier(.16,1,.3,1),box-shadow .4s}
+    .testi-card:hover{border-color:rgba(192,106,30,.25);transform:translateY(-4px);box-shadow:0 8px 32px rgba(26,14,6,.1)}
+    .testi-stars{display:flex;gap:4px;margin-bottom:20px}
+    .testi-stars span{color:var(--gold);font-size:16px}
+    .testi-text{font-family:var(--serif);font-size:17px;font-weight:300;font-style:italic;color:var(--mid);line-height:1.7;margin-bottom:28px}
+    .testi-divider{width:32px;height:1px;background:var(--amber);margin-bottom:20px;opacity:.5}
+    .testi-author{display:flex;align-items:center;gap:14px}
+    .testi-avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid rgba(207,126,50,.3)}
+    .testi-avatar-placeholder{width:46px;height:46px;border-radius:50%;border:2px solid rgba(207,126,50,.3);background:var(--panel);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;color:var(--amber);flex-shrink:0}
+    .testi-name{font-size:13px;font-weight:700;color:var(--dark)}
+    .testi-meta{font-size:11px;color:var(--muted);margin-top:2px}
+    .testi-quote-mark{position:absolute;top:24px;right:28px;font-family:var(--serif);font-size:72px;line-height:1;color:rgba(192,106,30,.08)}
+
+    /* INCLUDES */
+    #includes{padding:100px 64px}
+    .includes-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .includes-list{display:flex;flex-direction:column;gap:0}
+    .inc-item{display:flex;align-items:flex-start;gap:20px;padding:22px 0;border-bottom:1px solid rgba(192,106,30,.12)}
+    .inc-item:first-child{border-top:1px solid rgba(192,106,30,.12)}
+    .inc-icon{width:44px;height:44px;background:rgba(192,106,30,.08);border:1px solid rgba(192,106,30,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--amber);transition:background .3s}
+    .inc-item:hover .inc-icon{background:rgba(192,106,30,.15)}
+    .inc-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px}
+    .inc-desc{font-size:12px;color:var(--mid);line-height:1.6}
+    .includes-right .s-head{font-size:clamp(28px,3.5vw,46px)}
+    .includes-right .s-sub{margin-bottom:36px}
+
+    /* PRICING */
+    #pricing{padding:100px 64px;background:var(--panel)}
+    .pricing-header{text-align:center;max-width:540px;margin:0 auto 72px}
+    .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto}
+    .price-card{background:var(--card);border:1px solid rgba(192,106,30,.12);box-shadow:0 2px 16px rgba(26,14,6,.06);padding:48px 40px;position:relative;transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .4s,box-shadow .4s}
+    .price-card.featured{border-color:var(--amber);background:linear-gradient(135deg,#FFF8EE 0%,#FFF2D8 100%)}
+    .price-card.featured::before{content:'Empfohlen';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--amber);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 20px}
+    .price-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(26,14,6,.1)}
+    .price-tier{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+    .price-amount{display:flex;align-items:baseline;gap:6px;margin-bottom:8px}
+    .price-currency{font-family:var(--serif);font-size:22px;color:var(--muted)}
+    .price-num{font-family:var(--serif);font-size:64px;font-weight:600;color:var(--dark);letter-spacing:-2px;line-height:1}
+    .price-period{font-size:13px;color:var(--muted)}
+    .price-old{font-size:14px;color:var(--muted);text-decoration:line-through;margin-bottom:28px}
+    .price-divider{height:1px;background:rgba(192,106,30,.12);margin:28px 0}
+    .price-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+    .price-features li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid)}
+    .price-features li::before{content:'✓';color:var(--amber);font-weight:700;flex-shrink:0}
+    .btn-price{display:block;text-align:center;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:16px 32px;text-decoration:none;transition:background .25s,transform .3s cubic-bezier(.16,1,.3,1)}
+    .btn-price-main{background:var(--amber);color:#fff}
+    .btn-price-main:hover{background:var(--gold);transform:translateY(-2px)}
+    .btn-price-outline{border:1px solid rgba(207,126,50,.35);color:var(--amber)}
+    .btn-price-outline:hover{background:rgba(207,126,50,.1);transform:translateY(-2px)}
+    .price-guarantee{text-align:center;margin-top:36px;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:8px}
+    .price-guarantee svg{color:var(--amber)}
+
+    /* FAQ */
+    #faq{padding:100px 64px}
+    .faq-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .faq-intro .s-head{margin-bottom:20px;font-size:clamp(26px,3.5vw,44px)}
+    .faq-intro .s-sub{margin-bottom:36px}
+    .faq-list{display:flex;flex-direction:column;gap:0}
+    .faq-item{border-bottom:1px solid rgba(192,106,30,.12)}
+    .faq-item:first-child{border-top:1px solid rgba(192,106,30,.12)}
+    .faq-q{width:100%;background:none;border:none;cursor:pointer;padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--dark);transition:color .25s}
+    .faq-q:hover{color:var(--amber)}
+    .faq-icon{width:22px;height:22px;border:1px solid rgba(192,106,30,.3);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--amber);font-size:14px;transition:transform .35s cubic-bezier(.16,1,.3,1),background .3s}
+    .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--amber);color:#fff}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+    .faq-a-inner{padding:0 0 20px;font-size:13px;font-weight:400;color:var(--mid);line-height:1.8}
+    .faq-item.open .faq-a{max-height:200px}
+
+    /* FINAL CTA */
+    #final-cta{padding:120px 64px;text-align:center;position:relative;overflow:hidden;background:#1A0E06}
+    #final-cta .s-head{font-size:clamp(36px,5.5vw,72px);margin-bottom:16px;color:var(--cream)}
+    #final-cta .s-head em{color:var(--honey)}
+    #final-cta .s-sub{margin:0 auto 40px;max-width:500px;text-align:center;color:rgba(243,235,216,.55)}
+    .cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(192,106,30,.12) 0%,transparent 65%);pointer-events:none}
+    .cta-note{font-size:12px;color:rgba(243,235,216,.35);margin-top:16px;letter-spacing:.5px}
+    .music-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(207,126,50,.25) 20%,rgba(207,126,50,.25) 80%,transparent);pointer-events:none}
+    .music-line.top{top:60px}
+    .music-line.bottom{bottom:60px}
+    .music-note{position:absolute;font-size:28px;opacity:.05;color:var(--amber)}
 
     /* FOOTER */
-    footer{border-top:1px solid var(--border);padding:36px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-    .f-logo{font-size:14px;font-weight:700;color:var(--white)}
-    .f-logo span{color:var(--cyan)}
-    .f-links{display:flex;gap:24px}
-    .f-links a{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
-    .f-links a:hover{color:var(--white)}
-    .f-copy{font-size:10px;color:rgba(138,155,184,.4)}
+    footer{background:#1A0E06;border-top:1px solid rgba(192,106,30,.15);padding:40px 64px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+    .f-logo{font-family:var(--serif);font-size:18px;color:var(--cream)}
+    .f-logo span{color:var(--honey);font-style:italic}
+    .f-links{display:flex;gap:28px}
+    .f-links a{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(243,235,216,.35);text-decoration:none;transition:color .2s}
+    .f-links a:hover{color:var(--honey)}
+    .f-copy{font-size:10px;color:rgba(243,235,216,.2)}
 
-    @media(max-width:900px){
-      #hero{grid-template-columns:1fr;padding:120px 24px 60px}
-      nav{padding:18px 24px}
+    @media(max-width:960px){
+      nav,#hero .hero-left,#problem,#promise,#module,#instructor,#testimonials,#includes,#pricing,#faq,#final-cta,footer{padding-left:24px;padding-right:24px}
+      #hero{grid-template-columns:1fr}
+      .hero-right{height:360px}
+      .hero-right::after{background:linear-gradient(to top,var(--ink) 0%,rgba(10,6,3,.5) 40%,transparent 100%)}
+      .prob-grid,.module-grid,.testi-grid{grid-template-columns:1fr}
+      .promise-inner,.instructor-inner,.includes-inner,.faq-inner{grid-template-columns:1fr}
+      .pricing-grid{grid-template-columns:1fr;max-width:420px}
       .n-links{display:none}
-      .module-grid{grid-template-columns:1fr}
-      #module,#cta,footer,.logo-strip{padding-left:24px;padding-right:24px}
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="n-logo">Max<span>Berg</span></div>
+  <nav id="nav">
+    <a href="#" class="n-logo">Leon <span>Möller</span></a>
     <ul class="n-links">
-      <li><a href="#">Kurs-Inhalte</a></li>
-      <li><a href="#">Ergebnisse</a></li>
-      <li><a href="#">Über mich</a></li>
+      <li><a href="#module">Inhalte</a></li>
+      <li><a href="#instructor">Über mich</a></li>
+      <li><a href="#testimonials">Ergebnisse</a></li>
+      <li><a href="#pricing">Preise</a></li>
     </ul>
-    <a href="#cta" class="n-btn">Jetzt einsteigen →</a>
+    <a href="#pricing" class="n-btn">Jetzt starten →</a>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-
+    <div class="glow-orb" style="width:600px;height:600px;background:rgba(207,126,50,.1);top:-100px;left:-150px"></div>
     <div class="hero-left">
-      <div class="badge"><span class="badge-dot"></span> Kurs-Doors open · 47 Plätze frei</div>
-      <h1>Von 0 auf<br><span class="grad">5.000 € / Monat</span><br>mit Content.</h1>
-      <p class="hero-sub">Du postest. Du arbeitest. Du wirst <strong>nicht bezahlt.</strong> In 90 Tagen ändere ich das. Mit einem System, das funktioniert, auch wenn du schläfst.</p>
+      <span class="hero-eyebrow">Online-Kurs · 30 Tage Programm</span>
+      <h1>Dein erster<br>Song. <em>In 30 Tagen.</em></h1>
+      <p class="hero-tagline">Ohne Noten. Ohne jahrelanges Üben.</p>
+      <p class="hero-desc">
+        Ich zeige dir, wie du in <strong>30 Tagen deine ersten richtigen Songs</strong> spielst,
+        Akkorde verstehst und nie wieder ratlos vor der Tastatur sitzt.
+        Kein Konservatorium-Feeling. Kein Frust. Nur Musik.
+      </p>
       <div class="hero-actions">
-        <a href="#cta" class="btn-main">Jetzt Platz sichern</a>
-        <a href="#module" class="btn-sec">Was lerne ich?</a>
+        <a href="#pricing" class="btn-primary">Jetzt Kurs sichern</a>
+        <a href="#module" class="btn-ghost">Was lerne ich?</a>
       </div>
-      <div class="stats">
-        <div><div class="stat-num">847<span>+</span></div><div class="stat-lbl">Absolventen</div></div>
-        <div><div class="stat-num">€<span>4.2M</span></div><div class="stat-lbl">Generierter Umsatz</div></div>
-        <div><div class="stat-num">90<span>T</span></div><div class="stat-lbl">Bis zum Ergebnis</div></div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-num">12<span>K</span></span>
+          <span class="trust-lbl">Schüler</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">4<span>.9</span></span>
+          <span class="trust-lbl">Bewertung</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">320<span>K</span></span>
+          <span class="trust-lbl">YouTube</span>
+        </div>
       </div>
     </div>
-
     <div class="hero-right">
-      <div class="mockup">
-        <div class="mock-bar">
-          <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
-          <div class="mock-url">dashboard.maxberg.com</div>
-        </div>
-        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80" alt="Dashboard" loading="lazy">
-        <div class="mock-stats">
-          <div class="ms-card"><div class="ms-label">Umsatz</div><div class="ms-val green">€ 5.240</div><div class="ms-sub">↑ +34%</div></div>
-          <div class="ms-card"><div class="ms-label">Reichweite</div><div class="ms-val cyan">182K</div><div class="ms-sub">↑ +21%</div></div>
-          <div class="ms-card"><div class="ms-label">Conv. Rate</div><div class="ms-val">4,7%</div><div class="ms-sub">↑ +1.2%</div></div>
-        </div>
-      </div>
+      <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=1200&q=80" alt="Keyboard spielen">
     </div>
   </section>
 
-  <!-- LOGO STRIP -->
-  <div class="logo-strip">
-    <span class="strip-label">Absolventen aus</span>
-    <div class="logo-scroll">
-      <span class="logo-item">Instagram</span>
-      <span class="logo-item">LinkedIn</span>
-      <span class="logo-item">TikTok</span>
-      <span class="logo-item">YouTube</span>
-      <span class="logo-item">Coaching</span>
-      <span class="logo-item">Beratung</span>
-      <span class="logo-item">Freelance</span>
-      <span class="logo-item">E-Commerce</span>
-      <!-- doubled for seamless loop -->
-      <span class="logo-item">Instagram</span>
-      <span class="logo-item">LinkedIn</span>
-      <span class="logo-item">TikTok</span>
-      <span class="logo-item">YouTube</span>
-      <span class="logo-item">Coaching</span>
-      <span class="logo-item">Beratung</span>
-      <span class="logo-item">Freelance</span>
-      <span class="logo-item">E-Commerce</span>
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+      32 Video-Lektionen
+    </div>
+    <div class="strip-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Ohne Noten lernen
+    </div>
+    <div class="strip-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Community-Zugang
+    </div>
+    <div class="strip-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      30-Tage Garantie
     </div>
   </div>
 
-  <!-- MODULE -->
-  <section id="module">
-    <div class="rv"><p class="section-eyebrow">// Kurs-Inhalte</p></div>
-    <div class="rv d1"><h2 class="section-h">Was du in 90 Tagen lernst.</h2></div>
-    <div class="module-grid">
-      <div class="mod-card rv d1">
-        <div class="mod-bar"></div>
-        <p class="mod-num">01 —</p>
-        <h3 class="mod-title">Positionierung & Nische</h3>
-        <p class="mod-text">Wer du bist, für wen du bist, warum ausgerechnet du. Das Fundament, ohne das alles andere bröckelt.</p>
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="prob-header rv">
+      <span class="s-eyebrow">Das kennst du</span>
+      <h2 class="s-head">Warum die meisten nie<br>wirklich <em>spielen lernen.</em></h2>
+      <p class="s-sub">Du hast vielleicht schon angefangen. Vielleicht sogar aufgehört. Hier ist, warum das nicht deine Schuld war.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card rv d1">
+        <div class="prob-glow"></div>
+        <div class="prob-num">01</div>
+        <svg class="prob-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 32 L34 32 M6 26 L34 26 M6 20 L34 20 M6 14 L34 14 M6 8 L34 8"/><circle cx="14" cy="8" r="3" fill="currentColor" stroke="none"/><circle cx="22" cy="20" r="3" fill="currentColor" stroke="none"/></svg>
+        <h3>Noten sind einschüchternd</h3>
+        <p>Die klassische Ausbildung fängt mit Theorie an, statt mit dem, was du wirklich willst: Musik machen. Das tötet die Motivation, bevor sie überhaupt entsteht.</p>
       </div>
-      <div class="mod-card rv d2">
-        <div class="mod-bar"></div>
-        <p class="mod-num">02 —</p>
-        <h3 class="mod-title">Content-System</h3>
-        <p class="mod-text">Ein wiederholbarer Prozess. 3 Posts pro Woche, 30 Minuten Aufwand. Mehr geht nicht, mehr braucht es nicht.</p>
+      <div class="prob-card rv d2">
+        <div class="prob-glow"></div>
+        <div class="prob-num">02</div>
+        <svg class="prob-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="14"/><path d="M20 10 L20 20 L28 20"/><path d="M8 4 L32 4" stroke-dasharray="2 4"/></svg>
+        <h3>Keine Zeit für echtes Üben</h3>
+        <p>Stundenlang vor der Tastatur sitzen passt nicht in deinen Alltag. Du brauchst eine Methode, die in 20 Minuten täglich Ergebnisse zeigt.</p>
       </div>
-      <div class="mod-card rv d3">
-        <div class="mod-bar"></div>
-        <p class="mod-num">03 —</p>
-        <h3 class="mod-title">Angebot & Pricing</h3>
-        <p class="mod-text">Was du verkaufst, für welchen Preis, mit welchem Narrativ. Die Grundlage für jede Zahlung, die kommt.</p>
-      </div>
-      <div class="mod-card rv d4">
-        <div class="mod-bar"></div>
-        <p class="mod-num">04 —</p>
-        <h3 class="mod-title">Sales ohne Pitchen</h3>
-        <p class="mod-text">Kein hartes Verkaufen. Content, der Vertrauen aufbaut, bis der Kauf die logische Konsequenz ist.</p>
+      <div class="prob-card rv d3">
+        <div class="prob-glow"></div>
+        <div class="prob-num">03</div>
+        <svg class="prob-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 L24 16 L36 16 L26 23 L30 34 L20 27 L10 34 L14 23 L4 16 L16 16 Z"/></svg>
+        <h3>Keine Struktur, kein System</h3>
+        <p>YouTube-Videos geben dir Schnipsel ohne roten Faden. Du weißt nicht, was du als nächstes lernen sollst, und verlierst dich im Chaos.</p>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="cta">
-    <div class="cta-inner">
-      <span class="cta-tag rv">// Nur 47 Plätze</span>
-      <h2 class="rv d1">Bereit, endlich<br>bezahlt zu werden?</h2>
-      <p class="rv d2">Einmalig. Kein Abo. Lebenslanger Zugang. Du kommst rein, wenn Türen open sind.</p>
-      <div class="price-box rv d3">
-        <span class="price-old">€ 997</span>
-        <span class="price-new">€ 497</span>
-        <span class="price-tag">/ einmalig</span>
-      </div><br>
-      <a href="#" class="btn-cta-main rv d4">Jetzt Platz sichern →</a>
-      <p class="cta-note rv">30 Tage Geld-zurück-Garantie · Sofortiger Zugang · Keine Abofalle</p>
+  <!-- PROMISE -->
+  <section id="promise">
+    <div class="promise-inner">
+      <div class="promise-img-wrap rv-l">
+        <img class="promise-img" src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=900&q=80" alt="Leon Möller am Keyboard">
+        <div class="promise-img-border"></div>
+        <div class="promise-badge">
+          <span class="big">30</span>
+          <span class="small">Tage Methode</span>
+        </div>
+      </div>
+      <div class="promise-text rv-r">
+        <span class="s-eyebrow">Die Lösung</span>
+        <h2 class="s-head">Meine Methode:<br><em>Hören vor Lesen.</em></h2>
+        <p class="s-sub">Du lernst Keyboard, wie Musiker es wirklich lernen – über Akkorde, Muster und Gehör. Kein einziges Notenblatt nötig.</p>
+        <ul class="promise-list">
+          <li>Statt Noten lernst du Akkordmuster, die du sofort anwenden kannst</li>
+          <li>Statt Übungsstücken spielst du Songs, die du wirklich magst</li>
+          <li>Statt Theorie-Büchlein kriegst du ein System, das sich selbst erklärt</li>
+          <li>Statt jahrelangem Warten hast du in 30 Tagen echte Fortschritte</li>
+        </ul>
+        <a href="#pricing" class="btn-primary">Ich bin dabei</a>
+      </div>
     </div>
+  </section>
+
+  <!-- MODULES -->
+  <section id="module">
+    <div class="module-header rv">
+      <span class="s-eyebrow">Kurs-Inhalt</span>
+      <h2 class="s-head">6 Module. Ein roter Faden.<br><em>Dein Ergebnis.</em></h2>
+      <p class="s-sub">Jedes Modul baut auf dem vorherigen auf. Am Ende hast du nicht nur Songs gelernt – du verstehst, wie Musik funktioniert.</p>
+    </div>
+    <div class="module-grid">
+      <div class="mod rv d1">
+        <div class="mod-accent"></div>
+        <div class="mod-glow"></div>
+        <p class="mod-tag">Modul 01</p>
+        <h3>Deine ersten 3 Akkorde</h3>
+        <p>Heute noch. Nicht in Wochen. Mit 3 Akkorden kannst du bereits hunderte Songs begleiten. Wir fangen sofort damit an.</p>
+        <div class="mod-num">01</div>
+      </div>
+      <div class="mod rv d2">
+        <div class="mod-accent"></div>
+        <div class="mod-glow"></div>
+        <p class="mod-tag">Modul 02</p>
+        <h3>Rhythmus & linke Hand</h3>
+        <p>Die linke Hand ist der Schlüssel zum Klang. Du lernst die 5 wichtigsten Begleitpatterns, mit denen du sofort professioneller klingst.</p>
+        <div class="mod-num">02</div>
+      </div>
+      <div class="mod rv d3">
+        <div class="mod-accent"></div>
+        <div class="mod-glow"></div>
+        <p class="mod-tag">Modul 03</p>
+        <h3>Melodien nach Gehör</h3>
+        <p>Kein Notenblatt. Du lernst, wie du Melodien einfach nach Gehör findest und dabei nie falsch liegst. Das verändert alles.</p>
+        <div class="mod-num">03</div>
+      </div>
+      <div class="mod rv d4">
+        <div class="mod-accent"></div>
+        <div class="mod-glow"></div>
+        <p class="mod-tag">Modul 04</p>
+        <h3>Akkord-Progressionen</h3>
+        <p>Warum klingen manche Songs so emotional? Du lernst die 4 Progressionen hinter fast allen Pop- und Soul-Songs und kannst sie selbst bauen.</p>
+        <div class="mod-num">04</div>
+      </div>
+      <div class="mod rv d5">
+        <div class="mod-accent"></div>
+        <div class="mod-glow"></div>
+        <p class="mod-tag">Modul 05</p>
+        <h3>Improvisation & Flow</h3>
+        <p>Der Moment, wo sich Keyboard anfühlt wie Sprechen. Du lernst die Pentatonik-Methode und spielst deine ersten eigenen Soli.</p>
+        <div class="mod-num">05</div>
+      </div>
+      <div class="mod rv d6">
+        <div class="mod-accent"></div>
+        <div class="mod-glow"></div>
+        <p class="mod-tag">Modul 06</p>
+        <h3>Dein erster eigener Song</h3>
+        <p>Im letzten Modul schreibst du mit dem gelernten Wissen deinen eigenen Song. Vom ersten Akkord bis zur vollständigen Komposition.</p>
+        <div class="mod-num">06</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTRUCTOR -->
+  <section id="instructor">
+    <div class="instructor-inner">
+      <div class="instr-img-wrap rv-l">
+        <img class="instr-img" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt="Leon Möller">
+        <div class="instr-quote"><p>„Ich wollte nie Noten lernen. Also habe ich eine bessere Methode entwickelt."</p></div>
+      </div>
+      <div class="instr-text rv-r">
+        <span class="s-eyebrow">Über mich</span>
+        <h2 class="s-head">Leon <em>Möller</em></h2>
+        <p class="instr-role">Keyboard-Educator · YouTube Creator · Musiker seit 14 Jahren</p>
+        <p class="instr-bio">Mit <strong>8 Jahren hatte ich mein erstes Keyboard</strong> – und wurde direkt in den Notenlese-Kurs gesteckt. Ich haßte es. Nach 3 Monaten gab ich auf.</p>
+        <p class="instr-bio">Erst mit 16, als ein Freund mir zeigte, wie man Akkorde hört statt liest, wurde alles anders. In <strong>6 Wochen konnte ich Songs spielen</strong>, die mich wirklich begeisterten. Seitdem ist meine Mission klar.</p>
+        <p class="instr-bio">Heute unterrichte ich auf YouTube, gebe Live-Workshops und habe meine Methode in einen Online-Kurs verwandelt, der <strong>über 12.000 Menschen</strong> das Spielen beibringt – genau so, wie ich es mir damals gewünscht hätte.</p>
+        <div class="instr-stats">
+          <div class="instr-stat"><div class="num">320<span>K</span></div><div class="lbl">Abonnenten</div></div>
+          <div class="instr-stat"><div class="num">12<span>K+</span></div><div class="lbl">Schüler</div></div>
+          <div class="instr-stat"><div class="num">14<span>J</span></div><div class="lbl">Erfahrung</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="testi-header rv">
+      <span class="s-eyebrow">Was Schüler sagen</span>
+      <h2 class="s-head">Echte Ergebnisse.<br><em>Echte Menschen.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card rv d1">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"Nach 3 Wochen habe ich meiner Freundin ein Lied zum Geburtstag gespielt. Sie hat geweint. Ich auch, ehrlich gesagt. Hätte nie gedacht, dass das so schnell geht."</p>
+        <div class="testi-divider"></div>
+        <div class="testi-author">
+          <div class="testi-avatar-placeholder">M</div>
+          <div>
+            <div class="testi-name">Markus T.</div>
+            <div class="testi-meta">Absoluter Anfänger, 34 Jahre</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card rv d2">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"Ich habe 2 Jahre Klavierstunden gehabt und konnte danach immer noch keine Songs spielen. Mit Leons Kurs hatte ich in 2 Wochen mehr drauf als in all diesen Stunden zusammen."</p>
+        <div class="testi-divider"></div>
+        <div class="testi-author">
+          <div class="testi-avatar-placeholder">S</div>
+          <div>
+            <div class="testi-name">Sarah K.</div>
+            <div class="testi-meta">Kam vom klassischen Unterricht, 28 Jahre</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card rv d3">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"Das Beste: Ich muss keine Noten lesen. Ich hab die ganze Zeit nach einer Methode gesucht, die intuitiv ist. Das hier ist es. Im letzten Modul habe ich sogar eigene Songs geschrieben."</p>
+        <div class="testi-divider"></div>
+        <div class="testi-author">
+          <div class="testi-avatar-placeholder">F</div>
+          <div>
+            <div class="testi-name">Florian H.</div>
+            <div class="testi-meta">Content Creator, 25 Jahre</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUDES -->
+  <section id="includes">
+    <div class="includes-inner">
+      <div class="rv-l">
+        <span class="s-eyebrow">Das bekommst du</span>
+        <h2 class="s-head">Alles, was du<br>brauchst. <em>Nichts,<br>was du nicht brauchst.</em></h2>
+        <p class="s-sub">Kein Abo-Chaos, kein verstecktes Upselling. Du kaufst einmal und bekommst alles.</p>
+        <a href="#pricing" class="btn-primary" style="display:inline-block;margin-top:36px">Zum Kurs</a>
+      </div>
+      <div class="includes-list rv-r">
+        <div class="inc-item">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <div><div class="inc-title">32 Video-Lektionen in HD</div><div class="inc-desc">Lebenslanger Zugang. Schau so oft du willst, so lange du willst.</div></div>
+        </div>
+        <div class="inc-item">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div><div class="inc-title">Übungs-Workbooks (PDF)</div><div class="inc-desc">Strukturierte Übungsblätter zu jeder Lektion zum Ausdrucken oder digital nutzen.</div></div>
+        </div>
+        <div class="inc-item">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div><div class="inc-title">Community-Zugang</div><div class="inc-desc">Teile deine Fortschritte, stelle Fragen, lerne mit 12.000+ gleichgesinnten Musikern.</div></div>
+        </div>
+        <div class="inc-item">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div><div class="inc-title">Akkord-Cheatsheets</div><div class="inc-desc">Die wichtigsten Akkorde und Progressionen als Schnellreferenz – immer griffbereit.</div></div>
+        </div>
+        <div class="inc-item">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+          <div><div class="inc-title">Backing-Tracks zum Üben</div><div class="inc-desc">Professionelle Play-Along-Tracks für alle Lektionen. Üben mit echtem Bandsound.</div></div>
+        </div>
+        <div class="inc-item">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div><div class="inc-title">30-Tage Geld-zurück-Garantie</div><div class="inc-desc">Kein Ergebnis in 30 Tagen? Du bekommst 100% zurück. Kein Drama, keine Fragen.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="pricing-header rv">
+      <span class="s-eyebrow">Dein Einstieg</span>
+      <h2 class="s-head">Ein Kurs. Zwei Wege.<br><em>Kein Abo.</em></h2>
+      <p class="s-sub">Du zahlst einmal. Du bekommst alles. Lebenslanger Zugang inklusive.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card rv d1">
+        <div class="price-tier">Starter</div>
+        <div class="price-amount">
+          <span class="price-currency">€</span>
+          <span class="price-num">197</span>
+        </div>
+        <div class="price-old">Statt € 297</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Alle 32 Video-Lektionen</li>
+          <li>Lebenslanger Zugang</li>
+          <li>Übungs-Workbooks (PDF)</li>
+          <li>Akkord-Cheatsheets</li>
+          <li>Backing-Tracks</li>
+          <li>30-Tage Geld-zurück-Garantie</li>
+        </ul>
+        <a href="#" class="btn-price btn-price-outline">Starter wählen</a>
+      </div>
+      <div class="price-card featured rv d2">
+        <div class="price-tier">Complete</div>
+        <div class="price-amount">
+          <span class="price-currency">€</span>
+          <span class="price-num">297</span>
+        </div>
+        <div class="price-old">Statt € 497</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Alles aus Starter</li>
+          <li>Community-Zugang (lebenslang)</li>
+          <li>3x Live-Feedback-Sessions</li>
+          <li>Bonus-Modul: Song-Writing Deep Dive</li>
+          <li>Direkter Zugang zu Leon per DM</li>
+          <li>Zertifikat nach Abschluss</li>
+        </ul>
+        <a href="#" class="btn-price btn-price-main">Complete wählen</a>
+      </div>
+    </div>
+    <div class="price-guarantee rv">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      30-Tage Geld-zurück-Garantie · Sofortiger Zugang · Einmalige Zahlung
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="faq-inner">
+      <div class="faq-intro rv">
+        <span class="s-eyebrow">Häufige Fragen</span>
+        <h2 class="s-head">Noch<br><em>unsicher?</em></h2>
+        <p class="s-sub">Hier beantworte ich die Fragen, die mir am häufigsten gestellt werden. Wenn deine nicht dabei ist, schreib mir auf Instagram.</p>
+        <a href="#" class="btn-ghost" style="margin-top:28px;display:inline-block">@leonmoeller.keys →</a>
+      </div>
+      <div class="faq-list rv-r">
+        <div class="faq-item">
+          <button class="faq-q">Brauche ich ein echtes Keyboard?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Du brauchst mindestens eine 61-Tasten-Tastatur. Ein Smartphone oder Tablet reicht definitiv nicht. Ich empfehle ein Einsteiger-Keyboard ab ca. 80 Euro – eine Kaufempfehlungsliste bekommst du nach der Anmeldung.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Ich bin absoluter Anfänger. Klappt das?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Ja. Der Kurs ist für komplette Anfänger gebaut. Ich setze keinerlei Vorkenntnisse voraus – weder Notenlesen noch Musiktheorie. Wenn du weißt, wo links und rechts ist, kannst du anfangen.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Wie viel Zeit muss ich täglich investieren?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">20 bis 30 Minuten täglich sind ideal. Das reicht, um in 30 Tagen echte Fortschritte zu erzielen. Du kannst den Kurs auch in deinem eigenen Tempo durcharbeiten – der Zugang läuft nicht ab.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Was, wenn mir der Kurs nicht gefällt?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Dann bekommst du innerhalb von 30 Tagen 100% deines Geldes zurück. Kein Papierkram, keine Fragen. Einfach eine E-Mail an mich. Das ist mein persönliches Versprechen.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Wie lange habe ich Zugang zum Kurs?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Lebenslang. Du kannst jederzeit zurückkommen, Lektionen wiederholen und auch zukünftige Updates abrufen, die ich immer wieder hinzufüge. Kein Abo, kein Ablaufdatum.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="final-cta">
+    <div class="music-line top"></div>
+    <div class="cta-glow"></div>
+    <span class="music-note" style="top:80px;left:80px">♩</span>
+    <span class="music-note" style="top:120px;right:120px;font-size:40px">♫</span>
+    <span class="music-note" style="bottom:80px;left:160px;font-size:22px">♪</span>
+    <span class="music-note" style="bottom:100px;right:80px;font-size:36px">♬</span>
+    <div class="rv">
+      <span class="s-eyebrow" style="display:block;text-align:center;font-size:14px">Dein Moment ist jetzt</span>
+      <h2 class="s-head" style="text-align:center">Fang heute an.<br><em>Nicht irgendwann.</em></h2>
+      <p class="s-sub" style="text-align:center;margin:0 auto 44px">12.000 Menschen haben angefangen. Die meisten davon haben sich zu lange Zeit gelassen. Der beste Moment war gestern. Der zweitbeste ist jetzt.</p>
+      <div style="text-align:center">
+        <a href="#pricing" class="btn-primary" style="display:inline-block;padding:20px 64px;font-size:13px">Jetzt Kurs sichern →</a>
+        <p class="cta-note">30-Tage Geld-zurück-Garantie · Einmalzahlung · Sofortiger Zugang</p>
+      </div>
+    </div>
+    <div class="music-line bottom"></div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="f-logo">Max<span>Berg</span></div>
-    <nav class="f-links">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
-      <a href="#">Instagram</a>
-    </nav>
-    <p class="f-copy">&copy; 2026 Maximilian Berg</p>
+    <div class="f-logo">Leon <span>Möller</span></div>
+    <p class="f-copy">&copy; 2026 Leon Möller · Keyboard Education</p>
   </footer>
 
   <script>
-    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
-    document.querySelectorAll('.rv,.rv-r').forEach(el=>obs.observe(el));
+    // Nav scroll
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+
+    // Scroll reveal
+    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
+    document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const item=btn.closest('.faq-item');
+        const wasOpen=item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+        if(!wasOpen)item.classList.add('open');
+      });
+    });
   </script>
 </body>
 </html>
