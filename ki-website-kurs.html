@@ -740,7 +740,7 @@
     <div class="sticky-text">Website Kurs · <span>Start: 16. März</span></div>
     <div class="sticky-right">
       <span class="sticky-price">nur 199 €</span>
-      <a href="https://alfima.com/hannagpt/ki-website-workshop" class="sticky-btn" target="_blank" rel="noopener">Jetzt anmelden</a>
+      <span class="sticky-btn" style="cursor:default; opacity:0.6; pointer-events:none;">Anmeldung geschlossen</span>
     </div>
   </div>
 
@@ -782,13 +782,9 @@
       </div>
 
       <div class="hero-cta">
-        <a href="https://alfima.com/hannagpt/ki-website-workshop" class="btn-primary" target="_blank" rel="noopener">
-          Jetzt Platz sichern, 199 €
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="#what" class="btn-outline">
-          Was erwartet mich?
-        </a>
+        <div style="display:inline-flex; align-items:center; gap:12px; background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.4); padding:18px 48px; font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#e05a4a;">
+          Anmeldung geschlossen
+        </div>
       </div>
 
 
@@ -914,10 +910,6 @@
       </div>
 
       <div class="rv d4" style="text-align: center; margin-top: 72px;">
-        <a href="https://alfima.com/hannagpt/ki-website-workshop" class="btn-primary" target="_blank" rel="noopener">
-          Jetzt Platz sichern – 199 €
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
         <p style="margin-top: 24px; font-size: 13px; font-weight: 400; color: var(--dark); line-height: 1.75;">
           Für den Kurs nutzen wir ein professionelles KI-Tool, das zusätzlich 20 € pro Monat kostet.<br>
           Du kannst es monatlich abschließen und jederzeit kündigen – kein Risiko, keine Mindestlaufzeit.
@@ -1339,10 +1331,6 @@
         <span class="price-eur">€</span>
       </div>
       <div class="cta-btns rv d3">
-        <a href="https://alfima.com/hannagpt/ki-website-workshop" class="btn-primary" target="_blank" rel="noopener">
-          Jetzt anmelden &amp; Platz sichern
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
         <p class="cta-note">Einmalige Zahlung · Sofortiger Zugang nach Anmeldung</p>
         <p class="cta-note" style="color: rgba(216,98,42,0.55);">+ 20 €/Monat für das KI-Tool · monatlich kündbar · kein Risiko</p>
         <p class="cta-note" style="color: rgba(246,240,230,0.35);">Preis inkl. MwSt.</p>
@@ -1399,10 +1387,6 @@
     <div class="final-inner">
       <h2 class="final-h2 rv">Dein Angebot verdient eine Bühne, die wirklich verkauft.</h2>
       <p class="final-sub rv d1">16.–24. März 2026 · Online · 199 € inkl. MwSt.</p>
-      <a href="https://alfima.com/hannagpt/ki-website-workshop" class="final-btn rv d2" target="_blank" rel="noopener">
-        Jetzt Platz sichern, 199 €
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
       <p class="final-note rv d3">Einmalige Zahlung · inkl. MwSt. · + 20 €/Monat KI-Tool, monatlich kündbar</p>
     </div>
   </section>
@@ -1441,22 +1425,10 @@
     document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
 
     /* ── COUNTDOWN ──────────────────────────── */
-    function updateCountdown(){
-      const target = new Date('2026-03-16T09:00:00');
-      const now = new Date();
-      const diff = target - now;
-      if(diff <= 0){ document.querySelector('.countdown-wrap').innerHTML='<div style="font-family:var(--serif);font-size:32px;color:var(--gold-l);font-style:italic;">Der Kurs hat gestartet!</div>'; return; }
-      const d = Math.floor(diff/86400000);
-      const h = Math.floor((diff%86400000)/3600000);
-      const m = Math.floor((diff%3600000)/60000);
-      const s = Math.floor((diff%60000)/1000);
-      document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-      document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-      document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
-      document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    document.getElementById('cd-days').textContent  = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent  = '00';
+    document.getElementById('cd-secs').textContent  = '00';
 
     /* ── COUNTERS ───────────────────────────── */
     const cobs = new IntersectionObserver(entries=>{
