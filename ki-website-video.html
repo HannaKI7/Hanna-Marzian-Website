@@ -3,316 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schau dir das zuerst an · Hanna Marzian</title>
-  <meta name="description" content="Bevor du kaufst: Schau dir dieses kurze Video an. Es zeigt dir genau, was im KI-Website-Kurs steckt – und warum du heute noch anfangen solltest.">
-  <meta name="robots" content="noindex, nofollow">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <meta http-equiv="refresh" content="5;url=index.html">
+  <title>Nicht verfügbar – hanna.gpt</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black:   #160C05;
-      --gold:    #D8622A;
-      --gold-l:  #E8894E;
-      --gray:    #6B6260;
-      --mist:    #F5F1EC;
-      --serif:   'Cormorant', Georgia, serif;
-      --sans:    'Montserrat', system-ui, sans-serif;
-      --expo:    cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    html { scroll-behavior: smooth; }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: var(--sans);
-      background: #ffffff;
-      color: var(--black);
+      background: #160C05;
+      color: #F6F0E6;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ── MAIN ─────────────────────────────────── */
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 72px 24px 80px;
-      max-width: 860px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    /* ── LOGO HEADER ──────────────────────────── */
-    .logo-header {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 28px 24px 0;
-    }
-
-    .logo-header-inner {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--black);
-      letter-spacing: 0.5px;
-    }
-
-    .logo-header-inner span {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    /* ── EYEBROW ──────────────────────────────── */
-    .eyebrow {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
       text-align: center;
+      padding: 2rem;
     }
-
-    /* ── HEADLINE ─────────────────────────────── */
-    h1 {
-      font-family: var(--serif);
-      font-size: clamp(36px, 6vw, 62px);
-      font-weight: 600;
-      line-height: 1.12;
-      text-align: center;
-      color: var(--black);
-      margin-bottom: 20px;
-      max-width: 720px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    /* ── SUBLINE ──────────────────────────────── */
-    .subline {
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--gray);
-      text-align: center;
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 52px;
-    }
-
-    /* ── VIDEO CONTAINER ──────────────────────── */
-    .video-wrap {
-      width: 100%;
-      max-width: 800px;
-      margin-bottom: 40px;
-    }
-
-    /* Wistia-Placeholder */
-    .video-placeholder {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: var(--mist);
-      border: 2px dashed rgba(216, 98, 42, 0.25);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .video-placeholder svg {
-      width: 56px;
-      height: 56px;
-      color: var(--gold);
-      opacity: 0.5;
-    }
-
-    .video-placeholder p {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-
-    /* ── DIVIDER ──────────────────────────────── */
-    .divider {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0 auto 36px;
-      opacity: 0.4;
-    }
-
-    /* ── MICRO COPY UNDER VIDEO ───────────────── */
-    .micro {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--gray);
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    .micro strong {
-      color: var(--black);
-      font-weight: 600;
-    }
-
-    /* ── CTA BUTTON ───────────────────────────── */
-    .cta-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .btn-cta {
-      display: inline-block;
-      background: var(--gold);
-      color: #ffffff;
-      font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
+    .container { max-width: 480px; }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #D8622A; }
+    p { font-size: 1rem; line-height: 1.7; opacity: 0.8; margin-bottom: 1.5rem; }
+    a {
+      color: #D8622A;
       text-decoration: none;
-      padding: 20px 52px;
-      transition: background 0.25s var(--expo), transform 0.3s var(--expo);
+      border-bottom: 1px solid #D8622A;
+      padding-bottom: 2px;
     }
-
-    .btn-cta:hover {
-      background: var(--gold-l);
-      transform: translateY(-2px);
-    }
-
-    .btn-note {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--gray);
-      letter-spacing: 0.5px;
-    }
-
-    /* ── FOOTER ───────────────────────────────── */
-    footer {
-      border-top: 1px solid rgba(22, 12, 5, 0.08);
-      padding: 28px 24px;
-      text-align: center;
-    }
-
-    .footer-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .footer-logo {
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--black);
-      letter-spacing: 0.5px;
-    }
-
-    .footer-logo span {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .footer-links a {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--gray);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--gold); }
-
-    .footer-copy {
-      font-size: 10px;
-      color: var(--gray);
-      opacity: 0.6;
-    }
-
-    /* ── RESPONSIVE ───────────────────────────── */
-    @media (max-width: 600px) {
-      main { padding: 52px 20px 64px; }
-      .btn-cta { padding: 18px 36px; font-size: 12px; text-align: center; display: block; width: 100%; }
-    }
+    a:hover { opacity: 0.8; }
   </style>
 </head>
 <body>
-
-  <div class="logo-header">
-    <div class="logo-header-inner">Hanna <span>Marzian</span></div>
+  <div class="container">
+    <h1>Diese Seite ist aktuell nicht verfügbar.</h1>
+    <p>Der KI Website Kurs wird momentan nicht angeboten. Du wirst in wenigen Sekunden weitergeleitet.</p>
+    <p><a href="index.html">Zurück zur Startseite &rarr;</a></p>
   </div>
-
-  <main>
-
-    <p class="eyebrow">Für Coaches, Creator, Selbstständige, Webdesigner, Personal Brands und Speaker:</p>
-
-    <h1><em>Free Video:</em> Die eine Verschiebung, die 2026 alles verändert</h1>
-
-    <p class="subline">
-      Erfahre, wie KI High-End-Websites, Salespages und Funnel in Minuten baut — ohne Abhängigkeit von teuren Marketing Agenturen oder „Business Experten"
-    </p>
-
-    <!-- ── VIDEO ────────────────────────────── -->
-    <div class="video-wrap">
-
-      <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/5bf7d9c1045a456e82f8f7a4a6f96850" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
-    </div>
-
-    <div class="divider"></div>
-
-    <p class="micro">
-      <strong>Hast du das Video gesehen?</strong> Dann weißt du, was als nächstes kommt.
-    </p>
-
-    <!-- ── CTA ──────────────────────────────── -->
-    <div class="cta-wrap">
-      <a href="https://www.hannamarzian.com/ki-website-kurs" class="btn-cta">
-        Jetzt zum Kurs → Mehr Infos
-      </a>
-      <span class="btn-note">Einmalzahlung · Sofortiger Zugang · Keine Abofalle</span>
-    </div>
-
-  </main>
-
-  <!-- ── FOOTER ────────────────────────────── -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">Hanna <span>Marzian</span></div>
-      <nav class="footer-links">
-        <a href="https://hannamarzian.com/impressum">Impressum</a>
-        <a href="https://hannamarzian.com/datenschutz">Datenschutz</a>
-        <a href="https://www.instagram.com/hanna.gpt" target="_blank" rel="noopener">@hanna.gpt</a>
-      </nav>
-      <p class="footer-copy">&copy; 2026 Hanna Marzian · hannamarzian.com</p>
-    </div>
-  </footer>
-
 </body>
 </html>
