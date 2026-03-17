@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum · Hanna Marzian</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/consent.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:   #160C05;
+      --dark:    #472B18;
+      --gold:    #D8622A;
+      --gold-l:  #E8894E;
+      --cream:   #F6F0E6;
+      --white:   #FBF7F2;
+      --gray:    #A0907E;
+      --serif:   'Cormorant', Georgia, serif;
+      --sans:    'Montserrat', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(216,98,42,0.15);
+      background: var(--black);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-back {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--cream); }
+
+    /* Content */
+    .page-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 40px 120px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 32px 0;
+      opacity: 0.5;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--cream);
+      margin: 40px 0 12px;
+    }
+    p { color: rgba(246,240,230,0.75); margin-bottom: 12px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .placeholder {
+      color: var(--gold-l);
+      background: rgba(216,98,42,0.12);
+      padding: 2px 6px;
+      border-radius: 2px;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(216,98,42,0.15);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 12px; color: rgba(246,240,230,0.3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: rgba(246,240,230,0.4); text-decoration: none; }
+    .footer-links a:hover { color: rgba(246,240,230,0.7); }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .page-wrap { padding: 48px 20px 80px; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Hanna <span>Marzian</span></a>
+    <a href="/" class="nav-back">← Zurück</a>
+  </nav>
+
+  <main class="page-wrap">
+    <div class="eyebrow">Rechtliches</div>
+    <h1>Impressum</h1>
+    <div class="divider"></div>
+
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <p>
+      <strong>Hanna Marzian</strong><br>
+      <span class="placeholder">[Straße und Hausnummer]</span><br>
+      <span class="placeholder">[PLZ] [Stadt]</span><br>
+      Deutschland
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>
+      E-Mail: <a href="mailto:[PLATZHALTER]"><span class="placeholder">[deine@email.de]</span></a>
+    </p>
+
+    <h2>Umsatzsteuer-Identifikationsnummer</h2>
+    <p>
+      Gemäß § 27a UStG: <span class="placeholder">[USt-IdNr. oder „nicht vorhanden"]</span>
+    </p>
+
+    <h2>Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV</h2>
+    <p>
+      Hanna Marzian<br>
+      <span class="placeholder">[Anschrift wie oben]</span>
+    </p>
+
+    <h2>Haftung für Inhalte</h2>
+    <p>
+      Als Dienstanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+      Nach §§ 8 bis 10 TMG bin ich als Dienstanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
+    </p>
+
+    <h2>Haftung für Links</h2>
+    <p>
+      Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe.
+      Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+      Bei Bekanntwerden von Rechtsverletzungen entferne ich solche Links umgehend.
+    </p>
+
+    <h2>Urheberrecht</h2>
+    <p>
+      Die durch mich erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
+      Beiträge Dritter sind als solche gekennzeichnet.
+      Eine Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedarf meiner schriftlichen Zustimmung.
+    </p>
+
+    <div class="divider"></div>
+    <p style="font-size:12px; color:rgba(246,240,230,0.35);">
+      Bitte die gelb markierten Felder mit deinen echten Daten befüllen.
+    </p>
+  </main>
+
+  <footer>
+    <span class="footer-copy">© 2025 Hanna Marzian</span>
+    <div class="footer-links">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+      <button id="consent-reopen">Cookie-Einstellungen</button>
+    </div>
+  </footer>
+
+  <script src="assets/consent.js"></script>
+</body>
+</html>
