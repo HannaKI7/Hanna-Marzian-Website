@@ -740,6 +740,32 @@
     color: var(--mid-gray);
   }
 
+  /* Hero Logo Title */
+  .hero-logo-title {
+    font-family: var(--font-h);
+    font-size: clamp(3.2rem, 5.5vw, 6.4rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 6px;
+    color: var(--cream);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .hero-logo-title em {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--orange-mid);
+    letter-spacing: 6px;
+  }
+  .hero-logo-title + .hero-subtitle-small {
+    margin-top: 0 !important;
+  }
+  .btn-primary-hero {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
 
@@ -750,8 +776,9 @@
     .hero-image-overlay { background: linear-gradient(to bottom, transparent 60%, var(--warm-dark) 100%); }
     .hero-content { padding: 20px 24px 32px; order: 2; }
     .hero-label { margin-bottom: 8px; }
-    .hero h1 { font-size: clamp(2.4rem, 9vw, 3.2rem); margin-bottom: 8px; }
-    .hero-subtitle-small { margin-top: -6px !important; margin-bottom: 14px !important; }
+    .hero-logo-title { font-size: clamp(1.9rem, 8.5vw, 3.2rem); letter-spacing: 3px; margin-bottom: 6px; }
+    .hero-logo-title em { letter-spacing: 3px; }
+    .hero-subtitle-small { margin-top: 4px !important; margin-bottom: 14px !important; }
     .hero-sub { font-size: 15px; max-width: 100%; margin-bottom: 14px; }
     .hero-tags { gap: 8px; margin-bottom: 18px; }
     .btn { display: inline-block; width: auto; text-align: center; padding: 16px 32px; }
@@ -806,9 +833,8 @@
 <!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-content">
-    <div style="font-family: var(--font-h); font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 500; color: var(--orange-mid); letter-spacing: 1px; margin-bottom: 12px;">„Fake it Real"</div>
-    <h1>KI-Fotos,<br>die <em>echt<br>aussehen.</em></h1>
-    <div class="hero-subtitle-small" style="font-family: var(--font-ui); font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); margin-top: -12px; margin-bottom: 24px;">KI Fotos verblüffend echt</div>
+    <h1 class="hero-logo-title">Fake it <em>Real</em></h1>
+    <div class="hero-subtitle-small" style="font-family: var(--font-ui); font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); margin-top: 6px; margin-bottom: 24px;">KI Fotos verblüffend echt</div>
     <p class="hero-sub">
       In weniger als 2 Stunden zu professionellen Bildern in Fotoshooting-Qualität. Ohne Fotograf, ohne Budget, ohne Technik-Vorwissen.
     </p>
@@ -817,10 +843,10 @@
       <div class="hero-tag">Sofort umsetzbar</div>
       <div class="hero-tag">Prompt-Vorlagen inklusive</div>
     </div>
-    <a href="#pricing" class="btn btn-primary">Jetzt für 49 € kaufen</a>
+    <a href="#pricing" class="btn btn-primary" style="margin-top: 20px; display: inline-block;">Jetzt für 49 € kaufen</a>
   </div>
   <div class="hero-image">
-    <img src="Photos Hanna/5292012897317884903.jpg" alt="Hanna – KI-generiertes Foto">
+    <img src="Photos Hanna/5292012897317884905.jpg" alt="Hanna – KI-generiertes Foto" style="image-rendering: high-quality;">
     <div class="hero-image-overlay"></div>
   </div>
 </section>
