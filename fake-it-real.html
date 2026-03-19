@@ -766,6 +766,156 @@
     margin-bottom: 8px;
   }
 
+  /* ════════════════════════════════════
+     ANIMATIONS & MOTION SYSTEM
+  ════════════════════════════════════ */
+
+  /* Reduced motion – kein Flicker für sensible Nutzer */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Keyframes */
+  @keyframes wordDrop {
+    0%   { opacity: 0; transform: translateY(0.75em) skewY(-5deg); }
+    100% { opacity: 1; transform: translateY(0) skewY(0); }
+  }
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes lineGrow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 4px 20px rgba(216,98,42,0.12), 0 0 0 0 rgba(216,98,42,0); }
+    50%       { box-shadow: 0 8px 52px rgba(216,98,42,0.45), 0 0 0 8px rgba(216,98,42,0.07); }
+  }
+  @keyframes heroImgIn {
+    from { opacity: 0; transform: scale(1.08); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes rippleEffect {
+    to { transform: scale(4); opacity: 0; }
+  }
+
+  /* ── Hero on-load ── */
+  .hero-word {
+    display: inline-block;
+    opacity: 0;
+    animation: wordDrop 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .hero-word:nth-child(1) { animation-delay: 0.05s; }
+  .hero-word:nth-child(2) { animation-delay: 0.22s; }
+  .hero-word:nth-child(3) { animation-delay: 0.38s; }
+
+  .hero-logo-title::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(to right, var(--orange), var(--orange-mid), transparent 80%);
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: lineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+    margin-top: 10px;
+  }
+  .hero-subtitle-small {
+    opacity: 0;
+    animation: fadeSlideUp 0.55s ease 0.72s forwards;
+  }
+  .hero-sub {
+    opacity: 0;
+    animation: fadeSlideUp 0.55s ease 0.88s forwards;
+  }
+  .hero-tags {
+    opacity: 0;
+    animation: fadeSlideUp 0.55s ease 1.02s forwards;
+  }
+  .hero-content .btn {
+    opacity: 0;
+    animation: fadeSlideUp 0.55s ease 1.16s forwards;
+  }
+  .hero-image { animation: heroImgIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+
+  /* ── Scroll Reveal System ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.from-left  { transform: translateX(-52px); }
+  .reveal.from-right { transform: translateX(52px); }
+  .reveal.scale-in   { transform: scale(0.9) translateY(16px); }
+  .reveal.visible    { opacity: 1; transform: none; }
+  .reveal[data-delay="1"] { transition-delay: 0.1s; }
+  .reveal[data-delay="2"] { transition-delay: 0.2s; }
+  .reveal[data-delay="3"] { transition-delay: 0.3s; }
+  .reveal[data-delay="4"] { transition-delay: 0.4s; }
+  .reveal[data-delay="5"] { transition-delay: 0.5s; }
+
+  /* ── Card hover lifts ── */
+  .pp {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  }
+  .pp:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(22,12,5,0.12); }
+
+  .fw-item {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  }
+  .fw-item:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(22,12,5,0.09); }
+
+  .module { transition: background 0.2s ease, transform 0.25s ease; }
+  .module:hover { transform: translateX(8px); }
+
+  .gallery-item { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item:hover img { transform: scale(1.06) !important; }
+
+  .price-card {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  }
+  .price-card:not(.featured):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 48px rgba(22,12,5,0.12);
+  }
+  .price-card.featured { animation: pulseGlow 3.5s ease-in-out infinite; }
+  .price-card.featured:hover { transform: translateY(-5px); animation-play-state: paused; }
+
+  /* ── Button shimmer ── */
+  .btn-primary { position: relative; overflow: hidden; }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+  }
+  .btn-primary:hover::after { left: 100%; }
+
+  /* ── Floating bonus icon ── */
+  .bonus-icon { display: inline-block; animation: floatY 3s ease-in-out infinite; }
+
+  /* ── Mobile touch feedback ── */
+  @media (max-width: 768px) {
+    .btn-primary:active  { transform: scale(0.97) !important; transition: transform 0.1s !important; }
+    .pp:active           { transform: scale(0.98) !important; }
+    .gallery-item:active { transform: scale(0.99) !important; }
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
 
@@ -1086,5 +1236,165 @@
 </footer>
 
 <script src="assets/consent.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ── 1. Scroll-Progress-Bar ──────────────────────────────────────
+  var bar = document.createElement('div');
+  bar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:var(--orange);width:0;z-index:9999;pointer-events:none;transition:width 0.1s linear;';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll', function () {
+    var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+
+  // ── 2. Hero-Titel: Wörter splitten für Word-Drop-Animation ──────
+  var heroTitle = document.querySelector('.hero-logo-title');
+  if (heroTitle) {
+    heroTitle.innerHTML =
+      '<span class="hero-word">Fake</span>' +
+      '<span class="hero-word">\u00a0it\u00a0</span>' +
+      '<span class="hero-word"><em>Real</em></span>';
+  }
+
+  // ── 3. Scroll-Reveal: Klassen automatisch zuweisen ──────────────
+
+  // Block-Reveals (ganzer Container animiert als Einheit)
+  var blockLeft  = ['.proof-image', '.about-image'];
+  var blockRight = ['.proof-text'];
+  var scaleIns   = ['.bonus-box'];
+
+  blockLeft.forEach(function (sel) {
+    var el = document.querySelector(sel);
+    if (el) el.classList.add('reveal', 'from-left');
+  });
+  blockRight.forEach(function (sel) {
+    var el = document.querySelector(sel);
+    if (el) el.classList.add('reveal', 'from-right');
+  });
+  scaleIns.forEach(function (sel) {
+    var el = document.querySelector(sel);
+    if (el) el.classList.add('reveal', 'scale-in');
+  });
+
+  // Einfache fadeUp-Reveals für Section-Headlines
+  var simpleReveal = [
+    '.problem-inner > .label', '.problem h2', '.problem-lead',
+    '.gallery-header',
+    '.content-header',
+    '.forwho-inner > .label', '.forwho-inner > h2',
+    '.pricing-header', '.pricing-note',
+    '.about-text .label', '.about-text h2',
+    '.final-cta .label', '.final-cta h2',
+    '.final-cta > p', '.final-price-display', '.final-cta .btn',
+    '.proof-badge',
+  ];
+  simpleReveal.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      if (!el.classList.contains('reveal')) el.classList.add('reveal');
+    });
+  });
+
+  // About-Text: Kinder einzeln gestaffelt
+  var aboutText = document.querySelector('.about-text');
+  if (aboutText) {
+    Array.from(aboutText.children).forEach(function (child, i) {
+      child.classList.add('reveal');
+      if (i > 0) child.dataset.delay = String(Math.min(i, 5));
+    });
+  }
+
+  // Gestaffelte Gruppen (Geschwister mit Delay)
+  var staggerGroups = [
+    '.problem-points .pp',
+    '.gallery-grid .gallery-item',
+    '.modules .module',
+    '.forwho-grid .fw-item',
+    '.erwartung-grid > div',
+    '.perfekt-grid > div',
+  ];
+  staggerGroups.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el, i) {
+      el.classList.add('reveal');
+      if (i > 0) el.dataset.delay = String(Math.min(i, 5));
+    });
+  });
+
+  // Price-Cards: scale-in gestaffelt
+  document.querySelectorAll('.price-card').forEach(function (el, i) {
+    el.classList.add('reveal', 'scale-in');
+    if (i > 0) el.dataset.delay = String(i);
+  });
+
+  // ── 4. IntersectionObserver – Reveals auslösen ─────────────────
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  // ── 5. Count-Up für Stats ───────────────────────────────────────
+  var statIo = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || entry.target.dataset.counted) return;
+      entry.target.dataset.counted = '1';
+      var raw   = entry.target.textContent.trim();
+      var m     = raw.match(/^(\d+)(.*)$/);
+      if (!m) return;
+      var end = parseInt(m[1]), suffix = m[2], current = 0, step = end / 60;
+      var t = setInterval(function () {
+        current = Math.min(current + step, end);
+        entry.target.textContent = Math.round(current) + suffix;
+        if (current >= end) clearInterval(t);
+      }, 16);
+    });
+  }, { threshold: 0.8 });
+  document.querySelectorAll('.stat-item strong').forEach(function (el) { statIo.observe(el); });
+
+  // ── 6. Ripple-Effekt auf Buttons ────────────────────────────────
+  document.querySelectorAll('.btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      var r = this.getBoundingClientRect();
+      var d = document.createElement('span');
+      Object.assign(d.style, {
+        position: 'absolute', width: '8px', height: '8px',
+        borderRadius: '50%', background: 'rgba(255,255,255,0.45)',
+        left: (e.clientX - r.left - 4) + 'px',
+        top:  (e.clientY - r.top  - 4) + 'px',
+        animation: 'rippleEffect 0.6s linear forwards',
+        pointerEvents: 'none', zIndex: '10',
+      });
+      this.appendChild(d);
+      setTimeout(function () { d.remove(); }, 650);
+    });
+  });
+
+  // ── 7. Parallax auf Hero-Bild (nur Desktop, nur wenn Motion ok) ─
+  var mq = window.matchMedia('(min-width: 769px) and (prefers-reduced-motion: no-preference)');
+  if (mq.matches) {
+    var heroImg = document.querySelector('.hero-image img');
+    if (heroImg) {
+      heroImg.style.transform = 'translateY(0) scale(1.06)';
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(function () {
+            heroImg.style.transform = 'translateY(' + (window.scrollY * 0.12) + 'px) scale(1.06)';
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+  }
+
+})();
+</script>
 </body>
 </html>
