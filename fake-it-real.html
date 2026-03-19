@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fake it Real – KI Fotos verblüffend echt</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/consent.css">
+<style>
+  :root {
+    --orange:      #D8622A;
+    --orange-mid:  #E8894E;
+    --orange-pale: #F5CFA8;
+    --orange-deep: #B84E1E;
+    --warm-black:  #160C05;
+    --warm-dark:   #2A1608;
+    --warm-brown:  #472B18;
+    --mid-brown:   #6B4530;
+    --tan:         #A88960;
+    --sand:        #D0B896;
+    --beige:       #EDE4D7;
+    --cream:       #F6F0E6;
+    --off-white:   #FBF7F2;
+    --warm-gray:   #7A6A5A;
+    --mid-gray:    #BDB0A0;
+    --light-gray:  #D8CFC4;
+    --font-h:      'Cormorant', Georgia, serif;
+    --font-body:   'DM Sans', system-ui, sans-serif;
+    --font-ui:     'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--warm-black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── UTILITIES ── */
+  .label {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .label-muted {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--tan);
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: white;
+    border: 2px solid var(--orange);
+  }
+  .btn-primary:hover { background: var(--orange-deep); border-color: var(--orange-deep); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 2px solid var(--sand);
+  }
+  .btn-ghost:hover { border-color: var(--cream); }
+
+  /* ══════════════════════════════════
+     HERO
+  ══════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--warm-dark);
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 72px;
+  }
+  .hero-label {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange-mid);
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: var(--font-h);
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--orange-mid);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--sand);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 420px;
+  }
+  .hero-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .hero-tag {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    border: 1px solid var(--mid-brown);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+  .hero-image {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--warm-dark) 0%, transparent 30%);
+  }
+
+  /* ══════════════════════════════════
+     PROBLEM
+  ══════════════════════════════════ */
+  .problem {
+    background: var(--cream);
+    padding: 100px 40px;
+    text-align: center;
+  }
+  .problem-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .problem h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    color: var(--warm-dark);
+    line-height: 1.2;
+    margin: 16px 0 24px;
+  }
+  .problem-lead {
+    font-size: 17px;
+    color: var(--warm-gray);
+    margin-bottom: 48px;
+  }
+  .problem-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+  }
+  .pp {
+    padding: 28px 24px;
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    border-top: 3px solid var(--orange-pale);
+  }
+  .pp-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .pp strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--warm-dark);
+    margin-bottom: 6px;
+  }
+  .pp p {
+    font-size: 13.5px;
+    color: var(--warm-gray);
+  }
+
+  /* ══════════════════════════════════
+     PROOF
+  ══════════════════════════════════ */
+  .proof {
+    background: var(--beige);
+    padding: 100px 40px;
+  }
+  .proof-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .proof-image {
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(22,12,5,0.18);
+    aspect-ratio: 3/4;
+  }
+  .proof-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .proof-text .label { margin-bottom: 16px; display: block; }
+  .proof-text h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--warm-dark);
+    margin-bottom: 20px;
+  }
+  .proof-text h2 em { font-style: italic; color: var(--orange); }
+  .proof-text p {
+    font-size: 16px;
+    color: var(--warm-gray);
+    margin-bottom: 16px;
+  }
+  .proof-badge {
+    display: inline-block;
+    margin-top: 8px;
+    background: var(--warm-dark);
+    color: var(--sand);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 2px;
+  }
+
+  /* ══════════════════════════════════
+     GALLERY (2 Fotos als Beweis)
+  ══════════════════════════════════ */
+  .gallery {
+    background: var(--warm-dark);
+    padding: 80px 40px;
+  }
+  .gallery-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .gallery-header .label { margin-bottom: 12px; display: block; }
+  .gallery-header p {
+    font-family: var(--font-h);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: var(--sand);
+    font-weight: 300;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .gallery-item {
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s;
+  }
+  .gallery-item:hover img { transform: scale(1.02); }
+
+  /* ══════════════════════════════════
+     KURS-INHALT
+  ══════════════════════════════════ */
+  .content {
+    background: var(--cream);
+    padding: 100px 40px;
+  }
+  .content-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .content-header { text-align: center; margin-bottom: 56px; }
+  .content-header .label { margin-bottom: 14px; display: block; }
+  .content-header h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    color: var(--warm-dark);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .content-header p {
+    font-size: 16px;
+    color: var(--warm-gray);
+  }
+  .modules {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .module {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 0;
+    align-items: center;
+    background: var(--off-white);
+    padding: 22px 28px;
+  }
+  .module:hover { background: var(--beige); }
+  .mod-num {
+    font-family: var(--font-h);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--orange-pale);
+    line-height: 1;
+  }
+  .mod-body strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--warm-dark);
+    margin-bottom: 3px;
+  }
+  .mod-body span {
+    font-size: 13px;
+    color: var(--warm-gray);
+  }
+  .mod-time {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--mid-gray);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Bonus */
+  .bonus-box {
+    background: var(--warm-dark);
+    border-radius: 4px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bonus-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--orange);
+  }
+  .bonus-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+  .bonus-text .label { color: var(--orange-mid); margin-bottom: 6px; display: block; }
+  .bonus-text strong {
+    display: block;
+    font-family: var(--font-h);
+    font-size: 1.4rem;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .bonus-text p {
+    font-size: 14px;
+    color: var(--sand);
+  }
+
+  /* ══════════════════════════════════
+     FOR WHO
+  ══════════════════════════════════ */
+  .forwho {
+    background: var(--beige);
+    padding: 80px 40px;
+  }
+  .forwho-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .forwho-inner .label { margin-bottom: 14px; display: block; }
+  .forwho-inner h2 {
+    font-family: var(--font-h);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: var(--warm-dark);
+    margin-bottom: 40px;
+  }
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    text-align: left;
+  }
+  .fw-item {
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .fw-check {
+    width: 22px;
+    height: 22px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .fw-check::after {
+    content: '';
+    width: 8px;
+    height: 5px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg) translate(1px, -1px);
+  }
+  .fw-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--warm-dark);
+    margin-bottom: 4px;
+  }
+  .fw-text p {
+    font-size: 13px;
+    color: var(--warm-gray);
+  }
+
+  /* ══════════════════════════════════
+     PRICING
+  ══════════════════════════════════ */
+  .pricing {
+    background: var(--cream);
+    padding: 100px 40px;
+  }
+  .pricing-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .pricing-header { text-align: center; margin-bottom: 48px; }
+  .pricing-header .label { margin-bottom: 14px; display: block; }
+  .pricing-header h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    color: var(--warm-dark);
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .price-card {
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: 36px 28px;
+    background: var(--off-white);
+  }
+  .price-card.featured {
+    background: var(--warm-dark);
+    border-color: var(--orange);
+    position: relative;
+  }
+  .price-card.featured::before {
+    content: 'Empfohlen';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange);
+    color: white;
+    font-family: var(--font-ui);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .price-seg {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 10px;
+  }
+  .price-card.featured .price-seg { color: var(--orange-mid); }
+  .price-who {
+    font-family: var(--font-h);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--warm-dark);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .price-card.featured .price-who { color: var(--cream); }
+  .price-voucher {
+    font-size: 12.5px;
+    color: var(--warm-gray);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .price-card.featured .price-voucher {
+    color: var(--sand);
+    border-color: var(--mid-brown);
+  }
+  .price-amount {
+    font-family: var(--font-h);
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .price-amount span {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--warm-gray);
+    font-weight: 400;
+  }
+  .price-card.featured .price-amount span { color: var(--sand); }
+  .price-cta {
+    margin-top: 24px;
+    display: block;
+    text-align: center;
+  }
+  .price-card:not(.featured) .price-cta a {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 2px;
+  }
+  .price-card.featured .price-cta a {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 2px;
+  }
+  .pricing-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--warm-gray);
+    margin-top: 8px;
+  }
+
+  /* ══════════════════════════════════
+     ABOUT (Hanna)
+  ══════════════════════════════════ */
+  .about {
+    background: var(--warm-dark);
+    padding: 100px 40px;
+  }
+  .about-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .about-image {
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.3);
+  }
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .about-text .label { color: var(--orange-mid); margin-bottom: 16px; display: block; }
+  .about-text h2 {
+    font-family: var(--font-h);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .about-text h2 em { font-style: italic; color: var(--orange-mid); }
+  .about-text p {
+    font-size: 15.5px;
+    color: var(--sand);
+    margin-bottom: 16px;
+    line-height: 1.75;
+  }
+  .about-stat {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--mid-brown);
+  }
+  .stat-item strong {
+    display: block;
+    font-family: var(--font-h);
+    font-size: 2rem;
+    color: var(--orange-mid);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-item span {
+    font-size: 12px;
+    color: var(--tan);
+    font-family: var(--font-ui);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════
+     FINAL CTA
+  ══════════════════════════════════ */
+  .final-cta {
+    background: var(--warm-black);
+    padding: 100px 40px;
+    text-align: center;
+  }
+  .final-cta .label { color: var(--orange-mid); margin-bottom: 20px; display: block; }
+  .final-cta h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .final-cta h2 em { font-style: italic; color: var(--orange-mid); }
+  .final-cta p {
+    font-size: 16px;
+    color: var(--sand);
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .final-price-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .fpd-main {
+    font-family: var(--font-h);
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .fpd-sub {
+    font-size: 14px;
+    color: var(--tan);
+    font-family: var(--font-ui);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .final-note {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--mid-gray);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-image { height: 60vw; }
+    .hero-image-overlay { background: linear-gradient(to top, var(--warm-dark) 0%, transparent 50%); }
+    .hero-content { padding: 60px 28px; order: 2; }
+    .proof-inner { grid-template-columns: 1fr; gap: 40px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .problem-points { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-image { aspect-ratio: 4/3; }
+    .forwho-grid { grid-template-columns: 1fr; }
+    .module { grid-template-columns: 48px 1fr; }
+    .mod-time { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Fake it Real · Videokurs · 6 Videos · Freepik · ab 19 €</div>
+    <div style="font-family: var(--font-h); font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 500; color: var(--orange-mid); letter-spacing: 1px; margin-bottom: 12px;">„Fake it Real"</div>
+    <h1>KI-Fotos,<br>die <em>echt<br>aussehen.</em></h1>
+    <div style="font-family: var(--font-ui); font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); margin-top: -12px; margin-bottom: 24px;">KI Fotos verblüffend echt</div>
+    <p class="hero-sub">
+      In weniger als 2 Stunden zu professionellen Bildern in Fotoshooting-Qualität. Ohne Fotograf, ohne Budget, ohne Technik-Vorwissen.
+    </p>
+    <div class="hero-tags">
+      <div class="hero-tag">Für Anfänger</div>
+      <div class="hero-tag">6 Videos à 5–10 Min.</div>
+      <div class="hero-tag">6 Prompt-Vorlagen</div>
+    </div>
+    <a href="#pricing" class="btn btn-primary">Jetzt für 49 € kaufen</a>
+  </div>
+  <div class="hero-image">
+    <img src="Photos Hanna/5292012897317884903.jpg" alt="Hanna – KI-generiertes Foto">
+    <div class="hero-image-overlay"></div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ══ -->
+<section class="problem">
+  <div class="problem-inner">
+    <div class="label">Das Problem</div>
+    <h2>KI-Fotos sehen meist sofort nach KI aus.</h2>
+    <p class="problem-lead">
+      Du hast ChatGPT, Midjourney oder andere Tools ausprobiert und das Ergebnis war enttäuschend? Das liegt nicht am Tool. Es liegt am Workflow.
+    </p>
+    <div class="problem-points">
+      <div class="pp">
+        <div class="pp-icon">📷</div>
+        <strong>Falsches Ausgangsmaterial</strong>
+        <p>Die meisten laden einfach irgendein Selfie hoch. Die KI hat dann keine Chance.</p>
+      </div>
+      <div class="pp">
+        <div class="pp-icon">✏️</div>
+        <strong>Generische Prompts</strong>
+        <p>„Professional portrait" reicht nicht. Ohne die richtigen Anweisungen bleibt das Ergebnis austauschbar.</p>
+      </div>
+      <div class="pp">
+        <div class="pp-icon">🔧</div>
+        <strong>Kein System</strong>
+        <p>Wer kein Schritt-für-Schritt-Verfahren hat, probiert sich durch und gibt nach 20 Minuten auf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROOF ══ -->
+<section class="proof">
+  <div class="proof-inner">
+    <div class="proof-image">
+      <img src="Photos Hanna/5292012897317884898.jpg" alt="Hanna – KI-Foto Business-Look">
+    </div>
+    <div class="proof-text">
+      <span class="label">Beweis</span>
+      <h2>Dieses Foto<br>ist <em>KI-generiert.</em></h2>
+      <p>
+        Was du siehst, ist kein Fotoshooting. Kein Fotograf, kein Studio, kein Studiotermin. Es wurde mit einem einfachen Tool, dem richtigen Workflow und einem guten Prompt erstellt.
+      </p>
+      <p>
+        Genau das lernst du in diesem Kurs. Schritt für Schritt, von Grund auf, auch wenn du KI noch nie verwendet hast.
+      </p>
+      <div class="proof-badge">Erstellt mit Freepik · kein Fotoshooting</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header">
+      <span class="label">Weitere Ergebnisse</span>
+      <p>„Jedes dieser Fotos entstand am Computer. Keines auf einem Fotoshooting."</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="Photos Hanna/5292012897317884904.jpg" alt="Hanna – KI-Foto Café">
+      </div>
+      <div class="gallery-item">
+        <img src="Photos Hanna/5292012897317884899.jpg" alt="Hanna – KI-Foto Editorial">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KURS-INHALT ══ -->
+<section class="content">
+  <div class="content-inner">
+    <div class="content-header">
+      <span class="label">Was du lernst</span>
+      <h2>6 Videos. Ein Ergebnis.</h2>
+      <p>Kein Theorie-Overload. Jedes Video hat einen klaren Job.</p>
+    </div>
+
+    <div class="modules">
+      <div class="module">
+        <div class="mod-num">01</div>
+        <div class="mod-body">
+          <strong>Warum KI-Fotos nach KI aussehen</strong>
+          <span>Die 3 häufigsten Fehler, die du ab heute nicht mehr machst. Plus: warum Freepik?</span>
+        </div>
+        <div class="mod-time">5–8 Min.</div>
+      </div>
+      <div class="module">
+        <div class="mod-num">02</div>
+        <div class="mod-body">
+          <strong>Freepik Setup &amp; der richtige Plan</strong>
+          <span>Account, Plan, Funktion. Nach diesem Video ist alles bereit.</span>
+        </div>
+        <div class="mod-time">5–7 Min.</div>
+      </div>
+      <div class="module">
+        <div class="mod-num">03</div>
+        <div class="mod-body">
+          <strong>Das Ausgangsmaterial (deine echten Fotos)</strong>
+          <span>Welche Fotos die KI braucht: Winkel, Licht, Auflösung. Der unsichtbare Hebel.</span>
+        </div>
+        <div class="mod-time">7–10 Min.</div>
+      </div>
+      <div class="module">
+        <div class="mod-num">04</div>
+        <div class="mod-body">
+          <strong>Der Workflow in Freepik (Live-Walkthrough)</strong>
+          <span>Referenzbild hochladen, Einstellungen, Stil wählen. Einmal nachmachen reicht.</span>
+        </div>
+        <div class="mod-time">8–10 Min.</div>
+      </div>
+      <div class="module">
+        <div class="mod-num">05</div>
+        <div class="mod-body">
+          <strong>Prompts die wirklich funktionieren</strong>
+          <span>Business-Look und Lifestyle-Look. Die fertigen Vorlagen sind im Kurs dabei.</span>
+        </div>
+        <div class="mod-time">7–9 Min.</div>
+      </div>
+      <div class="module">
+        <div class="mod-num">06</div>
+        <div class="mod-body">
+          <strong>Post-Processing + fertige Ergebnisse</strong>
+          <span>Die letzten Handgriffe. Output für Website, Instagram, LinkedIn, Pressefoto.</span>
+        </div>
+        <div class="mod-time">6–8 Min.</div>
+      </div>
+    </div>
+
+    <div class="bonus-box">
+      <div class="bonus-icon">🎁</div>
+      <div class="bonus-text">
+        <span class="label">Bonus inklusive</span>
+        <strong>6 fertige Prompt-Vorlagen als Download</strong>
+        <p>3 für Business (Website, LinkedIn, Pressefoto) &amp; 3 für Lifestyle (Instagram, Creator-Feed). Name anpassen, loslegen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOR WHO ══ -->
+<section class="forwho">
+  <div class="forwho-inner">
+    <span class="label">Für wen ist das?</span>
+    <h2>Für dich, wenn du professionelle Bilder brauchst (ohne 1.000 € für ein Fotoshooting).</h2>
+    <div class="forwho-grid">
+      <div class="fw-item">
+        <div class="fw-check"></div>
+        <div class="fw-text">
+          <strong>Selbstständige &amp; Unternehmer</strong>
+          <p>Für Website-Hero, LinkedIn-Profil oder Pressefotos. Endlich Bilder, die zur Positionierung passen.</p>
+        </div>
+      </div>
+      <div class="fw-item">
+        <div class="fw-check"></div>
+        <div class="fw-text">
+          <strong>Creator &amp; Personal Brands</strong>
+          <p>Immer frischer Content ohne Fotograf-Termin. Fotoshooting-Qualität auf Abruf.</p>
+        </div>
+      </div>
+      <div class="fw-item">
+        <div class="fw-check"></div>
+        <div class="fw-text">
+          <strong>KI-Einsteiger</strong>
+          <p>Du hast noch keine Erfahrung mit KI-Tools. Kein Problem. Dieser Kurs ist für Anfänger gebaut.</p>
+        </div>
+      </div>
+      <div class="fw-item">
+        <div class="fw-check"></div>
+        <div class="fw-text">
+          <strong>Alle, die KI-Bilder ausprobiert haben (und enttäuscht waren)</strong>
+          <p>Du weißt, wie schlechte KI-Fotos aussehen. Jetzt lernst du, wie gute entstehen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <span class="label">Preise</span>
+      <h2>Einmalig. Kein Abo. Sofort startklar.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-seg">Segment A</div>
+        <div class="price-who">KI-Website-Kurs Kunden</div>
+        <div class="price-voucher">30 € Gutschein aus deiner E-Mail</div>
+        <div class="price-amount">19 €<span> / einmalig</span></div>
+        <div class="price-cta"><a href="#">Zum Kurs</a></div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-seg">Segment B</div>
+        <div class="price-who">Bestands&shy;kunden anderer Produkte</div>
+        <div class="price-voucher">20 € Gutschein aus deiner E-Mail</div>
+        <div class="price-amount">29 €<span> / einmalig</span></div>
+        <div class="price-cta"><a href="#">Jetzt kaufen</a></div>
+      </div>
+      <div class="price-card">
+        <div class="price-seg">Segment C</div>
+        <div class="price-who">Alle anderen</div>
+        <div class="price-voucher">Normalpreis · kein Gutschein nötig</div>
+        <div class="price-amount">49 €<span> / einmalig</span></div>
+        <div class="price-cta"><a href="#">Zum Kurs</a></div>
+      </div>
+    </div>
+    <p class="pricing-note">Alle Preise inkl. MwSt. · einmalige Zahlung · dauerhafter Zugang · 6 Prompt-Vorlagen inklusive</p>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-image">
+      <img src="Photos Hanna/5292012897317884904.jpg" alt="Hanna Marzian">
+    </div>
+    <div class="about-text">
+      <span class="label">Über Hanna</span>
+      <h2>Von 0 auf 100k Follower. Mit <em>KI-Fotos,</em> die niemand als solche erkannt hat.</h2>
+      <p>
+        Hanna ist eine der bekanntesten KI-Unternehmerinnen im deutschsprachigen Raum. Mit über 100.000 Followern auf Instagram hat sie bewiesen, dass professionelle Bilder kein Fotoshooting brauchen.
+      </p>
+      <p>
+        Ihr Feed ist der Beweis. Alle Fotos, die du dort siehst: KI-generiert. Mit dem gleichen Workflow, den sie dir in diesem Kurs beibringt.
+      </p>
+      <div class="about-stat">
+        <div class="stat-item">
+          <strong>100k+</strong>
+          <span>Follower</span>
+        </div>
+        <div class="stat-item">
+          <strong>6</strong>
+          <span>Videos</span>
+        </div>
+        <div class="stat-item">
+          <strong>2h</strong>
+          <span>bis zum Ergebnis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="final-cta">
+  <span class="label">Fake it Real</span>
+  <h2>Kein Fotoshooting.<br><em>Trotzdem professionell.</em></h2>
+  <p>6 Videos, 6 Prompt-Vorlagen, sofortiger Zugang. Ab heute hast du Fotos, die zur Positionierung passen.</p>
+  <div class="final-price-display">
+    <div class="fpd-main">ab 19 €</div>
+    <div class="fpd-sub">einmalig · kein Abo</div>
+  </div>
+  <a href="#pricing" class="btn btn-primary">Jetzt kaufen</a>
+  <p class="final-note">Gutschein-Code? Einfach beim Checkout eingeben.</p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer style="background: var(--warm-black); padding: 28px 40px; text-align: center; border-top: 1px solid var(--warm-brown);">
+  <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; align-items: center;">
+    <span style="font-size:11px; color:rgba(246,240,230,0.35);">© 2026 Hanna Marzian</span>
+    <a href="/impressum.html" style="font-size:11px; color:rgba(246,240,230,0.35); text-decoration:none;">Impressum</a>
+    <a href="/datenschutz.html" style="font-size:11px; color:rgba(246,240,230,0.35); text-decoration:none;">Datenschutz</a>
+    <button id="consent-reopen">Cookie-Einstellungen</button>
+  </div>
+</footer>
+
+<script src="assets/consent.js"></script>
+</body>
+</html>
