@@ -741,20 +741,61 @@
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 800px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-image { height: 60vw; }
-    .hero-image-overlay { background: linear-gradient(to top, var(--warm-dark) 0%, transparent 50%); }
-    .hero-content { padding: 60px 28px; order: 2; }
-    .proof-inner { grid-template-columns: 1fr; gap: 40px; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; }
-    .problem-points { grid-template-columns: 1fr; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .about-inner { grid-template-columns: 1fr; }
+  @media (max-width: 768px) {
+
+    /* Hero */
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { height: 70vw; position: relative; order: 1; }
+    .hero-image img { position: absolute; inset: 0; }
+    .hero-image-overlay { background: linear-gradient(to bottom, transparent 60%, var(--warm-dark) 100%); }
+    .hero-content { padding: 36px 24px 48px; order: 2; }
+    .hero h1 { font-size: clamp(2.4rem, 9vw, 3.2rem); }
+    .hero-sub { font-size: 15px; max-width: 100%; }
+    .hero-tags { gap: 8px; }
+    .btn { width: 100%; text-align: center; padding: 16px 24px; }
+
+    /* Sektions-Paddings */
+    .problem { padding: 60px 24px; }
+    .proof { padding: 60px 24px; }
+    .gallery { padding: 60px 24px; }
+    .content { padding: 60px 24px; }
+    .pricing { padding: 60px 24px; }
+    .about { padding: 60px 24px; }
+    .final-cta { padding: 60px 24px; }
+
+    /* Problem */
+    .problem-points { grid-template-columns: 1fr; gap: 16px; }
+
+    /* Proof */
+    .proof-inner { grid-template-columns: 1fr; gap: 32px; }
+    .proof-image { aspect-ratio: 4/3; }
+
+    /* Gallery */
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item { aspect-ratio: 4/3; }
+
+    /* Was dich erwartet */
+    .erwartung-grid { grid-template-columns: 1fr !important; }
+    .erwartung-grid > div[style*="grid-column"] { grid-column: span 1 !important; }
+
+    /* Bonus */
+    .bonus-box { flex-direction: column; gap: 16px; padding: 24px; }
+
+    /* Perfekt geeignet für */
+    .perfekt-grid { grid-template-columns: 1fr !important; }
+
+    /* Pricing */
+    .price-card.featured { margin-top: 12px; }
+    .price-card.featured .price-cta a { width: 100%; display: block; text-align: center; padding: 14px; }
+
+    /* About */
+    .about-inner { grid-template-columns: 1fr; gap: 36px; }
     .about-image { aspect-ratio: 4/3; }
-    .forwho-grid { grid-template-columns: 1fr; }
-    .module { grid-template-columns: 48px 1fr; }
-    .mod-time { display: none; }
+    .about-stat { flex-wrap: wrap; gap: 20px; }
+
+    /* Final CTA */
+    .fpd-main { font-size: 3rem; }
+    .final-cta .btn { display: block; width: 100%; max-width: 360px; margin: 0 auto; }
   }
 </style>
 </head>
@@ -817,7 +858,7 @@
       <div class="label" style="margin-bottom: 14px; display: block;">Zielgruppe</div>
       <h2 style="font-family: var(--font-h); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; color: var(--cream); line-height: 1.2;">Perfekt geeignet für&nbsp;…</h2>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+    <div class="perfekt-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
       <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(216,98,42,0.2); border-radius: 4px; padding: 28px 24px;">
         <div style="font-size: 28px; margin-bottom: 14px;">💼</div>
         <strong style="display: block; font-family: var(--font-h); font-size: 1.2rem; color: var(--cream); margin-bottom: 8px;">Selbstständige</strong>
@@ -898,7 +939,7 @@
       <h2>Nach dem Kurs hast du Bilder, die wirken.</h2>
       <p>Kurze Videos. Direkt umsetzbar. Kein Vorwissen nötig.</p>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px;">
+    <div class="erwartung-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px;">
       <div style="display: flex; gap: 16px; align-items: flex-start; background: var(--off-white); border: 1px solid var(--light-gray); border-radius: 4px; padding: 24px;">
         <div style="width: 36px; height: 36px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; font-size: 16px;">✓</div>
         <div>
