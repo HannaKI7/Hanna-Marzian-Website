@@ -975,6 +975,111 @@
     /* Final CTA */
     .fpd-main { font-size: 3rem; }
     .final-cta .btn { display: block; width: 100%; max-width: 360px; margin: 0 auto; }
+
+    /* Was du lernst – Mobile */
+    .lernst-line { left: 28px; top: 80px; bottom: 80px; }
+    .lernst-item { grid-template-columns: 56px 1fr; gap: 20px; padding: 32px 0; }
+    .lernst-num { font-size: 2.6rem; }
+  }
+
+  /* ══════════════════════════════════
+     WAS DU LERNST
+  ══════════════════════════════════ */
+  .lernst {
+    background: var(--off-white);
+    padding: 100px 40px;
+  }
+  .lernst-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .lernst-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .lernst-header .label { margin-bottom: 14px; display: block; }
+  .lernst-header h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    color: var(--warm-dark);
+    line-height: 1.2;
+  }
+  .lernst-track {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .lernst-line {
+    position: absolute;
+    left: 40px;
+    top: 64px;
+    bottom: 64px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--orange), var(--orange-pale) 70%, transparent);
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+    pointer-events: none;
+  }
+  .lernst-line.drawn { transform: scaleY(1); }
+  .lernst-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 36px;
+    align-items: flex-start;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--light-gray);
+    transition: transform 0.3s ease;
+  }
+  .lernst-item:last-child { border-bottom: none; }
+  .lernst-item:hover { transform: translateX(6px); }
+  .lernst-num {
+    font-family: var(--font-h);
+    font-size: 3.8rem;
+    font-weight: 300;
+    color: var(--orange);
+    line-height: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background: var(--off-white);
+    padding: 6px 0;
+  }
+  .lernst-card { padding-top: 6px; }
+  .lernst-tag {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lernst-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+  .lernst-card h3 {
+    font-family: var(--font-h);
+    font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+    font-weight: 400;
+    color: var(--warm-dark);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .lernst-card h3 em { font-style: italic; color: var(--orange); }
+  .lernst-card p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    line-height: 1.75;
   }
 </style>
 </head>
@@ -993,7 +1098,7 @@
       <div class="hero-tag">Sofort umsetzbar</div>
       <div class="hero-tag">Prompt-Vorlagen inklusive</div>
     </div>
-    <a href="#pricing" class="btn btn-primary" style="margin-top: 20px; display: inline-block;">Jetzt für 49 € kaufen</a>
+    <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary" style="margin-top: 20px; display: inline-block;">Jetzt für 29 € kaufen</a>
   </div>
   <div class="hero-image">
     <img src="Photos Hanna/5292012897317884903.jpg" alt="Hanna – KI-generiertes Foto">
@@ -1025,6 +1130,46 @@
         <strong>Kein System</strong>
         <p>Wer kein Schritt-für-Schritt-Verfahren hat, probiert sich durch und gibt nach 20 Minuten auf.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WAS DU LERNST ══ -->
+<section class="lernst">
+  <div class="lernst-inner">
+    <div class="lernst-header">
+      <div class="label">Was du lernst</div>
+      <h2>Das erwartet dich im Kurs</h2>
+    </div>
+    <div class="lernst-track" id="lernstTrack">
+      <div class="lernst-line" id="lernstLine"></div>
+      <div class="lernst-item">
+        <div class="lernst-num">01</div>
+        <div class="lernst-card">
+          <div class="lernst-tag">Kein Shooting mehr</div>
+          <h3>Professionelle Fotos in <em>unter 30 Minuten.</em></h3>
+          <p>Du brauchst ständig frische Bilder für deine Social Media Kanäle, willst aber nicht jedes Mal ein teures Shooting bezahlen? Du lernst Schritt für Schritt, wie du dir selbst hochwertige Fotos erstellst, die nach einem echten Professional Shooting aussehen.</p>
+        </div>
+      </div>
+      <div class="lernst-item">
+        <div class="lernst-num">02</div>
+        <div class="lernst-card">
+          <div class="lernst-tag">Bestehende Fotos retten</div>
+          <h3>Deine alten Bilder, <em>dein neues Branding.</em></h3>
+          <p>Du hast haufenweise Fotos von dir, aber sie passen nicht mehr zu deinem aktuellen Brand Design? Kein Problem. Du lernst, wie du bestehende Fotos gezielt anpasst (z. B. Kleidung, Hintergrund, Farbton), damit sie nahtlos in deinen neuen Stil passen.</p>
+        </div>
+      </div>
+      <div class="lernst-item">
+        <div class="lernst-num">03</div>
+        <div class="lernst-card">
+          <div class="lernst-tag">Branding-perfekte Visuals</div>
+          <h3>Hintergründe und Vibes, die <em>wirklich zu dir passen.</em></h3>
+          <p>Unabhängig von dir als Person willst du visuelle Stimmungen, Hintergründe und Looks, die exakt auf dein Branding abgestimmt sind? Du lernst, wie du Bilder erschaffst, die deinen Brand auf den ersten Blick erkennbar machen.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 56px;">
+      <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary">Jetzt für 29 € kaufen</a>
     </div>
   </div>
 </section>
@@ -1168,8 +1313,8 @@
     </div>
     <div style="max-width: 400px; margin: 0 auto;">
       <div class="price-card featured" style="text-align: center;">
-        <div class="price-amount">49 €<span> / einmalig</span></div>
-        <div class="price-cta" style="margin-top: 24px;"><a href="#">Jetzt kaufen</a></div>
+        <div class="price-amount">29 €<span> / einmalig</span></div>
+        <div class="price-cta" style="margin-top: 24px;"><a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt">Jetzt kaufen</a></div>
       </div>
     </div>
     <p class="pricing-note">Inkl. MwSt. · einmalige Zahlung · dauerhafter Zugang · Prompt-Vorlagen inklusive</p>
@@ -1219,10 +1364,10 @@
   <h2>Kein Fotoshooting.<br><em>Trotzdem professionell.</em></h2>
   <p>Sofortiger Zugang. Ab heute hast du Fotos, die zur Positionierung passen.</p>
   <div class="final-price-display">
-    <div class="fpd-main">49 €</div>
+    <div class="fpd-main">29 €</div>
     <div class="fpd-sub">einmalig · kein Abo</div>
   </div>
-  <a href="#pricing" class="btn btn-primary">Jetzt kaufen</a>
+  <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary">Jetzt kaufen</a>
 </section>
 
 <!-- ══ FOOTER ══ -->
@@ -1281,6 +1426,7 @@
   // Einfache fadeUp-Reveals für Section-Headlines
   var simpleReveal = [
     '.problem-inner > .label', '.problem h2', '.problem-lead',
+    '.lernst-header',
     '.gallery-header',
     '.content-header',
     '.forwho-inner > .label', '.forwho-inner > h2',
@@ -1307,6 +1453,7 @@
 
   // Gestaffelte Gruppen (Geschwister mit Delay)
   var staggerGroups = [
+    '.lernst-track .lernst-item',
     '.problem-points .pp',
     '.gallery-grid .gallery-item',
     '.modules .module',
@@ -1326,6 +1473,21 @@
     el.classList.add('reveal', 'scale-in');
     if (i > 0) el.dataset.delay = String(i);
   });
+
+  // ── 4a. Lernst-Linie: zeichnet sich beim Einscrollen ───────────
+  var lernstLine = document.getElementById('lernstLine');
+  if (lernstLine) {
+    var lineIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // kurze Verzögerung, damit die Karten zuerst erscheinen
+          setTimeout(function () { lernstLine.classList.add('drawn'); }, 200);
+          lineIo.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    lineIo.observe(document.getElementById('lernstTrack'));
+  }
 
   // ── 4. IntersectionObserver – Reveals auslösen ─────────────────
   var io = new IntersectionObserver(function (entries) {
