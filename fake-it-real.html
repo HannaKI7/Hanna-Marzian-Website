@@ -1081,6 +1081,91 @@
     color: var(--warm-gray);
     line-height: 1.75;
   }
+
+  /* ── Early Rabbit / Countdown ── */
+  .early-rabbit-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(216,98,42,0.12);
+    border: 1px solid rgba(216,98,42,0.35);
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--warm-dark);
+  }
+  .early-rabbit-bar .erb-old {
+    text-decoration: line-through;
+    color: var(--warm-gray);
+    font-size: 11px;
+  }
+  .early-rabbit-bar .erb-new {
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 15px;
+  }
+  .hero-countdown {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .cd-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--warm-dark);
+    border-radius: 4px;
+    padding: 8px 14px;
+    min-width: 52px;
+  }
+  .cd-block span {
+    font-family: var(--font-h);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .cd-block small {
+    font-family: var(--font-ui);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-top: 4px;
+  }
+  .price-old-strike {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--warm-gray);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .price-early-label {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .fpd-old {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: rgba(246,240,230,0.4);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .fpd-early {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--orange-mid);
+    margin-bottom: 8px;
+  }
 </style>
 </head>
 <body>
@@ -1098,7 +1183,19 @@
       <div class="hero-tag">Sofort umsetzbar</div>
       <div class="hero-tag">Prompt-Vorlagen inklusive</div>
     </div>
-    <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary" style="margin-top: 20px; display: inline-block;">Jetzt für 29 € kaufen</a>
+    <div class="early-rabbit-bar">
+      <span class="erb-old">Normalpreis 49 €</span>
+      <span>·</span>
+      <span class="erb-new">29 €</span>
+      <span>Early Rabbit Special bis 05.04.</span>
+    </div>
+    <div class="hero-countdown">
+      <div class="cd-block"><span id="cd-days">--</span><small>Tage</small></div>
+      <div class="cd-block"><span id="cd-hours">--</span><small>Std</small></div>
+      <div class="cd-block"><span id="cd-mins">--</span><small>Min</small></div>
+      <div class="cd-block"><span id="cd-secs">--</span><small>Sek</small></div>
+    </div>
+    <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary" style="margin-top: 0; display: inline-block;">Jetzt für 29 € kaufen</a>
   </div>
   <div class="hero-image">
     <img src="Photos Hanna/5292012897317884903.jpg" alt="Hanna – KI-generiertes Foto">
@@ -1313,6 +1410,8 @@
     </div>
     <div style="max-width: 400px; margin: 0 auto;">
       <div class="price-card featured" style="text-align: center;">
+        <div class="price-early-label">Early Rabbit Special bis 05.04.</div>
+        <div class="price-old-strike" style="color: rgba(246,240,230,0.4);">Normalpreis 49 €</div>
         <div class="price-amount">29 €<span> / einmalig</span></div>
         <div class="price-cta" style="margin-top: 24px;"><a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt">Jetzt kaufen</a></div>
       </div>
@@ -1363,7 +1462,9 @@
   <span class="label">Fake it Real</span>
   <h2>Kein Fotoshooting.<br><em>Trotzdem professionell.</em></h2>
   <p>Sofortiger Zugang. Ab heute hast du Fotos, die zur Positionierung passen.</p>
-  <div class="final-price-display">
+  <div class="final-price-display" style="flex-direction: column; align-items: center;">
+    <div class="fpd-early">Early Rabbit Special bis 05.04.</div>
+    <div class="fpd-old">Normalpreis 49 €</div>
     <div class="fpd-main">29 €</div>
     <div class="fpd-sub">einmalig · kein Abo</div>
   </div>
@@ -1556,6 +1657,30 @@
     }
   }
 
+})();
+
+// ── Countdown bis 05.04.2026 ─────────────────────────────────────
+(function () {
+  var deadline = new Date('2026-04-06T00:00:00');
+  var days  = document.getElementById('cd-days');
+  var hours = document.getElementById('cd-hours');
+  var mins  = document.getElementById('cd-mins');
+  var secs  = document.getElementById('cd-secs');
+  if (!days) return;
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var diff = deadline - Date.now();
+    if (diff <= 0) {
+      days.textContent = hours.textContent = mins.textContent = secs.textContent = '00';
+      return;
+    }
+    days.textContent  = pad(Math.floor(diff / 86400000));
+    hours.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    mins.textContent  = pad(Math.floor((diff % 3600000)  / 60000));
+    secs.textContent  = pad(Math.floor((diff % 60000)    / 1000));
+  }
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 </body>
