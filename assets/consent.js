@@ -77,14 +77,12 @@
     banner.id = 'consent-banner';
     banner.innerHTML = `
       <p>
-        Diese Website verwendet Cookies. Notwendige Cookies sind immer aktiv.
-        Mit deiner Zustimmung setzen wir Google Analytics ein, um zu verstehen, wie Besucher die Seite nutzen.
-        Mehr dazu in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
+        Wir nutzen Cookies &amp; Google Analytics. Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
       </p>
       <div class="consent-actions">
         <button class="consent-btn-settings" id="cb-settings">Einstellungen</button>
-        <button class="consent-btn-decline"  id="cb-decline">Nur notwendige</button>
-        <button class="consent-btn-accept"   id="cb-accept">Alle akzeptieren</button>
+        <button class="consent-btn-decline"  id="cb-decline">Ablehnen</button>
+        <button class="consent-btn-accept"   id="cb-accept">OK</button>
       </div>
     `;
 
