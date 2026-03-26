@@ -976,6 +976,15 @@
     .fpd-main { font-size: 3rem; }
     .final-cta .btn { display: block; width: 100%; max-width: 360px; margin: 0 auto; }
 
+    /* Early Rabbit + Countdown */
+    .early-rabbit-bar { flex-wrap: wrap; gap: 8px; }
+    .early-rabbit-bar .erb-old { font-size: 14px; }
+    .early-rabbit-bar .erb-new { font-size: 20px; }
+    .hero-countdown { gap: 8px; }
+    .cd-block { padding: 8px 10px; min-width: 44px; }
+    .cd-block span { font-size: 1.4rem; }
+    .cd-block small { font-size: 8px; }
+
     /* Was du lernst – Mobile */
     .lernst-line { left: 28px; top: 80px; bottom: 80px; }
     .lernst-item { grid-template-columns: 56px 1fr; gap: 20px; padding: 32px 0; }
@@ -1179,11 +1188,10 @@
       <div class="hero-tag">Sofort umsetzbar</div>
       <div class="hero-tag">Prompt-Vorlagen inklusive</div>
     </div>
-    <div class="early-rabbit-bar">
+    <div class="early-rabbit-bar" style="flex-direction: column; align-items: flex-start; gap: 4px;">
       <span class="erb-old">Normalpreis 49 €</span>
-      <span>·</span>
-      <span class="erb-new">29 €</span>
-      <span>Early Rabbit Special bis 05.04.</span>
+      <span class="erb-new">🐰 Price: 29 €</span>
+      <span style="font-size: 12px;">Early Rabbit Preis bis 02.04.26 – ab 03.04. kostet es 49 €</span>
     </div>
     <div class="hero-countdown">
       <div class="cd-block"><span id="cd-days">--</span><small>Tage</small></div>
@@ -1191,7 +1199,8 @@
       <div class="cd-block"><span id="cd-mins">--</span><small>Min</small></div>
       <div class="cd-block"><span id="cd-secs">--</span><small>Sek</small></div>
     </div>
-    <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary" style="margin-top: 0; display: inline-block;">Jetzt für 29 € kaufen</a>
+    <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary" style="margin-top: 0; display: inline-block;">Jetzt für <s style="opacity:0.6;">49€</s> 29€ sichern!</a>
+    <div style="margin-top: 10px; font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.5px; color: var(--tan);">🐰 Early Rabbit Preis gilt bis 02.04.26 · Inhalte freigeschaltet ab 08.04.26</div>
   </div>
   <div class="hero-image">
     <img src="Photos Hanna/5292012897317884903.jpg" alt="Hanna – KI-generiertes Foto">
@@ -1262,7 +1271,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 56px;">
-      <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary">Jetzt für 29 € kaufen</a>
+      <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary">Jetzt für <s style="opacity:0.6;">49€</s> 29€ sichern!</a>
     </div>
   </div>
 </section>
@@ -1402,18 +1411,19 @@
   <div class="pricing-inner">
     <div class="pricing-header">
       <span class="label">Preise</span>
-      <h2>Einmalig. Kein Abo. Sofort startklar.</h2>
+      <h2>Einmalig. Sofort startklar.</h2>
     </div>
     <div style="max-width: 400px; margin: 0 auto;">
       <div class="price-card featured" style="text-align: center;">
-        <div class="price-early-label">Early Rabbit Special bis 05.04.</div>
-        <div class="price-old-strike" style="color: rgba(246,240,230,0.4);">Normalpreis 49 €</div>
+        <div class="price-early-label">Early Rabbit Preis bis 02.04.26</div>
         <div class="price-amount">29 €<span> / einmalig</span></div>
-        <div class="price-cta" style="margin-top: 24px;"><a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt">Jetzt kaufen</a></div>
+        <div style="font-family: var(--font-ui); font-size: 11px; color: var(--sand); margin-top: 6px; margin-bottom: 4px;">Ab 03.04. · 49 €</div>
+        <div class="price-cta" style="margin-top: 20px;"><a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt">Jetzt für <s style="opacity:0.6;">49€</s> 29€ sichern!</a></div>
       </div>
     </div>
     <p class="pricing-note">Inkl. MwSt. · einmalige Zahlung · dauerhafter Zugang · Prompt-Vorlagen inklusive</p>
-    <p style="text-align: center; font-size: 12px; color: var(--warm-gray); margin-top: 12px;">Hinweis: Für die Umsetzung der Inhalte fallen monatlich 6–8 € / Monat an für das KI Tool (monatlich kündbar).</p>
+    <p style="text-align: center; font-size: 12px; color: var(--warm-gray); margin-top: 8px;">Freischaltung der Inhalte: 08.04.2026</p>
+    <p style="text-align: center; font-size: 12px; color: var(--warm-gray); margin-top: 8px;">Hinweis: Für die Umsetzung der Inhalte fallen monatlich 6–8 € / Monat an für das KI Tool (monatlich kündbar).</p>
   </div>
 </section>
 
@@ -1459,10 +1469,9 @@
   <h2>Kein Fotoshooting.<br><em>Trotzdem professionell.</em></h2>
   <p>Sofortiger Zugang. Ab heute hast du Fotos, die zur Positionierung passen.</p>
   <div class="final-price-display" style="flex-direction: column; align-items: center;">
-    <div class="fpd-early">Early Rabbit Special bis 05.04.</div>
-    <div class="fpd-old">Normalpreis 49 €</div>
+    <div class="fpd-early">Early Rabbit Preis bis 02.04.26 · ab 03.04. kostet es 49 €</div>
     <div class="fpd-main">29 €</div>
-    <div class="fpd-sub">einmalig · kein Abo</div>
+    <div class="fpd-sub">einmalig</div>
   </div>
   <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary">Jetzt kaufen</a>
 </section>
@@ -1657,7 +1666,7 @@
 
 // ── Countdown bis 05.04.2026 ─────────────────────────────────────
 (function () {
-  var deadline = new Date('2026-04-06T00:00:00');
+  var deadline = new Date('2026-04-03T00:00:00');
   var days  = document.getElementById('cd-days');
   var hours = document.getElementById('cd-hours');
   var mins  = document.getElementById('cd-mins');
