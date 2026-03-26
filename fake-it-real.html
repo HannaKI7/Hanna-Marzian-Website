@@ -30,13 +30,14 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   body {
     background: var(--cream);
     color: var(--warm-black);
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.7;
+    overflow-x: hidden;
   }
 
   /* ── UTILITIES ── */
@@ -1187,7 +1188,7 @@
       <div class="hero-tag">Für Anfänger</div>
       <div class="hero-tag">Sofort umsetzbar</div>
     </div>
-    <div class="early-rabbit-bar" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+    <div class="early-rabbit-bar" style="flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 12px;">
       <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
         <span class="erb-old">Normalpreis 49 €</span>
         <span class="erb-new">🐰 Price: 29 €</span>
