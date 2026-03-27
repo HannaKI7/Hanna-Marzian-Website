@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KI Website Kurs – VSL</title>
+  <title>KI Website Kurs – Warteliste Pitch</title>
 
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="assets/consent.css">
@@ -296,6 +296,102 @@
 
     /* ── Divider rule ────────────────────────── */
     .rule { width: 100%; height: 1px; background: rgba(216,98,42,0.12); margin: 28px 0; }
+
+    /* Testimonials CTA slide */
+    .slide.testi-cta { overflow: hidden; }
+
+    /* ── Testimonial Marquee Slide ───────────── */
+    .testi-slide {
+      padding: 0 !important;
+      justify-content: flex-start !important;
+      overflow: hidden !important;
+      flex-direction: column !important;
+      gap: 0;
+    }
+
+    /* Top bar */
+    .testi-bar {
+      width: 100%;
+      padding: 20px 52px 16px;
+      border-bottom: 1px solid rgba(216,98,42,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+    .testi-bar-left { display: flex; align-items: center; gap: 16px; }
+    .testi-bar-label { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+    .testi-bar-rule  { width: 40px; height: 1px; background: var(--gold); opacity: 0.35; }
+    .testi-bar-sub   { font-size: 11px; font-weight: 400; letter-spacing: 0.5px; color: var(--gray); }
+    .testi-bar-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(216,98,42,0.07); border: 1px solid rgba(216,98,42,0.22);
+      padding: 6px 16px; font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .testi-bar-badge .dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+    /* Row wrapper */
+    .marquee-row {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(216,98,42,0.07);
+    }
+    .marquee-row:last-child { border-bottom: none; }
+
+    .marquee-row-label {
+      padding: 8px 52px 5px;
+      font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gray); opacity: 0.65; flex-shrink: 0;
+    }
+
+    /* Overflow clip */
+    .marquee-wrap {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Pause on hover over the whole row area */
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+    /* Scrolling track */
+    .marquee-track {
+      display: flex;
+      gap: 6px;
+      height: 100%;
+      align-items: stretch;
+      width: max-content;
+      will-change: transform;
+    }
+    .marquee-track--fwd { animation: mq-fwd 38s linear infinite; }
+    .marquee-track--mid { animation: mq-fwd 50s linear infinite; }
+
+    @keyframes mq-fwd {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Individual images */
+    .marquee-img {
+      height: 100%;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+      border-top: 2px solid rgba(216,98,42,0.18);
+      border-left: 1px solid rgba(216,98,42,0.07);
+      border-right: 1px solid rgba(216,98,42,0.07);
+      border-bottom: 1px solid rgba(216,98,42,0.07);
+      object-fit: contain;
+      object-position: top;
+      cursor: default;
+      transition: border-top-color 0.2s;
+    }
+    .marquee-img:hover { border-top-color: var(--gold); }
   </style>
 </head>
 <body>
@@ -306,7 +402,7 @@
   <button class="nav-btn nav-next" id="btnNext" aria-label="Weiter">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
-  <div id="slide-counter">1 / 9</div>
+  <div id="slide-counter">1 / 11</div>
   <div id="progress"></div>
 
 
@@ -352,7 +448,7 @@
           color:var(--gold);
         ">
           <span style="width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 1.4s ease-in-out infinite;"></span>
-          KI Website Workshop
+          Warteliste · Erster Zugang
         </div>
 
         <!-- Headline -->
@@ -387,7 +483,6 @@
 
     <!-- ════════════════════════════════════════
          SLIDE 2 – DIE ALTE REALITÄT
-         Kurz. Ehrlich. Der Lead nickt.
     ════════════════════════════════════════ -->
     <section class="slide bg-white" id="s2">
       <div class="glow" style="width:600px;height:600px;top:-150px;left:-150px;"></div>
@@ -420,7 +515,6 @@
 
     <!-- ════════════════════════════════════════
          SLIDE 3 – DIE WENDE · AHA #1
-         KI ist kein Chatbot mehr.
     ════════════════════════════════════════ -->
     <section class="slide bg-cream" id="s3">
       <div class="glow" style="width:800px;height:800px;bottom:-200px;right:-200px;"></div>
@@ -451,7 +545,6 @@
 
     <!-- ════════════════════════════════════════
          SLIDE 4 – DAS AUSMASS · AHA #2
-         Was ein einziger Prompt produziert.
     ════════════════════════════════════════ -->
     <section class="slide bg-white" id="s4">
       <div class="glow" style="width:600px;height:600px;top:-100px;right:-100px;"></div>
@@ -492,7 +585,6 @@
 
     <!-- ════════════════════════════════════════
          SLIDE 5 – BEDEUTUNG · AHA #3
-         Das ist eine Superkraft.
     ════════════════════════════════════════ -->
     <section class="slide bg-cream" id="s5">
       <div class="glow" style="width:900px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(216,98,42,0.06) 0%,transparent 60%);"></div>
@@ -527,7 +619,6 @@
 
     <!-- ════════════════════════════════════════
          SLIDE 6 – DIE LERNKURVE
-         Reality Check. Appetit auf die Lösung.
     ════════════════════════════════════════ -->
     <section class="slide bg-white" id="s6">
       <div class="glow" style="width:600px;height:600px;bottom:-100px;left:-100px;"></div>
@@ -562,7 +653,6 @@
 
     <!-- ════════════════════════════════════════
          SLIDE 7 – KI BEKOMMT HÄNDE · AHA #4
-         95% macht die KI. Du verbindest die Domain.
     ════════════════════════════════════════ -->
     <section class="slide bg-cream" id="s7">
       <div class="glow" style="width:700px;height:700px;top:50%;right:-200px;transform:translateY(-50%);"></div>
@@ -598,7 +688,6 @@
 
     <!-- ════════════════════════════════════════
          SLIDE 8 – CLAUDE + MÖGLICHKEITEN
-         Das Tool. Der Gegenwert. Die Dimension.
     ════════════════════════════════════════ -->
     <section class="slide bg-white" id="s8">
       <div class="glow" style="width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(216,98,42,0.05) 0%,transparent 60%);"></div>
@@ -646,14 +735,13 @@
 
 
     <!-- ════════════════════════════════════════
-         SLIDE 9 – CTA
-         Der logische nächste Schritt.
+         SLIDE 9 – CTA (WARTELISTE)
     ════════════════════════════════════════ -->
-    <section class="slide bg-gold" id="s9">
+    <section class="slide bg-gold testi-cta" id="s9">
       <div class="inner c">
         <div class="eyebrow c" style="color:rgba(255,255,255,0.7);">
           <span style="width:44px;height:1px;background:rgba(255,255,255,0.3);display:block;"></span>
-          Der nächste Schritt
+          Du hast gewartet. Jetzt ist dein Moment.
           <span style="width:44px;height:1px;background:rgba(255,255,255,0.3);display:block;"></span>
         </div>
         <h2 style="
@@ -670,18 +758,19 @@
           font-size:clamp(16px,1.7vw,22px); font-weight:300; line-height:1.9;
           color:rgba(255,255,255,0.85); max-width:640px; margin:0 auto;
         ">
-          Am <strong style="color:var(--white);font-weight:600;">Montag, 16. März geht es los.</strong><br>
-          Wir zeigen dir Schritt für Schritt, wie du KI führst, bis deine fertige Website live ist.
+          Die erste Runde ist gelaufen. Die Ergebnisse sprechen für sich.<br>
+          <strong style="color:var(--white);font-weight:600;">Sofortiger Zugang.</strong> Lerne in deinem eigenen Tempo,
+          wann du willst, so oft du willst.
         </p>
         <div class="gap-l"></div>
         <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center;">
           <div style="text-align:center;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;">Start</div>
-            <div style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:600;color:var(--white);line-height:1;">16. März</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;">Zugang</div>
+            <div style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:600;color:var(--white);line-height:1;">Sofort</div>
           </div>
           <div style="width:1px;height:56px;background:rgba(255,255,255,0.25);"></div>
           <div style="text-align:center;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;">3 Live Q&A Calls</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;">Live Q&A Calls</div>
             <div style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:600;color:var(--white);line-height:1;">inklusive</div>
           </div>
           <div style="width:1px;height:56px;background:rgba(255,255,255,0.25);"></div>
@@ -690,8 +779,141 @@
             <div style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:600;color:var(--white);line-height:1;">199 €</div>
           </div>
         </div>
-        <p style="margin-top:28px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.45);">Limitierte Plätze · keine versteckten Kosten · Claude ca. 16 €/Monat, monatlich kündbar</p>
+        <p style="margin-top:28px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.45);">Einmalzahlung · Sofortiger Zugang · Keine Abofalle · Claude ca. 16 €/Monat, monatlich kündbar</p>
       </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         SLIDE 10 – TESTIMONIAL BRIDGE
+    ════════════════════════════════════════ -->
+    <section class="slide bg-cream" id="s10">
+      <div class="glow" style="width:800px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(216,98,42,0.07) 0%,transparent 60%);"></div>
+      <div class="inner c">
+        <div class="eyebrow c">Erste Runde · März 2026</div>
+        <h2 class="h-xl">
+          Nicht unsere Worte.<br>
+          <em>Die Ergebnisse der Teilnehmerinnen.</em>
+        </h2>
+        <div class="gap-l"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;width:100%;max-width:860px;">
+          <div style="padding:28px 24px;background:rgba(255,255,255,0.8);border:1px solid rgba(216,98,42,0.15);border-top:2px solid var(--gold);text-align:center;">
+            <div style="font-family:var(--serif);font-size:clamp(40px,5vw,64px);font-weight:600;color:var(--gold);line-height:1;">60+</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray);margin-top:10px;">Begeisterte Teilnehmer</div>
+            <div style="font-size:9px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--gray);opacity:0.6;margin-top:4px;">in der ersten Runde</div>
+          </div>
+          <div style="padding:28px 24px;background:rgba(255,255,255,0.8);border:1px solid rgba(216,98,42,0.15);border-top:2px solid var(--gold);text-align:center;">
+            <div style="font-family:var(--serif);font-size:clamp(40px,5vw,64px);font-weight:600;color:var(--gold);line-height:1;">0</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray);margin-top:10px;">Vorkenntnisse nötig</div>
+          </div>
+          <div style="padding:28px 24px;background:rgba(255,255,255,0.8);border:1px solid rgba(216,98,42,0.15);border-top:2px solid var(--gold);text-align:center;">
+            <div style="font-family:var(--serif);font-size:clamp(40px,5vw,64px);font-weight:600;color:var(--gold);line-height:1;">∞</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray);margin-top:10px;">Websites die live sind</div>
+          </div>
+        </div>
+        <div class="gap-m"></div>
+        <p class="body sm" style="color:var(--gray);max-width:620px;margin:0 auto;">
+          Was du auf den nächsten zwei Slides siehst, sind echte Screenshots aus dem Kurs.
+          Gepostet während und nach dem Workshop. Ungefiltert.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         SLIDE 11 – TESTIMONIALS MARQUEE
+         Zwei Reihen, von rechts nach links,
+         Hover pausiert die Animation.
+    ════════════════════════════════════════ -->
+    <section class="slide testi-slide bg-white" id="s11">
+
+      <!-- Header -->
+      <div class="testi-bar" style="background:var(--white);">
+        <div class="testi-bar-left">
+          <span class="testi-bar-label">Echte Ergebnisse</span>
+          <span class="testi-bar-rule"></span>
+          <span class="testi-bar-sub">Erste Runde · März 2026 · 26 Stimmen</span>
+        </div>
+        <div class="testi-bar-badge">
+          <span class="dot"></span>
+          Hover zum Stoppen
+        </div>
+      </div>
+
+      <!-- Reihe 1: Während des Kurses -->
+      <div class="marquee-row">
+        <div class="marquee-row-label">Während des Kurses</div>
+        <div class="marquee-wrap">
+          <div class="marquee-track marquee-track--fwd">
+            <!-- Original -->
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/16.03..jpg"           alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03..jpg"           alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03.jpg"            alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03. (1).jpg"       alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/18032.png"            alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/19.03..png"           alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/21.03.jpg"            alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/21033.png"            alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/22.03..jpg"           alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24.03..png"  alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24031.png"   alt="" loading="lazy">
+            <!-- Duplikat für nahtlosen Loop -->
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/16.03..jpg"           alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03..jpg"           alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03.jpg"            alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03. (1).jpg"       alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/18032.png"            alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/19.03..png"           alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/21.03.jpg"            alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/21033.png"            alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/22.03..jpg"           alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24.03..png"  alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24031.png"   alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Reihe 2: Nach dem Kurs (ohne Kathrin, Yvonna, Monika) -->
+      <div class="marquee-row">
+        <div class="marquee-row-label">Nach dem Kurs</div>
+        <div class="marquee-wrap">
+          <div class="marquee-track marquee-track--mid">
+            <!-- Original -->
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 Nicola.png"        alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 anna.png"          alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 christina.png"     alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 cornelia .png"     alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 elisabeth.png"     alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 linda.png"         alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 lisa.png"          alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 maria.png"         alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 susanne.png"       alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03 marion.png"       alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. Kristin.png"     alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. Marion.png"      alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. andrea.png"      alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. birgit.png"      alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. sabine.png"      alt="" loading="lazy">
+            <!-- Duplikat für nahtlosen Loop -->
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 Nicola.png"        alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 anna.png"          alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 christina.png"     alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 cornelia .png"     alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 elisabeth.png"     alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 linda.png"         alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 lisa.png"          alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 maria.png"         alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/2503 susanne.png"       alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03 marion.png"       alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. Kristin.png"     alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. Marion.png"      alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. andrea.png"      alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. birgit.png"      alt="" loading="lazy">
+            <img class="marquee-img" src="Testimonials/KI Website Kurs/Abschluss/26.03. sabine.png"      alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+
     </section>
 
 
@@ -736,12 +958,12 @@
       if (Math.abs(dx) > 50) dx < 0 ? goTo(current + 1) : goTo(current - 1);
     });
   </script>
-  <footer style="padding:24px 40px; display:flex; gap:20px; align-items:center; justify-content:center; border-top:1px solid rgba(246,240,230,0.06); flex-wrap:wrap;">
+  <footer style="padding:24px 40px; display:flex; gap:20px; align-items:center; justify-content:center; border-top:1px solid rgba(246,240,230,0.06); flex-wrap:wrap; position:fixed; bottom:0; left:0; right:0; z-index:50; pointer-events:none; opacity:0;">
     <span style="font-family:'Montserrat',sans-serif; font-size:11px; color:rgba(246,240,230,0.25);">© 2026 Hanna Marzian</span>
-    <a href="/impressum.html" style="font-family:'Montserrat',sans-serif; font-size:11px; color:rgba(246,240,230,0.25); text-decoration:none;">Impressum</a>
-    <a href="/datenschutz.html" style="font-family:'Montserrat',sans-serif; font-size:11px; color:rgba(246,240,230,0.25); text-decoration:none;">Datenschutz</a>
-    <a href="/agb.html" style="font-family:'Montserrat',sans-serif; font-size:11px; color:rgba(246,240,230,0.25); text-decoration:none;">AGB</a>
-    <button id="consent-reopen" style="background:none;border:none;font-family:'Montserrat',sans-serif;font-size:11px;color:rgba(246,240,230,0.25);text-decoration:underline;cursor:pointer;">Cookie-Einstellungen</button>
+    <a href="/impressum.html" style="font-family:'Montserrat',sans-serif; font-size:11px; color:rgba(246,240,230,0.25); text-decoration:none; pointer-events:all;">Impressum</a>
+    <a href="/datenschutz.html" style="font-family:'Montserrat',sans-serif; font-size:11px; color:rgba(246,240,230,0.25); text-decoration:none; pointer-events:all;">Datenschutz</a>
+    <a href="/agb.html" style="font-family:'Montserrat',sans-serif; font-size:11px; color:rgba(246,240,230,0.25); text-decoration:none; pointer-events:all;">AGB</a>
+    <button id="consent-reopen" style="background:none;border:none;font-family:'Montserrat',sans-serif;font-size:11px;color:rgba(246,240,230,0.25);text-decoration:underline;cursor:pointer;pointer-events:all;">Cookie-Einstellungen</button>
   </footer>
   <script src="assets/consent.js"></script>
 </body>

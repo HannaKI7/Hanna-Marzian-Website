@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schau dir das zuerst an · Hanna Marzian</title>
-  <meta name="description" content="Bevor du kaufst: Schau dir dieses kurze Video an. Es zeigt dir genau, was im KI-Website-Kurs steckt – und warum du heute noch anfangen solltest.">
+  <title>Nur für dich · Hanna Marzian</title>
+  <meta name="description" content="Du stehst auf der Warteliste. Jetzt ist es so weit – schau dir zuerst dieses Video an, bevor du Zugang bekommst.">
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="stylesheet" href="assets/fonts.css">
@@ -19,6 +19,7 @@
       --gold-l:  #E8894E;
       --gray:    #6B6260;
       --mist:    #F5F1EC;
+      --slate:   #4A6FA5;
       --serif:   'Cormorant', Georgia, serif;
       --sans:    'Montserrat', system-ui, sans-serif;
       --expo:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -56,6 +57,12 @@
     }
 
     .logo-header-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-name {
       font-family: var(--serif);
       font-size: 22px;
       font-weight: 600;
@@ -63,8 +70,60 @@
       letter-spacing: 0.5px;
     }
 
-    .logo-header-inner span {
+    .logo-name span {
       font-style: italic;
+    }
+
+    .logo-name--hanna span { color: var(--gold); }
+    .logo-name--martin span { color: var(--slate); }
+
+    .logo-handle {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    .logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-sep {
+      width: 1px;
+      height: 44px;
+      background: rgba(22, 12, 5, 0.15);
+    }
+
+    /* ── WARTELISTEN-BADGE ────────────────────── */
+    .waitlist-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--mist);
+      border: 1px solid rgba(216, 98, 42, 0.3);
+      padding: 8px 20px;
+      margin-bottom: 28px;
+    }
+
+    .waitlist-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .waitlist-badge-text {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
       color: var(--gold);
     }
 
@@ -264,36 +323,58 @@
 <body>
 
   <div class="logo-header">
-    <div class="logo-header-inner">Hanna <span>Marzian</span></div>
+    <div class="logo-header-inner">
+      <div class="logo-block">
+        <div class="logo-name logo-name--hanna">Hanna <span>Marzian</span></div>
+        <div class="logo-handle">@hanna.gpt</div>
+      </div>
+      <div class="logo-sep"></div>
+      <div class="logo-block">
+        <div class="logo-name logo-name--martin">Martin <span>Thun</span></div>
+        <div class="logo-handle">scale²</div>
+      </div>
+    </div>
   </div>
 
   <main>
 
-    <p class="eyebrow">Für Coaches, Creator, Selbstständige, Webdesigner, Personal Brands und Speaker:</p>
+    <div class="waitlist-badge">
+      <div class="waitlist-badge-dot"></div>
+      <span class="waitlist-badge-text">Exklusiv für Wartelisten-Mitglieder</span>
+    </div>
 
-    <h1><em>Free Video:</em> Die eine Verschiebung, die 2026 alles verändert</h1>
+    <p class="eyebrow">Du hast gewartet. Jetzt ist es so weit.</p>
+
+    <h1>Schau dir das an, <em>bevor</em> du den Zugang bekommst</h1>
 
     <p class="subline">
-      Erfahre, wie KI High-End-Websites, Salespages und Funnel in Minuten baut — ohne Abhängigkeit von teuren Marketing Agenturen oder „Business Experten"
+      Dieses Video ist nur für dich. Es zeigt dir genau, was dich erwartet, wie du den Kurs am besten nutzt und warum der Zeitpunkt jetzt besser nicht sein könnte.
     </p>
 
     <!-- ── VIDEO ────────────────────────────── -->
     <div class="video-wrap">
 
-      <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/5bf7d9c1045a456e82f8f7a4a6f96850" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+      <!-- VIDEO-LINK HIER EINFÜGEN -->
+      <div class="video-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p>Video folgt</p>
+      </div>
 
     </div>
 
     <div class="divider"></div>
 
     <p class="micro">
-      <strong>Hast du das Video gesehen?</strong> Dann weißt du, was als nächstes kommt.
+      <strong>Video gesehen?</strong> Dann weißt du, warum du dir keinen besseren Moment hättest aussuchen können.
     </p>
 
     <!-- ── CTA ──────────────────────────────── -->
     <div class="cta-wrap">
       <a href="https://www.hannamarzian.com/ki-website-kurs" class="btn-cta">
-        Jetzt zum Kurs → Mehr Infos
+        Jetzt Zugang sichern →
       </a>
       <span class="btn-note">Einmalzahlung · Sofortiger Zugang · Keine Abofalle</span>
     </div>
