@@ -701,9 +701,20 @@
       .cur { display: none !important; }
       body { cursor: auto !important; }
       #hero { padding: 100px 24px 64px; }
-      .hero-meta { gap: 24px; }
+      /* Hero: fix overflow issues */
+      .hero-h1 { white-space: normal !important; }
+      .hero-sub { white-space: normal !important; font-size: 16px !important; }
+      .proof-banner { white-space: normal; text-align: center; max-width: 100%; padding: 8px 16px; letter-spacing: 1px; }
+      .hero-cta { flex-direction: column; width: 100%; }
+      .btn-primary { padding: 18px 32px; width: 100%; justify-content: center; }
+      .btn-outline { padding: 18px 24px; width: 100%; justify-content: center; }
+      .hero-meta { gap: 16px; }
+      .meta-val { font-size: 28px; }
+      /* Countdown: reduce min size so 4 units fit */
       .countdown { gap: 2px; }
-      .cd-unit { min-width: 60px; }
+      .cd-unit { min-width: 52px; }
+      .cd-num { font-size: clamp(26px, 7vw, 40px); }
+      .cd-sep { font-size: 36px; padding: 10px 0 0; }
       .whom-grid { grid-template-columns: 1fr; }
       .day-row { grid-template-columns: 1fr; }
       .day-label { padding: 32px 28px; }
@@ -719,6 +730,9 @@
       #sticky { padding: 12px 20px; }
       .sticky-text { display: none; }
       .hosts-grid { grid-template-columns: 1fr !important; }
+      /* Warum-anders-Sektion: 2-Spalten → 1-Spalte */
+      .warum-section { padding: 80px 24px !important; }
+      .warum-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1194,12 +1208,12 @@
   </section>
 
   <!-- ═══ WARUM ANDERS ══════════════════════════════════════════════ -->
-  <section style="background: var(--cream); padding: 120px 48px; position: relative; overflow: hidden;">
+  <section class="warum-section" style="background: var(--cream); padding: 120px 48px; position: relative; overflow: hidden;">
     <div style="position:absolute; top:0; right:0; bottom:0; left:0; background-image: repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(216,98,42,0.015) 80px, rgba(216,98,42,0.015) 81px); pointer-events:none;"></div>
     <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
 
       <div class="sec-eyebrow rv" style="color: var(--gold);">Warum AI WEBSITE CODE anders ist</div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+      <div class="warum-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
 
         <div>
           <h2 class="rv-l d1" style="font-family: var(--serif); font-size: clamp(28px, 3.2vw, 52px); font-weight: 500; line-height: 1.15; color: var(--black); margin-bottom: 28px;">
