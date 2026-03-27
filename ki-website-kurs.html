@@ -673,7 +673,7 @@
     }
     .footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--cream); text-decoration: none; cursor: none; }
     .footer-logo span { color: var(--gold); }
-    .footer-copy { font-size: 10px; font-weight: 300; color: rgba(122,106,90,.4); }
+    .footer-copy { font-size: 10px; font-weight: 300; color: rgba(255,255,255,0.6); }
     .footer-link { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); text-decoration: none; cursor: none; transition: color .25s; }
     .footer-link:hover { color: var(--gold); }
 
@@ -937,6 +937,63 @@
     }
     @media (max-width: 560px) {
       .tmos-grid { columns: 1; }
+    }
+
+    /* ── PROJECT SHOWCASE ─────────────────────── */
+    .proj-section {
+      background: var(--black);
+      padding: 100px 48px;
+    }
+    .proj-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .proj-card {
+      display: block;
+      text-decoration: none;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(216,98,42,0.12);
+      transition:
+        transform .6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow .6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color .4s;
+      will-change: transform;
+      cursor: none;
+    }
+    .proj-card:hover {
+      transform: scale(1.045) translateY(-8px);
+      box-shadow: 0 48px 96px rgba(0,0,0,0.65), 0 0 0 1px rgba(216,98,42,0.45);
+      border-color: rgba(216,98,42,0.5);
+    }
+    .proj-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: filter .6s;
+    }
+    .proj-card:hover img {
+      filter: brightness(1.06);
+    }
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(216,98,42,0.07) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity .5s;
+      pointer-events: none;
+    }
+    .proj-card:hover::after {
+      opacity: 1;
+    }
+    @media (max-width: 900px) {
+      .proj-grid { grid-template-columns: 1fr; gap: 20px; }
+      .proj-section { padding: 80px 24px; }
     }
   </style>
 </head>
@@ -1776,6 +1833,21 @@
     </div>
   </section>
 
+  <!-- ═══ PROJECT SHOWCASE ════════════════════════════════════════ -->
+  <section class="proj-section">
+    <div class="proj-grid">
+      <a class="proj-card rv" href="https://www.andrea-luedtke.de/" target="_blank" rel="noopener">
+        <img src="Testimonials/KI Website Kurs/Projektvorstellungen/andrea-website.png" alt="Andrea Lüdtke Website">
+      </a>
+      <a class="proj-card rv d2" href="https://kristin-schnoedt.de/" target="_blank" rel="noopener">
+        <img src="Testimonials/KI Website Kurs/Projektvorstellungen/kristin-website.png" alt="Kristin Schnoedt Website">
+      </a>
+      <a class="proj-card rv d4" href="https://waldmomente.me/" target="_blank" rel="noopener">
+        <img src="Testimonials/KI Website Kurs/Projektvorstellungen/waldmomente-website.png" alt="Waldmomente Website">
+      </a>
+    </div>
+  </section>
+
   <!-- ═══ FAQ ══════════════════════════════════════════════════════ -->
   <section id="faq">
     <div class="faq-inner">
@@ -1840,6 +1912,7 @@
     <div style="display:flex; gap:20px; align-items:center;">
       <a href="/impressum.html" class="footer-copy" style="text-decoration:none;">Impressum</a>
       <a href="/datenschutz.html" class="footer-copy" style="text-decoration:none;">Datenschutz</a>
+      <a href="/agb.html" class="footer-copy" style="text-decoration:none;">AGB</a>
       <button id="consent-reopen" style="background:none;border:none;font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(122,106,90,.4);text-decoration:underline;cursor:pointer;">Cookie-Einstellungen</button>
     </div>
   </footer>
