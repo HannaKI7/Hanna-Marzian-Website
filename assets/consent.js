@@ -1,11 +1,12 @@
 /* ── CONSENT MANAGER – DSGVO/GDPR ────────────────────────────────────────
    Speichert Entscheidung in localStorage (12 Monate).
-   Lädt Google Analytics (GA4) nur nach ausdrücklicher Zustimmung.
+   Lädt Google Analytics (GA4) und Facebook Pixel nur nach ausdrücklicher Zustimmung.
    Unterstützt Google Consent Mode v2.
 ────────────────────────────────────────────────────────────────────────── */
 
 (function () {
   const GA_ID       = 'G-4E7ZR706ZT';
+  const FB_ID       = '1698164877859527';
   const STORAGE_KEY = 'hanna_consent';
   const CONSENT_TTL = 365 * 24 * 60 * 60 * 1000; // 12 Monate
 
@@ -20,9 +21,10 @@
     } catch (e) { return null; }
   }
 
-  function saveConsent(analytics) {
+  function saveConsent(analytics, marketing) {
     const obj = {
       analytics: !!analytics,
+      marketing: !!marketing,
       timestamp: Date.now(),
       expires:   Date.now() + CONSENT_TTL
     };
@@ -58,14 +60,42 @@
     document.head.appendChild(s);
   }
 
-  function applyConsent(analytics) {
+  /* ── Facebook Pixel laden ───────────────────────────────────────────── */
+  function loadFBPixel() {
+    if (document.getElementById('fb-pixel-script')) return;
+
+    // Facebook Pixel base code (ohne noscript-Fallback – DSGVO-konform)
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq) return;
+      n=f.fbq=function(){n.callMethod ?
+        n.callMethod.apply(n,arguments) : n.queue.push(arguments)};
+      if(!f._fbq) f._fbq=n;
+      n.push=n; n.loaded=!0; n.version='2.0';
+      n.queue=[];
+    }(window, document, 'https://connect.facebook.net/en_US/fbevents.js');
+
+    var s = document.createElement('script');
+    s.id    = 'fb-pixel-script';
+    s.async = true;
+    s.src   = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(s);
+
+    s.onload = function() {
+      window.fbq('init', FB_ID);
+      window.fbq('track', 'PageView');
+    };
+  }
+
+  /* ── applyConsent ────────────────────────────────────────────────────── */
+  function applyConsent(analytics, marketing) {
     gtag('consent', 'update', {
-      analytics_storage: analytics ? 'granted' : 'denied',
-      ad_storage:        'denied',
-      ad_user_data:      'denied',
-      ad_personalization:'denied'
+      analytics_storage:   analytics ? 'granted' : 'denied',
+      ad_storage:          marketing  ? 'granted' : 'denied',
+      ad_user_data:        marketing  ? 'granted' : 'denied',
+      ad_personalization:  marketing  ? 'granted' : 'denied'
     });
     if (analytics) loadGA();
+    if (marketing)  loadFBPixel();
   }
 
   /* ── DOM-Elemente ────────────────────────────────────────────────────── */
@@ -77,7 +107,7 @@
     banner.id = 'consent-banner';
     banner.innerHTML = `
       <p>
-        Wir nutzen Cookies &amp; Google Analytics. Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
+        Wir nutzen Cookies, Google Analytics und den Facebook Pixel. Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
       </p>
       <div class="consent-actions">
         <button class="consent-btn-settings" id="cb-settings">Einstellungen</button>
@@ -117,6 +147,17 @@
         </label>
       </div>
 
+      <div class="consent-toggle-row">
+        <div class="consent-toggle-info">
+          <h4>Marketing (Facebook Pixel)</h4>
+          <p>Ermöglicht zielgruppengerechte Werbung auf Facebook und Instagram. Betrieben von Meta Platforms Ireland Ltd.</p>
+        </div>
+        <label class="consent-toggle">
+          <input type="checkbox" id="ct-marketing">
+          <span class="consent-toggle-slider"></span>
+        </label>
+      </div>
+
       <div class="modal-actions">
         <button class="consent-btn-decline" id="cm-decline">Nur notwendige</button>
         <button class="consent-btn-accept"  id="cm-save">Auswahl speichern</button>
@@ -130,15 +171,15 @@
     /* ── Event Listener ─────────────────────────────────────────────── */
     // Banner: Alle akzeptieren
     document.getElementById('cb-accept').addEventListener('click', function () {
-      saveConsent(true);
-      applyConsent(true);
+      saveConsent(true, true);
+      applyConsent(true, true);
       hideBanner();
     });
 
     // Banner: Nur notwendige
     document.getElementById('cb-decline').addEventListener('click', function () {
-      saveConsent(false);
-      applyConsent(false);
+      saveConsent(false, false);
+      applyConsent(false, false);
       hideBanner();
     });
 
@@ -150,16 +191,17 @@
     // Modal: Auswahl speichern
     document.getElementById('cm-save').addEventListener('click', function () {
       const analytics = document.getElementById('ct-analytics').checked;
-      saveConsent(analytics);
-      applyConsent(analytics);
+      const marketing = document.getElementById('ct-marketing').checked;
+      saveConsent(analytics, marketing);
+      applyConsent(analytics, marketing);
       closeModal();
       hideBanner();
     });
 
     // Modal: Nur notwendige
     document.getElementById('cm-decline').addEventListener('click', function () {
-      saveConsent(false);
-      applyConsent(false);
+      saveConsent(false, false);
+      applyConsent(false, false);
       closeModal();
       hideBanner();
     });
@@ -186,8 +228,10 @@
     const modal   = document.getElementById('consent-modal');
     const overlay = document.getElementById('consent-overlay');
     const existing = getConsent();
-    const toggle = document.getElementById('ct-analytics');
-    if (toggle && existing) toggle.checked = existing.analytics;
+    const toggleAnalytics = document.getElementById('ct-analytics');
+    const toggleMarketing = document.getElementById('ct-marketing');
+    if (toggleAnalytics && existing) toggleAnalytics.checked = existing.analytics;
+    if (toggleMarketing && existing) toggleMarketing.checked = existing.marketing;
     if (modal)   modal.classList.add('visible');
     if (overlay) overlay.classList.add('visible');
     const banner = document.getElementById('consent-banner');
@@ -214,7 +258,7 @@
 
     if (existing) {
       // Bekannter Nutzer: Consent anwenden ohne Banner
-      applyConsent(existing.analytics);
+      applyConsent(existing.analytics, existing.marketing);
     } else {
       // Erster Besuch: Banner zeigen
       buildUI();
