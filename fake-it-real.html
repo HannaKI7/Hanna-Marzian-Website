@@ -1189,20 +1189,7 @@
       <div class="hero-tag">Für Anfänger</div>
       <div class="hero-tag">Sofort umsetzbar</div>
     </div>
-    <div class="early-rabbit-bar" style="flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 0;">
-      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-        <span class="erb-old">Normalpreis 49 €</span>
-        <span class="erb-new">🐰 Preis: 29 €</span>
-      </div>
-    </div>
-    <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary" style="margin-top: 10px; display: inline-block;">Jetzt für <s style="opacity:0.6;">49€</s> 29€ sichern!</a>
-    <div style="margin-top: 10px; font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.5px; color: var(--tan);">🐰 Early Rabbit Preis gilt bis 02.04.26 · Inhalte freigeschaltet ab 08.04.26</div>
-    <div class="hero-countdown" style="margin-top: 12px; margin-bottom: 0;">
-      <div class="cd-block"><span id="cd-days">--</span><small>Tage</small></div>
-      <div class="cd-block"><span id="cd-hours">--</span><small>Std</small></div>
-      <div class="cd-block"><span id="cd-mins">--</span><small>Min</small></div>
-      <div class="cd-block"><span id="cd-secs">--</span><small>Sek</small></div>
-    </div>
+    <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary" style="margin-top: 10px; display: inline-block;">Jetzt für 49€ sichern!</a>
   </div>
   <div class="hero-image">
     <img src="Photos Hanna/5292012897317884903.jpg" alt="Hanna – KI-generiertes Foto">
@@ -1273,7 +1260,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 56px;">
-      <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary">Jetzt für <s style="opacity:0.6;">49€</s> 29€ sichern!</a>
+      <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary">Jetzt für 49€ sichern!</a>
     </div>
   </div>
 </section>
@@ -1417,10 +1404,8 @@
     </div>
     <div style="max-width: 400px; margin: 0 auto;">
       <div class="price-card featured" style="text-align: center;">
-        <div class="price-early-label">Early Rabbit Preis bis 02.04.26</div>
-        <div class="price-amount">29 €<span> / einmalig</span></div>
-        <div style="font-family: var(--font-ui); font-size: 11px; color: var(--sand); margin-top: 6px; margin-bottom: 4px;">Ab 03.04. · 49 €</div>
-        <div class="price-cta" style="margin-top: 20px;"><a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt">Jetzt für <s style="opacity:0.6;">49€</s> 29€ sichern!</a></div>
+        <div class="price-amount">49 €<span> / einmalig</span></div>
+        <div class="price-cta" style="margin-top: 20px;"><a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt">Jetzt für 49€ sichern!</a></div>
       </div>
     </div>
     <p class="pricing-note">Inkl. MwSt. · einmalige Zahlung · dauerhafter Zugang · Prompt-Vorlagen inklusive</p>
@@ -1471,8 +1456,7 @@
   <h2>Kein Fotoshooting.<br><em>Trotzdem professionell.</em></h2>
   <p>Sofortiger Zugang. Ab heute hast du Fotos, die zur Positionierung passen.</p>
   <div class="final-price-display" style="flex-direction: column; align-items: center;">
-    <div class="fpd-early">Early Rabbit Preis bis 02.04.26 · ab 03.04. kostet es 49 €</div>
-    <div class="fpd-main">29 €</div>
+    <div class="fpd-main">49 €</div>
     <div class="fpd-sub">einmalig</div>
   </div>
   <a href="https://alfima.com/hannagpt/fake-it-real-ki-fotos-verbluffend-echt" class="btn btn-primary">Jetzt kaufen</a>
@@ -1667,29 +1651,6 @@
 
 })();
 
-// ── Countdown bis 05.04.2026 ─────────────────────────────────────
-(function () {
-  var deadline = new Date('2026-04-03T00:00:00');
-  var days  = document.getElementById('cd-days');
-  var hours = document.getElementById('cd-hours');
-  var mins  = document.getElementById('cd-mins');
-  var secs  = document.getElementById('cd-secs');
-  if (!days) return;
-  function pad(n) { return n < 10 ? '0' + n : String(n); }
-  function tick() {
-    var diff = deadline - Date.now();
-    if (diff <= 0) {
-      days.textContent = hours.textContent = mins.textContent = secs.textContent = '00';
-      return;
-    }
-    days.textContent  = pad(Math.floor(diff / 86400000));
-    hours.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    mins.textContent  = pad(Math.floor((diff % 3600000)  / 60000));
-    secs.textContent  = pad(Math.floor((diff % 60000)    / 1000));
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
 </script>
 </body>
 </html>
