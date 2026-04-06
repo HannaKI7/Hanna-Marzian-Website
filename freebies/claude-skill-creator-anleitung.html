@@ -1016,14 +1016,27 @@
   .sp-line { flex: 1; height: 1px; background: var(--beige); min-width: 12px; }
 
   @media (max-width: 680px) {
-    .cover { padding: 40px 32px; }
-    .wrap { padding: 0 24px; }
-    .recap { padding: 36px 32px; }
-    .cta { padding: 48px 32px; }
-    .site-footer { padding: 20px 24px; }
+    .cover { padding: 40px 24px; }
+    .wrap { padding: 0 20px; }
+    .recap { padding: 36px 24px; }
+    .cta { padding: 48px 24px; }
+    .site-footer { padding: 20px 20px; }
     .claude-layout { height: auto; flex-direction: column; }
     .claude-sidebar { width: 100%; height: auto; }
     .option-cards { grid-template-columns: 1fr; }
+
+    .cover h1 { font-size: clamp(38px, 10vw, 58px); letter-spacing: -0.5px; }
+    .cover-sub { font-size: 15px; }
+    .cover-authors { gap: 16px; }
+    .author-divider { display: none; }
+
+    .cta h2 { font-size: 28px; }
+    .cta-text { font-size: 14px; }
+
+    .step-num { font-size: 52px; min-width: 44px; }
+
+    .site-footer-inner,
+    .site-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
   }
 </style>
 </head>
@@ -1662,7 +1675,9 @@
 
   <div style="margin-top:24px;">
     <p style="font-family:var(--font-a);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.6;margin-bottom:16px;">Newsletter abonnieren</p>
-    <iframe width="540" height="305" src="https://ea8159a8.sibforms.com/serve/MUIFAJUUjQtT0Zd7pZQkTfeymHmPfd15YbbIXjDv2K_KylNioYwVT7o4foV-tGeneM6FpLNfrWsTS5N34wvJP8i09IFpAeMnMn5EFW7Etib3nNRZQKiZH78xrDhFh53vFItCUC3JVXWW4wmyHFMw29A9Y1BLuDH_sc42x_8sVqlagiXmmBWbHPIf4j2M8GHhJnolYRPhC4BnW5x_" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
+    <div style="width:100%;max-width:540px;margin:0 auto;overflow:hidden;">
+      <iframe width="540" height="305" src="https://ea8159a8.sibforms.com/serve/MUIFAJUUjQtT0Zd7pZQkTfeymHmPfd15YbbIXjDv2K_KylNioYwVT7o4foV-tGeneM6FpLNfrWsTS5N34wvJP8i09IFpAeMnMn5EFW7Etib3nNRZQKiZH78xrDhFh53vFItCUC3JVXWW4wmyHFMw29A9Y1BLuDH_sc42x_8sVqlagiXmmBWbHPIf4j2M8GHhJnolYRPhC4BnW5x_" frameborder="0" scrolling="auto" allowfullscreen style="display:block;width:100%;max-width:100%;border:none;"></iframe>
+    </div>
   </div>
 </div>
 
