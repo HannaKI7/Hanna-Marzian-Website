@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Skills anlegen mit dem Skill Creator – Schritt-für-Schritt | Hanna Marzian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:      #D8622A;
+    --orange-mid:  #E8894E;
+    --orange-pale: #F5CFA8;
+    --orange-deep: #B84E1E;
+    --warm-black:  #160C05;
+    --warm-dark:   #2A1608;
+    --warm-brown:  #472B18;
+    --mid-brown:   #6B4530;
+    --tan:         #A88960;
+    --sand:        #D0B896;
+    --beige:       #EDE4D7;
+    --cream:       #F6F0E6;
+    --off-white:   #FBF7F2;
+    --warm-gray:   #7A6A5A;
+    --mid-gray:    #BDB0A0;
+    --light-gray:  #D8CFC4;
+    --font-h:      'Cormorant', Georgia, serif;
+    --font-b:      'DM Sans', system-ui, sans-serif;
+    --font-a:      'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--warm-black);
+    font-family: var(--font-b);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    background: var(--warm-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 64px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -140px; right: -140px;
+    width: 580px; height: 580px;
+    background: radial-gradient(circle, rgba(216,98,42,.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 440px; height: 440px;
+    background: radial-gradient(circle, rgba(216,98,42,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-top {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 0 48px;
+  }
+  .cover-kicker {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 28px;
+  }
+  .cover h1 {
+    font-family: var(--font-h);
+    font-size: clamp(52px, 7.5vw, 84px);
+    font-weight: 500;
+    color: var(--off-white);
+    line-height: 1.0;
+    letter-spacing: -1.5px;
+    margin-bottom: 28px;
+  }
+  .cover h1 em { font-style: italic; color: var(--orange-mid); }
+  .cover-sub {
+    font-family: var(--font-b);
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--sand);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 44px;
+  }
+  .cover-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .cover-badge {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 1px;
+  }
+  .cover-badge-fill { background: var(--orange); color: var(--off-white); }
+  .cover-badge-out { border: 1px solid rgba(255,255,255,.15); color: var(--sand); }
+  .cover-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .cover-authors {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cover-author {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .cover-author-label {
+    font-family: var(--font-a);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .6;
+  }
+  .cover-author-name {
+    font-family: var(--font-h);
+    font-size: 16px;
+    color: var(--off-white);
+  }
+  .cover-author-name span { color: var(--orange); }
+  .cover-author-handle {
+    font-family: var(--font-a);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--tan);
+  }
+  .author-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,.12);
+    flex-shrink: 0;
+  }
+  .cover-foot-note {
+    font-family: var(--font-a);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .55;
+  }
+
+  /* Scale² logo in cover (white version on dark bg) */
+  .scale2-cover-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+  .scale2-icon {
+    width: 28px;
+    height: 28px;
+    background: #000;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 4px;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+  .scale2-bar {
+    background: #22c55e;
+    border-radius: 1px;
+    width: 6px;
+  }
+  .scale2-wordmark {
+    font-family: var(--font-b);
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: -0.3px;
+  }
+  .scale2-wordmark sup {
+    color: #22c55e;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .scale2-tagline {
+    font-family: var(--font-a);
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    display: block;
+  }
+
+  /* ─── LAYOUT ─── */
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ─── INTRO ─── */
+  .intro {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--beige);
+  }
+  .eyebrow {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--orange);
+    opacity: .4;
+  }
+  .intro h2 {
+    font-family: var(--font-h);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .intro h2 em { font-style: italic; color: var(--orange); }
+  .intro-lead {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.85;
+    max-width: 580px;
+    margin-bottom: 20px;
+  }
+
+  .what-box {
+    background: var(--beige);
+    border-left: 4px solid var(--orange);
+    padding: 28px 32px;
+    margin: 36px 0;
+  }
+  .what-box-label {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .what-box p {
+    font-family: var(--font-h);
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--warm-brown);
+    line-height: 1.5;
+  }
+  .what-box p strong { color: var(--orange); font-style: normal; font-weight: 600; }
+
+  /* ─── STEP ─── */
+  .step {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--beige);
+  }
+  .step:last-of-type { border-bottom: none; }
+  .step-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 8px;
+  }
+  .step-num {
+    font-family: var(--font-h);
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--orange);
+    opacity: .18;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 58px;
+    text-align: right;
+    margin-top: -8px;
+  }
+  .step-title-wrap { flex: 1; }
+  .step-kicker {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+  .step h3 {
+    font-family: var(--font-h);
+    font-size: 34px;
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .step h3 em { font-style: italic; color: var(--orange); }
+  .step-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.85;
+    max-width: 580px;
+    margin: 20px 0 28px;
+  }
+
+  /* Action list */
+  .action-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+  }
+  .action-list li {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--beige);
+    align-items: flex-start;
+  }
+  .action-list li:last-child { border-bottom: none; }
+  .action-dot {
+    width: 28px;
+    height: 28px;
+    background: var(--orange);
+    color: var(--off-white);
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    border-radius: 1px;
+  }
+  .action-content { flex: 1; }
+  .action-title {
+    font-weight: 600;
+    color: var(--warm-black);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .action-text {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.7;
+  }
+
+  /* ─── BROWSER MOCKUP ─── */
+  .browser {
+    background: #fff;
+    border: 1px solid var(--beige);
+    border-radius: 6px 6px 4px 4px;
+    overflow: hidden;
+    margin: 28px 0;
+    box-shadow: 0 6px 32px rgba(22,12,5,.07);
+  }
+  .browser-bar {
+    background: #F0EDE8;
+    border-bottom: 1px solid #DDD8D0;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .b-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .b-r { background: #FF5F56; }
+  .b-y { background: #FFBD2E; }
+  .b-g { background: #27C93F; }
+  .b-url {
+    margin-left: 10px;
+    background: rgba(0,0,0,.06);
+    border-radius: 3px;
+    padding: 4px 14px;
+    font-family: var(--font-a);
+    font-size: 10px;
+    color: var(--warm-gray);
+    letter-spacing: .3px;
+    flex: 1;
+    max-width: 320px;
+  }
+  .browser-body { padding: 28px 32px; }
+
+  /* Claude UI sidebar simulation */
+  .claude-layout {
+    display: flex;
+    height: 360px;
+    background: #fff;
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+  }
+  .claude-sidebar {
+    width: 200px;
+    background: #F9F7F4;
+    border-right: 1px solid #E8E3DC;
+    padding: 16px 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .claude-sidebar-logo {
+    padding: 0 16px 16px;
+    border-bottom: 1px solid #E8E3DC;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.3px;
+  }
+  .cs-nav-item {
+    padding: 7px 16px;
+    font-size: 12px;
+    color: #6B6B6B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 0;
+  }
+  .cs-nav-item.active {
+    background: rgba(216,98,42,.10);
+    color: #D8622A;
+    font-weight: 600;
+  }
+  .cs-nav-item svg { flex-shrink: 0; }
+  .cs-new-chat {
+    margin: 8px 12px;
+    background: #D8622A;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  .claude-main {
+    flex: 1;
+    padding: 20px 24px;
+    overflow: hidden;
+  }
+  .cm-page-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  .cm-page-sub {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  /* Tab bar */
+  .cm-tabs {
+    display: flex;
+    border-bottom: 1px solid #E8E3DC;
+    margin-bottom: 18px;
+    gap: 0;
+  }
+  .cm-tab {
+    padding: 8px 16px;
+    font-size: 12px;
+    color: #888;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .cm-tab.active {
+    color: #D8622A;
+    font-weight: 600;
+    border-bottom-color: #D8622A;
+  }
+  /* Skills list */
+  .cm-skill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border: 1px solid #E8E3DC;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: #fff;
+  }
+  .cm-skill-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  .cm-skill-desc {
+    font-size: 10px;
+    color: #888;
+    margin-top: 1px;
+  }
+  .cm-skill-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .cm-badge-active { background: #D8622A; color: #fff; }
+  .cm-badge-grey { background: #F0EDE8; color: #888; }
+  /* Add skill button */
+  .cm-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid #D8D0C8;
+    border-radius: 4px;
+    padding: 7px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .cm-add-btn-orange {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #D8622A;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+
+  /* Three option cards for Schritt 3 */
+  .option-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .option-card {
+    border: 1px solid #E8E3DC;
+    border-radius: 6px;
+    padding: 14px 12px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    background: #fff;
+  }
+  .option-card.selected {
+    border-color: #D8622A;
+    background: rgba(216,98,42,.04);
+  }
+  .option-card-icon { font-size: 18px; margin-bottom: 6px; }
+  .option-card-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+  }
+  .option-card-desc {
+    font-size: 9px;
+    color: #888;
+    line-height: 1.4;
+  }
+
+  /* Chat mockup */
+  .chat-bubble-user {
+    background: #F0EDE8;
+    border-radius: 12px 12px 2px 12px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #1a1a1a;
+    margin-left: auto;
+    max-width: 80%;
+    margin-bottom: 10px;
+  }
+  .chat-bubble-claude {
+    background: #fff;
+    border: 1px solid #E8E3DC;
+    border-radius: 12px 12px 12px 2px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #333;
+    max-width: 85%;
+    margin-bottom: 10px;
+  }
+  .chat-bubble-claude strong { color: #D8622A; }
+
+  /* Slash command */
+  .slash-dropdown {
+    background: #fff;
+    border: 1px solid #E8E3DC;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .slash-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    font-size: 12px;
+    color: #333;
+    border-bottom: 1px solid #F0EDE8;
+    cursor: pointer;
+  }
+  .slash-item:last-child { border-bottom: none; }
+  .slash-item.highlighted { background: rgba(216,98,42,.06); }
+  .slash-item-icon {
+    width: 22px;
+    height: 22px;
+    background: #F0EDE8;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+  .slash-item-name { font-weight: 600; font-size: 12px; color: #1a1a1a; }
+  .slash-item-desc { font-size: 10px; color: #888; margin-top: 1px; }
+  /* Prompt bar */
+  .claude-prompt-bar {
+    background: #F9F7F4;
+    border: 1px solid #E8E3DC;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .claude-prompt-bar span { flex: 1; }
+  .claude-prompt-send {
+    width: 26px;
+    height: 26px;
+    background: #D8622A;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Skill file card */
+  .skill-file-card {
+    background: var(--warm-dark);
+    border-radius: 6px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .skill-file-icon { font-size: 24px; flex-shrink: 0; }
+  .skill-file-info { flex: 1; }
+  .skill-file-name {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--off-white);
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .skill-file-desc { font-size: 11px; color: var(--tan); }
+  .skill-file-btn {
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 1px;
+    white-space: nowrap;
+  }
+
+  /* Callout / Tipp */
+  .tip {
+    background: rgba(216,98,42,.06);
+    border: 1px solid rgba(216,98,42,.2);
+    border-radius: 2px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  .tip-icon { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+  .tip-label {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 5px;
+  }
+  .tip-text { font-size: 13px; color: var(--warm-brown); line-height: 1.7; }
+  .tip-text strong { color: var(--warm-black); }
+
+  /* Warnung */
+  .warning {
+    background: rgba(122,106,90,.07);
+    border: 1px solid var(--beige);
+    border-radius: 2px;
+    padding: 18px 22px;
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+  .warning-text { font-size: 13px; color: var(--warm-gray); line-height: 1.65; }
+
+  /* Erfolg-Highlight */
+  .success-bar {
+    background: rgba(39,201,63,.08);
+    border: 1px solid rgba(39,201,63,.25);
+    border-radius: 2px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 13px;
+    color: #1a6e28;
+    margin-top: 16px;
+  }
+
+  /* ─── RECAP / CHECKLISTE ─── */
+  .recap {
+    background: var(--warm-dark);
+    padding: 52px 56px;
+    margin: 64px 0;
+    border-radius: 2px;
+  }
+  .recap-eye {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .recap h3 {
+    font-family: var(--font-h);
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    font-size: 14px;
+    color: var(--sand);
+    align-items: flex-start;
+    line-height: 1.6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon { color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── BONUS ─── */
+  .bonus-section {
+    padding: 0 0 64px;
+    border-bottom: 1px solid var(--beige);
+  }
+  .bonus-head {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: var(--off-white);
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 1px;
+    margin-bottom: 20px;
+  }
+  .bonus-section h2 {
+    font-family: var(--font-h);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .bonus-section h2 em { font-style: italic; color: var(--orange); }
+  .bonus-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.85;
+    max-width: 540px;
+    margin-bottom: 28px;
+  }
+
+  /* ─── CTA ─── */
+  .cta {
+    background: var(--beige);
+    padding: 64px;
+    text-align: center;
+  }
+  .cta-eye {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+  .cta h2 {
+    font-family: var(--font-h);
+    font-size: 42px;
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .cta h2 em { font-style: italic; color: var(--orange); }
+  .cta-text {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.8;
+    max-width: 400px;
+    margin: 0 auto 36px;
+  }
+  .cta-btn {
+    background: var(--orange);
+    color: var(--off-white);
+    font-family: var(--font-a);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 1px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  /* ─── SITE FOOTER ─── */
+  .site-footer {
+    background: #ffffff;
+    border-top: 1px solid var(--beige);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .site-footer-copy {
+    font-family: var(--font-b);
+    font-size: 13px;
+    color: var(--warm-gray);
+  }
+  .site-footer-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .site-footer-links a {
+    font-family: var(--font-b);
+    font-size: 13px;
+    color: var(--warm-gray);
+    text-decoration: none;
+  }
+  .site-footer-links a:hover { color: var(--warm-black); }
+  .site-footer-collab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .site-footer-collab-label {
+    font-family: var(--font-a);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  /* Scale² footer logo (dark version) */
+  .scale2-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+  .scale2-icon-sm {
+    width: 20px;
+    height: 20px;
+    background: #111;
+    border-radius: 4px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 3px;
+    gap: 1.5px;
+    flex-shrink: 0;
+  }
+  .scale2-bar-sm {
+    background: #22c55e;
+    border-radius: 1px;
+    width: 4px;
+  }
+  .scale2-wordmark-sm {
+    font-family: var(--font-b);
+    font-size: 12px;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: -0.3px;
+  }
+  .scale2-wordmark-sm sup {
+    color: #22c55e;
+    font-size: 9px;
+  }
+
+  /* Progress indicator */
+  .step-progress {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .sp-item {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .sp-item.done { color: var(--orange); }
+  .sp-item.current { color: var(--warm-black); }
+  .sp-num {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; flex-shrink: 0;
+  }
+  .sp-num.done { background: var(--orange); color: #fff; }
+  .sp-num.current { background: var(--warm-black); color: #fff; }
+  .sp-num.todo { background: var(--beige); color: var(--mid-gray); }
+  .sp-line { flex: 1; height: 1px; background: var(--beige); min-width: 12px; }
+
+  @media (max-width: 680px) {
+    .cover { padding: 40px 32px; }
+    .wrap { padding: 0 24px; }
+    .recap { padding: 36px 32px; }
+    .cta { padding: 48px 32px; }
+    .site-footer { padding: 20px 24px; }
+    .claude-layout { height: auto; flex-direction: column; }
+    .claude-sidebar { width: 100%; height: auto; }
+    .option-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<div class="cover">
+  <div class="cover-body">
+    <div class="cover-kicker">Kostenlose Anleitung</div>
+    <h1>
+      Claude <em>Skills</em><br>anlegen.
+    </h1>
+    <p class="cover-sub">
+      So richtest du eigene Skills in Claude Browser ein – und nutzt den eingebauten Skill Creator, der dir den ganzen Aufwand abnimmt.
+    </p>
+    <div class="cover-badges">
+      <span class="cover-badge cover-badge-fill">Kostenlos</span>
+      <span class="cover-badge cover-badge-out">8 Schritte</span>
+      <span class="cover-badge cover-badge-out">Kein Vorwissen nötig</span>
+    </div>
+  </div>
+
+  <div class="cover-foot">
+    <div class="cover-authors">
+      <div class="cover-author">
+        <div class="cover-author-label">Präsentiert von</div>
+        <div class="cover-author-name">Hanna <span>Marzian</span></div>
+        <div class="cover-author-handle">@hanna.gpt</div>
+      </div>
+      <div class="author-divider"></div>
+      <div class="cover-author">
+        <div class="cover-author-label">In Zusammenarbeit mit</div>
+        <div class="cover-author-name">Martin <span>Thun</span></div>
+        <div class="cover-author-handle">scale²</div>
+      </div>
+      <div class="author-divider"></div>
+      <a href="https://scale-square.com/" target="_blank" rel="noopener" class="scale2-cover-logo">
+        <div class="scale2-icon">
+          <div class="scale2-bar" style="height:10px;"></div>
+          <div class="scale2-bar" style="height:16px;"></div>
+          <div class="scale2-bar" style="height:7px;"></div>
+        </div>
+        <div>
+          <div class="scale2-wordmark">scale<sup>2</sup></div>
+          <span class="scale2-tagline">AI Growth Partner</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ INTRO ═══════════════════ -->
+<div class="wrap">
+  <div class="intro">
+    <div class="eyebrow">Was du lernst</div>
+    <h2>Dein Claude lernt,<br>wie <em>du</em> arbeitest.</h2>
+    <p class="intro-lead">
+      Skills sind gespeicherte Anweisungen, die Claude automatisch in jedem neuen Chat anwendet – ohne dass du jedes Mal erklären musst, wer du bist, was du brauchst oder wie du schreibst. Und mit dem eingebauten <strong>Skill Creator</strong> erstellt Claude den Skill sogar selbst für dich.
+    </p>
+
+    <div class="what-box">
+      <div class="what-box-label">Was ist ein Skill?</div>
+      <p>
+        Ein Skill ist wie ein <strong>dauerhaftes Briefing</strong>, das Claude bei jeder Antwort im Hinterkopf hat – vollautomatisch, in jedem Chat.
+      </p>
+    </div>
+
+    <p class="intro-lead">
+      Diese Anleitung zeigt dir, wie du den <strong>Skill Creator</strong> in der Claude Browser-Version aktivierst und Schritt für Schritt deinen ersten Skill erstellst – ohne Vorkenntnisse.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════ SCHRITTE ═══════════════════ -->
+<div class="wrap">
+
+  <!-- SCHRITT 1 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 1 von 8</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">01</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 1</div>
+        <h3>Bei claude.ai <em>einloggen</em></h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Öffne deinen Browser und gehe auf <strong>claude.ai</strong>. Logge dich mit deinem bestehenden Account ein – oder erstelle kostenlos einen neuen. Skills sind ab dem kostenlosen Plan verfügbar.
+    </p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot b-r"></div>
+        <div class="b-dot b-y"></div>
+        <div class="b-dot b-g"></div>
+        <div class="b-url">claude.ai</div>
+      </div>
+      <div class="browser-body">
+        <!-- Simplified Claude home screen -->
+        <div class="claude-layout" style="height:220px;">
+          <div class="claude-sidebar">
+            <div class="claude-sidebar-logo">✦ Claude</div>
+            <div class="cs-new-chat">+ Neuer Chat</div>
+            <div class="cs-nav-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Chats
+            </div>
+            <div class="cs-nav-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Projekte
+            </div>
+            <div class="cs-nav-item active">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M20 12h2M2 12h2M12 20v2M12 2v2"/></svg>
+              Anpassen
+            </div>
+          </div>
+          <div class="claude-main" style="display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;">
+              <div style="font-size:28px;margin-bottom:8px;">✦</div>
+              <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px;">Guten Tag! Womit kann ich helfen?</div>
+              <div style="font-size:11px;color:#888;">Eingeloggt als <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3753427755525e44475e525b195352">[email&#160;protected]</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="success-bar">✅ <span>Du bist eingeloggt und siehst den Claude Chat. Links im Menü findest du alle Navigationspunkte.</span></div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <div>
+        <div class="tip-label">Kein Account?</div>
+        <div class="tip-text">Du kannst dich kostenlos bei claude.ai registrieren – mit E-Mail oder Google-Account. Der kostenlose Plan reicht völlig aus, um Skills anzulegen und zu nutzen.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHRITT 2 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 2 von 8</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">02</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 2</div>
+        <h3>Links im Menü auf <em>„Anpassen"</em> klicken</h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      In der linken Seitenleiste siehst du den Punkt <strong>„Anpassen"</strong>. Klicke darauf. Dort findest du zwei Bereiche: <strong>Skills</strong> und <strong>Konnektoren</strong>. Und du siehst bereits den vorinstallierten <strong>„skill-creator"</strong> – dazu mehr in Schritt 3.
+    </p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot b-r"></div>
+        <div class="b-dot b-y"></div>
+        <div class="b-dot b-g"></div>
+        <div class="b-url">claude.ai/settings/customize</div>
+      </div>
+      <div class="browser-body">
+        <div class="claude-layout" style="height:320px;">
+          <div class="claude-sidebar">
+            <div class="claude-sidebar-logo">✦ Claude</div>
+            <div class="cs-new-chat">+ Neuer Chat</div>
+            <div class="cs-nav-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Chats
+            </div>
+            <div class="cs-nav-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Projekte
+            </div>
+            <div class="cs-nav-item active">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M20 12h2M2 12h2M12 20v2M12 2v2"/></svg>
+              <strong style="color:#D8622A;">Anpassen</strong>
+            </div>
+          </div>
+          <div class="claude-main">
+            <div class="cm-page-title">Anpassen</div>
+            <div class="cm-page-sub">Personalisiere, wie Claude für dich arbeitet</div>
+            <div class="cm-tabs">
+              <div class="cm-tab active">Skills</div>
+              <div class="cm-tab">Konnektoren</div>
+            </div>
+            <div style="font-family:sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:10px;">Meine Skills</div>
+            <div class="cm-skill-row">
+              <div>
+                <div class="cm-skill-name">skill-creator</div>
+                <div class="cm-skill-desc">Erstellt neue Skills interaktiv mit Claude</div>
+              </div>
+              <div class="cm-skill-badge cm-badge-active">Aktiv</div>
+            </div>
+            <div style="font-size:10px;color:#aaa;margin-top:10px;font-style:italic;">← Dieser Skill ist vorinstalliert</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">🔍</span>
+      <div>
+        <div class="tip-label">Was du hier siehst</div>
+        <div class="tip-text">Im Bereich „Skills" ist bereits der <strong>skill-creator</strong> vorinstalliert. Das ist dein Werkzeug für Schritt 3 und 4 – Claude kann damit neue Skills komplett eigenständig für dich entwickeln.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHRITT 3 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 3 von 8</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">03</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 3</div>
+        <h3>Auf das <em>Plus</em> klicken → „Skill erstellen"</h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Klicke auf das <strong>+</strong> neben der Lupe und dann auf <strong>„+ Skill erstellen"</strong>. Es öffnet sich ein Reiter mit drei Optionen. Wähle hier <strong>„Mit Claude erstellen"</strong> – das ist der smarte Weg.
+    </p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot b-r"></div>
+        <div class="b-dot b-y"></div>
+        <div class="b-dot b-g"></div>
+        <div class="b-url">claude.ai/settings/customize → Skills</div>
+      </div>
+      <div class="browser-body">
+        <div style="margin-bottom:16px;">
+          <div style="font-family:sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:10px;">Skill hinzufügen</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <div style="background:#F0EDE8;border:1px solid #DDD8D0;border-radius:4px;padding:6px 12px;font-size:11px;color:#666;display:flex;align-items:center;gap:6px;flex:1;max-width:220px;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Skills durchsuchen
+            </div>
+            <div style="background:#D8622A;color:#fff;border-radius:4px;padding:6px 14px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px;cursor:pointer;">
+              <span style="font-size:14px;line-height:1;">+</span> Skill erstellen
+            </div>
+          </div>
+          <div style="font-family:sans-serif;font-size:11px;font-weight:600;color:#333;margin-bottom:10px;">Wie möchtest du deinen Skill erstellen?</div>
+          <div class="option-cards">
+            <div class="option-card selected">
+              <div class="option-card-icon">🤖</div>
+              <div class="option-card-title">Mit Claude erstellen</div>
+              <div class="option-card-desc">Claude führt dich durch den Prozess und erstellt den Skill für dich</div>
+              <div style="margin-top:8px;display:inline-block;background:#D8622A;color:#fff;font-size:8px;font-weight:700;padding:2px 7px;border-radius:2px;letter-spacing:0.5px;">EMPFOHLEN</div>
+            </div>
+            <div class="option-card">
+              <div class="option-card-icon">✍️</div>
+              <div class="option-card-title">Skill-Anweisungen schreiben</div>
+              <div class="option-card-desc">Schreibe die Anweisungen direkt selbst in ein Textfeld</div>
+            </div>
+            <div class="option-card">
+              <div class="option-card-icon">📁</div>
+              <div class="option-card-title">Skill hochladen</div>
+              <div class="option-card-desc">Lade eine bestehende Skill-Datei von deinem Computer hoch</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="action-list">
+      <li>
+        <div class="action-dot">A</div>
+        <div class="action-content">
+          <div class="action-title">Auf das + neben der Lupe klicken</div>
+          <div class="action-text">Du siehst oben im Skills-Bereich eine Suchleiste. Daneben ist das Plus-Symbol und der Button „+ Skill erstellen".</div>
+        </div>
+      </li>
+      <li>
+        <div class="action-dot">B</div>
+        <div class="action-content">
+          <div class="action-title">„Mit Claude erstellen" auswählen</div>
+          <div class="action-text">Von den drei Optionen wähle die erste: <strong>„Mit Claude erstellen"</strong>. Claude führt dich dann vollständig durch den Prozess – du musst nichts vorab wissen.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip">
+      <span class="tip-icon">⚡</span>
+      <div>
+        <div class="tip-label">Warum „Mit Claude erstellen"?</div>
+        <div class="tip-text">Weil Claude die richtigen Fragen stellt und am Ende eine fertige, strukturierte Skill-Datei generiert – viel schneller als wenn du selbst schreibst. Außerdem kann Claude sogar <strong>eigenständig recherchieren</strong> und Informationen für deinen Skill einbinden.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHRITT 4 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 4 von 8</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">04</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 4</div>
+        <h3>Claude führt dich durch den <em>Prozess</em></h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Es öffnet sich ein neuer Chat mit einem vorausgefüllten Prompt: <em>„Let's create a skill together using your skill-creator skill. First ask me what the skill should do."</em> Klicke auf den Button <strong>„Absenden"</strong> – und Claude startet.
+    </p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot b-r"></div>
+        <div class="b-dot b-y"></div>
+        <div class="b-dot b-g"></div>
+        <div class="b-url">claude.ai → Neuer Chat (Skill Creator)</div>
+      </div>
+      <div class="browser-body">
+        <!-- Chat interface -->
+        <div style="background:#F9F7F4;border:1px solid #E8E3DC;border-radius:6px;padding:14px 16px;margin-bottom:14px;">
+          <div style="font-size:10px;font-weight:600;color:#888;margin-bottom:5px;">Vorausgefüllte Nachricht (einfach absenden):</div>
+          <div style="font-size:12px;color:#333;font-style:italic;">"Let's create a skill together using your skill-creator skill. First ask me what the skill should do."</div>
+          <div style="display:flex;justify-content:flex-end;margin-top:10px;">
+            <div style="background:#D8622A;color:#fff;border-radius:4px;padding:6px 14px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;">
+              Absenden ↗
+            </div>
+          </div>
+        </div>
+        <div class="chat-bubble-claude">
+          <strong>Claude antwortet:</strong><br>
+          „Super! Lass uns gemeinsam einen Skill erstellen. Was soll dieser Skill für dich tun? Beschreibe kurz, womit Claude dich unterstützen soll – z.B. in welchem Bereich, für welche Aufgaben oder in welchem Stil."
+        </div>
+        <div style="font-size:11px;color:#888;margin-top:12px;font-style:italic;">→ Claude stellt dir jetzt gezielte Fragen und erstellt dann deinen Skill.</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">⚡</span>
+      <div>
+        <div class="tip-label">Tipp</div>
+        <div class="tip-text">Tippe in jedem Chat <strong>/skill-creator</strong> in das Eingabefeld – es öffnet sich sofort die Skill-Erstellungs-Session, ohne dass du in die Einstellungen navigieren musst.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHRITT 5 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 5 von 8</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">05</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 5</div>
+        <h3>Dem Skill Creator deine <em>Anweisung</em> geben</h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Beschreibe Claude jetzt, was dein Skill tun soll. Willst du, dass Claude dich ab sofort mit <strong>Designs unterstützt</strong>? Gib ihm ausgearbeitete Design-Regeln – oder lass Claude sie selbst recherchieren und einbinden. Claude stellt Rückfragen, bis alles klar ist.
+    </p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot b-r"></div>
+        <div class="b-dot b-y"></div>
+        <div class="b-dot b-g"></div>
+        <div class="b-url">claude.ai → Skill Creator Chat</div>
+      </div>
+      <div class="browser-body">
+        <div class="chat-bubble-user">„Ich will einen Skill, der meinen Schreibstil kennt. Ich schreibe für Instagram – direkt, kurze Sätze, kein Fachjargon. Immer mit konkreten Beispielen oder Zahlen."</div>
+        <div class="chat-bubble-claude">
+          <strong>Claude:</strong> „Verstanden! Noch eine Frage: Gibt es Wörter oder Formulierungen, die du gar nicht magst? Und schreibst du eher in der Du- oder Sie-Form?"
+        </div>
+        <div class="chat-bubble-user">„Kein 'revolutionär', kein 'synergistisch'. Immer Du-Form, immer Ich-Perspektive."</div>
+        <div class="chat-bubble-claude">
+          <strong>Claude:</strong> „Perfekt – ich erstelle jetzt deinen Skill-Datei. Einen Moment..."
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <div>
+        <div class="tip-label">Was du angeben kannst</div>
+        <div class="tip-text">Schreibstil, Zielgruppe, Do's & Don'ts, dein Angebot, deine Branche – oder alles zusammen. Je konkreter du bist, desto besser arbeitet Claude. <strong>Kein Perfectionism</strong> nötig: Claude fragt nach, wenn etwas fehlt.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHRITT 6 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 6 von 8</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">06</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 6</div>
+        <h3>Claude erstellt die <em>SKILL-Datei</em></h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Claude generiert eine fertige <strong>Skill-Datei</strong> – strukturiert, vollständig, sofort verwendbar. Du kannst sie lokal auf deinen Computer herunterladen oder <strong>direkt in deinem Claude-Account abspeichern</strong>.
+    </p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot b-r"></div>
+        <div class="b-dot b-y"></div>
+        <div class="b-dot b-g"></div>
+        <div class="b-url">claude.ai → Skill Creator Chat</div>
+      </div>
+      <div class="browser-body">
+        <div class="chat-bubble-claude">
+          <strong>Claude:</strong> „Ich habe deinen Skill fertig erstellt! Hier ist deine Skill-Datei – du kannst sie direkt speichern oder herunterladen:"
+        </div>
+        <div class="skill-file-card">
+          <span class="skill-file-icon">⚙️</span>
+          <div class="skill-file-info">
+            <div class="skill-file-name">mein-schreibstil-skill</div>
+            <div class="skill-file-desc">Generiert vom Skill Creator · Bereit zum Speichern</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+            <div class="skill-file-btn">Direkt speichern →</div>
+            <div style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--sand);font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;border-radius:1px;text-align:center;">Herunterladen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="action-list">
+      <li>
+        <div class="action-dot">A</div>
+        <div class="action-content">
+          <div class="action-title">Option 1: Direkt im Account speichern</div>
+          <div class="action-text">Klicke auf <strong>„Direkt speichern"</strong> – der Skill landet sofort in deinem Claude-Account unter „Anpassen → Skills". Fertig.</div>
+        </div>
+      </li>
+      <li>
+        <div class="action-dot">B</div>
+        <div class="action-content">
+          <div class="action-title">Option 2: Lokal herunterladen</div>
+          <div class="action-text">Klicke auf <strong>„Herunterladen"</strong>, um die .md-Datei auf deinem Computer zu speichern. Du kannst sie später jederzeit über „Skill hochladen" in deinen Account importieren.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SCHRITT 7 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 7 von 8</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">07</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 7</div>
+        <h3>Auf <em>Speichern</em> drücken</h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Drücke auf <strong>„Speichern"</strong>. Ab sofort ist dein Skill unter <strong>„Anpassen → Skills"</strong> gespeichert und du kannst jederzeit darauf zugreifen, ihn bearbeiten oder löschen.
+    </p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot b-r"></div>
+        <div class="b-dot b-y"></div>
+        <div class="b-dot b-g"></div>
+        <div class="b-url">claude.ai/settings/customize → Skills</div>
+      </div>
+      <div class="browser-body">
+        <div class="claude-layout" style="height:280px;">
+          <div class="claude-sidebar">
+            <div class="claude-sidebar-logo">✦ Claude</div>
+            <div class="cs-new-chat">+ Neuer Chat</div>
+            <div class="cs-nav-item active">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41"/></svg>
+              <strong style="color:#D8622A;">Anpassen</strong>
+            </div>
+          </div>
+          <div class="claude-main">
+            <div class="cm-page-title">Anpassen</div>
+            <div class="cm-tabs">
+              <div class="cm-tab active">Skills</div>
+              <div class="cm-tab">Konnektoren</div>
+            </div>
+            <div class="cm-skill-row">
+              <div>
+                <div class="cm-skill-name">skill-creator</div>
+                <div class="cm-skill-desc">Erstellt neue Skills interaktiv mit Claude</div>
+              </div>
+              <div class="cm-skill-badge cm-badge-active">Aktiv</div>
+            </div>
+            <div class="cm-skill-row" style="border:1px solid #D8622A;background:rgba(216,98,42,0.04);">
+              <div>
+                <div class="cm-skill-name" style="color:#D8622A;">mein-schreibstil-skill</div>
+                <div class="cm-skill-desc">Dein persönlicher Schreibstil – Instagram, Du-Form</div>
+              </div>
+              <div class="cm-skill-badge cm-badge-active">✓ Gespeichert</div>
+            </div>
+          </div>
+        </div>
+        <div class="success-bar">✅ <span>Dein Skill ist gespeichert und ab sofort in jedem neuen Chat aktiv.</span></div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">🔧</span>
+      <div>
+        <div class="tip-label">Skill jederzeit bearbeiten</div>
+        <div class="tip-text">Du kannst deinen Skill jederzeit unter „Anpassen → Skills" öffnen und anpassen. Klicke einfach auf den Skill-Namen. Je öfter du ihn verfeinerst, desto besser wird Claude.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHRITT 8 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 8 von 8</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">08</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 8</div>
+        <h3>Skill im Chat <em>aktivieren</em> mit „/"</h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Ab sofort kannst du deinen Skill in jedem Chat aktivieren. Tippe einfach <strong>„/"</strong> in das Eingabefeld – und es öffnet sich die Liste deiner verfügbaren Skills (z.B. skill-creator, dein-schreibstil-skill, design-skill…).
+    </p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot b-r"></div>
+        <div class="b-dot b-y"></div>
+        <div class="b-dot b-g"></div>
+        <div class="b-url">claude.ai → Neuer Chat</div>
+      </div>
+      <div class="browser-body">
+        <!-- Chat input with slash dropdown -->
+        <div style="margin-bottom:12px;">
+          <div class="claude-prompt-bar" style="margin-bottom:0;border-radius:8px 8px 0 0;border-bottom:none;">
+            <span style="color:#1a1a1a;font-weight:500;">/</span>
+            <span style="color:#aaa;">skill auswählen...</span>
+          </div>
+          <div class="slash-dropdown" style="border-radius:0 0 6px 6px;">
+            <div style="padding:8px 14px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;background:#F9F7F4;border-bottom:1px solid #E8E3DC;">Deine Skills</div>
+            <div class="slash-item highlighted">
+              <div class="slash-item-icon">✍️</div>
+              <div>
+                <div class="slash-item-name">mein-schreibstil-skill</div>
+                <div class="slash-item-desc">Dein persönlicher Instagram-Schreibstil</div>
+              </div>
+            </div>
+            <div class="slash-item">
+              <div class="slash-item-icon">🔧</div>
+              <div>
+                <div class="slash-item-name">skill-creator</div>
+                <div class="slash-item-desc">Neuen Skill mit Claude erstellen</div>
+              </div>
+            </div>
+            <div class="slash-item">
+              <div class="slash-item-icon">🎨</div>
+              <div>
+                <div class="slash-item-name">design-skill</div>
+                <div class="slash-item-desc">Design-Regeln und Markenidentität</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:20px;">
+          <div class="chat-bubble-user">„Schreib mir eine Caption über meine neue Coaching-Runde."</div>
+          <div class="chat-bubble-claude">
+            <strong>Claude – mit deinem Skill aktiv:</strong><br>
+            „Ich habe 6 Monate gebraucht, um das herauszufinden. Du brauchst 6 Wochen. Meine neue Coaching-Runde startet – 5 Plätze, kein Warten. Details in der Bio."
+          </div>
+        </div>
+        <div class="success-bar">✅ <span>Claude hat deinen Skill erkannt und antwortet in deinem Stil – ohne dass du etwas erklären musstest.</span></div>
+      </div>
+    </div>
+
+    <ul class="action-list">
+      <li>
+        <div class="action-dot">1</div>
+        <div class="action-content">
+          <div class="action-title">Einen neuen Chat öffnen</div>
+          <div class="action-text">Skills wirken nur in <strong>neuen Chats</strong> – nicht rückwirkend. Klicke auf „+ Neuer Chat" und fange frisch an.</div>
+        </div>
+      </li>
+      <li>
+        <div class="action-dot">2</div>
+        <div class="action-content">
+          <div class="action-title">„/" tippen und Skill wählen</div>
+          <div class="action-text">Tippe <strong>/</strong> in die Eingabeleiste – es erscheint sofort die Liste deiner Skills. Klicke auf den gewünschten, um ihn zu aktivieren.</div>
+        </div>
+      </li>
+      <li>
+        <div class="action-dot">3</div>
+        <div class="action-content">
+          <div class="action-title">Aufgabe stellen – ohne Erklärung</div>
+          <div class="action-text">Einfach loslegen. Claude kennt deinen Kontext jetzt – du musst nicht mehr erklären, wer du bist, wie du schreibst oder was du brauchst.</div>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+</div><!-- /wrap -->
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<div class="cta">
+  <div class="cta-eye">Telegram Channel</div>
+  <h2>Hier beginnt dein<br><em>Vorsprung mit KI.</em></h2>
+  <p class="cta-text">
+    Erhalte exklusiven Zugang zu besonderen Angeboten und sichere dir die besten Deals!
+  </p>
+  <a href="https://t.me/+FqudiTcL7JgyZmUy" target="_blank" rel="noopener" class="cta-btn" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;margin:0 auto;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+    <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">Jetzt der Community beitreten<span style="font-size:9px;font-weight:400;letter-spacing:1.5px;opacity:0.8;">Kostenlos</span></span>
+  </a>
+</div>
+
+<!-- ═══════════════════ SITE FOOTER ═══════════════════ -->
+<div class="site-footer">
+  <div class="site-footer-copy">© 2026 Hanna Marzian</div>
+
+  <div class="site-footer-collab">
+    <div class="site-footer-collab-label">In Zusammenarbeit mit</div>
+    <a href="https://scale-square.com/" target="_blank" rel="noopener" class="scale2-footer-logo">
+      <div class="scale2-icon-sm">
+        <div class="scale2-bar-sm" style="height:8px;"></div>
+        <div class="scale2-bar-sm" style="height:12px;"></div>
+        <div class="scale2-bar-sm" style="height:6px;"></div>
+      </div>
+      <div>
+        <div class="scale2-wordmark-sm">scale<sup>2</sup></div>
+        <div style="font-family:var(--font-a);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid-gray);">AI Growth Partner</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="site-footer-links">
+    <a href="https://www.hannamarzian.com/impressum.html" target="_blank" rel="noopener">Impressum</a>
+    <a href="https://www.hannamarzian.com/datenschutz.html" target="_blank" rel="noopener">Datenschutz</a>
+    <a 
