@@ -936,13 +936,56 @@
       background: var(--black);
       padding: 100px 48px;
     }
-    .proj-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 380px));
+    /* ── PROJECT CAROUSEL ────────────────────── */
+    .pcar-wrap { max-width: 1200px; margin: 0 auto; position: relative; }
+    .pcar-viewport { overflow: hidden; }
+    .pcar-track {
+      display: flex;
       gap: 28px;
-      justify-content: center;
+      transition: transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .pcar-slide {
+      min-width: calc(33.333% - 19px);
+      flex-shrink: 0;
+    }
+    .pcar-slide a {
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(216,98,42,0.12);
+      transition: transform .6s cubic-bezier(0.16,1,0.3,1), box-shadow .6s;
+      text-decoration: none;
+    }
+    .pcar-slide a:hover { transform: translateY(-6px); box-shadow: 0 32px 64px rgba(0,0,0,0.5); }
+    .pcar-slide img { width: 100%; height: auto; display: block; }
+    .pcar-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px;
+      background: rgba(216,98,42,0.15); border: 1px solid rgba(216,98,42,0.35);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 3; color: var(--gold);
+      transition: background .3s, transform .3s var(--expo), border-color .3s;
+    }
+    .pcar-btn:hover { background: rgba(216,98,42,0.3); border-color: var(--gold); transform: translateY(-50%) scale(1.1); }
+    .pcar-btn.prev { left: -72px; }
+    .pcar-btn.next { right: -72px; }
+    .pcar-btn:disabled { opacity: 0.25; pointer-events: none; }
+    .pcar-dots { display: flex; justify-content: center; gap: 10px; margin-top: 36px; }
+    .pcar-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(216,98,42,0.3); border: none; cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+    .pcar-dot.active { background: var(--gold); transform: scale(1.4); }
+    @media (max-width: 900px) {
+      .pcar-slide { min-width: calc(80% - 14px); }
+      .pcar-btn.prev { left: 4px; }
+      .pcar-btn.next { right: 4px; }
+      .pcar-wrap { padding: 0 60px; }
+    }
+    @media (max-width: 600px) {
+      .pcar-slide { min-width: 100%; }
+      .pcar-wrap { padding: 0 52px; }
     }
     .proj-card {
       display: block;
@@ -1878,22 +1921,43 @@
       <h2 class="rv d1" style="font-family: var(--serif); font-size: clamp(32px, 4vw, 58px); font-weight: 500; color: #ffffff; line-height: 1.15; margin-top: 16px;">Projektvorstellungen</h2>
       <p class="rv d2" style="font-size: 15px; color: var(--gray); margin-top: 14px; letter-spacing: 0.02em;">Beispiele der Websites einiger Teilnehmer (absolute Technik-Anfänger!)</p>
     </div>
-    <div class="proj-grid">
-      <a class="proj-card rv" href="https://www.andrea-luedtke.de/" target="_blank" rel="noopener">
-        <img src="Testimonials/KI Website Kurs/Projektvorstellungen/andrea-website.png" alt="Andrea Lüdtke Website">
-      </a>
-      <a class="proj-card rv d2" href="https://kristin-schnoedt.de/" target="_blank" rel="noopener">
-        <img src="Testimonials/KI Website Kurs/Projektvorstellungen/kristin-website.png" alt="Kristin Schnoedt Website">
-      </a>
-      <a class="proj-card rv d4" href="https://waldmomente.me/" target="_blank" rel="noopener">
-        <img src="Testimonials/KI Website Kurs/Projektvorstellungen/waldmomente-website.png" alt="Waldmomente Website">
-      </a>
-      <a class="proj-card rv d2" href="https://woehl.de/" target="_blank" rel="noopener">
-        <img src="Testimonials/KI Website Kurs/woehl.de.png" alt="Wöhl Website">
-      </a>
-      <a class="proj-card rv d3" href="https://lak-cleaningservice.de/" target="_blank" rel="noopener">
-        <img src="Testimonials/KI Website Kurs/lak-cleaningservice.de.png" alt="LAK Cleaning Service Website">
-      </a>
+    <div class="pcar-wrap">
+      <div class="pcar-viewport">
+        <div class="pcar-track" id="pcarTrack">
+          <div class="pcar-slide rv">
+            <a href="https://www.andrea-luedtke.de/" target="_blank" rel="noopener">
+              <img src="Testimonials/KI Website Kurs/Projektvorstellungen/andrea-website.png" alt="Andrea Lüdtke Website">
+            </a>
+          </div>
+          <div class="pcar-slide rv d1">
+            <a href="https://kristin-schnoedt.de/" target="_blank" rel="noopener">
+              <img src="Testimonials/KI Website Kurs/Projektvorstellungen/kristin-website.png" alt="Kristin Schnoedt Website">
+            </a>
+          </div>
+          <div class="pcar-slide rv d2">
+            <a href="https://waldmomente.me/" target="_blank" rel="noopener">
+              <img src="Testimonials/KI Website Kurs/Projektvorstellungen/waldmomente-website.png" alt="Waldmomente Website">
+            </a>
+          </div>
+          <div class="pcar-slide rv d3">
+            <a href="https://woehl.de/" target="_blank" rel="noopener">
+              <img src="Testimonials/KI Website Kurs/woehl.de.png" alt="Wöhl Website">
+            </a>
+          </div>
+          <div class="pcar-slide rv d4">
+            <a href="https://lak-cleaningservice.de/" target="_blank" rel="noopener">
+              <img src="Testimonials/KI Website Kurs/lak-cleaningservice.de.png" alt="LAK Cleaning Service Website">
+            </a>
+          </div>
+        </div>
+      </div>
+      <button class="pcar-btn prev" id="pcarPrev" aria-label="Zurück">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="pcar-btn next" id="pcarNext" aria-label="Weiter">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="pcar-dots" id="pcarDots"></div>
     </div>
   </section>
 
@@ -2187,6 +2251,57 @@
         if (!dragging) return; dragging = false;
         const dx = e.clientX - startX;
         if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
+      });
+    })();
+
+    /* ── PROJECT CAROUSEL ─────────────────────────────────── */
+    (function() {
+      const track   = document.getElementById('pcarTrack');
+      const dotsEl  = document.getElementById('pcarDots');
+      const prevBtn = document.getElementById('pcarPrev');
+      const nextBtn = document.getElementById('pcarNext');
+      if (!track) return;
+
+      const slides     = track.querySelectorAll('.pcar-slide');
+      const total      = slides.length;
+      let   cur        = 0;
+      let   perView    = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 1 : 3;
+      const maxPos     = () => Math.max(0, total - perView);
+
+      /* Build dots */
+      for (let i = 0; i <= maxPos(); i++) {
+        const d = document.createElement('button');
+        d.className = 'pcar-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(d);
+      }
+
+      function goTo(idx) {
+        cur = Math.max(0, Math.min(idx, maxPos()));
+        const slideWidth = slides[0].offsetWidth + 28; // width + gap
+        track.style.transform = 'translateX(-' + (cur * slideWidth) + 'px)';
+        dotsEl.querySelectorAll('.pcar-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+        prevBtn.disabled = cur === 0;
+        nextBtn.disabled = cur >= maxPos();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(cur - 1));
+      nextBtn.addEventListener('click', () => goTo(cur + 1));
+      goTo(0);
+
+      /* Touch */
+      let startX = 0, dragging = false;
+      track.parentElement.addEventListener('pointerdown', e => { startX = e.clientX; dragging = true; });
+      track.parentElement.addEventListener('pointerup',   e => {
+        if (!dragging) return; dragging = false;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
+      });
+
+      window.addEventListener('resize', () => {
+        perView = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 1 : 3;
+        goTo(Math.min(cur, maxPos()));
       });
     })();
   </script>
