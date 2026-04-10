@@ -13,15 +13,17 @@
     --orange-mid:   #E8894E;
     --orange-pale:  #F5CFA8;
     --orange-deep:  #B84E1E;
-    --black:        #0A0A0A;
-    --dark:         #141414;
-    --dark-2:       #1E1E1E;
-    --dark-3:       #2A2A2A;
-    --mid-gray:     #666;
-    --light-gray:   #999;
-    --border:       #2A2A2A;
+    --black:        #160C05;
+    --dark:         #2A1608;
+    --dark-2:       #3A1F0E;
+    --dark-3:       #472B18;
+    --mid-gray:     #A0907E;
+    --light-gray:   #C8B8A8;
+    --border:       rgba(216,98,42,0.18);
     --cream:        #F6F0E6;
-    --white:        #FFFFFF;
+    --off-white:    #FBF7F2;
+    --mist:         #EDE4D7;
+    --white:        #FBF7F2;
 
     --font-heading: 'Cormorant', Georgia, serif;
     --font-body:    'DM Sans', system-ui, sans-serif;
@@ -60,9 +62,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(246,240,230,0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(216,98,42,0.18);
     padding: 14px 32px;
     display: flex;
     align-items: center;
@@ -75,10 +77,10 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--light-gray);
+    color: var(--mid-gray);
   }
   .sticky-nav-text span {
-    color: var(--white);
+    color: var(--black);
   }
   .sticky-nav-cta {
     background: var(--orange);
@@ -114,6 +116,7 @@
   .hero {
     padding: 100px 0 80px;
     border-bottom: 1px solid var(--border);
+    background: var(--off-white);
   }
   .hero-eyebrow {
     font-family: var(--font-accent);
@@ -138,9 +141,9 @@
   .hero h1 {
     font-family: var(--font-heading);
     font-size: clamp(44px, 6.5vw, 80px);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.08;
-    color: var(--white);
+    color: var(--black);
     margin-bottom: 28px;
     letter-spacing: -0.5px;
   }
@@ -150,7 +153,7 @@
   }
   .hero-sub {
     font-size: 18px;
-    color: var(--light-gray);
+    color: var(--dark-3);
     max-width: 580px;
     line-height: 1.65;
     margin-bottom: 48px;
@@ -179,12 +182,12 @@
     font-family: var(--font-accent);
     font-size: 14px;
     font-weight: 700;
-    color: var(--white);
+    color: var(--black);
   }
   .hero-meta-divider {
     width: 1px;
     height: 36px;
-    background: var(--border);
+    background: rgba(216,98,42,0.2);
   }
   .hero-ctas {
     display: flex;
@@ -241,10 +244,9 @@
 
   /* ── MARQUEE ── */
   .marquee-section {
-    border-bottom: 1px solid var(--border);
     overflow: hidden;
-    padding: 24px 0;
-    background: var(--dark);
+    padding: 16px 0;
+    background: var(--orange);
   }
   .marquee-track {
     display: flex;
@@ -255,24 +257,24 @@
   .marquee-item {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 0 36px;
+    gap: 32px;
+    padding: 0 32px;
     white-space: nowrap;
   }
   .marquee-dot {
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-    background: var(--orange);
+    background: rgba(0,0,0,0.3);
     flex-shrink: 0;
   }
   .marquee-text {
     font-family: var(--font-accent);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--light-gray);
+    color: var(--black);
   }
   @keyframes marquee {
     0%   { transform: translateX(0); }
@@ -976,7 +978,7 @@
 <!-- STICKY NAV -->
 <nav class="sticky-nav">
   <div class="sticky-nav-text">
-    AI WEBSITE CODE &nbsp;·&nbsp; <span>Start: 22. April</span> &nbsp;·&nbsp; <span>199 € · oder 3 × 67 €</span>
+    AI WEBSITE CODE &nbsp;·&nbsp; <span>Start: 22. April</span> &nbsp;·&nbsp; <span>Einmalig 199 € / 3 Raten je 68 €</span>
   </div>
   <a href="https://copecart.com/products/729ae42f/checkout" target="_blank" class="sticky-nav-cta">Jetzt anmelden</a>
 </nav>
@@ -1008,7 +1010,7 @@
       <a href="#what" class="btn-secondary">Mehr erfahren</a>
     </div>
     <div class="hero-proof">Der Zugang zu den Videoinhalten ist sofort freigeschaltet</div>
-    <div style="margin-top:12px; font-family:var(--font-accent); font-size:11px; font-weight:700; letter-spacing:1.5px; color:var(--orange-mid);">Oder in 3 Raten à 67 € zahlen!</div>
+    <div style="margin-top:12px; font-family:var(--font-accent); font-size:11px; font-weight:700; letter-spacing:1.5px; color:var(--orange-mid);">Einmalig 199 € / 3 Raten je 68 €</div>
   </div>
 </section>
 
@@ -1056,7 +1058,7 @@
 
     <div class="cta-row">
       <a href="https://copecart.com/products/729ae42f/checkout" target="_blank" class="btn-primary">Jetzt Zugang sichern</a>
-      <div class="cta-note">Einmalzahlung · 199 € · oder 3 × 67 €</div>
+      <div class="cta-note">Einmalig 199 € / 3 Raten je 68 €</div>
     </div>
   </div>
 </section>
@@ -1321,7 +1323,7 @@
 
     <div class="cta-row">
       <a href="https://copecart.com/products/729ae42f/checkout" target="_blank" class="btn-primary">Jetzt anmelden</a>
-      <div class="cta-note">199 € einmalig · oder 3 × 67 € · Dank nicht mir, sondern KI</div>
+      <div class="cta-note">Einmalig 199 € / 3 Raten je 68 € · Dank nicht mir, sondern KI</div>
     </div>
   </div>
 </section>
@@ -1516,7 +1518,7 @@
       <div class="price-label">Einmalige Investition</div>
       <div class="price-value">199 €</div>
       <div class="price-vat">inkl. MwSt. · einmalig</div>
-      <div style="margin-top:12px; font-family:var(--font-accent); font-size:11px; font-weight:700; letter-spacing:1.5px; color:var(--orange-mid);">Oder in 3 Raten à 67 € zahlen!</div>
+      <div style="margin-top:12px; font-family:var(--font-accent); font-size:11px; font-weight:700; letter-spacing:1.5px; color:var(--orange-mid);">Einmalig 199 € / 3 Raten je 68 €</div>
     </div>
 
     <br>
