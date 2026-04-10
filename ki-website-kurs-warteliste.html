@@ -711,6 +711,10 @@
       /* Warum-anders-Sektion: 2-Spalten → 1-Spalte */
       .warum-section { padding: 80px 24px !important; }
       .warum-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      /* Testimonial Marquee: größere Bilder auf Mobile */
+      .tmq-img { height: 420px; }
+      .tmq-section { padding: 48px 0; }
+      .tmq-section::before, .tmq-section::after { width: 40px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
