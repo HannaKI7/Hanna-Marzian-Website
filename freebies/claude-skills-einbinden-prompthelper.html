@@ -50,113 +50,211 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 64px 72px;
+    padding: 0 72px 40px;
     position: relative;
     overflow: hidden;
   }
   .cover::before {
     content: '';
     position: absolute;
-    top: -140px; right: -140px;
-    width: 580px; height: 580px;
-    background: radial-gradient(circle, rgba(216,98,42,.18) 0%, transparent 65%);
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(216,98,42,.15) 0%, transparent 65%);
     pointer-events: none;
   }
   .cover::after {
     content: '';
     position: absolute;
-    bottom: -100px; left: -60px;
-    width: 440px; height: 440px;
-    background: radial-gradient(circle, rgba(216,98,42,.07) 0%, transparent 70%);
+    bottom: -80px; left: -40px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(216,98,42,.06) 0%, transparent 70%);
     pointer-events: none;
   }
-  .cover-top {
-    font-family: var(--font-a);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3.5px;
-    text-transform: uppercase;
-    color: var(--orange);
-  }
-  .cover-body {
-    flex: 1;
+
+  /* ─ Nav Bar ─ */
+  .cover-nav {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 56px 0 48px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 0;
+    position: relative;
+    z-index: 2;
   }
+  .cover-nav-brand {
+    font-family: var(--font-a);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sand);
+  }
+  .cover-nav-brand span { color: var(--orange); }
+  .cover-nav-social {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 100px;
+    padding: 6px 14px 6px 10px;
+  }
+  .cover-nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+  .cover-nav-social-text {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+  }
+
+  /* ─ Two-Col Grid ─ */
+  .cover-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
+    align-items: center;
+    padding: 40px 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-left {}
   .cover-kicker {
     font-family: var(--font-a);
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--tan);
-    margin-bottom: 28px;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cover-kicker::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--orange);
+    opacity: .6;
   }
   .cover h1 {
     font-family: var(--font-h);
-    font-size: clamp(52px, 7.5vw, 84px);
+    font-size: clamp(40px, 5.5vw, 64px);
     font-weight: 500;
     color: var(--off-white);
-    line-height: 1.0;
-    letter-spacing: -1.5px;
-    margin-bottom: 28px;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
   }
   .cover h1 em { font-style: italic; color: var(--orange-mid); }
   .cover-sub {
     font-family: var(--font-b);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 300;
     color: var(--sand);
-    max-width: 480px;
     line-height: 1.8;
-    margin-bottom: 44px;
+    margin-bottom: 32px;
+    max-width: 440px;
   }
-  .cover-badges {
+  .cover-benefits {
+    list-style: none;
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
   }
-  .cover-badge {
-    font-family: var(--font-a);
-    font-size: 9px;
+  .cover-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--sand);
+    line-height: 1.5;
+  }
+  .cover-benefits li::before {
+    content: '✓';
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 7px 14px;
-    border-radius: 1px;
+    color: var(--orange);
+    background: rgba(216,98,42,.15);
+    border: 1px solid rgba(216,98,42,.3);
+    border-radius: 50%;
+    width: 20px; height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
   }
-  .cover-badge-fill { background: var(--orange); color: var(--off-white); }
-  .cover-badge-out { border: 1px solid rgba(255,255,255,.15); color: var(--sand); }
+  .cover-social-proof {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .proof-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--warm-brown);
+    border: 2px solid rgba(216,98,42,.4);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .proof-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .proof-text {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--tan);
+    line-height: 1.5;
+  }
+  .proof-text strong {
+    color: var(--off-white);
+    font-weight: 500;
+  }
 
-  /* ─── COVER OPTIN ─── */
+  /* ─ Optin Box ─ */
   .cover-optin {
-    margin-top: 44px;
-    background: rgba(255,255,255,.05);
+    background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.1);
-    border-top: 2px solid var(--orange);
-    border-radius: 2px;
-    padding: 36px 40px 32px;
-    max-width: 520px;
+    border-top: 3px solid var(--orange);
+    border-radius: 3px;
+    padding: 36px 36px 32px;
+    position: relative;
+  }
+  .cover-optin::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(216,98,42,.04) 0%, transparent 60%);
+    border-radius: 3px;
+    pointer-events: none;
   }
   .cover-optin-label {
     font-family: var(--font-a);
     font-size: 9px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--orange);
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
   .cover-optin-title {
     font-family: var(--font-h);
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 500;
     color: var(--off-white);
-    margin-bottom: 8px;
-    line-height: 1.3;
+    line-height: 1.15;
+    margin-bottom: 10px;
   }
+  .cover-optin-title em { font-style: italic; color: var(--orange-mid); }
   .cover-optin-sub {
     font-size: 13px;
     font-weight: 300;
@@ -164,30 +262,47 @@
     line-height: 1.7;
     margin-bottom: 24px;
   }
-  .cover-optin .optin-placeholder {
-    background: rgba(216,98,42,.08);
-    border-color: rgba(216,98,42,.35);
+  .cover-optin-trust {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .7;
   }
-  .cover-optin .optin-placeholder-text { color: var(--sand); }
+  .cover-optin-trust::before {
+    content: '🔒';
+    font-size: 10px;
+    opacity: .8;
+  }
+
+  /* ─ Footer Bar ─ */
   .cover-foot {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid rgba(255,255,255,.08);
-    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding-top: 20px;
     flex-wrap: wrap;
     gap: 16px;
+    position: relative;
+    z-index: 2;
   }
   .cover-authors {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
     flex-wrap: wrap;
   }
   .cover-author {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
   }
   .cover-author-label {
     font-family: var(--font-a);
@@ -196,11 +311,11 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--tan);
-    opacity: .6;
+    opacity: .5;
   }
   .cover-author-name {
     font-family: var(--font-h);
-    font-size: 16px;
+    font-size: 15px;
     color: var(--off-white);
   }
   .cover-author-name span { color: var(--orange); }
@@ -212,8 +327,8 @@
   }
   .author-divider {
     width: 1px;
-    height: 40px;
-    background: rgba(255,255,255,.12);
+    height: 36px;
+    background: rgba(255,255,255,.1);
     flex-shrink: 0;
   }
 
@@ -737,22 +852,27 @@
     font-size: 9px;
   }
 
+  @media (max-width: 900px) {
+    .cover { padding: 0 40px 32px; }
+    .cover-grid { grid-template-columns: 1fr; gap: 40px; padding: 32px 0 24px; }
+    .cover-optin { order: -1; }
+  }
   @media (max-width: 680px) {
-    .cover { padding: 40px 24px; }
+    .cover { padding: 0 20px 28px; }
     .wrap { padding: 0 20px; }
     .recap { padding: 36px 24px; }
     .cta { padding: 48px 24px; }
     .site-footer { padding: 20px 20px; }
-    .cover h1 { font-size: clamp(38px, 10vw, 58px); letter-spacing: -0.5px; }
+    .cover h1 { font-size: clamp(34px, 9vw, 52px); letter-spacing: -0.5px; }
     .cover-sub { font-size: 15px; }
     .cover-authors { gap: 16px; }
     .author-divider { display: none; }
     .cta h2 { font-size: 28px; }
     .step-num { font-size: 52px; min-width: 44px; }
     .site-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .optin-box { padding: 28px 24px; }
     .cover-optin { padding: 28px 24px; }
     .path-row { gap: 4px; }
+    .cover-nav-social { display: none; }
   }
 </style>
 </head>
@@ -760,28 +880,53 @@
 
 <!-- ═══════════════════ COVER ═══════════════════ -->
 <div class="cover">
-  <div class="cover-body">
-    <div class="cover-kicker">Kostenlose Anleitung</div>
-    <h1>
-      Claude Skills<br><em>einbinden.</em>
-    </h1>
-    <p class="cover-sub">
-      So importierst du fertige Skills in deinen Claude-Account und rufst sie in jedem Chat mit einem einzigen Befehl auf.
-    </p>
-    <div class="cover-badges">
-      <span class="cover-badge cover-badge-fill">Kostenlos</span>
-      <span class="cover-badge cover-badge-out">4 Schritte</span>
-      <span class="cover-badge cover-badge-out">Kein Vorwissen nötig</span>
-    </div>
 
-    <div class="cover-optin">
-      <div class="cover-optin-label">Skill herunterladen</div>
-      <div class="cover-optin-title">Gratis Skill sichern</div>
-      <p class="cover-optin-sub">Einmal eintragen, sofort runterladen. Kein Spam. Nur relevante KI-Insights direkt in dein Postfach.</p>
-      <script id="form-script-tag-23607178" src="https://member.hannamarzian.com/public/remote/page/39951405c4cce4c9c51fc196d08dfe6b3ba8d73e.js"></script>
+  <!-- Nav -->
+  <div class="cover-nav">
+    <div class="cover-nav-brand">@hanna<span>.gpt</span></div>
+    <div class="cover-nav-social">
+      <div class="cover-nav-dot"></div>
+      <div class="cover-nav-social-text">100k Follower auf Instagram</div>
     </div>
   </div>
 
+  <!-- Two-Col Grid -->
+  <div class="cover-grid">
+
+    <!-- Left: Copy -->
+    <div class="cover-left">
+      <div class="cover-kicker">Kostenloser Skill-Download</div>
+      <h1>Dein erster<br>fertiger Claude<br><em>Prompt-Helper.</em></h1>
+      <p class="cover-sub">
+        Trag dich ein, lade den Skill herunter und aktiviere ihn in Claude mit einem einzigen Befehl. Kein Setup, kein Vorwissen nötig.
+      </p>
+      <ul class="cover-benefits">
+        <li>Sofort einsatzbereit, direkt nach dem Download</li>
+        <li>Bessere Prompts mit weniger Aufwand, in jedem Chat</li>
+        <li>Einmal einrichten, dauerhaft nutzen</li>
+      </ul>
+      <div class="cover-social-proof">
+        <div class="proof-avatar">
+          <img src="../hanna.jpg" alt="Hanna Marzian" onerror="this.style.display='none'">
+        </div>
+        <div class="proof-text">
+          Von <strong>Hanna Marzian</strong> für ihre Community, die aufgehört hat, jeden Prompt neu zu erfinden.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Opt-in Form -->
+    <div class="cover-optin">
+      <div class="cover-optin-label">Gratis herunterladen</div>
+      <div class="cover-optin-title">Prompt-Helper<br><em>Skill sichern.</em></div>
+      <p class="cover-optin-sub">E-Mail eintragen, Skill sofort runterladen. Kein Spam, nur relevante KI-Insights.</p>
+      <script id="form-script-tag-23607178" src="https://member.hannamarzian.com/public/remote/page/39951405c4cce4c9c51fc196d08dfe6b3ba8d73e.js"></script>
+      <div class="cover-optin-trust">Kein Spam &nbsp;·&nbsp; Jederzeit abmeldbar</div>
+    </div>
+
+  </div>
+
+  <!-- Footer Bar -->
   <div class="cover-foot">
     <div class="cover-authors">
       <div class="cover-author">
@@ -797,6 +942,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 
