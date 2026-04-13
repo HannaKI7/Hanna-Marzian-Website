@@ -342,6 +342,30 @@
             color: #BDBDBD;
         }
 
+        .consent-wrap {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            text-align: left;
+            width: 100%;
+        }
+        .consent-wrap input[type="checkbox"] {
+            margin-top: 2px;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            accent-color: var(--orange);
+            cursor: pointer;
+        }
+        .consent-label {
+            font-size: 12px;
+            color: var(--gray);
+            line-height: 1.55;
+        }
+        .consent-wrap.error .consent-label {
+            color: #E53E3E;
+        }
+
         /* ── BUTTONS ── */
         .btn-primary {
             background: var(--orange);
@@ -689,8 +713,12 @@
         <p class="email-sub">Wo soll ich es hinschicken?</p>
         <input type="text" class="email-input" id="name-input" placeholder="Dein Vorname">
         <input type="email" class="email-input" id="email-input" placeholder="deine@email.de">
+        <div class="consent-wrap" id="consent-wrap">
+            <input type="checkbox" id="consent-checkbox">
+            <label class="consent-label" for="consent-checkbox">Ja ich stimme zu, dass meine E-Mail Adresse verwendet wird, um relevante Inhalte passend zu meinem KI-Quiz-Ergebnis zu erhalten.</label>
+        </div>
         <button class="btn-primary" onclick="showResult()">Ergebnis anzeigen →</button>
-        <p class="privacy-note">Kein Spam. Kein Newsletter ohne Erlaubnis. Nur dein Ergebnis.</p>
+        <p class="privacy-note">Kein Spam. Deine Daten sind zu 100% sicher.</p>
     </div>
 
 
@@ -921,6 +949,8 @@
     function showResult() {
         const nameInput = document.getElementById('name-input');
         const input = document.getElementById('email-input');
+        const consentWrap = document.getElementById('consent-wrap');
+        const consent = document.getElementById('consent-checkbox');
         const name = nameInput.value.trim();
         const email = input.value.trim();
 
@@ -937,6 +967,12 @@
             return;
         }
         input.classList.remove('error');
+
+        if (!consent.checked) {
+            consentWrap.classList.add('error');
+            return;
+        }
+        consentWrap.classList.remove('error');
 
         const result = calculateResult();
 
