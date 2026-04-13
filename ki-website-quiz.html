@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcher KI-Website Typ bist du?</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --orange: #D8622A;
+            --black: #1A1A1A;
+            --gray: #6B6B6B;
+            --light: #F5F5F3;
+            --white: #FFFFFF;
+            --orange-soft: #FFF4EE;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+            background: #F5F5F3;
+            color: var(--black);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            background: var(--white);
+            position: relative;
+        }
+
+        /* ── SCREENS ── */
+        .screen {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .screen.active { display: flex; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(16px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        .screen.active { animation: slideIn 0.28s ease; }
+
+        /* ── INTRO ── */
+        .intro-screen {
+            padding: 48px 24px 40px;
+            align-items: center;
+            text-align: center;
+            gap: 28px;
+            justify-content: center;
+        }
+
+        .logo-line {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #BDBDBD;
+            font-weight: 600;
+        }
+
+        .mascot-strip {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .mascot-strip img {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .intro-headline {
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        .intro-headline em {
+            font-style: normal;
+            color: var(--orange);
+        }
+
+        .intro-sub {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.65;
+            max-width: 300px;
+        }
+
+        .collab-logo {
+            max-width: 240px;
+            height: auto;
+        }
+
+        /* ── FOOTER ── */
+        .site-footer {
+            background: #F5F5F3;
+            padding: 20px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            color: #BDBDBD;
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--gray); }
+        .footer-copy {
+            font-size: 11px;
+            color: #BDBDBD;
+        }
+
+        /* ── COOKIE BANNER ── */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            background: #1A1A1A;
+            color: white;
+            padding: 18px 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+        }
+        .cookie-banner.hidden { display: none; }
+        .cookie-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #CCCCCC;
+        }
+        .cookie-text a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+        .cookie-btns {
+            display: flex;
+            gap: 10px;
+        }
+        .cookie-accept {
+            flex: 1;
+            background: var(--orange);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .cookie-decline {
+            flex: 1;
+            background: transparent;
+            color: #BDBDBD;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ── QUESTION SCREEN ── */
+        .question-screen {
+            padding: 0;
+        }
+
+        .q-top {
+            padding: 24px 24px 0;
+        }
+
+        .progress-wrap {
+            margin-bottom: 28px;
+        }
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .progress-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .progress-pct {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--orange);
+        }
+        .progress-bar {
+            height: 3px;
+            background: #EBEBEB;
+            border-radius: 100px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--orange);
+            border-radius: 100px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .question-text {
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            margin-bottom: 24px;
+        }
+
+        .answers {
+            padding: 0 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .answer-card {
+            background: var(--light);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 15px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: border-color 0.18s, background 0.18s, transform 0.12s;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .answer-card:active { transform: scale(0.985); }
+        .answer-card.selected {
+            border-color: var(--orange);
+            background: var(--orange-soft);
+        }
+
+        .answer-letter {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            color: #BDBDBD;
+            flex-shrink: 0;
+            transition: background 0.18s, color 0.18s;
+        }
+        .answer-card.selected .answer-letter {
+            background: var(--orange);
+            color: white;
+        }
+
+        .answer-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--black);
+            line-height: 1.45;
+        }
+
+        .q-bottom {
+            padding: 20px 16px 36px;
+            margin-top: auto;
+        }
+
+        /* ── EMAIL SCREEN ── */
+        .email-screen {
+            padding: 60px 24px 48px;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .email-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--orange-soft);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .email-headline {
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .email-sub {
+            font-size: 15px;
+            color: var(--gray);
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 17px 18px;
+            border: 2px solid #E8E8E8;
+            border-radius: 14px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+            color: var(--black);
+            background: white;
+            -webkit-appearance: none;
+        }
+        .email-input:focus { border-color: var(--orange); }
+        .email-input.error { border-color: #E53E3E; }
+
+        .privacy-note {
+            font-size: 12px;
+            color: #BDBDBD;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            padding: 18px 24px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.2s, transform 0.12s;
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: -0.01em;
+        }
+        .btn-primary:active { transform: scale(0.985); opacity: 0.9; }
+        .btn-primary:disabled,
+        .btn-primary.disabled {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        /* ── RESULT SCREEN ── */
+        .result-screen {
+            padding: 0;
+        }
+
+        .result-hero {
+            width: 100%;
+            position: relative;
+        }
+        .result-hero img {
+            width: 100%;
+            height: 46vh;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+        .result-hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, white);
+        }
+
+        .result-content {
+            padding: 20px 22px 44px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .result-badge {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 100px;
+            align-self: flex-start;
+        }
+
+        .result-headline {
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+
+        .result-text {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.75;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 14px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-height: 72px;
+        }
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #E8E8E8;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .testimonial-placeholder {
+            font-size: 13px;
+            color: #BDBDBD;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .bonus-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+        }
+        .bonus-item {
+            font-size: 12px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+        .bonus-check { color: var(--orange); font-weight: 800; font-size: 13px; }
+
+        .share-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding-top: 4px;
+        }
+        .share-label {
+            font-size: 12px;
+            color: #BDBDBD;
+        }
+        .share-btn {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--orange);
+            background: var(--orange-soft);
+            border: none;
+            border-radius: 8px;
+            padding: 7px 14px;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+
+    <!-- ══════════════════════════════════════════
+         INTRO
+    ══════════════════════════════════════════ -->
+    <div class="screen intro-screen active" id="screen-intro">
+        <img src="hanna x martin.png" alt="Hanna Marzian × Martin Thun" class="collab-logo">
+
+        <div class="mascot-strip">
+            <img src="Angebote/KI WEBSITE/DU MUSST NICHT MEHR Kampagne/04.jpg" alt="">
+            <img src="Angebote/KI WEBSITE/DU MUSST NICHT MEHR Kampagne/03.jpg" alt="">
+            <img src="Angebote/KI WEBSITE/DU MUSST NICHT MEHR Kampagne/01.jpg" alt="">
+            <img src="Angebote/KI WEBSITE/DU MUSST NICHT MEHR Kampagne/02.jpg" alt="">
+        </div>
+
+        <h1 class="intro-headline">Welcher<br><em>KI-Website</em><br>Typ bist du?</h1>
+
+        <p class="intro-sub">5 Fragen. 60 Sekunden. Du erfährst genau, wo du stehst – und was dein nächster Schritt ist.</p>
+
+        <button class="btn-primary" onclick="startQuiz()">Selbsttest starten →</button>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         FRAGE 1
+    ══════════════════════════════════════════ -->
+    <div class="screen question-screen" id="screen-q1">
+        <div class="q-top">
+            <div class="progress-wrap">
+                <div class="progress-meta">
+                    <span class="progress-label">Frage 1 von 5</span>
+                    <span class="progress-pct">20%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+            </div>
+            <h2 class="question-text">Wie sieht deine aktuelle Online-Präsenz aus?</h2>
+        </div>
+        <div class="answers">
+            <div class="answer-card" onclick="selectAnswer('q1','A',this)">
+                <div class="answer-letter">A</div>
+                <div class="answer-text">Ich habe noch gar keine Website</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q1','B',this)">
+                <div class="answer-letter">B</div>
+                <div class="answer-text">Ich habe eine Website – aber sie sieht nicht professionell aus</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q1','C',this)">
+                <div class="answer-letter">C</div>
+                <div class="answer-text">Ich habe eine Website – aber sie bringt mir keine Kunden</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q1','D',this)">
+                <div class="answer-letter">D</div>
+                <div class="answer-text">Ich flicke seit Monaten an meiner Website rum und komme nicht voran</div>
+            </div>
+        </div>
+        <div class="q-bottom">
+            <button class="btn-primary disabled" id="btn-q1" onclick="nextQ(2)">Weiter →</button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         FRAGE 2
+    ══════════════════════════════════════════ -->
+    <div class="screen question-screen" id="screen-q2">
+        <div class="q-top">
+            <div class="progress-wrap">
+                <div class="progress-meta">
+                    <span class="progress-label">Frage 2 von 5</span>
+                    <span class="progress-pct">40%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+            </div>
+            <h2 class="question-text">Was hat dich bisher aufgehalten?</h2>
+        </div>
+        <div class="answers">
+            <div class="answer-card" onclick="selectAnswer('q2','A',this)">
+                <div class="answer-letter">A</div>
+                <div class="answer-text">Ich wusste nicht, wo ich anfangen soll</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q2','B',this)">
+                <div class="answer-letter">B</div>
+                <div class="answer-text">Webdesigner waren mir zu teuer oder zu langsam</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q2','C',this)">
+                <div class="answer-letter">C</div>
+                <div class="answer-text">Baukästen wie Squarespace oder Wix haben mich wahnsinnig gemacht</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q2','D',this)">
+                <div class="answer-letter">D</div>
+                <div class="answer-text">Ich hatte einfach keine Zeit</div>
+            </div>
+        </div>
+        <div class="q-bottom">
+            <button class="btn-primary disabled" id="btn-q2" onclick="nextQ(3)">Weiter →</button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         FRAGE 3
+    ══════════════════════════════════════════ -->
+    <div class="screen question-screen" id="screen-q3">
+        <div class="q-top">
+            <div class="progress-wrap">
+                <div class="progress-meta">
+                    <span class="progress-label">Frage 3 von 5</span>
+                    <span class="progress-pct">60%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+            </div>
+            <h2 class="question-text">Was beschreibt dich am besten?</h2>
+        </div>
+        <div class="answers">
+            <div class="answer-card" onclick="selectAnswer('q3','A',this)">
+                <div class="answer-letter">A</div>
+                <div class="answer-text">Coach, Berater oder Therapeut</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q3','B',this)">
+                <div class="answer-letter">B</div>
+                <div class="answer-text">Online Creator oder Personal Brand</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q3','C',this)">
+                <div class="answer-letter">C</div>
+                <div class="answer-text">Selbstständige oder Freelancer</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q3','D',this)">
+                <div class="answer-letter">D</div>
+                <div class="answer-text">Unternehmen oder ich arbeite in einem Team</div>
+            </div>
+        </div>
+        <div class="q-bottom">
+            <button class="btn-primary disabled" id="btn-q3" onclick="nextQ(4)">Weiter →</button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         FRAGE 4
+    ══════════════════════════════════════════ -->
+    <div class="screen question-screen" id="screen-q4">
+        <div class="q-top">
+            <div class="progress-wrap">
+                <div class="progress-meta">
+                    <span class="progress-label">Frage 4 von 5</span>
+                    <span class="progress-pct">80%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+            </div>
+            <h2 class="question-text">Was willst du bauen?</h2>
+        </div>
+        <div class="answers">
+            <div class="answer-card" onclick="selectAnswer('q4','A',this)">
+                <div class="answer-letter">A</div>
+                <div class="answer-text">Eine professionelle Business-Website die mich seriös wirken lässt</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q4','B',this)">
+                <div class="answer-letter">B</div>
+                <div class="answer-text">Eine Salespage die mein Angebot wirklich verkauft</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q4','C',this)">
+                <div class="answer-letter">C</div>
+                <div class="answer-text">Einen kompletten Funnel mit mehreren Seiten</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q4','D',this)">
+                <div class="answer-letter">D</div>
+                <div class="answer-text">Ich will erstmal verstehen was mit KI überhaupt möglich ist</div>
+            </div>
+        </div>
+        <div class="q-bottom">
+            <button class="btn-primary disabled" id="btn-q4" onclick="nextQ(5)">Weiter →</button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         FRAGE 5
+    ══════════════════════════════════════════ -->
+    <div class="screen question-screen" id="screen-q5">
+        <div class="q-top">
+            <div class="progress-wrap">
+                <div class="progress-meta">
+                    <span class="progress-label">Frage 5 von 5</span>
+                    <span class="progress-pct">100%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+            </div>
+            <h2 class="question-text">Was wäre für dich der größte Gewinn?</h2>
+        </div>
+        <div class="answers">
+            <div class="answer-card" onclick="selectAnswer('q5','A',this)">
+                <div class="answer-letter">A</div>
+                <div class="answer-text">Endlich loslegen – ohne auf jemanden warten zu müssen</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q5','B',this)">
+                <div class="answer-letter">B</div>
+                <div class="answer-text">Geld sparen – keine Agentur, kein Webdesigner mehr</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q5','C',this)">
+                <div class="answer-letter">C</div>
+                <div class="answer-text">Unabhängig sein – Änderungen selbst machen wann immer ich will</div>
+            </div>
+            <div class="answer-card" onclick="selectAnswer('q5','D',this)">
+                <div class="answer-letter">D</div>
+                <div class="answer-text">Schnell Ergebnisse sehen – Website fertig in Tagen, nicht Monaten</div>
+            </div>
+        </div>
+        <div class="q-bottom">
+            <button class="btn-primary disabled" id="btn-q5" onclick="goToEmail()">Ergebnis berechnen →</button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         EMAIL OPTIN
+    ══════════════════════════════════════════ -->
+    <div class="screen email-screen" id="screen-email">
+        <div class="email-icon">✉️</div>
+        <h2 class="email-headline">Dein Ergebnis<br>ist bereit.</h2>
+        <p class="email-sub">Wo soll ich es hinschicken?</p>
+        <input type="email" class="email-input" id="email-input" placeholder="deine@email.de">
+        <button class="btn-primary" onclick="showResult()">Ergebnis anzeigen →</button>
+        <p class="privacy-note">Kein Spam. Kein Newsletter ohne Erlaubnis. Nur dein Ergebnis.</p>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         ERGEBNIS 1 – Die Startbereit
+         Liegestuhl-Cursor → 04.jpg
+    ══════════════════════════════════════════ -->
+    <div class="screen result-screen" id="result-startbereit">
+        <div class="result-hero">
+            <img src="Angebote/KI WEBSITE/DU MUSST NICHT MEHR Kampagne/04.jpg" alt="Die Startbereit">
+            <div class="result-hero-overlay"></div>
+        </div>
+        <div class="result-content">
+            <span class="result-badge">Die Startbereit</span>
+            <h2 class="result-headline">Du bist bereit. Du brauchst nur den ersten Schritt.</h2>
+            <p class="result-text">Du weißt was du willst – aber du hast noch nicht angefangen. Nicht weil du es nicht kannst. Sondern weil du nie das richtige Werkzeug hattest. Genau dafür ist AI Website Code gemacht. Du startest bei null und gehst mit einer fertigen Website raus. Garantiert.</p>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">⭐</div>
+                <p class="testimonial-placeholder">Testimonial-Platzhalter: jemand der bei null gestartet ist</p>
+            </div>
+            <button class="btn-primary" onclick="window.open('https://www.hannamarzian.com/ki-website-kurs.html','_blank')">Ich will endlich starten →</button>
+            <div class="bonus-row">
+                <div class="bonus-item"><span class="bonus-check">✓</span> Kein Vorwissen nötig</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Kein Code</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Fertig in einer Woche</div>
+            </div>
+            <div class="share-row">
+                <span class="share-label">Ergebnis teilen:</span>
+                <button class="share-btn" onclick="shareResult('Die Startbereit')">Instagram Story →</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         ERGEBNIS 2 – Die Befreite
+         Meditations-Cursor → 03.jpg
+    ══════════════════════════════════════════ -->
+    <div class="screen result-screen" id="result-befreite">
+        <div class="result-hero">
+            <img src="Angebote/KI WEBSITE/DU MUSST NICHT MEHR Kampagne/03.jpg" alt="Die Befreite">
+            <div class="result-hero-overlay"></div>
+        </div>
+        <div class="result-content">
+            <span class="result-badge">Die Befreite</span>
+            <h2 class="result-headline">Kein Plugin-Chaos mehr. Kein Rumdoktorn. Nur Ergebnisse.</h2>
+            <p class="result-text">Du kennst das Gefühl: Stundenlang an Einstellungen schrauben, Templates verbiegen, und am Ende sieht es trotzdem nicht so aus wie du willst. Mit KI baust du deine Website so wie du sie dir vorstellst – ohne Kompromisse, ohne Frust, ohne Baukasten-Limits.</p>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">⭐</div>
+                <p class="testimonial-placeholder">Testimonial-Platzhalter: jemand der von Squarespace/Wix gewechselt ist</p>
+            </div>
+            <button class="btn-primary" onclick="window.open('https://www.hannamarzian.com/ki-website-kurs.html','_blank')">Ich will endlich frei sein →</button>
+            <div class="bonus-row">
+                <div class="bonus-item"><span class="bonus-check">✓</span> Keine monatlichen Tool-Kosten</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Keine Limits</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Du hast die Kontrolle</div>
+            </div>
+            <div class="share-row">
+                <span class="share-label">Ergebnis teilen:</span>
+                <button class="share-btn" onclick="shareResult('Die Befreite')">Instagram Story →</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         ERGEBNIS 3 – Die Clevere
+         Coins-Cursor → 01.jpg
+    ══════════════════════════════════════════ -->
+    <div class="screen result-screen" id="result-clevere">
+        <div class="result-hero">
+            <img src="Angebote/KI WEBSITE/DU MUSST NICHT MEHR Kampagne/01.jpg" alt="Die Clevere">
+            <div class="result-hero-overlay"></div>
+        </div>
+        <div class="result-content">
+            <span class="result-badge">Die Clevere</span>
+            <h2 class="result-headline">Was andere 10.000 € kostet, machst du jetzt mit einem Prompt.</h2>
+            <p class="result-text">Du weißt was eine gute Website kostet – und du willst nicht mehr zahlen als nötig. Kein Webdesigner. Keine Agentur. Keine monatlichen Abo-Fallen. Einmal 349 € investieren und du hast die Fähigkeit für immer. Jede Website, jede Salespage, jeder Funnel – wann immer du willst.</p>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">⭐</div>
+                <p class="testimonial-placeholder">Testimonial-Platzhalter: jemand der Geld gespart hat</p>
+            </div>
+            <button class="btn-primary" onclick="window.open('https://www.hannamarzian.com/ki-website-kurs.html','_blank')">Ich will clever investieren →</button>
+            <div class="bonus-row">
+                <div class="bonus-item"><span class="bonus-check">✓</span> Einmalig 349 €</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Keine Agentur</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Keine monatlichen Kosten</div>
+            </div>
+            <div class="share-row">
+                <span class="share-label">Ergebnis teilen:</span>
+                <button class="share-btn" onclick="shareResult('Die Clevere')">Instagram Story →</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         ERGEBNIS 4 – Die Macherin
+         Muskel-Cursor → 02.jpg
+    ══════════════════════════════════════════ -->
+    <div class="screen result-screen" id="result-macherin">
+        <div class="result-hero">
+            <img src="Angebote/KI WEBSITE/DU MUSST NICHT MEHR Kampagne/02.jpg" alt="Die Macherin">
+            <div class="result-hero-overlay"></div>
+        </div>
+        <div class="result-content">
+            <span class="result-badge">Die Macherin</span>
+            <h2 class="result-headline">Die KI-Website Superkraft gehört jetzt dir.</h2>
+            <p class="result-text">Du willst nicht warten. Du willst nicht erklären. Du willst es selbst in der Hand haben – und zwar sofort. Website, Salespage, Funnel: Du baust was du brauchst, wann du es brauchst. Ohne auf jemanden angewiesen zu sein. Das ist echte Unabhängigkeit.</p>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">⭐</div>
+                <p class="testimonial-placeholder">Testimonial-Platzhalter: jemand der jetzt alles selbst macht</p>
+            </div>
+            <button class="btn-primary" onclick="window.open('https://www.hannamarzian.com/ki-website-kurs.html','_blank')">Ich bin bereit – jetzt →</button>
+            <div class="bonus-row">
+                <div class="bonus-item"><span class="bonus-check">✓</span> Website</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Salespage</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Funnel</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Alles selbst</div>
+                <div class="bonus-item"><span class="bonus-check">✓</span> Für immer</div>
+            </div>
+            <div class="share-row">
+                <span class="share-label">Ergebnis teilen:</span>
+                <button class="share-btn" onclick="shareResult('Die Macherin')">Instagram Story →</button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /.app -->
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer" style="max-width:480px; margin:0 auto;">
+    <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="#" onclick="showCookieBanner(); return false;">Cookie-Einstellungen</a>
+    </div>
+    <p class="footer-copy">© 2026 Hanna Marzian · Martin Thun (scale²) · Alle Rechte vorbehalten</p>
+</footer>
+
+<!-- ── COOKIE BANNER ── -->
+<div class="cookie-banner" id="cookie-banner">
+    <p class="cookie-text">
+        Diese Seite speichert dein Quiz-Ergebnis lokal im Browser (technisch notwendig). Es werden keine Tracking-Cookies gesetzt. Weitere Infos in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
+    </p>
+    <div class="cookie-btns">
+        <button class="cookie-accept" onclick="acceptCookies()">Verstanden</button>
+        <button class="cookie-decline" onclick="declineCookies()">Nur notwendige</button>
+    </div>
+</div>
+
+<script>
+    /* ── STATE ── */
+    const answers = {};
+
+    /* ── NAVIGATION ── */
+    function showScreen(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function startQuiz() { showScreen('screen-q1'); }
+    function nextQ(n)    { showScreen('screen-q' + n); }
+    function goToEmail() { showScreen('screen-email'); }
+
+    /* ── ANSWER SELECTION ── */
+    const nextMap = { q1: 2, q2: 3, q3: 4, q4: 5 };
+
+    function selectAnswer(question, value, el) {
+        el.closest('.answers').querySelectorAll('.answer-card').forEach(c => c.classList.remove('selected'));
+        el.classList.add('selected');
+        answers[question] = value;
+
+        const btn = document.getElementById('btn-' + question);
+        if (btn) btn.classList.remove('disabled');
+
+        // Auto-weiter nach kurzer Verzögerung (visuelles Feedback)
+        setTimeout(() => {
+            if (nextMap[question]) {
+                nextQ(nextMap[question]);
+            } else if (question === 'q5') {
+                goToEmail();
+            }
+        }, 320);
+    }
+
+    /* ── SCORING ── */
+    function calculateResult() {
+        const s = { startbereit: 0, befreite: 0, clevere: 0, macherin: 0 };
+
+        // Q1: Ausgangslage
+        if (answers.q1 === 'A') s.startbereit += 2;   // noch gar keine Website → Einsteiger
+        if (answers.q1 === 'B') s.befreite    += 1;   // unprofessionell → Frust mit Status quo
+        if (answers.q1 === 'C') s.clevere     += 1;   // keine Kunden → ROI-Denken
+        if (answers.q1 === 'D') s.befreite    += 2;   // flicken, Chaos → braucht Befreiung
+
+        // Q2: Hindernisse
+        if (answers.q2 === 'A') s.startbereit += 2;   // wusste nicht wo anfangen
+        if (answers.q2 === 'B') s.clevere     += 2;   // zu teuer/langsam → Kostenthema
+        if (answers.q2 === 'C') s.befreite    += 2;   // Baukasten-Frust
+        if (answers.q2 === 'D') s.startbereit += 1;   // keine Zeit → Schnelligkeit
+
+        // Q3: Wer bist du (Profil, kein direkter Trigger – minimale Gewichtung)
+        // Keine Punkte – nur für spätere Personalisierung
+
+        // Q4: Was bauen
+        if (answers.q4 === 'A') s.startbereit += 1;   // Business-Website → Einsteiger
+        if (answers.q4 === 'B') s.macherin    += 2;   // Salespage → ambitioniert
+        if (answers.q4 === 'C') s.macherin    += 2;   // Funnel → ambitioniert
+        if (answers.q4 === 'D') s.startbereit += 1;   // verstehen was möglich ist
+
+        // Q5: Größter Gewinn
+        if (answers.q5 === 'A') s.startbereit += 2;   // endlich loslegen
+        if (answers.q5 === 'B') s.clevere     += 2;   // Geld sparen
+        if (answers.q5 === 'C') s.macherin    += 2;   // unabhängig sein
+        if (answers.q5 === 'D') s.macherin    += 1;   // schnell Ergebnisse + startbereit
+        if (answers.q5 === 'D') s.startbereit += 1;
+
+        // Tiebreaker: letzte Frage (Q5) gibt Richtung vor
+        const winner = Object.entries(s).sort((a, b) => b[1] - a[1]);
+        return winner[0][0];
+    }
+
+    /* ── EMAIL → RESULT ── */
+    function showResult() {
+        const input = document.getElementById('email-input');
+        const email = input.value.trim();
+
+        if (!email || !email.includes('@') || !email.includes('.')) {
+            input.classList.add('error');
+            input.focus();
+            return;
+        }
+        input.classList.remove('error');
+
+        // Hier E-Mail weitergeben (Webhook / Newsletter-Tool)
+        // fetch('/subscribe', { method: 'POST', body: JSON.stringify({ email }) });
+
+        const result = calculateResult();
+        showScreen('result-' + result);
+    }
+
+    /* ── SHARE ── */
+    function shareResult(typ) {
+        const text = `Ich bin „${typ}" – mach den Selbsttest:\n`;
+        if (navigator.share) {
+            navigator.share({ title: 'Welcher KI-Website Typ bist du?', text });
+        } else {
+            navigator.clipboard.writeText(text).then(() => alert('Link kopiert!'));
+        }
+    }
+
+    /* ── COOKIE ── */
+    function acceptCookies() {
+        localStorage.setItem('cookie_consent', 'accepted');
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+    function declineCookies() {
+        localStorage.setItem('cookie_consent', 'declined');
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+    function showCookieBanner() {
+        document.getElementById('cookie-banner').classList.remove('hidden');
+    }
+
+    // Beim Laden prüfen ob Consent schon gegeben
+    if (localStorage.getItem('cookie_consent')) {
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+</script>
+</body>
+</html>
