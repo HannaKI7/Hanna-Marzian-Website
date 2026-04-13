@@ -776,6 +776,132 @@
     text-decoration: none;
   }
 
+  /* ─── CTA Split Layout ─── */
+  .cta-split {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    max-width: 920px;
+    margin: 48px auto 0;
+    text-align: left;
+  }
+  .cta-card {
+    flex: 1;
+    background: var(--off-white);
+    border-radius: 2px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cta-card-eyebrow {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .cta-card-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.75;
+    flex: 1;
+  }
+  .cta-or {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    gap: 10px;
+  }
+  .cta-or-line {
+    width: 1px;
+    flex: 1;
+    background: rgba(0,0,0,0.1);
+  }
+  .cta-or-text {
+    font-family: var(--font-a);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    opacity: 0.5;
+    white-space: nowrap;
+  }
+
+  /* ─── Newsletter Modal ─── */
+  .nl-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .nl-modal.nl-open { display: flex; }
+  .nl-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(22,12,5,0.6);
+    backdrop-filter: blur(4px);
+  }
+  .nl-modal-box {
+    position: relative;
+    background: #f5f5f5;
+    border-radius: 2px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  .nl-modal-header {
+    background: #ffffff;
+    padding: 32px 36px 24px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .nl-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--warm-gray);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nl-modal-close:hover { color: var(--warm-black); }
+  .nl-modal-eyebrow {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .nl-modal-title {
+    font-family: var(--font-h);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .nl-modal-title em { font-style: italic; color: var(--orange); }
+  .nl-modal-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.7;
+  }
+
   /* ─── SITE FOOTER ─── */
   .site-footer {
     background: #ffffff;
@@ -868,6 +994,11 @@
     .cover-authors { gap: 16px; }
     .author-divider { display: none; }
     .cta h2 { font-size: 28px; }
+    .cta-text { font-size: 14px; }
+    .cta-split { flex-direction: column; margin-top: 32px; }
+    .cta-card { padding: 28px 24px; }
+    .cta-or { flex-direction: row; padding: 16px 0; }
+    .cta-or-line { width: auto; height: 1px; flex: 1; }
     .step-num { font-size: 52px; min-width: 44px; }
     .site-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
     .cover-optin { padding: 28px 24px; }
@@ -1123,31 +1254,59 @@
 
 </div>
 
-<!-- ═══════════════════ RECAP ═══════════════════ -->
-<div class="wrap">
-  <div class="recap">
-    <div class="recap-eye">Zusammenfassung</div>
-    <h3>Das hast du jetzt<br>in der Hand.</h3>
-    <ul class="checklist">
-      <li><span class="check-icon">✓</span> ZIP-Datei aus dem Google Drive Link heruntergeladen</li>
-      <li><span class="check-icon">✓</span> Claude Code: entpackt und in <span style="font-family:'Courier New',monospace;font-size:12px;">.claude/skills</span> abgelegt — oder — Browser: ZIP so gelassen wie sie ist</li>
-      <li><span class="check-icon">✓</span> Browser-Version: Skill über Anpassen → Skills → + hochgeladen</li>
-      <li><span class="check-icon">✓</span> Neuen Chat gestartet, mit „/" den Skill ausgewählt und losgelegt</li>
-    </ul>
-  </div>
-</div>
 
 <!-- ═══════════════════ CTA ═══════════════════ -->
 <div class="cta">
-  <div class="cta-eye">Nächster Schritt</div>
-  <h2>Noch mehr<br><em>fertige Skills</em> holen.</h2>
-  <p class="cta-text">
-    Du weißt jetzt, wie du Skills einbindest. Folge Hanna auf Instagram und hol dir regelmäßig neue, fertige Skills direkt aus ihrer Community.
-  </p>
-  <a href="https://www.instagram.com/hanna.gpt/" target="_blank" rel="noopener" class="cta-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    @hanna.gpt auf Instagram
-  </a>
+  <div class="cta-eye">Exklusive KI-Insights und Video-Anleitungen, gibts nur hier👇</div>
+  <h2>Hier beginnt dein<br><em>Vorsprung mit KI.</em></h2>
+  <p class="cta-text">Wähle deinen Weg – bleib auf dem Laufenden, egal wie du am liebsten konsumierst.</p>
+
+  <div class="cta-split">
+
+    <!-- Telegram -->
+    <div class="cta-card">
+      <div class="cta-card-eyebrow">Telegram Community</div>
+      <p class="cta-card-text">Exklusiver Zugang zu besonderen Angeboten, neuen Tools und den besten Deals – direkt auf deinem Handy.</p>
+      <a href="https://t.me/+FqudiTcL7JgyZmUy" target="_blank" rel="noopener" class="cta-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+        <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.2;">Jetzt beitreten<small style="font-size:9px;font-weight:400;letter-spacing:1.5px;opacity:0.8;text-transform:uppercase;">Kostenlos</small></span>
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="cta-or">
+      <div class="cta-or-line"></div>
+      <span class="cta-or-text">oder</span>
+      <div class="cta-or-line"></div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="cta-card">
+      <div class="cta-card-eyebrow">Newsletter</div>
+      <p class="cta-card-text">Kein Spam. Nur relevante KI-Insights, neue Freebies und praxisnahe Tipps direkt in dein Postfach.</p>
+      <button class="cta-btn" onclick="document.getElementById('nl-modal').classList.add('nl-open')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.2;">Newsletter abonnieren<small style="font-size:9px;font-weight:400;letter-spacing:1.5px;opacity:0.8;text-transform:uppercase;">Kostenlos</small></span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ NEWSLETTER MODAL ═══════════════════ -->
+<div id="nl-modal" class="nl-modal">
+  <div class="nl-modal-backdrop" onclick="document.getElementById('nl-modal').classList.remove('nl-open')"></div>
+  <div class="nl-modal-box">
+    <div class="nl-modal-header">
+      <button class="nl-modal-close" onclick="document.getElementById('nl-modal').classList.remove('nl-open')" aria-label="Schließen">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="nl-modal-eyebrow">Newsletter</div>
+      <h3 class="nl-modal-title">KI-Insights direkt<br><em>in dein Postfach.</em></h3>
+      <p class="nl-modal-sub">Neue Freebies, praxisnahe Tipps und relevante KI-Updates – kein Spam.</p>
+    </div>
+    <iframe width="540" height="370" src="https://ea8159a8.sibforms.com/serve/MUIFAJUUjQtT0Zd7pZQkTfeymHmPfd15YbbIXjDv2K_KylNioYwVT7o4foV-tGeneM6FpLNfrWsTS5N34wvJP8i09IFpAeMnMn5EFW7Etib3nNRZQKiZH78xrDhFh53vFItCUC3JVXWW4wmyHFMw29A9Y1BLuDH_sc42x_8sVqlagiXmmBWbHPIf4j2M8GHhJnolYRPhC4BnW5x_" frameborder="0" scrolling="no" allowfullscreen allowtransparency="true" style="display:block;width:100%;border:none;"></iframe>
+  </div>
 </div>
 
 <!-- ═══════════════════ SITE FOOTER ═══════════════════ -->
