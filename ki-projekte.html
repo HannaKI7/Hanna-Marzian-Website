@@ -319,15 +319,43 @@
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      nav { padding: 0 20px; gap: 8px; }
-      .nav-name { font-size: 16px; }
-      .nav-x { font-size: 18px; }
-      header { padding: 110px 24px 48px; }
-      .grid { grid-template-columns: 1fr; padding: 0 20px 72px; }
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; gap: 10px; height: 56px; }
+      .nav-name { font-size: 15px; }
+      .nav-logo-img { height: 18px; }
+
+      header { padding: 96px 20px 40px; }
+      header h1 { font-size: clamp(30px, 8vw, 44px); }
+      header p { font-size: 14px; }
+
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 0 16px 64px;
+        gap: 16px;
+      }
       .card:last-child:nth-child(odd) { grid-column: auto; max-width: 100%; }
-      .cta-wrap { padding: 0 20px 72px; }
-      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+
+      .card-body { padding: 16px 18px 20px; gap: 12px; }
+      .card-name { font-size: 18px; }
+      .card-link { padding: 8px 14px; font-size: 9px; letter-spacing: 1px; }
+
+      .cta-wrap { padding: 0 20px 64px; }
+      .cta-btn { padding: 16px 28px; font-size: 11px; width: 100%; justify-content: center; }
+
+      footer {
+        padding: 28px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .footer-links { gap: 14px; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 400px) {
+      nav { gap: 6px; }
+      .nav-name { font-size: 13px; }
+      .nav-logo-img { height: 15px; }
+      .card-img-link::after { font-size: 10px; letter-spacing: 1.5px; }
     }
   </style>
 </head>
