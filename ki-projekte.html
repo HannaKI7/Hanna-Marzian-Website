@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Echte Ergebnisse – AI WEBSITE CODE · Hanna Marzian</title>
-  <meta name="description" content="5 echte Websites, gebaut von absoluten Technik-Anfängern im AI WEBSITE CODE Kurs mit Claude AI.">
+  <title>Echte Ergebnisse – AI WEBSITE CODE · Hanna Marzian & Martin Thun</title>
+  <meta name="description" content="5 echte Websites, gebaut von absoluten Technik-Anfängern im AI WEBSITE CODE Kurs.">
 
   <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/consent.css">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,9 +19,10 @@
       --gold-l:   #E8894E;
       --gold-p:   #F5CFA8;
       --cream:    #F6F0E6;
-      --white:    #FBF7F2;
+      --white:    #FFFFFF;
       --mist:     #EDE4D7;
       --gray:     #A0907E;
+      --text:     #160C05;
       --serif:    'Cormorant', Georgia, serif;
       --sans:     'Montserrat', system-ui, sans-serif;
       --expo:     cubic-bezier(0.16, 1, 0.3, 1);
@@ -28,67 +30,57 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: var(--sans);
-      background: var(--black);
-      color: var(--cream);
+      background: var(--white);
+      color: var(--text);
       min-height: 100vh;
-    }
-
-    /* ── GRAIN ── */
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9990; opacity: 0.5;
     }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(22,12,5,0.92);
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(216,98,42,0.15);
-      height: 60px;
-      display: flex; align-items: center; justify-content: space-between;
+      height: 62px;
+      display: flex; align-items: center; justify-content: center;
       padding: 0 40px;
+      gap: 12px;
     }
-    .nav-logo {
+    .nav-name {
       font-family: var(--serif);
       font-size: 20px;
       font-weight: 600;
       font-style: italic;
-      color: var(--cream);
+      color: var(--black);
       letter-spacing: 0.03em;
+      line-height: 1;
       text-decoration: none;
     }
-    .nav-logo span {
+    .nav-name span {
       display: block;
       font-size: 8px;
       font-family: var(--sans);
       font-style: normal;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-top: 1px;
+      margin-top: 2px;
     }
-    .nav-back {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+    .nav-x {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
       color: var(--gray);
-      text-decoration: none;
-      display: flex; align-items: center; gap: 6px;
-      transition: color .2s;
+      line-height: 1;
+      padding-bottom: 2px;
     }
-    .nav-back:hover { color: var(--gold-l); }
-    .nav-back svg { flex-shrink: 0; }
 
     /* ── HEADER ── */
     header {
       padding: 140px 40px 72px;
       text-align: center;
-      max-width: 700px;
+      max-width: 680px;
       margin: 0 auto;
     }
     .eyebrow {
@@ -101,15 +93,15 @@
     }
     header h1 {
       font-family: var(--serif);
-      font-size: clamp(38px, 5vw, 68px);
+      font-size: clamp(38px, 5vw, 64px);
       font-weight: 500;
       line-height: 1.1;
-      color: var(--white);
+      color: var(--black);
       margin-bottom: 20px;
     }
     header h1 em {
       font-style: italic;
-      color: var(--gold-l);
+      color: var(--gold);
     }
     header p {
       font-size: 15px;
@@ -122,39 +114,39 @@
     .grid {
       max-width: 1140px;
       margin: 0 auto;
-      padding: 0 32px 120px;
+      padding: 0 32px 100px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
-
-    /* 5. Karte zentriert */
     .card:last-child:nth-child(odd) {
       grid-column: 1 / -1;
-      max-width: calc(50% - 12px);
+      max-width: calc(50% - 10px);
       margin: 0 auto;
     }
 
     /* ── CARD ── */
     .card {
-      background: var(--charcoal);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: var(--white);
+      border: 1px solid rgba(22,12,5,0.08);
       overflow: hidden;
-      position: relative;
-      transition: transform .35s var(--expo), border-color .25s;
+      transition: transform .35s var(--expo), box-shadow .3s, border-color .25s;
     }
     .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(216,98,42,0.35);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(22,12,5,0.1);
+      border-color: rgba(216,98,42,0.3);
     }
 
-    .card-img {
+    /* Klickbares Bild */
+    .card-img-link {
+      display: block;
       position: relative;
       aspect-ratio: 16 / 10;
       overflow: hidden;
-      background: var(--dark);
+      background: var(--mist);
     }
-    .card-img img {
+    .card-img-link img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -162,43 +154,64 @@
       display: block;
       transition: transform .6s var(--expo);
     }
-    .card:hover .card-img img {
+    .card:hover .card-img-link img {
       transform: scale(1.03);
     }
 
-    /* Browser-Leiste oben */
-    .card-img::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 28px;
-      background: rgba(22,12,5,0.75);
-      backdrop-filter: blur(4px);
-      z-index: 2;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* Hover-Overlay auf Bild */
+    .card-img-link::after {
+      content: 'Website besuchen →';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(22,12,5,0.45);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity .25s;
     }
-    .card-img::after {
-      content: '';
-      position: absolute; top: 8px; left: 12px;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: rgba(216,98,42,0.5);
-      box-shadow: 14px 0 0 rgba(216,98,42,0.3), 28px 0 0 rgba(216,98,42,0.2);
-      z-index: 3;
+    .card:hover .card-img-link::after {
+      opacity: 1;
     }
 
+    /* Browser-Leiste */
+    .card-img-link::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 26px;
+      background: rgba(246,240,230,0.9);
+      border-bottom: 1px solid rgba(22,12,5,0.08);
+      z-index: 2;
+    }
+    .card-dots {
+      position: absolute;
+      top: 8px; left: 12px;
+      display: flex; gap: 5px;
+      z-index: 3;
+    }
+    .card-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(216,98,42,0.3);
+    }
+    .card-dots span:nth-child(2) { background: rgba(216,98,42,0.2); }
+    .card-dots span:nth-child(3) { background: rgba(216,98,42,0.12); }
+
     .card-body {
-      padding: 24px 28px 28px;
+      padding: 20px 24px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      border-top: 1px solid rgba(22,12,5,0.05);
     }
-    .card-info {}
     .card-name {
       font-family: var(--serif);
       font-size: 22px;
       font-weight: 500;
-      color: var(--white);
+      color: var(--black);
       line-height: 1.2;
     }
     .card-url {
@@ -206,17 +219,17 @@
       font-weight: 500;
       letter-spacing: 0.5px;
       color: var(--gray);
-      margin-top: 4px;
+      margin-top: 3px;
     }
     .card-link {
       flex-shrink: 0;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
+      gap: 7px;
+      padding: 9px 18px;
       background: transparent;
-      border: 1px solid rgba(216,98,42,0.45);
-      color: var(--gold-l);
+      border: 1px solid rgba(216,98,42,0.4);
+      color: var(--gold);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 1.5px;
@@ -226,7 +239,7 @@
       white-space: nowrap;
     }
     .card-link:hover {
-      background: rgba(216,98,42,0.12);
+      background: var(--gold);
       border-color: var(--gold);
       color: var(--white);
     }
@@ -252,7 +265,7 @@
       gap: 10px;
       padding: 18px 40px;
       background: var(--gold);
-      color: var(--white);
+      color: #fff;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 1.5px;
@@ -273,13 +286,50 @@
       color: var(--gray);
     }
 
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+    .footer-copy {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      color: rgba(246,240,230,0.4);
+      text-decoration: none;
+    }
+    .footer-copy:hover { color: rgba(246,240,230,0.7); }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 680px) {
-      nav { padding: 0 20px; }
-      header { padding: 110px 24px 56px; }
-      .grid { grid-template-columns: 1fr; padding: 0 20px 80px; }
+      nav { padding: 0 20px; gap: 8px; }
+      .nav-name { font-size: 16px; }
+      .nav-x { font-size: 18px; }
+      header { padding: 110px 24px 48px; }
+      .grid { grid-template-columns: 1fr; padding: 0 20px 72px; }
       .card:last-child:nth-child(odd) { grid-column: auto; max-width: 100%; }
-      .cta-wrap { padding: 0 20px 80px; }
+      .cta-wrap { padding: 0 20px 72px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
     }
   </style>
 </head>
@@ -287,13 +337,14 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="ki-website-kurs.html">
+    <a class="nav-name" href="ki-website-kurs.html">
       Hanna Marzian
       <span>AI Website Code</span>
     </a>
-    <a class="nav-back" href="ki-website-kurs.html">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      Zurück zum Kurs
+    <span class="nav-x">×</span>
+    <a class="nav-name" href="ki-website-kurs.html">
+      Martin Thun
+      <span>scale²</span>
     </a>
   </nav>
 
@@ -308,81 +359,86 @@
   <div class="grid">
 
     <div class="card">
-      <div class="card-img">
+      <a class="card-img-link" href="https://www.andrea-luedtke.de/" target="_blank" rel="noopener">
+        <div class="card-dots"><span></span><span></span><span></span></div>
         <img src="Testimonials/KI Website Kurs/Projektvorstellungen/andrea-website.png" alt="Andrea Lüdtke Website" loading="lazy">
-      </div>
+      </a>
       <div class="card-body">
-        <div class="card-info">
+        <div>
           <div class="card-name">Andrea Lüdtke</div>
           <div class="card-url">andrea-luedtke.de</div>
         </div>
         <a class="card-link" href="https://www.andrea-luedtke.de/" target="_blank" rel="noopener">
           Besuchen
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-img">
+      <a class="card-img-link" href="https://kristin-schnoedt.de/" target="_blank" rel="noopener">
+        <div class="card-dots"><span></span><span></span><span></span></div>
         <img src="Testimonials/KI Website Kurs/Projektvorstellungen/kristin-website.png" alt="Kristin Schnoedt Website" loading="lazy">
-      </div>
+      </a>
       <div class="card-body">
-        <div class="card-info">
+        <div>
           <div class="card-name">Kristin Schnoedt</div>
           <div class="card-url">kristin-schnoedt.de</div>
         </div>
         <a class="card-link" href="https://kristin-schnoedt.de/" target="_blank" rel="noopener">
           Besuchen
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-img">
+      <a class="card-img-link" href="https://waldmomente.me/" target="_blank" rel="noopener">
+        <div class="card-dots"><span></span><span></span><span></span></div>
         <img src="Testimonials/KI Website Kurs/Projektvorstellungen/waldmomente-website.png" alt="Waldmomente Website" loading="lazy">
-      </div>
+      </a>
       <div class="card-body">
-        <div class="card-info">
+        <div>
           <div class="card-name">Waldmomente</div>
           <div class="card-url">waldmomente.me</div>
         </div>
         <a class="card-link" href="https://waldmomente.me/" target="_blank" rel="noopener">
           Besuchen
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-img">
+      <a class="card-img-link" href="https://woehl.de/" target="_blank" rel="noopener">
+        <div class="card-dots"><span></span><span></span><span></span></div>
         <img src="Testimonials/KI Website Kurs/woehl.de.png" alt="Wöhl Website" loading="lazy">
-      </div>
+      </a>
       <div class="card-body">
-        <div class="card-info">
+        <div>
           <div class="card-name">Wöhl</div>
           <div class="card-url">woehl.de</div>
         </div>
         <a class="card-link" href="https://woehl.de/" target="_blank" rel="noopener">
           Besuchen
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-img">
+      <a class="card-img-link" href="https://lak-cleaningservice.de/" target="_blank" rel="noopener">
+        <div class="card-dots"><span></span><span></span><span></span></div>
         <img src="Testimonials/KI Website Kurs/lak-cleaningservice.de.png" alt="LAK Cleaning Service Website" loading="lazy">
-      </div>
+      </a>
       <div class="card-body">
-        <div class="card-info">
+        <div>
           <div class="card-name">LAK Cleaning Service</div>
           <div class="card-url">lak-cleaningservice.de</div>
         </div>
         <a class="card-link" href="https://lak-cleaningservice.de/" target="_blank" rel="noopener">
           Besuchen
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
     </div>
@@ -399,5 +455,18 @@
     <p class="cta-sub">Sofortiger Zugang · 349 € / 3 × 120 €</p>
   </div>
 
+  <!-- FOOTER -->
+  <footer>
+    <a href="ki-website-kurs.html" class="footer-logo">Hanna Marzian × Martin Thun</a>
+    <span class="footer-copy">© 2026 Hanna Marzian · hannamarzian.com</span>
+    <div class="footer-links">
+      <a href="/impressum.html" class="footer-copy">Impressum</a>
+      <a href="/datenschutz.html" class="footer-copy">Datenschutz</a>
+      <a href="/agb.html" class="footer-copy">AGB</a>
+      <button id="consent-reopen">Cookie-Einstellungen</button>
+    </div>
+  </footer>
+
+  <script src="assets/consent.js"></script>
 </body>
 </html>
