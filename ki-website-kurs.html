@@ -316,7 +316,7 @@
 
     /* ── PROOF SECTION ────────────────────────── */
     #proof {
-      background: var(--charcoal); padding: 120px 48px;
+      background: var(--cream); padding: 120px 48px;
       position: relative; overflow: hidden;
     }
     #proof::before {
@@ -324,9 +324,16 @@
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%,-50%);
       width: 600px; height: 400px;
-      background: radial-gradient(ellipse, rgba(216,98,42,0.06) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(216,98,42,0.08) 0%, transparent 65%);
       pointer-events: none;
     }
+    #proof .proof-callout {
+      background: rgba(216,98,42,0.05);
+      border-color: rgba(216,98,42,0.25);
+    }
+    #proof .proof-callout-text { color: var(--black); }
+    #proof .proof-callout-text strong { color: var(--gold); }
+    #proof .proof-callout-sub { color: var(--charcoal); }
     .proof-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
 
     .sec-eyebrow {
