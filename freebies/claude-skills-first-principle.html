@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Claude Skills einbinden – Schritt-für-Schritt Anleitung | Hanna Marzian</title>
+<link rel="stylesheet" href="../assets/consent.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:      #D8622A;
+    --orange-mid:  #E8894E;
+    --orange-pale: #F5CFA8;
+    --orange-deep: #B84E1E;
+    --warm-black:  #160C05;
+    --warm-dark:   #2A1608;
+    --warm-brown:  #472B18;
+    --mid-brown:   #6B4530;
+    --tan:         #A88960;
+    --sand:        #D0B896;
+    --beige:       #EDE4D7;
+    --cream:       #F6F0E6;
+    --off-white:   #FBF7F2;
+    --warm-gray:   #7A6A5A;
+    --mid-gray:    #BDB0A0;
+    --light-gray:  #D8CFC4;
+    --font-h:      'Cormorant', Georgia, serif;
+    --font-b:      'DM Sans', system-ui, sans-serif;
+    --font-a:      'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--warm-black);
+    font-family: var(--font-b);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    background: var(--warm-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 72px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(216,98,42,.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(216,98,42,.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ─ Nav Bar ─ */
+  .cover-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 0;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-nav-brand {
+    font-family: var(--font-a);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sand);
+  }
+  .cover-nav-brand span { color: var(--orange); }
+  .cover-nav-social {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 100px;
+    padding: 6px 14px 6px 10px;
+  }
+  .cover-nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+  .cover-nav-social-text {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+  }
+
+  /* ─ Two-Col Grid ─ */
+  .cover-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 24px;
+    align-items: center;
+    padding: 40px 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-left {}
+  .cover-kicker {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cover-kicker::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--orange);
+    opacity: .6;
+  }
+  .cover h1 {
+    font-family: var(--font-h);
+    font-size: clamp(40px, 5.5vw, 64px);
+    font-weight: 500;
+    color: var(--off-white);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+  .cover h1 em { font-style: italic; color: var(--orange-mid); }
+  .cover-sub {
+    font-family: var(--font-b);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    max-width: 440px;
+  }
+  .cover-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .cover-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--sand);
+    line-height: 1.5;
+  }
+  .cover-benefits li::before {
+    content: '✓';
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orange);
+    background: rgba(216,98,42,.15);
+    border: 1px solid rgba(216,98,42,.3);
+    border-radius: 50%;
+    width: 20px; height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .cover-social-proof {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .proof-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--warm-brown);
+    border: 2px solid rgba(216,98,42,.4);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .proof-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .proof-text {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--tan);
+    line-height: 1.5;
+  }
+  .proof-text strong {
+    color: var(--off-white);
+    font-weight: 500;
+  }
+
+  /* ─ Optin Box ─ */
+  .cover-optin {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-top: 3px solid var(--orange);
+    border-radius: 3px;
+    padding: 36px 36px 32px;
+    position: relative;
+  }
+  .cover-optin::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(216,98,42,.04) 0%, transparent 60%);
+    border-radius: 3px;
+    pointer-events: none;
+  }
+  .cover-optin-label {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+  }
+  .cover-optin-title {
+    font-family: var(--font-h);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--off-white);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .cover-optin-title em { font-style: italic; color: var(--orange-mid); }
+  .cover-optin-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .cover-optin-trust {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .7;
+  }
+  .cover-optin-trust::before {
+    content: '🔒';
+    font-size: 10px;
+    opacity: .8;
+  }
+
+  /* ─ Footer Bar ─ */
+  .cover-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-authors {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cover-author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cover-author-label {
+    font-family: var(--font-a);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .5;
+  }
+  .cover-author-name {
+    font-family: var(--font-h);
+    font-size: 15px;
+    color: var(--off-white);
+  }
+  .cover-author-name span { color: var(--orange); }
+  .cover-author-handle {
+    font-family: var(--font-a);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--tan);
+  }
+  .author-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,.1);
+    flex-shrink: 0;
+  }
+
+  /* ─── LAYOUT ─── */
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ─── OPT-IN SECTION ─── */
+  .optin-section {
+    background: var(--off-white);
+    border-bottom: 1px solid var(--beige);
+    padding: 64px 0;
+  }
+  .optin-eyebrow {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .optin-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--orange);
+    opacity: .4;
+  }
+  .optin-section h2 {
+    font-family: var(--font-h);
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .optin-section h2 em { font-style: italic; color: var(--orange); }
+  .optin-lead {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.85;
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .optin-box {
+    background: var(--cream);
+    border: 1px solid var(--beige);
+    border-top: 3px solid var(--orange);
+    border-radius: 2px;
+    padding: 40px 40px 36px;
+    max-width: 560px;
+  }
+  .optin-box-label {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .optin-box-title {
+    font-family: var(--font-h);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--warm-black);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .optin-box-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  /* ── PLATZHALTER: Hier das E-Mail-Formular einbetten ── */
+  .optin-placeholder {
+    background: rgba(216,98,42,.04);
+    border: 2px dashed rgba(216,98,42,.3);
+    border-radius: 2px;
+    padding: 36px 24px;
+    text-align: center;
+  }
+  .optin-placeholder-label {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    opacity: .7;
+    margin-bottom: 8px;
+  }
+  .optin-placeholder-text {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.6;
+  }
+
+  /* ─── INTRO ─── */
+  .intro {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--beige);
+  }
+  .eyebrow {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--orange);
+    opacity: .4;
+  }
+  .intro h2 {
+    font-family: var(--font-h);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .intro h2 em { font-style: italic; color: var(--orange); }
+  .intro-lead {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.85;
+    max-width: 580px;
+    margin-bottom: 20px;
+  }
+  .what-box {
+    background: var(--beige);
+    border-left: 4px solid var(--orange);
+    padding: 28px 32px;
+    margin: 36px 0;
+  }
+  .what-box-label {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .what-box p {
+    font-family: var(--font-h);
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--warm-brown);
+    line-height: 1.5;
+  }
+  .what-box p strong { color: var(--orange); font-style: normal; font-weight: 600; }
+
+  /* ─── STEP ─── */
+  .step {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--beige);
+  }
+  .step:last-of-type { border-bottom: none; }
+  .step-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 8px;
+  }
+  .step-num {
+    font-family: var(--font-h);
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--orange);
+    opacity: .18;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 58px;
+    text-align: right;
+    margin-top: -8px;
+  }
+  .step-title-wrap { flex: 1; }
+  .step-kicker {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+  .step h3 {
+    font-family: var(--font-h);
+    font-size: 34px;
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .step h3 em { font-style: italic; color: var(--orange); }
+  .step-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.85;
+    max-width: 580px;
+    margin: 20px 0 28px;
+  }
+  .step-desc + .step-desc {
+    margin-top: -16px;
+  }
+
+  /* Action list */
+  .action-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+  }
+  .action-list li {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--beige);
+    align-items: flex-start;
+  }
+  .action-list li:last-child { border-bottom: none; }
+  .action-dot {
+    width: 28px;
+    height: 28px;
+    background: var(--orange);
+    color: var(--off-white);
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    border-radius: 1px;
+  }
+  .action-content { flex: 1; }
+  .action-title {
+    font-weight: 600;
+    color: var(--warm-black);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .action-text {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.7;
+  }
+
+  /* Callout / Tipp */
+  .tip {
+    background: rgba(216,98,42,.06);
+    border: 1px solid rgba(216,98,42,.2);
+    border-radius: 2px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  .tip-icon { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+  .tip-label {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 5px;
+  }
+  .tip-text { font-size: 13px; color: var(--warm-brown); line-height: 1.7; }
+  .tip-text strong { color: var(--warm-black); }
+
+  /* Warnung */
+  .warning {
+    background: rgba(122,106,90,.07);
+    border: 1px solid var(--beige);
+    border-radius: 2px;
+    padding: 18px 22px;
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+  .warning-text { font-size: 13px; color: var(--warm-gray); line-height: 1.65; }
+
+  /* Erfolg-Highlight */
+  .success-bar {
+    background: rgba(39,201,63,.08);
+    border: 1px solid rgba(39,201,63,.25);
+    border-radius: 2px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 13px;
+    color: #1a6e28;
+    margin-top: 16px;
+  }
+
+  /* Code-Inline */
+  .code-inline {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    background: var(--beige);
+    color: var(--warm-brown);
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* Path-Indicator */
+  .path-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--warm-dark);
+    border-radius: 2px;
+    padding: 14px 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  .path-step {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--off-white);
+  }
+  .path-arrow {
+    color: var(--orange);
+    font-size: 12px;
+  }
+  .path-step.highlight { color: var(--orange); }
+
+  /* ─── RECAP / CHECKLISTE ─── */
+  .recap {
+    background: var(--warm-dark);
+    padding: 52px 56px;
+    margin: 64px 0;
+    border-radius: 2px;
+  }
+  .recap-eye {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .recap h3 {
+    font-family: var(--font-h);
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    font-size: 14px;
+    color: var(--sand);
+    align-items: flex-start;
+    line-height: 1.6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon { color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── CTA ─── */
+  .cta {
+    background: var(--beige);
+    padding: 64px 40px;
+    text-align: center;
+  }
+  .cta-eye {
+    font-family: var(--font-a);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+  .cta h2 {
+    font-family: var(--font-h);
+    font-size: 42px;
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .cta h2 em { font-style: italic; color: var(--orange); }
+  .cta-text {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.8;
+    max-width: 400px;
+    margin: 0 auto 36px;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--off-white);
+    font-family: var(--font-a);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 1px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+
+  /* ─── SITE FOOTER ─── */
+  .site-footer {
+    background: #ffffff;
+    border-top: 1px solid var(--beige);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .site-footer-copy {
+    font-family: var(--font-b);
+    font-size: 13px;
+    color: var(--warm-gray);
+  }
+  .site-footer-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .site-footer-links a {
+    font-family: var(--font-b);
+    font-size: 13px;
+    color: var(--warm-gray);
+    text-decoration: none;
+  }
+  .site-footer-links a:hover { color: var(--warm-black); }
+  .site-footer-collab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .site-footer-collab-label {
+    font-family: var(--font-a);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+  .scale2-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+  .scale2-icon-sm {
+    width: 20px;
+    height: 20px;
+    background: #111;
+    border-radius: 4px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 3px;
+    gap: 1.5px;
+    flex-shrink: 0;
+  }
+  .scale2-bar-sm {
+    background: #22c55e;
+    border-radius: 1px;
+    width: 4px;
+  }
+  .scale2-wordmark-sm {
+    font-family: var(--font-b);
+    font-size: 12px;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: -0.3px;
+  }
+  .scale2-wordmark-sm sup {
+    color: #22c55e;
+    font-size: 9px;
+  }
+
+  @media (max-width: 900px) {
+    .cover { padding: 0 40px 32px; }
+    .cover-grid { grid-template-columns: 1fr; gap: 40px; padding: 32px 0 24px; }
+    .cover-optin { order: -1; }
+  }
+  @media (max-width: 680px) {
+    .cover { padding: 0 20px 28px; }
+    .wrap { padding: 0 20px; }
+    .recap { padding: 36px 24px; }
+    .cta { padding: 48px 24px; }
+    .site-footer { padding: 20px 20px; }
+    .cover h1 { font-size: clamp(34px, 9vw, 52px); letter-spacing: -0.5px; }
+    .cover-sub { font-size: 15px; }
+    .cover-authors { gap: 16px; }
+    .author-divider { display: none; }
+    .cta h2 { font-size: 28px; }
+    .cta-text { font-size: 14px; }
+    .step-num { font-size: 52px; min-width: 44px; }
+    .site-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .cover-optin { padding: 28px 24px; }
+    .path-row { gap: 4px; }
+    .cover-nav-social { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<div class="cover">
+
+  <!-- Nav -->
+  <div class="cover-nav">
+    <div class="cover-nav-brand">@hanna<span>.gpt</span></div>
+  </div>
+
+  <!-- Two-Col Grid -->
+  <div class="cover-grid">
+
+    <!-- Left: Copy -->
+    <div class="cover-left">
+      <div class="cover-kicker">Kostenloser Skill-Download</div>
+      <h1>Dein erster<br>fertiger Claude<br><em>First Principle.</em></h1>
+      <p class="cover-sub">
+        Trag dich ein, lade den Skill herunter und aktiviere ihn in Claude mit einem einzigen Befehl. Kein Setup, kein Vorwissen nötig.
+      </p>
+      <ul class="cover-benefits">
+        <li>Sofort einsatzbereit, direkt nach dem Download</li>
+        <li>Websites systematisch analysieren, in jedem Chat</li>
+        <li>Einmal einrichten, dauerhaft nutzen</li>
+      </ul>
+    </div>
+
+    <!-- Right: Opt-in Form -->
+    <div class="cover-optin">
+      <div class="cover-optin-label">Gratis herunterladen</div>
+      <div class="cover-optin-title">First Principle<br><em>Skill sichern.</em></div>
+      <p class="cover-optin-sub">E-Mail eintragen, Skill sofort runterladen. Kein Spam, nur relevante KI-Insights.</p>
+      <script id="form-script-tag-23634949" src="https://member.hannamarzian.com/public/remote/page/400207406b551f999981cc8401c8babf9cae0281.js"></script>
+      <div class="cover-optin-trust">Kein Spam &nbsp;·&nbsp; Jederzeit abmeldbar</div>
+    </div>
+
+  </div>
+
+  <!-- Footer Bar -->
+  <div class="cover-foot">
+    <div class="cover-authors">
+      <div class="cover-author">
+        <div class="cover-author-label">Präsentiert von</div>
+        <div class="cover-author-name">Hanna <span>Marzian</span></div>
+        <div class="cover-author-handle">@hanna.gpt</div>
+      </div>
+      <div class="author-divider"></div>
+      <div class="cover-author">
+        <div class="cover-author-label">In Zusammenarbeit mit</div>
+        <div class="cover-author-name">Martin <span>Thun</span></div>
+        <div class="cover-author-handle">scale²</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- ═══════════════════ SCHRITTE ═══════════════════ -->
+<div class="wrap">
+
+  <!-- SCHRITT 1 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 1 von 4</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">01</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 1</div>
+        <h3>Datei <em>herunterladen</em></h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Du hast nach der Eintragung einen Link zu einem Google Drive Ordner erhalten. Öffne den Link, klicke auf <strong>„Herunterladen"</strong> und speichere die .skill-Datei auf deinem Computer.
+    </p>
+
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <div>
+        <div class="tip-label">Kein Google-Account nötig</div>
+        <div class="tip-text">Du brauchst keinen Google-Account zum Herunterladen. Der Link funktioniert direkt im Browser.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHRITT 2 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 2 von 4</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">02</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 2</div>
+        <h3>.skill-Datei ablegen – je nach <em>Version</em></h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Jetzt kommt es darauf an, welche Version von Claude du nutzt. Wähle die Option, die auf dich zutrifft.
+    </p>
+
+    <ul class="action-list">
+      <li>
+        <div class="action-dot">A</div>
+        <div class="action-content">
+          <div class="action-title">Claude Code (Desktop / Terminal)</div>
+          <div class="action-text">Lege die .skill-Datei in deinem Claude-Arbeitsbereich ab, unter <span class="code-inline">.claude</span> &rarr; <span class="code-inline">skills</span>. Der Pfad sieht dann so aus: <span class="code-inline">.claude/skills/first-principle</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="action-dot">B</div>
+        <div class="action-content">
+          <div class="action-title">Browser-Version (claude.ai)</div>
+          <div class="action-text">Die .skill-Datei direkt so hochladen, wie sie ist.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="warning">
+      <span style="font-size:16px;flex-shrink:0;margin-top:2px;">⚠️</span>
+      <p class="warning-text">Nicht sicher, welche Version du nutzt? Wenn du Claude über den Browser auf <strong>claude.ai</strong> öffnest, bist du in der Browser-Version. Claude Code läuft im Terminal oder als Desktop-App.</p>
+    </div>
+  </div>
+
+  <!-- SCHRITT 3 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 3 von 4</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">03</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 3 – nur Browser-Version</div>
+        <h3>Skill in <em>claude.ai</em> hochladen</h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Dieser Schritt gilt nur für die Browser-Version. Claude Code-Nutzer können direkt zu Schritt 4 springen.
+    </p>
+
+    <ul class="action-list">
+      <li>
+        <div class="action-dot">1</div>
+        <div class="action-content">
+          <div class="action-title">Zu „Anpassen" navigieren</div>
+          <div class="action-text">Öffne <strong>claude.ai</strong> und klicke links im Menü auf <strong>„Anpassen"</strong>. Dann auf den Tab <strong>„Skills"</strong>.</div>
+        </div>
+      </li>
+      <li>
+        <div class="action-dot">2</div>
+        <div class="action-content">
+          <div class="action-title">„Skill erstellen" öffnen</div>
+          <div class="action-text">Klicke oben rechts auf das <strong>+ Symbol</strong> und dann auf <strong>„Skill erstellen"</strong>.</div>
+        </div>
+      </li>
+      <li>
+        <div class="action-dot">3</div>
+        <div class="action-content">
+          <div class="action-title">.skill-Datei hochladen</div>
+          <div class="action-text">Wähle <strong>„Skill hochladen"</strong> und lade die .skill-Datei direkt hoch. Einfach so wie sie ist reinziehen.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="path-row">
+      <span class="path-step">Anpassen</span>
+      <span class="path-arrow">→</span>
+      <span class="path-step">Skills</span>
+      <span class="path-arrow">→</span>
+      <span class="path-step">+</span>
+      <span class="path-arrow">→</span>
+      <span class="path-step">Skill erstellen</span>
+      <span class="path-arrow">→</span>
+      <span class="path-step highlight">Skill hochladen</span>
+    </div>
+  </div>
+
+  <!-- SCHRITT 4 -->
+  <div class="step">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 4 von 4</div>
+      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    </div>
+    <div class="step-head">
+      <div class="step-num">04</div>
+      <div class="step-title-wrap">
+        <div class="step-kicker">Schritt 4</div>
+        <h3>Neuen Chat starten mit <em>"/"</em></h3>
+      </div>
+    </div>
+    <p class="step-desc">
+      Starte einen neuen Chat. Tippe <span class="code-inline">/</span> ins Eingabefeld. Dir wird sofort der neue Skill <strong>„first-principle"</strong> angezeigt. Wähle ihn aus. Fertig.
+    </p>
+    <p class="step-desc">
+      Claude greift jetzt automatisch auf alle Anweisungen des Skills zurück. Du musst nichts weiter erklären.
+    </p>
+
+    <div class="success-bar">✅ <span>Skill eingebunden und aktiv. Du kannst jetzt loslegen.</span></div>
+
+    <div class="tip">
+      <span class="tip-icon">🔁</span>
+      <div>
+        <div class="tip-label">Mehrere Skills gleichzeitig</div>
+        <div class="tip-text">Du kannst in einem Chat mehrere Skills gleichzeitig aktivieren, indem du <strong>/</strong> tippst und einen weiteren Skill hinzufügst. Claude kombiniert die Anweisungen aus beiden automatisch.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<div class="cta">
+  <div class="cta-eye">Exklusive KI-Insights und Video-Anleitungen, gibts nur hier👇</div>
+  <h2>Hier beginnt dein<br><em>Vorsprung mit KI.</em></h2>
+  <p class="cta-text">Tritt der Telegram Community bei und bekomm exklusiven Zugang zu neuen Tools, Deals und Angeboten – direkt auf deinem Handy.</p>
+  <a href="https://t.me/+FqudiTcL7JgyZmUy" target="_blank" rel="noopener" class="cta-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+    <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.2;">Jetzt beitreten<small style="font-size:9px;font-weight:400;letter-spacing:1.5px;opacity:0.8;text-transform:uppercase;">Kostenlos</small></span>
+  </a>
+</div>
+
+<!-- ═══════════════════ SITE FOOTER ═══════════════════ -->
+<div class="site-footer">
+  <div class="site-footer-copy">© 2026 Hanna Marzian</div>
+
+  <div class="site-footer-collab">
+    <div class="site-footer-collab-label">In Zusammenarbeit mit</div>
+    <a href="https://scale-square.com/" target="_blank" rel="noopener" class="scale2-footer-logo">
+      <div class="scale2-icon-sm">
+        <div class="scale2-bar-sm" style="height:8px;"></div>
+        <div class="scale2-bar-sm" style="height:12px;"></div>
+        <div class="scale2-bar-sm" style="height:6px;"></div>
+      </div>
+      <div>
+        <div class="scale2-wordmark-sm">scale<sup>2</sup></div>
+        <div style="font-family:var(--font-a);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid-gray);">AI Growth Partner</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="site-footer-links">
+    <a href="https://www.hannamarzian.com/impressum.html" target="_blank" rel="noopener">Impressum</a>
+    <a href="https://www.hannamarzian.com/datenschutz.html" target="_blank" rel="noopener">Datenschutz</a>
+    <a href="https://www.hannamarzian.com/agb.html" target="_blank" rel="noopener">AGB</a>
+    <button id="consent-reopen" style="background:none;border:none;font-family:var(--font-a);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid-gray);text-decoration:underline;cursor:pointer;padding:0;">Cookie-Einstellungen</button>
+  </div>
+</div>
+
+<script src="../assets/consent.js"></script>
+</body>
+</html>
