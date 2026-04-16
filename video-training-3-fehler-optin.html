@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kostenloses Video · Die 3 größten Fehler bei deiner Website</title>
+  <title>Kostenloses Video-Training · Die Lösung für alle 3 Fehler</title>
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="stylesheet" href="assets/fonts.css">
@@ -15,13 +15,14 @@
     :root {
       --black:    #160C05;
       --charcoal: #2A1608;
-      --dark:     #472B18;
+      --dark:     #3A1F0A;
       --gold:     #D8622A;
       --gold-l:   #E8894E;
       --cream:    #F6F0E6;
       --white:    #FFFFFF;
-      --mist:     #F5F1EC;
+      --mist:     #F9F5F0;
       --gray:     #7A6A5A;
+      --gray-l:   #A09080;
       --serif:    'Cormorant', Georgia, serif;
       --sans:     'Montserrat', system-ui, sans-serif;
       --expo:     cubic-bezier(0.16, 1, 0.3, 1);
@@ -36,227 +37,251 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    nav {
-      padding: 0 24px;
-      height: 60px;
+    /* ────────────────────────────────────────
+       LOGO STRIP (kein Nav = keine Ablenkung)
+    ──────────────────────────────────────── */
+    .logo-strip {
+      width: 100%;
+      padding: 20px 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 32px;
-      border-bottom: 1px solid rgba(216,98,42,0.15);
-      background: var(--white);
-      flex-shrink: 0;
+      gap: 24px;
+      border-bottom: 1px solid rgba(216,98,42,0.12);
     }
 
-    .logo-hanna {
+    .logo-h {
       font-family: var(--serif);
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 600;
       font-style: italic;
       color: var(--black);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       line-height: 1;
       text-align: right;
     }
-    .logo-hanna .accent { color: var(--gold); }
-    .logo-hanna span {
+    .logo-h em { color: var(--gold); font-style: italic; }
+    .logo-h span {
       display: block;
-      font-size: 8px;
       font-family: var(--sans);
       font-style: normal;
+      font-size: 7.5px;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-top: 2px;
+      margin-top: 3px;
     }
-    .logo-divider {
+
+    .logo-sep {
       width: 1px;
-      height: 32px;
-      background: rgba(160,144,126,0.35);
+      height: 30px;
+      background: rgba(160,144,126,0.3);
       flex-shrink: 0;
     }
-    .logo-martin {
+
+    .logo-m {
       font-family: var(--serif);
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 600;
       font-style: italic;
       color: #2db800;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       line-height: 1;
       text-align: left;
     }
-    .logo-martin span {
+    .logo-m em { color: var(--black); font-style: italic; }
+    .logo-m span {
       display: block;
-      font-size: 8px;
       font-family: var(--sans);
       font-style: normal;
+      font-size: 7.5px;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: #2db800;
-      margin-top: 2px;
+      margin-top: 3px;
     }
-    .logo-martin em { color: var(--black); }
 
-    /* ── MAIN ── */
+    /* ────────────────────────────────────────
+       MAIN LAYOUT
+    ──────────────────────────────────────── */
     main {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 48px 20px 72px;
     }
 
-    .wrap {
-      max-width: 520px;
+    .section {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
     }
 
-    /* ── BADGE ── */
-    .badge {
+    .inner {
+      width: 100%;
+      max-width: 560px;
+      padding: 0 20px;
+    }
+
+    /* ────────────────────────────────────────
+       HERO SECTION
+    ──────────────────────────────────────── */
+    .hero {
+      padding-top: 52px;
+      padding-bottom: 56px;
+    }
+
+    /* Eyebrow */
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(216,98,42,0.08);
-      border: 1px solid rgba(216,98,42,0.25);
-      padding: 8px 18px;
-      margin-bottom: 28px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
+      gap: 10px;
+      margin-bottom: 24px;
     }
-    .badge-dot {
-      width: 5px;
-      height: 5px;
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--gold);
       flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.7); }
+    }
+    .eyebrow-text {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
     }
 
-    /* ── HEADLINE ── */
+    /* H1 */
     h1 {
       font-family: var(--serif);
-      font-size: clamp(38px, 9vw, 60px);
+      font-size: clamp(42px, 10vw, 64px);
       font-weight: 600;
-      line-height: 1.1;
+      line-height: 1.06;
       color: var(--black);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
     }
-    h1 em { font-style: italic; color: var(--gold); }
+    h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
 
-    /* ── SUBLINE ── */
+    /* Subline */
     .subline {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 400;
-      color: var(--gray);
       line-height: 1.75;
-      max-width: 420px;
-      margin-bottom: 36px;
+      color: var(--gray);
+      margin-bottom: 40px;
+      max-width: 460px;
     }
-
-    /* ── SOCIAL PROOF ── */
-    .proof {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 36px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .proof-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
+    .subline strong {
+      color: var(--black);
       font-weight: 600;
-      color: var(--dark);
-      letter-spacing: 0.02em;
-    }
-    .proof-item svg {
-      width: 15px;
-      height: 15px;
-      stroke: var(--gold);
-      flex-shrink: 0;
-    }
-    .proof-sep {
-      width: 1px;
-      height: 18px;
-      background: rgba(216,98,42,0.2);
     }
 
-    /* ── FORM ── */
+    /* ────────────────────────────────────────
+       FORM BOX
+    ──────────────────────────────────────── */
     .form-box {
       width: 100%;
       background: var(--mist);
       border: 1px solid rgba(216,98,42,0.15);
       border-top: 3px solid var(--gold);
-      padding: 32px 28px 36px;
+      padding: 28px 24px 32px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 14px;
     }
 
-    .form-label {
-      font-size: 10px;
+    .form-header {
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 4px;
-      text-align: left;
+      margin-bottom: 2px;
     }
 
-    .form-group {
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .form-field {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      text-align: left;
+      gap: 6px;
+    }
+    .form-field.full { grid-column: 1 / -1; }
+
+    .form-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
     }
 
     .form-input {
-      width: 100%;
-      padding: 15px 18px;
+      padding: 14px 16px;
       font-family: var(--sans);
       font-size: 14px;
       font-weight: 400;
       color: var(--black);
       background: var(--white);
-      border: 1px solid rgba(216,98,42,0.2);
+      border: 1px solid rgba(216,98,42,0.18);
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
       -webkit-appearance: none;
       border-radius: 0;
+      width: 100%;
     }
-    .form-input::placeholder { color: rgba(122,106,90,0.55); }
-    .form-input:focus { border-color: var(--gold); }
+    .form-input::placeholder { color: rgba(122,106,90,0.45); }
+    .form-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(216,98,42,0.07);
+    }
 
     .btn-submit {
       width: 100%;
       padding: 18px 24px;
       background: var(--gold);
-      color: #ffffff;
+      color: #fff;
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       border: none;
       cursor: pointer;
-      transition: background 0.25s var(--expo), transform 0.3s var(--expo);
-      margin-top: 6px;
+      transition: background 0.22s var(--expo), transform 0.25s var(--expo);
       -webkit-appearance: none;
       border-radius: 0;
+      margin-top: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0);
+      transition: background 0.2s;
     }
     .btn-submit:hover {
       background: var(--gold-l);
@@ -264,212 +289,577 @@
     }
     .btn-submit:active { transform: translateY(0); }
 
-    /* ── PRIVACY NOTE ── */
+    /* Privacy */
     .privacy {
-      font-size: 11px;
-      font-weight: 400;
-      color: rgba(122,106,90,0.6);
-      line-height: 1.6;
-      max-width: 380px;
+      font-size: 10.5px;
+      color: rgba(122,106,90,0.55);
+      line-height: 1.65;
+      text-align: center;
+      margin-top: 12px;
     }
-    .privacy a {
-      color: inherit;
-      text-decoration: underline;
+    .privacy a { color: inherit; text-decoration: underline; }
+
+    /* ────────────────────────────────────────
+       PROOF STRIP
+    ──────────────────────────────────────── */
+    .proof-strip {
+      width: 100%;
+      background: var(--cream);
+      border-top: 1px solid rgba(216,98,42,0.12);
+      border-bottom: 1px solid rgba(216,98,42,0.12);
+      padding: 32px 20px;
     }
 
-    /* ── BULLETS BELOW FORM ── */
-    .trust-list {
+    .proof-grid {
+      max-width: 560px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .proof-item {
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+    }
+    .proof-item + .proof-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10%; height: 80%;
+      width: 1px;
+      background: rgba(216,98,42,0.18);
+    }
+
+    .proof-num {
+      font-family: var(--serif);
+      font-size: clamp(38px, 8vw, 52px);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+
+    .proof-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 7px;
+      display: block;
+      line-height: 1.5;
+    }
+
+    /* ────────────────────────────────────────
+       WHAT YOU GET
+    ──────────────────────────────────────── */
+    .content-section {
+      padding: 56px 20px;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 32px;
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+
+    /* Video preview bullets */
+    .preview-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 36px;
-      text-align: left;
-      width: 100%;
-      max-width: 420px;
+      gap: 3px;
     }
-    .trust-list li {
+
+    .preview-item {
+      display: flex;
+      gap: 0;
+      border: 1px solid rgba(216,98,42,0.1);
+      border-left: 3px solid var(--gold);
+      background: var(--white);
+      padding: 18px 20px;
+    }
+
+    .preview-num {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 600;
+      color: rgba(216,98,42,0.2);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+      margin-top: -2px;
+    }
+
+    .preview-body { flex: 1; min-width: 0; }
+
+    .preview-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 5px;
+      line-height: 1.35;
+    }
+
+    .preview-desc {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ────────────────────────────────────────
+       FOR WHOM
+    ──────────────────────────────────────── */
+    .forwhom-section {
+      width: 100%;
+      background: var(--mist);
+      border-top: 1px solid rgba(216,98,42,0.1);
+      padding: 52px 20px;
+    }
+
+    .forwhom-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .check-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      font-size: 13px;
+      gap: 14px;
+      font-size: 14px;
       font-weight: 400;
       color: var(--charcoal);
       line-height: 1.65;
     }
-    .trust-list li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-    .trust-list li strong { font-weight: 600; color: var(--black); }
 
-    /* ── FOOTER ── */
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(216,98,42,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .check-icon svg {
+      width: 10px;
+      height: 10px;
+      stroke: var(--gold);
+      stroke-width: 2.5;
+    }
+
+    .check-item strong { font-weight: 600; color: var(--black); }
+
+    /* ────────────────────────────────────────
+       SECOND CTA
+    ──────────────────────────────────────── */
+    .cta2-section {
+      padding: 56px 20px 64px;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cta2-eyebrow {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-l);
+      margin-bottom: 20px;
+    }
+
+    .cta2-headline {
+      font-family: var(--serif);
+      font-size: clamp(24px, 5vw, 34px);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+    .cta2-headline em { font-style: italic; color: var(--gold); }
+
+    /* ────────────────────────────────────────
+       FOOTER
+    ──────────────────────────────────────── */
     footer {
-      padding: 20px 24px;
       border-top: 1px solid rgba(216,98,42,0.1);
-      background: var(--white);
+      padding: 24px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
       text-align: center;
     }
+
     .footer-logo {
       font-family: var(--serif);
       font-size: 16px;
       font-weight: 500;
       color: var(--black);
       text-decoration: none;
+      letter-spacing: 0.02em;
     }
-    .footer-logo span { color: var(--gold); }
-    .footer-copy {
-      font-size: 10px;
-      font-weight: 300;
-      color: rgba(122,106,90,0.6);
+    .footer-logo em { font-style: italic; color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .footer-links a,
+    .footer-links button {
+      font-size: 9.5px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: rgba(122,106,90,0.55);
       text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+      padding: 0;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 9px;
+      color: rgba(122,106,90,0.4);
+      letter-spacing: 0.5px;
     }
 
-    /* ── MOBILE ── */
+    /* ────────────────────────────────────────
+       SCROLL REVEAL
+    ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s var(--expo), transform 0.65s var(--expo);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ────────────────────────────────────────
+       RESPONSIVE
+    ──────────────────────────────────────── */
     @media (max-width: 480px) {
-      nav { gap: 16px; height: 54px; }
-      .logo-hanna { font-size: 17px; }
-      .logo-martin { font-size: 17px; }
-      .logo-divider { height: 26px; }
-      main { padding: 36px 16px 56px; }
-      h1 { font-size: clamp(34px, 11vw, 52px); }
-      .form-box { padding: 24px 20px 28px; }
-      .proof { gap: 12px; }
-      .proof-sep { display: none; }
-      footer { padding: 18px 16px; }
-      footer > div { flex-wrap: wrap; justify-content: center; gap: 12px !important; }
+      .logo-strip { gap: 16px; padding: 16px 20px; }
+      .logo-h, .logo-m { font-size: 17px; }
+      .logo-sep { height: 26px; }
+
+      .hero { padding-top: 36px; padding-bottom: 44px; }
+      h1 { font-size: clamp(36px, 11vw, 52px); }
+      .subline { font-size: 14px; margin-bottom: 32px; }
+
+      .form-row { grid-template-columns: 1fr; }
+      .form-box { padding: 22px 18px 26px; }
+
+      .proof-num { font-size: clamp(32px, 9vw, 44px); }
+      .proof-label { font-size: 8px; }
+
+      .content-section { padding: 44px 20px; }
+      .forwhom-section { padding: 40px 20px; }
+      .cta2-section { padding: 44px 20px 56px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo-hanna">
-      Hanna <em class="accent">Marzian</em>
+  <!-- ── LOGO STRIP ─────────────────────── -->
+  <header class="logo-strip">
+    <div class="logo-h">
+      Hanna <em>Marzian</em>
       <span>@hanna.gpt</span>
     </div>
-    <div class="logo-divider"></div>
-    <div class="logo-martin">
+    <div class="logo-sep"></div>
+    <div class="logo-m">
       Martin <em>Thun</em>
       <span>scale²</span>
     </div>
-  </nav>
+  </header>
 
-  <!-- MAIN -->
   <main>
-    <div class="wrap">
 
-      <div class="badge">
-        <span class="badge-dot"></span>
-        0 € · Kostenloses Video
+    <!-- ── HERO ───────────────────────────── -->
+    <section class="section">
+      <div class="inner hero">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span class="eyebrow-text">0 € · Kostenloses Video-Training</span>
+        </div>
+
+        <h1>
+          Sieh zu, wie KI<br>
+          eine professionelle<br>
+          <em>Website in Minuten baut.</em>
+        </h1>
+
+        <p class="subline">
+          Das Video zeigt dir live, wie aus einem einzigen Prompt eine fertige, mobiloptimierte Website entsteht. <strong>Für die eine Agentur früher 8.000 € berechnet hätte.</strong> Trag dich ein und du bekommst den Link sofort.
+        </p>
+
+        <!-- FORM -->
+        <!-- TODO: action="" durch E-Mail-Anbieter ersetzen -->
+        <form class="form-box" action="#" method="post">
+
+          <div class="form-header">Jetzt kostenlos Zugang sichern</div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label" for="fname">Vorname</label>
+              <input
+                id="fname"
+                class="form-input"
+                type="text"
+                name="FNAME"
+                placeholder="Dein Vorname"
+                autocomplete="given-name"
+                required
+              >
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="email">E-Mail</label>
+              <input
+                id="email"
+                class="form-input"
+                type="email"
+                name="EMAIL"
+                placeholder="deine@email.de"
+                autocomplete="email"
+                required
+              >
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Ja, Video kostenlos zusenden →
+          </button>
+
+        </form>
+
+        <p class="privacy">
+          Kein Spam. Kein Abo. Jederzeit abmeldbar.
+          Mit der Eintragung stimmst du der
+          <a href="https://hannamarzian.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> zu.
+        </p>
+
       </div>
+    </section>
 
-      <h1>
-        Schick mir das<br>
-        <em>kostenlose Video</em>
-      </h1>
+    <!-- ── PROOF STRIP ────────────────────── -->
+    <div class="proof-strip reveal">
+      <div class="proof-grid">
 
-      <p class="subline">
-        Trag dich ein und ich schick dir den Link direkt in dein Postfach. Kostenlos, kein Abo, keine Falle.
-      </p>
+        <div class="proof-item">
+          <span class="proof-num">60+</span>
+          <span class="proof-label">Begeisterte<br>Teilnehmer</span>
+        </div>
 
-      <!-- SOCIAL PROOF -->
-      <div class="proof">
         <div class="proof-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          60+ Teilnehmer begeistert
+          <span class="proof-num">0</span>
+          <span class="proof-label">Vorkenntnisse<br>nötig</span>
         </div>
-        <div class="proof-sep"></div>
+
         <div class="proof-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          0 Vorkenntnisse nötig
+          <span class="proof-num">∞</span>
+          <span class="proof-label">Websites,<br>die live sind</span>
         </div>
-        <div class="proof-sep"></div>
-        <div class="proof-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          Sofortiger Zugang
-        </div>
+
       </div>
+    </div>
 
-      <!-- FORM -->
-      <!-- TODO: action="" und hidden fields durch deinen E-Mail-Anbieter ersetzen -->
-      <form class="form-box" action="#" method="post">
+    <!-- ── WHAT YOU GET ────────────────────── -->
+    <div class="content-section reveal">
 
-        <div class="form-group">
-          <div class="form-label">Vorname</div>
-          <input
-            class="form-input"
-            type="text"
-            name="FNAME"
-            placeholder="Dein Vorname"
-            autocomplete="given-name"
-            required
-          >
-        </div>
+      <div class="section-label">Im Video siehst du</div>
 
-        <div class="form-group">
-          <div class="form-label">E-Mail-Adresse</div>
-          <input
-            class="form-input"
-            type="email"
-            name="EMAIL"
-            placeholder="deine@email.de"
-            autocomplete="email"
-            required
-          >
-        </div>
+      <h2>Drei Dinge, die du nach<br><em>dem Video anders machst.</em></h2>
 
+      <ul class="preview-list">
+
+        <li class="preview-item">
+          <span class="preview-num">1</span>
+          <div class="preview-body">
+            <p class="preview-title">Live-Demo: Website-Erstellung in Echtzeit</p>
+            <p class="preview-desc">Du siehst, wie aus einem einzigen Prompt eine fertige, SEO-optimierte Website entsteht. Inklusive Scroll-Animationen, mobiloptimiert, deploy-fertig. Kein Template. Kein Kompromiss.</p>
+          </div>
+        </li>
+
+        <li class="preview-item">
+          <span class="preview-num">2</span>
+          <div class="preview-body">
+            <p class="preview-title">Die Methode hinter 60+ fertigen Websites</p>
+            <p class="preview-desc">Warum Baukästen und Agenturen dich systematisch bremsen (und warum das so gewollt ist). Was Coaches und Creator stattdessen nutzen, um auf Agentur-Niveau zu kommen.</p>
+          </div>
+        </li>
+
+        <li class="preview-item">
+          <span class="preview-num">3</span>
+          <div class="preview-body">
+            <p class="preview-title">Dein konkreter nächster Schritt</p>
+            <p class="preview-desc">Kein "und jetzt weißt du Bescheid". Am Ende des Videos weißt du genau, was du heute noch tun kannst, um eine Website zu haben, die konvertiert.</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- ── FOR WHOM ───────────────────────── -->
+    <div class="forwhom-section reveal">
+      <div class="forwhom-inner">
+
+        <div class="section-label">Das hier ist für dich</div>
+
+        <h2>Wenn du dich in mindestens<br><em>einem Punkt erkennst.</em></h2>
+
+        <ul class="check-list">
+
+          <li class="check-item">
+            <span class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3"/>
+              </svg>
+            </span>
+            <span>Du bist <strong>Coach, Creator, Speaker oder Solopreneur</strong> und deine Website spiegelt nicht wider, was du wirklich kannst.</span>
+          </li>
+
+          <li class="check-item">
+            <span class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3"/>
+              </svg>
+            </span>
+            <span>Du hast eine Website, aber du weißt, dass sie Interessenten verliert. Du weißt nur nicht wo und warum.</span>
+          </li>
+
+          <li class="check-item">
+            <span class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3"/>
+              </svg>
+            </span>
+            <span>Du willst <strong>keine weitere Agentur bezahlen</strong> und auch nicht monatelang an einem Baukasten herumschrauben.</span>
+          </li>
+
+          <li class="check-item">
+            <span class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3"/>
+              </svg>
+            </span>
+            <span>Du hast gehört, was KI heute kann. Du willst es <strong>endlich selbst sehen</strong>, nicht nur drüber lesen.</span>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── SECOND CTA ─────────────────────── -->
+    <div class="cta2-section reveal">
+
+      <p class="cta2-eyebrow">Bereit?</p>
+
+      <h2 class="cta2-headline">
+        Das Video kostet dich nichts.<br>
+        <em>Nicht zu schauen kostet dich alles.</em>
+      </h2>
+
+      <!-- SECOND FORM -->
+      <!-- TODO: action="" durch E-Mail-Anbieter ersetzen -->
+      <form action="#" method="post" style="display:flex; flex-direction:column; gap:10px;">
+        <input
+          class="form-input"
+          type="email"
+          name="EMAIL"
+          placeholder="deine@email.de"
+          autocomplete="email"
+          required
+          style="text-align:center;"
+        >
         <button type="submit" class="btn-submit">
-          Jetzt Video zusenden →
+          Ja, Video kostenlos zusenden →
         </button>
-
       </form>
 
-      <p class="privacy">
-        Kein Spam. Deine Daten werden vertraulich behandelt und nicht weitergegeben.
-        Du kannst dich jederzeit abmelden. Mit dem Eintragen stimmst du unserer
-        <a href="https://hannamarzian.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> zu.
+      <p class="privacy" style="margin-top:14px;">
+        Kein Spam. Kein Abo. Jederzeit abmeldbar.
       </p>
 
-      <!-- TRUST BULLETS -->
-      <ul class="trust-list">
-        <li><strong>Was dich erwartet:</strong> Du siehst live, wie KI in Minuten eine professionelle Website baut, ohne Agentur und ohne Code.</li>
-        <li>Das Video zeigt dir den <strong>Fehler Nummer 1</strong>, der deine Website gerade unsichtbar macht.</li>
-        <li>Am Ende weißt du genau, was du als nächstes tun musst, um das zu ändern.</li>
-      </ul>
-
     </div>
+
   </main>
 
-  <!-- FOOTER -->
+  <!-- ── FOOTER ─────────────────────────── -->
   <footer>
-    <a href="https://www.hannamarzian.com" class="footer-logo">Hanna <span>Marzian</span></a>
-    <span class="footer-copy">© 2026 Hanna Marzian · hannamarzian.com</span>
-    <div style="display:flex; gap:18px; align-items:center; flex-wrap:wrap; justify-content:center;">
-      <a href="/impressum.html" class="footer-copy" style="text-decoration:none;">Impressum</a>
-      <a href="/datenschutz.html" class="footer-copy" style="text-decoration:none;">Datenschutz</a>
-      <a href="/agb.html" class="footer-copy" style="text-decoration:none;">AGB</a>
-      <button id="consent-reopen" style="background:none;border:none;font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(122,106,90,.4);text-decoration:underline;cursor:pointer;">Cookie-Einstellungen</button>
+    <a href="https://www.hannamarzian.com" class="footer-logo">Hanna <em>Marzian</em></a>
+    <div class="footer-links">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+      <a href="/agb.html">AGB</a>
+      <button id="consent-reopen">Cookie-Einstellungen</button>
     </div>
+    <p class="footer-copy">© 2026 Hanna Marzian · hannamarzian.com</p>
   </footer>
 
   <script src="assets/consent.js"></script>
+  <script>
+    /* ── Scroll Reveal ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── Staggered hero entry ── */
+    const heroEls = document.querySelectorAll('.hero > *');
+    heroEls.forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 0.1}s, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 0.1}s`;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }));
+    });
+  </script>
 
 </body>
 </html>
