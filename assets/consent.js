@@ -82,7 +82,7 @@
 
     s.onload = function() {
       window.fbq('init', FB_ID);
-      window.fbq('track', 'PageView');
+      if (!window.fbqSkipPageView) window.fbq('track', 'PageView');
     };
   }
 
