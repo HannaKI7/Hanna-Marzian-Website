@@ -42,7 +42,8 @@
       height: 64px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 40px;
       border-bottom: 1px solid rgba(216,98,42,0.15);
       background: #FFFFFF;
     }
@@ -54,7 +55,9 @@
       color: var(--black);
       letter-spacing: 0.04em;
       line-height: 1;
+      text-align: right;
     }
+    .logo-hanna .accent { color: var(--gold); font-style: italic; }
     .logo-hanna span {
       display: block;
       font-size: 9px;
@@ -66,31 +69,33 @@
       color: var(--gold);
       margin-top: 2px;
     }
-    .logo-collab {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      text-transform: uppercase;
-      opacity: 0.7;
+    .logo-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(160,144,126,0.35);
+      flex-shrink: 0;
     }
     .logo-martin {
-      font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 800;
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      font-style: italic;
       color: var(--black);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      letter-spacing: 0.04em;
       line-height: 1;
-      text-align: right;
+      text-align: left;
     }
+    .logo-martin .accent { color: #39ff14; font-style: italic; }
     .logo-martin span {
       display: block;
       font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
+      font-family: var(--sans);
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
       color: var(--gray);
-      margin-top: 3px;
+      margin-top: 2px;
     }
 
     /* ── MAIN ── */
@@ -202,10 +207,10 @@
       border-top: 1px solid rgba(216,98,42,0.1);
       background: #FFFFFF;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      text-align: center;
     }
     .footer-logo {
       font-family: var(--serif);
@@ -228,9 +233,10 @@
         padding: 0 16px;
         height: 54px;
       }
-      .logo-hanna { font-size: 18px; }
-      .logo-collab { display: none; }
-      .logo-martin { font-size: 11px; }
+      nav { gap: 20px; padding: 0 16px; }
+      .logo-hanna { font-size: 17px; }
+      .logo-martin { font-size: 17px; }
+      .logo-divider { height: 28px; }
       main {
         padding: 40px 16px 56px;
         align-items: flex-start;
@@ -254,12 +260,11 @@
       .step-hint  { font-size: 11.5px; }
       footer {
         padding: 20px 16px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
+        gap: 12px;
       }
       footer > div {
         flex-wrap: wrap;
+        justify-content: center;
         gap: 14px !important;
       }
     }
@@ -270,12 +275,12 @@
   <!-- NAV -->
   <nav>
     <div class="logo-hanna">
-      Hanna Marzian
+      Hanna <em class="accent">Marzian</em>
       <span>@hanna.gpt</span>
     </div>
-    <div class="logo-collab">×</div>
+    <div class="logo-divider"></div>
     <div class="logo-martin">
-      Martin Thun
+      Martin <em class="accent">Thun</em>
       <span>scale²</span>
     </div>
   </nav>
@@ -291,7 +296,7 @@
       </div>
 
       <h1 class="headline">Super!</h1>
-      <p class="subline">Jetzt fehlt nur noch</p>
+      <p class="subline">Fast geschafft: Beachte diese 3 Schritte</p>
 
       <div class="steps">
 
