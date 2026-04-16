@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kostenloses Video · Die 3 größten Fehler bei deiner Website</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/consent.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #160C05;
+      --charcoal: #2A1608;
+      --dark:     #472B18;
+      --gold:     #D8622A;
+      --gold-l:   #E8894E;
+      --cream:    #F6F0E6;
+      --white:    #FFFFFF;
+      --mist:     #F5F1EC;
+      --gray:     #7A6A5A;
+      --serif:    'Cormorant', Georgia, serif;
+      --sans:     'Montserrat', system-ui, sans-serif;
+      --expo:     cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      border-bottom: 1px solid rgba(216,98,42,0.15);
+      background: var(--white);
+      flex-shrink: 0;
+    }
+
+    .logo-hanna {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-align: right;
+    }
+    .logo-hanna .accent { color: var(--gold); }
+    .logo-hanna span {
+      display: block;
+      font-size: 8px;
+      font-family: var(--sans);
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+    .logo-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(160,144,126,0.35);
+      flex-shrink: 0;
+    }
+    .logo-martin {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      font-style: italic;
+      color: #2db800;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-align: left;
+    }
+    .logo-martin span {
+      display: block;
+      font-size: 8px;
+      font-family: var(--sans);
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #2db800;
+      margin-top: 2px;
+    }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px 72px;
+    }
+
+    .wrap {
+      max-width: 520px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(216,98,42,0.08);
+      border: 1px solid rgba(216,98,42,0.25);
+      padding: 8px 18px;
+      margin-bottom: 28px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .badge-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── HEADLINE ── */
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(38px, 9vw, 60px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+
+    /* ── SUBLINE ── */
+    .subline {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray);
+      line-height: 1.75;
+      max-width: 420px;
+      margin-bottom: 36px;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .proof {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: 0.02em;
+    }
+    .proof-item svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--gold);
+      flex-shrink: 0;
+    }
+    .proof-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(216,98,42,0.2);
+    }
+
+    /* ── FORM ── */
+    .form-box {
+      width: 100%;
+      background: var(--mist);
+      border: 1px solid rgba(216,98,42,0.15);
+      border-top: 3px solid var(--gold);
+      padding: 32px 28px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+      text-align: left;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: left;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 15px 18px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid rgba(216,98,42,0.2);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-input::placeholder { color: rgba(122,106,90,0.55); }
+    .form-input:focus { border-color: var(--gold); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 18px 24px;
+      background: var(--gold);
+      color: #ffffff;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s var(--expo), transform 0.3s var(--expo);
+      margin-top: 6px;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .btn-submit:hover {
+      background: var(--gold-l);
+      transform: translateY(-2px);
+    }
+    .btn-submit:active { transform: translateY(0); }
+
+    /* ── PRIVACY NOTE ── */
+    .privacy {
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(122,106,90,0.6);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+    .privacy a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    /* ── BULLETS BELOW FORM ── */
+    .trust-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 36px;
+      text-align: left;
+      width: 100%;
+      max-width: 420px;
+    }
+    .trust-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.65;
+    }
+    .trust-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .trust-list li strong { font-weight: 600; color: var(--black); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 20px 24px;
+      border-top: 1px solid rgba(216,98,42,0.1);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy {
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(122,106,90,0.6);
+      text-decoration: none;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 480px) {
+      nav { gap: 16px; height: 54px; }
+      .logo-hanna { font-size: 17px; }
+      .logo-martin { font-size: 17px; }
+      .logo-divider { height: 26px; }
+      main { padding: 36px 16px 56px; }
+      h1 { font-size: clamp(34px, 11vw, 52px); }
+      .form-box { padding: 24px 20px 28px; }
+      .proof { gap: 12px; }
+      .proof-sep { display: none; }
+      footer { padding: 18px 16px; }
+      footer > div { flex-wrap: wrap; justify-content: center; gap: 12px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo-hanna">
+      Hanna <em class="accent">Marzian</em>
+      <span>@hanna.gpt</span>
+    </div>
+    <div class="logo-divider"></div>
+    <div class="logo-martin">
+      Martin <em>Thun</em>
+      <span>scale²</span>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="wrap">
+
+      <div class="badge">
+        <span class="badge-dot"></span>
+        0 € · Kostenloses Video
+      </div>
+
+      <h1>
+        Schick mir das<br>
+        <em>kostenlose Video</em>
+      </h1>
+
+      <p class="subline">
+        Trag dich ein und ich schick dir den Link direkt in dein Postfach. Kostenlos, kein Abo, keine Falle.
+      </p>
+
+      <!-- SOCIAL PROOF -->
+      <div class="proof">
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          60+ Teilnehmer begeistert
+        </div>
+        <div class="proof-sep"></div>
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          0 Vorkenntnisse nötig
+        </div>
+        <div class="proof-sep"></div>
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          Sofortiger Zugang
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <!-- TODO: action="" und hidden fields durch deinen E-Mail-Anbieter ersetzen -->
+      <form class="form-box" action="#" method="post">
+
+        <div class="form-group">
+          <div class="form-label">Vorname</div>
+          <input
+            class="form-input"
+            type="text"
+            name="FNAME"
+            placeholder="Dein Vorname"
+            autocomplete="given-name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <div class="form-label">E-Mail-Adresse</div>
+          <input
+            class="form-input"
+            type="email"
+            name="EMAIL"
+            placeholder="deine@email.de"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn-submit">
+          Jetzt Video zusenden →
+        </button>
+
+      </form>
+
+      <p class="privacy">
+        Kein Spam. Deine Daten werden vertraulich behandelt und nicht weitergegeben.
+        Du kannst dich jederzeit abmelden. Mit dem Eintragen stimmst du unserer
+        <a href="https://hannamarzian.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> zu.
+      </p>
+
+      <!-- TRUST BULLETS -->
+      <ul class="trust-list">
+        <li><strong>Was dich erwartet:</strong> Du siehst live, wie KI in Minuten eine professionelle Website baut, ohne Agentur und ohne Code.</li>
+        <li>Das Video zeigt dir den <strong>Fehler Nummer 1</strong>, der deine Website gerade unsichtbar macht.</li>
+        <li>Am Ende weißt du genau, was du als nächstes tun musst, um das zu ändern.</li>
+      </ul>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="https://www.hannamarzian.com" class="footer-logo">Hanna <span>Marzian</span></a>
+    <span class="footer-copy">© 2026 Hanna Marzian · hannamarzian.com</span>
+    <div style="display:flex; gap:18px; align-items:center; flex-wrap:wrap; justify-content:center;">
+      <a href="/impressum.html" class="footer-copy" style="text-decoration:none;">Impressum</a>
+      <a href="/datenschutz.html" class="footer-copy" style="text-decoration:none;">Datenschutz</a>
+      <a href="/agb.html" class="footer-copy" style="text-decoration:none;">AGB</a>
+      <button id="consent-reopen" style="background:none;border:none;font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(122,106,90,.4);text-decoration:underline;cursor:pointer;">Cookie-Einstellungen</button>
+    </div>
+  </footer>
+
+  <script src="assets/consent.js"></script>
+
+</body>
+</html>
