@@ -265,6 +265,50 @@
     }
     body.loaded .hero-cta { opacity: 1; transform: translateY(0); }
 
+    /* ── COUNTDOWN ────────────────────────────── */
+    .countdown-bar {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 16px 28px;
+      background: linear-gradient(90deg, var(--charcoal) 0%, var(--dark) 50%, var(--charcoal) 100%);
+      border: 1px solid rgba(216,98,42,0.4);
+      border-radius: 12px;
+      padding: 16px 28px;
+      margin-bottom: 36px;
+    }
+    .countdown-label {
+      font-family: var(--sans); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gray);
+    }
+    .countdown-units { display: flex; align-items: center; gap: 6px; }
+    .cd-unit {
+      display: flex; flex-direction: column; align-items: center; min-width: 54px;
+      background: rgba(22,12,5,0.6); border: 1px solid rgba(216,98,42,0.25);
+      border-radius: 8px; padding: 8px 10px;
+    }
+    .cd-unit span:first-child {
+      font-family: var(--serif); font-size: 30px; font-weight: 700;
+      color: var(--gold); line-height: 1;
+    }
+    .cd-lbl {
+      font-family: var(--sans); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gray); margin-top: 3px;
+    }
+    .cd-sep {
+      font-family: var(--serif); font-size: 26px; color: var(--gold);
+      opacity: 0.45; padding: 0 1px; margin-bottom: 14px;
+    }
+    .countdown-deadline {
+      font-family: var(--sans); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-l);
+    }
+    @media (max-width: 640px) {
+      .countdown-bar { padding: 14px 16px; gap: 12px; }
+      .countdown-label, .countdown-deadline { display: none; }
+      .cd-unit { min-width: 46px; }
+      .cd-unit span:first-child { font-size: 24px; }
+    }
+
     .btn-primary {
       display: inline-flex; align-items: center; gap: 12px;
       background: var(--gold); color: var(--black);
@@ -1119,6 +1163,21 @@
     <div id="heroGlow" aria-hidden="true"></div>
     <div class="hero-inner">
 
+      <!-- Countdown -->
+      <div class="countdown-bar">
+        <span class="countdown-label">Anmeldung endet in</span>
+        <div class="countdown-units">
+          <div class="cd-unit"><span id="cd-d">00</span><span class="cd-lbl">Tage</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span id="cd-h">00</span><span class="cd-lbl">Std.</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span id="cd-m">00</span><span class="cd-lbl">Min.</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span id="cd-s">00</span><span class="cd-lbl">Sek.</span></div>
+        </div>
+        <span class="countdown-deadline">Kauf möglich bis 27.04. · 18 Uhr</span>
+      </div>
+
       <div class="proof-banner">
         <span class="dot"></span>
         Für Coaches, Creator, Unternehmer und Mitarbeiter
@@ -1530,6 +1589,20 @@
 
   <div class="gold-divider"></div>
 
+  <!-- ═══ TESTIMONIALS – ABSCHLUSS GRID ════════════════════════════ -->
+  <section style="background: var(--charcoal); padding: 100px 48px;">
+    <div style="max-width: 1200px; margin: 0 auto; columns: 4; column-gap: 20px;">
+      <div class="tmos-item rv"><img src="Testimonials/KI Website Kurs/Abschluss/2503 Nicola.png" alt="" loading="lazy"></div>
+      <div class="tmos-item rv d1"><img src="Testimonials/KI Website Kurs/Abschluss/2503 anna.png" alt="" loading="lazy"></div>
+      <div class="tmos-item rv d2"><img src="Testimonials/KI Website Kurs/Abschluss/2503 christina.png" alt="" loading="lazy"></div>
+      <div class="tmos-item rv d3"><img src="Testimonials/KI Website Kurs/Abschluss/2503 cornelia .png" alt="" loading="lazy"></div>
+      <div class="tmos-item rv d1"><img src="Testimonials/KI Website Kurs/Abschluss/2503 elisabeth.png" alt="" loading="lazy"></div>
+      <div class="tmos-item rv d2"><img src="Testimonials/KI Website Kurs/Abschluss/2503 linda.png" alt="" loading="lazy"></div>
+      <div class="tmos-item rv d3"><img src="Testimonials/KI Website Kurs/Abschluss/2503 lisa.png" alt="" loading="lazy"></div>
+      <div class="tmos-item rv d4"><img src="Testimonials/KI Website Kurs/Abschluss/2503 maria.png" alt="" loading="lazy"></div>
+    </div>
+  </section>
+
   <!-- ═══ SKILL UNLOCKED ══════════════════════════════════════════ -->
   <section id="skill" style="background: var(--black); padding: 140px 48px; overflow: hidden; position: relative;">
     <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:800px; height:800px; background:radial-gradient(circle, rgba(216,98,42,0.05) 0%, transparent 65%); pointer-events:none;"></div>
@@ -1797,22 +1870,6 @@
     </a>
     <p style="margin-top:16px; font-size:11px; font-weight:500; letter-spacing:1.5px; color:var(--gray); text-transform:uppercase;">Einmalig 349 € / 3 Raten je 120 €</p>
   </div>
-
-  <div class="gold-divider"></div>
-
-  <!-- ═══ TESTIMONIALS – ABSCHLUSS GRID ════════════════════════════ -->
-  <section style="background: var(--charcoal); padding: 100px 48px;">
-    <div style="max-width: 1200px; margin: 0 auto; columns: 4; column-gap: 20px;">
-      <div class="tmos-item rv"><img src="Testimonials/KI Website Kurs/Abschluss/2503 Nicola.png" alt="" loading="lazy"></div>
-      <div class="tmos-item rv d1"><img src="Testimonials/KI Website Kurs/Abschluss/2503 anna.png" alt="" loading="lazy"></div>
-      <div class="tmos-item rv d2"><img src="Testimonials/KI Website Kurs/Abschluss/2503 christina.png" alt="" loading="lazy"></div>
-      <div class="tmos-item rv d3"><img src="Testimonials/KI Website Kurs/Abschluss/2503 cornelia .png" alt="" loading="lazy"></div>
-      <div class="tmos-item rv d1"><img src="Testimonials/KI Website Kurs/Abschluss/2503 elisabeth.png" alt="" loading="lazy"></div>
-      <div class="tmos-item rv d2"><img src="Testimonials/KI Website Kurs/Abschluss/2503 linda.png" alt="" loading="lazy"></div>
-      <div class="tmos-item rv d3"><img src="Testimonials/KI Website Kurs/Abschluss/2503 lisa.png" alt="" loading="lazy"></div>
-      <div class="tmos-item rv d4"><img src="Testimonials/KI Website Kurs/Abschluss/2503 maria.png" alt="" loading="lazy"></div>
-    </div>
-  </section>
 
   <!-- ═══ WHAT YOU GET ════════════════════════════════════════════ -->
   <section id="what">
@@ -2319,6 +2376,29 @@
         perView = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 1 : 3;
         goTo(Math.min(cur, maxPos()));
       });
+    })();
+
+    // Countdown – Anmeldefrist 27.04.2026 18:00 Uhr MEZ (UTC+2)
+    (function() {
+      const deadline = new Date('2026-04-27T18:00:00+02:00').getTime();
+      const bar = document.querySelector('.countdown-bar');
+      function tick() {
+        const diff = deadline - Date.now();
+        if (diff <= 0) {
+          bar.innerHTML = '<span style="font-family:var(--sans);font-size:13px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Anmeldung geschlossen</span>';
+          return;
+        }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+        document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+        document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+        document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+      }
+      tick();
+      setInterval(tick, 1000);
     })();
   </script>
 </body>
