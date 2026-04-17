@@ -102,6 +102,27 @@
             height: auto;
         }
 
+        .typen-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .typen-pill {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--orange);
+            background: var(--orange-soft);
+            padding: 6px 14px;
+            border-radius: 100px;
+        }
+
+        .intro-trust {
+            font-size: 12px;
+            color: #BDBDBD;
+            letter-spacing: 0.04em;
+        }
+
         /* ── FOOTER ── */
         .site-footer {
             background: #F5F5F3;
@@ -521,11 +542,15 @@
     <div class="screen intro-screen active" id="screen-intro">
         <img src="hanna x martin.png" alt="Hanna Marzian × Martin Thun" class="collab-logo">
 
+        <p class="logo-line">Für Coaches, Creator &amp; Selbstständige</p>
+
         <h1 class="intro-headline">Welcher<br><em>KI-Website</em><br>Typ bist du?</h1>
 
         <p class="intro-sub">5 Fragen. 60 Sekunden. Du erfährst genau, wo du stehst – und was dein nächster Schritt ist.</p>
 
         <button class="btn-primary" onclick="startQuiz()">Selbsttest starten →</button>
+
+        <p class="intro-trust">Kostenlos · Kein Spam · Sofort-Ergebnis</p>
     </div>
 
 
