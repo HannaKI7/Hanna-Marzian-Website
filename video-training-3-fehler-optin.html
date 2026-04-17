@@ -88,7 +88,7 @@
       font-size: 19px;
       font-weight: 600;
       font-style: italic;
-      color: #2db800;
+      color: #6B7A3F;
       letter-spacing: 0.03em;
       line-height: 1;
       text-align: left;
@@ -102,7 +102,7 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #2db800;
+      color: #6B7A3F;
       margin-top: 3px;
     }
 
@@ -352,15 +352,8 @@
     }
 
     /* ────────────────────────────────────────
-       WHAT YOU GET
+       SHARED HEADERS
     ──────────────────────────────────────── */
-    .content-section {
-      padding: 56px 20px;
-      max-width: 560px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
     .section-label {
       font-size: 9.5px;
       font-weight: 700;
@@ -376,63 +369,18 @@
       font-weight: 500;
       line-height: 1.15;
       color: var(--black);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
     h2 em { font-style: italic; color: var(--gold); }
 
-    /* Video preview bullets */
-    .preview-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .preview-item {
-      display: flex;
-      gap: 0;
-      border: 1px solid rgba(216,98,42,0.1);
-      border-left: 3px solid var(--gold);
-      background: var(--white);
-      padding: 18px 20px;
-    }
-
-    .preview-num {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 600;
-      color: rgba(216,98,42,0.2);
-      line-height: 1;
-      flex-shrink: 0;
-      width: 36px;
-      margin-top: -2px;
-    }
-
-    .preview-body { flex: 1; min-width: 0; }
-
-    .preview-title {
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 5px;
-      line-height: 1.35;
-    }
-
-    .preview-desc {
-      font-size: 12.5px;
-      font-weight: 400;
-      color: var(--gray);
-      line-height: 1.65;
-    }
-
     /* ────────────────────────────────────────
-       FOR WHOM
+       FOR WHOM (Reasons)
     ──────────────────────────────────────── */
     .forwhom-section {
       width: 100%;
       background: var(--mist);
       border-top: 1px solid rgba(216,98,42,0.1);
-      padding: 52px 20px;
+      padding: 64px 20px;
     }
 
     .forwhom-inner {
@@ -440,42 +388,76 @@
       margin: 0 auto;
     }
 
-    .check-list {
+    .reasons-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       margin-top: 28px;
     }
 
-    .check-item {
+    .reason-item {
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--charcoal);
-      line-height: 1.65;
+      background: var(--white);
+      border: 1px solid rgba(216,98,42,0.12);
+      border-left: 3px solid var(--gold);
+      padding: 18px 20px;
+      transition: transform 0.25s var(--expo), box-shadow 0.25s var(--expo);
+    }
+    .reason-item:hover {
+      transform: translateX(2px);
+      box-shadow: 0 6px 18px rgba(216,98,42,0.06);
     }
 
-    .check-icon {
-      width: 20px;
-      height: 20px;
+    .reason-icon {
+      width: 22px;
+      height: 22px;
       flex-shrink: 0;
-      border: 1.5px solid rgba(216,98,42,0.5);
+      border: 1.5px solid var(--gold);
+      background: rgba(216,98,42,0.06);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 2px;
+      margin-top: 1px;
     }
-    .check-icon svg {
-      width: 10px;
-      height: 10px;
+    .reason-icon svg {
+      width: 11px;
+      height: 11px;
       stroke: var(--gold);
       stroke-width: 2.5;
     }
 
-    .check-item strong { font-weight: 600; color: var(--black); }
+    .reason-text {
+      flex: 1;
+      font-size: 13.5px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--charcoal);
+    }
+    .reason-text strong {
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .forwhom-footer {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(216,98,42,0.05);
+      border-left: 3px solid var(--gold);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--charcoal);
+      text-align: center;
+    }
+    .forwhom-footer strong {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 600;
+    }
 
     /* ────────────────────────────────────────
        SECOND CTA
@@ -572,6 +554,214 @@
     }
 
     /* ────────────────────────────────────────
+       ABOUT / HOSTS SECTION
+    ──────────────────────────────────────── */
+    .about-section {
+      width: 100%;
+      background: var(--cream);
+      border-top: 1px solid rgba(216,98,42,0.12);
+      border-bottom: 1px solid rgba(216,98,42,0.12);
+      padding: 72px 20px;
+    }
+
+    .about-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .about-intro {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--gray);
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+
+    .hosts-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 8px;
+    }
+
+    .host-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .host-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+    .host-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: brightness(0.92) contrast(1.05);
+      transition: transform 0.7s var(--expo);
+    }
+    .host-card:hover .host-image img {
+      transform: scale(1.03);
+    }
+    .host-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(22,12,5,0.78) 0%, rgba(22,12,5,0.15) 45%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .host-overlay {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      right: 22px;
+      z-index: 2;
+    }
+
+    .host-name {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .host-role {
+      font-family: var(--sans);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold-l);
+      margin-top: 8px;
+    }
+
+    .host-bio {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-top: 2px solid var(--gold);
+      padding: 24px 24px 26px;
+      font-size: 13.5px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--charcoal);
+    }
+
+    /* ────────────────────────────────────────
+       HERO CTA BUTTON (standalone)
+    ──────────────────────────────────────── */
+    .btn-cta-hero {
+      max-width: 420px;
+      margin-top: 8px;
+      padding: 20px 28px;
+      font-size: 12px;
+    }
+
+    /* ────────────────────────────────────────
+       MODAL
+    ──────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 12, 5, 0.72);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.28s var(--expo);
+    }
+    .modal-overlay[hidden] {
+      display: none;
+    }
+    .modal-overlay.is-open {
+      opacity: 1;
+    }
+
+    .modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      background: var(--white);
+      border-top: 3px solid var(--gold);
+      padding: 36px 28px 28px;
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.35s var(--expo);
+    }
+    .modal-overlay.is-open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--gray);
+      transition: color 0.2s;
+      padding: 0;
+      font-family: var(--sans);
+    }
+    .modal-close:hover { color: var(--gold); }
+
+    .modal-eyebrow {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .modal-title {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .modal-title em { font-style: italic; color: var(--gold); }
+
+    .modal-sub {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .modal-form {
+      min-height: 40px;
+    }
+
+    .modal-privacy {
+      font-size: 10.5px;
+      color: rgba(122,106,90,0.55);
+      line-height: 1.65;
+      text-align: center;
+      margin-top: 14px;
+    }
+    .modal-privacy a { color: inherit; text-decoration: underline; }
+
+    body.modal-open { overflow: hidden; }
+
+    /* ────────────────────────────────────────
        RESPONSIVE
     ──────────────────────────────────────── */
     @media (max-width: 480px) {
@@ -589,9 +779,20 @@
       .proof-num { font-size: clamp(32px, 9vw, 44px); }
       .proof-label { font-size: 8px; }
 
-      .content-section { padding: 44px 20px; }
-      .forwhom-section { padding: 40px 20px; }
+      .forwhom-section { padding: 48px 20px; }
+      .reason-item { padding: 16px 16px; gap: 12px; }
+      .reason-text { font-size: 13px; }
+      .forwhom-footer { padding: 18px 20px; font-size: 15px; }
       .cta2-section { padding: 44px 20px 56px; }
+      .about-section { padding: 52px 20px; }
+      .hosts-grid { gap: 22px; }
+      .host-overlay { bottom: 18px; left: 18px; right: 18px; }
+      .host-name { font-size: 24px; }
+      .host-role { font-size: 9px; letter-spacing: 2px; }
+      .host-bio { padding: 20px 20px 22px; font-size: 13px; }
+
+      .modal-box { padding: 32px 22px 24px; }
+      .modal-title { font-size: 22px; }
     }
   </style>
 </head>
@@ -622,53 +823,18 @@
         </div>
 
         <h1>
-          Sieh zu, wie KI<br>
-          eine professionelle<br>
-          <em>Website in Minuten baut.</em>
+          Die 3 größten Fehler<br>
+          bei Website, Salespage<br>
+          <em>& Funnel.</em>
         </h1>
 
         <p class="subline">
-          Das Video zeigt dir live, wie aus einem einzigen Prompt eine fertige, mobiloptimierte Website entsteht. <strong>Für die eine Agentur früher 8.000 € berechnet hätte.</strong> Trag dich ein und du bekommst den Link sofort.
+          Das kostenlose Video zeigt dir, was Coaches und Creator beim Online-Auftritt systematisch falsch machen, und welche <strong>eine Technologie alle drei Fehler auf einmal löst.</strong> Trag dich ein und du bekommst den Link sofort.
         </p>
 
-        <!-- FORM -->
-        <!-- TODO: action="" durch E-Mail-Anbieter ersetzen -->
-        <form class="form-box" action="#" method="post">
-
-          <div class="form-header">Jetzt kostenlos Zugang sichern</div>
-
-          <div class="form-row">
-            <div class="form-field">
-              <label class="form-label" for="fname">Vorname</label>
-              <input
-                id="fname"
-                class="form-input"
-                type="text"
-                name="FNAME"
-                placeholder="Dein Vorname"
-                autocomplete="given-name"
-                required
-              >
-            </div>
-            <div class="form-field">
-              <label class="form-label" for="email">E-Mail</label>
-              <input
-                id="email"
-                class="form-input"
-                type="email"
-                name="EMAIL"
-                placeholder="deine@email.de"
-                autocomplete="email"
-                required
-              >
-            </div>
-          </div>
-
-          <button type="submit" class="btn-submit">
-            Ja, Video kostenlos zusenden →
-          </button>
-
-        </form>
+        <button type="button" class="btn-submit btn-cta-hero" data-open-modal>
+          Video jetzt ansehen (0 €) →
+        </button>
 
         <p class="privacy">
           Kein Spam. Kein Abo. Jederzeit abmeldbar.
@@ -679,113 +845,133 @@
       </div>
     </section>
 
-    <!-- ── PROOF STRIP ────────────────────── -->
-    <div class="proof-strip reveal">
-      <div class="proof-grid">
-
-        <div class="proof-item">
-          <span class="proof-num">60+</span>
-          <span class="proof-label">Begeisterte<br>Teilnehmer</span>
-        </div>
-
-        <div class="proof-item">
-          <span class="proof-num">0</span>
-          <span class="proof-label">Vorkenntnisse<br>nötig</span>
-        </div>
-
-        <div class="proof-item">
-          <span class="proof-num">∞</span>
-          <span class="proof-label">Websites,<br>die live sind</span>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ── WHAT YOU GET ────────────────────── -->
-    <div class="content-section reveal">
-
-      <div class="section-label">Im Video siehst du</div>
-
-      <h2>Drei Dinge, die du nach<br><em>dem Video anders machst.</em></h2>
-
-      <ul class="preview-list">
-
-        <li class="preview-item">
-          <span class="preview-num">1</span>
-          <div class="preview-body">
-            <p class="preview-title">Live-Demo: Website-Erstellung in Echtzeit</p>
-            <p class="preview-desc">Du siehst, wie aus einem einzigen Prompt eine fertige, SEO-optimierte Website entsteht. Inklusive Scroll-Animationen, mobiloptimiert, deploy-fertig. Kein Template. Kein Kompromiss.</p>
-          </div>
-        </li>
-
-        <li class="preview-item">
-          <span class="preview-num">2</span>
-          <div class="preview-body">
-            <p class="preview-title">Die Methode hinter 60+ fertigen Websites</p>
-            <p class="preview-desc">Warum Baukästen und Agenturen dich systematisch bremsen (und warum das so gewollt ist). Was Coaches und Creator stattdessen nutzen, um auf Agentur-Niveau zu kommen.</p>
-          </div>
-        </li>
-
-        <li class="preview-item">
-          <span class="preview-num">3</span>
-          <div class="preview-body">
-            <p class="preview-title">Dein konkreter nächster Schritt</p>
-            <p class="preview-desc">Kein "und jetzt weißt du Bescheid". Am Ende des Videos weißt du genau, was du heute noch tun kannst, um eine Website zu haben, die konvertiert.</p>
-          </div>
-        </li>
-
-      </ul>
-    </div>
-
     <!-- ── FOR WHOM ───────────────────────── -->
     <div class="forwhom-section reveal">
       <div class="forwhom-inner">
 
-        <div class="section-label">Das hier ist für dich</div>
+        <div class="section-label">Für wen ist das hier?</div>
 
-        <h2>Wenn du dich in mindestens<br><em>einem Punkt erkennst.</em></h2>
+        <h2>Dieses Video ist für dich, <em>wenn...</em></h2>
 
-        <ul class="check-list">
+        <ul class="reasons-list">
 
-          <li class="check-item">
-            <span class="check-icon">
+          <li class="reason-item">
+            <span class="reason-icon">
               <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="2 6 5 9 10 3"/>
               </svg>
             </span>
-            <span>Du bist <strong>Coach, Creator, Speaker oder Solopreneur</strong> und deine Website spiegelt nicht wider, was du wirklich kannst.</span>
+            <p class="reason-text">
+              ...du <strong>Coach, Creator, Speaker oder Solopreneur</strong> bist und deine Website dem nicht gerecht wird, was du eigentlich draufhast. Online sieht man dir nicht an, was du in echt verkörperst.
+            </p>
           </li>
 
-          <li class="check-item">
-            <span class="check-icon">
+          <li class="reason-item">
+            <span class="reason-icon">
               <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="2 6 5 9 10 3"/>
               </svg>
             </span>
-            <span>Du hast eine Website, aber du weißt, dass sie Interessenten verliert. Du weißt nur nicht wo und warum.</span>
+            <p class="reason-text">
+              ...du <strong>täglich Interessenten verlierst</strong> und du es spürst. Du weißt nur nicht, an welcher Stelle deine Seite leck ist (und du ahnst, dass es mehrere sind).
+            </p>
           </li>
 
-          <li class="check-item">
-            <span class="check-icon">
+          <li class="reason-item">
+            <span class="reason-icon">
               <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="2 6 5 9 10 3"/>
               </svg>
             </span>
-            <span>Du willst <strong>keine weitere Agentur bezahlen</strong> und auch nicht monatelang an einem Baukasten herumschrauben.</span>
+            <p class="reason-text">
+              ...du die <strong>Nase voll hast von Baukasten-Frickelei</strong>. Oder du hattest gerade ein Agenturangebot im Postfach, das dich umgehauen hat. Beide Wege fühlen sich an wie eine Sackgasse.
+            </p>
           </li>
 
-          <li class="check-item">
-            <span class="check-icon">
+          <li class="reason-item">
+            <span class="reason-icon">
               <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="2 6 5 9 10 3"/>
               </svg>
             </span>
-            <span>Du hast gehört, was KI heute kann. Du willst es <strong>endlich selbst sehen</strong>, nicht nur drüber lesen.</span>
+            <p class="reason-text">
+              ...du <strong>längst ahnst</strong>, dass die Lösung nicht in noch einem Tool liegt, sondern in einem komplett anderen Spielfeld. Du willst nur endlich wissen, in welchem.
+            </p>
+          </li>
+
+          <li class="reason-item">
+            <span class="reason-icon">
+              <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3"/>
+              </svg>
+            </span>
+            <p class="reason-text">
+              ...du <strong>Gründer oder Startup</strong> bist und schnell professionell auftreten musst, ohne Wochen zu investieren oder fünfstellig zu zahlen.
+            </p>
+          </li>
+
+          <li class="reason-item">
+            <span class="reason-icon">
+              <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3"/>
+              </svg>
+            </span>
+            <p class="reason-text">
+              ...du <strong>endlich sehen willst, was heute wirklich geht</strong>. Kein weiterer KI-Tipp, kein Hack, sondern der Beweis live vor deinen Augen.
+            </p>
           </li>
 
         </ul>
+
+        <p class="forwhom-footer">
+          Wenn du dich in mindestens <strong>einem Punkt</strong> wiederfindest, gehört dieses Video in dein Postfach.
+        </p>
       </div>
     </div>
+
+    <!-- ── ABOUT US / HOSTS ─────────────────── -->
+    <section class="about-section reveal">
+      <div class="about-inner">
+
+        <div class="section-label">Deine Hosts</div>
+
+        <h2>Zwei Menschen, <em>eine Mission.</em></h2>
+
+        <p class="about-intro">
+          Wir wollen dir zeigen, dass professionelle Websites heute kein Agentur-Budget mehr brauchen. Was du brauchst, ist die richtige Methode (und zwei Leute, die sie dir live vormachen).
+        </p>
+
+        <div class="hosts-grid">
+
+          <div class="host-card">
+            <div class="host-image">
+              <img src="hanna.jpg" alt="Hanna Marzian">
+              <div class="host-overlay">
+                <div class="host-name">Hanna Marzian</div>
+                <div class="host-role">KI-Influencerin &amp; Host</div>
+              </div>
+            </div>
+            <div class="host-bio">
+              In unter einem Jahr auf 100.000 Follower. Nicht durch Glück, sondern weil Hanna früher als alle anderen versteht, wohin sich KI entwickelt, und es zeigt, bevor es Mainstream wird. Sie baut keine Websites, sie baut Systeme, die verkaufen. Genau das gibt sie in diesem Training weiter.
+            </div>
+          </div>
+
+          <div class="host-card">
+            <div class="host-image">
+              <img src="martin.jpg" alt="Martin Thun">
+              <div class="host-overlay">
+                <div class="host-name">Martin Thun</div>
+                <div class="host-role">Gründer scale² &amp; Co-Host</div>
+              </div>
+            </div>
+            <div class="host-bio">
+              Martin hat klassisches Online Marketing letztes Jahr hinter sich gelassen, um zu den Vorreitern in Sachen KI zu werden. Von Solopreneuren bis zu mehrfach 7-stelligen Unternehmen sorgt er dafür, dass ethische KI in der deutschen Unternehmerlandschaft vorangetrieben wird.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- ── SECOND CTA ─────────────────────── -->
     <div class="cta2-section reveal">
@@ -797,22 +983,9 @@
         <em>Nicht zu schauen kostet dich alles.</em>
       </h2>
 
-      <!-- SECOND FORM -->
-      <!-- TODO: action="" durch E-Mail-Anbieter ersetzen -->
-      <form action="#" method="post" style="display:flex; flex-direction:column; gap:10px;">
-        <input
-          class="form-input"
-          type="email"
-          name="EMAIL"
-          placeholder="deine@email.de"
-          autocomplete="email"
-          required
-          style="text-align:center;"
-        >
-        <button type="submit" class="btn-submit">
-          Ja, Video kostenlos zusenden →
-        </button>
-      </form>
+      <button type="button" class="btn-submit" data-open-modal>
+        Video jetzt ansehen (0 €) →
+      </button>
 
       <p class="privacy" style="margin-top:14px;">
         Kein Spam. Kein Abo. Jederzeit abmeldbar.
@@ -833,6 +1006,33 @@
     </div>
     <p class="footer-copy">© 2026 Hanna Marzian · hannamarzian.com</p>
   </footer>
+
+  <!-- ── OPT-IN MODAL ─────────────────────── -->
+  <div id="optin-modal" class="modal-overlay" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <div class="modal-box">
+      <button type="button" class="modal-close" aria-label="Schließen">×</button>
+
+      <div class="modal-eyebrow">0 € Video-Training</div>
+
+      <h2 id="modal-title" class="modal-title">
+        Letzter Schritt: <em>deine E-Mail.</em>
+      </h2>
+
+      <p class="modal-sub">
+        Trag dich ein und der Link kommt sofort. Schau das Video, wann du willst.
+      </p>
+
+      <div id="modal-form-target" class="modal-form"></div>
+
+      <p class="modal-privacy">
+        Kein Spam. Kein Abo. Jederzeit abmeldbar.
+        Mit der Eintragung stimmst du der
+        <a href="https://hannamarzian.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> zu.
+      </p>
+    </div>
+
+  </div>
 
   <script src="assets/consent.js"></script>
   <script>
@@ -859,6 +1059,48 @@
         el.style.transform = 'translateY(0)';
       }));
     });
+
+    /* ── Modal Logic ── */
+    (function () {
+      const modal       = document.getElementById('optin-modal');
+      const target      = document.getElementById('modal-form-target');
+      const closeBtn    = modal.querySelector('.modal-close');
+      const openButtons = document.querySelectorAll('[data-open-modal]');
+      let formLoaded    = false;
+
+      function openModal() {
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        requestAnimationFrame(() => modal.classList.add('is-open'));
+
+        if (!formLoaded) {
+          const script = document.createElement('script');
+          script.id  = 'form-script-tag-23654953';
+          script.src = 'https://member.hannamarzian.com/public/remote/page/400710615de9a7d765627045683d7d7a838ce320.js';
+          target.appendChild(script);
+          formLoaded = true;
+        }
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        setTimeout(() => { modal.hidden = true; }, 280);
+      }
+
+      openButtons.forEach(btn => btn.addEventListener('click', openModal));
+      closeBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
+      });
+    })();
   </script>
 
 </body>
