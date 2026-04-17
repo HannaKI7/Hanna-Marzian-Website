@@ -35,6 +35,68 @@
       flex-direction: column;
     }
 
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      border-bottom: 1px solid rgba(216,98,42,0.15);
+      background: #FFFFFF;
+    }
+    .logo-hanna {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-align: right;
+    }
+    .logo-hanna .accent { color: var(--gold); font-style: italic; }
+    .logo-hanna span {
+      display: block;
+      font-size: 9px;
+      font-family: var(--sans);
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+    .logo-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(160,144,126,0.35);
+      flex-shrink: 0;
+    }
+    .logo-martin {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      font-style: italic;
+      color: #2db800;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-align: left;
+    }
+    .logo-martin .accent { color: var(--black); font-style: italic; }
+    .logo-martin span {
+      display: block;
+      font-size: 9px;
+      font-family: var(--sans);
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #2db800;
+      margin-top: 2px;
+    }
+
     /* ── MAIN ─────────────────────────────────── */
     main {
       flex: 1;
@@ -45,40 +107,6 @@
       max-width: 860px;
       margin: 0 auto;
       width: 100%;
-    }
-
-    /* ── LOGO HEADER ──────────────────────────── */
-    .logo-header {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 28px 24px 0;
-    }
-
-    .logo-header-flex {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-header-inner {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--black);
-      letter-spacing: 0.5px;
-    }
-
-    .logo-header-inner span {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .logo-sep {
-      font-family: var(--sans);
-      font-size: 13px;
-      color: var(--gray);
-      opacity: 0.35;
-      margin: 0 20px;
     }
 
     /* ── EYEBROW ──────────────────────────────── */
@@ -311,13 +339,17 @@
 </head>
 <body>
 
-  <div class="logo-header">
-    <div class="logo-header-flex">
-      <div class="logo-header-inner">Hanna <span>Marzian</span></div>
-      <div class="logo-sep">×</div>
-      <div class="logo-header-inner">Martin <span>Thun</span></div>
+  <nav>
+    <div class="logo-hanna">
+      Hanna <em class="accent">Marzian</em>
+      <span>@hanna.gpt</span>
     </div>
-  </div>
+    <div class="logo-divider"></div>
+    <div class="logo-martin">
+      Martin <em class="accent">Thun</em>
+      <span>scale²</span>
+    </div>
+  </nav>
 
   <main>
 
