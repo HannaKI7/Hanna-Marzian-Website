@@ -30,7 +30,8 @@
       --lux:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: var(--sans); background: var(--black); color: var(--cream); overflow-x: hidden; cursor: none; }
+    body { font-family: var(--sans); background: var(--black); color: var(--cream); overflow-x: hidden; }
+    @media (hover: hover) and (pointer: fine) { body { cursor: none; } }
 
     /* ── GRAIN ────────────────────────────────── */
     body::after {
@@ -41,10 +42,13 @@
     }
 
     /* ── CURSOR ───────────────────────────────── */
-    .cur { position: fixed; pointer-events: none; z-index: 9999; top: 0; left: 0; }
-    .cur-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; transform: translate(-50%,-50%); }
-    .cur-ring { width: 36px; height: 36px; border: 1px solid rgba(216,98,42,0.65); border-radius: 50%; transform: translate(-50%,-50%); transition: width .35s var(--expo), height .35s var(--expo); }
-    body.cx .cur-ring { width: 56px; height: 56px; }
+    .cur { position: fixed; pointer-events: none; z-index: 9999; top: 0; left: 0; display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .cur { display: block; }
+      .cur-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; transform: translate(-50%,-50%); }
+      .cur-ring { width: 36px; height: 36px; border: 1px solid rgba(216,98,42,0.65); border-radius: 50%; transform: translate(-50%,-50%); transition: width .35s var(--expo), height .35s var(--expo); }
+      body.cx .cur-ring { width: 56px; height: 56px; }
+    }
 
     /* ── LOGO NAV ─────────────────────────────── */
     #logo-nav {
@@ -858,14 +862,14 @@
     }
     .tmq-section::before { left: 0; background: linear-gradient(90deg, var(--black) 0%, transparent 100%); }
     .tmq-section::after  { right: 0; background: linear-gradient(-90deg, var(--black) 0%, transparent 100%); }
-    .tmq-track { display: flex; gap: 20px; width: max-content; margin-bottom: 20px; }
+    .tmq-track { display: flex; gap: 20px; width: max-content; margin-bottom: 20px; will-change: transform; transform: translateZ(0); backface-visibility: hidden; }
     .tmq-track.row1 { animation: tmqScroll 35s linear infinite; }
     .tmq-track.row2 { animation: tmqScroll 40s linear infinite reverse; }
     @keyframes tmqScroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0%   { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
-    .tmq-track:hover { animation-play-state: paused; }
+    @media (hover: hover) { .tmq-track:hover { animation-play-state: paused; } }
     .tmq-img {
       height: 280px;
       width: auto;
@@ -1245,34 +1249,34 @@
   <!-- ═══ TESTIMONIALS – ZWISCHENDURCH MARQUEE ════════════════════ -->
   <section class="tmq-section">
     <div class="tmq-track row1">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/16.03..jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03. (1).jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03..jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03.jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18032.png" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/19.03..png" alt="" loading="lazy">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/16.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03. (1).jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03.jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18032.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/19.03..png" alt="" loading="eager">
       <!-- Duplicate for seamless loop -->
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/16.03..jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03. (1).jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03..jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03.jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18032.png" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/19.03..png" alt="" loading="lazy">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/16.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03. (1).jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03.jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18032.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/19.03..png" alt="" loading="eager">
     </div>
     <div class="tmq-track row2">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21.03.jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21033.png" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/22.03..jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24.03..png" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24031.png" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/27.03 andrea.png" alt="" loading="lazy">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21.03.jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21033.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/22.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24.03..png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24031.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/27.03 andrea.png" alt="" loading="eager">
       <!-- Duplicate for seamless loop -->
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21.03.jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21033.png" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/22.03..jpg" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24.03..png" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24031.png" alt="" loading="lazy">
-      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/27.03 andrea.png" alt="" loading="lazy">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21.03.jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21033.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/22.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24.03..png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24031.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/27.03 andrea.png" alt="" loading="eager">
     </div>
   </section>
 
@@ -2118,17 +2122,19 @@
 
   <script>
     /* ── CURSOR ─────────────────────────────── */
-    const dot = document.getElementById('cDot'), ring = document.getElementById('cRing');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove', e => {
-      mx=e.clientX; my=e.clientY;
-      dot.style.left=mx+'px'; dot.style.top=my+'px';
-    });
-    (function loop(){ rx+=(mx-rx)*.28; ry+=(my-ry)*.28; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
-    document.querySelectorAll('a,button,.whom-card,.fomo-card,.bento-cell').forEach(el=>{
-      el.addEventListener('mouseenter',()=>document.body.classList.add('cx'));
-      el.addEventListener('mouseleave',()=>document.body.classList.remove('cx'));
-    });
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const dot = document.getElementById('cDot'), ring = document.getElementById('cRing');
+      let mx=0,my=0,rx=0,ry=0;
+      document.addEventListener('mousemove', e => {
+        mx=e.clientX; my=e.clientY;
+        dot.style.left=mx+'px'; dot.style.top=my+'px';
+      });
+      (function loop(){ rx+=(mx-rx)*.28; ry+=(my-ry)*.28; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+      document.querySelectorAll('a,button,.whom-card,.fomo-card,.bento-cell').forEach(el=>{
+        el.addEventListener('mouseenter',()=>document.body.classList.add('cx'));
+        el.addEventListener('mouseleave',()=>document.body.classList.remove('cx'));
+      });
+    }
 
     /* ── LOAD ───────────────────────────────── */
     window.addEventListener('load',()=>setTimeout(()=>document.body.classList.add('loaded'),80));
