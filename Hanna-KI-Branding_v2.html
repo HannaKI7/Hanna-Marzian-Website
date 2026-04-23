@@ -118,7 +118,7 @@
 
   /* ── COVER ── */
   .cover {
-    background: var(--warm-dark);
+    background: #FFFFFF;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -126,13 +126,14 @@
     padding: var(--sp-xl) var(--sp-2xl);
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid var(--beige);
   }
   .cover::before {
     content: '';
     position: absolute;
     top: -200px; right: -200px;
     width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(216,98,42,0.15) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(216,98,42,0.08) 0%, transparent 65%);
     pointer-events: none;
   }
   .cover::after {
@@ -140,7 +141,7 @@
     position: absolute;
     bottom: -150px; left: -100px;
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(237,228,215,0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(216,98,42,0.04) 0%, transparent 70%);
     pointer-events: none;
   }
   .cover-tag {
@@ -156,7 +157,7 @@
     font-family: var(--font-heading);
     font-size: clamp(52px, 8vw, 104px);
     font-weight: 400;
-    color: var(--off-white);
+    color: var(--warm-black);
     line-height: 1.0;
     margin-bottom: var(--sp-lg);
     letter-spacing: -1px;
@@ -178,7 +179,7 @@
   .cover-meta {
     display: flex;
     gap: var(--sp-xl);
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid var(--beige);
     padding-top: var(--sp-lg);
   }
   .cover-meta-item span {
@@ -194,7 +195,7 @@
     font-family: var(--font-body);
     font-size: 14px;
     font-weight: 400;
-    color: var(--sand);
+    color: var(--warm-brown);
   }
 
   /* ── BRAND STORY BLOCK ── */
@@ -389,7 +390,8 @@
     padding: var(--sp-xl);
   }
   .component-box-dark {
-    background: var(--warm-dark);
+    background: #FFFFFF;
+    border: 1px solid var(--beige);
     border-radius: 2px;
     padding: var(--sp-xl);
   }
@@ -464,15 +466,15 @@
   .card p { font-size: 14px; color: var(--warm-gray); margin: 0; max-width: none; }
 
   .card-dark {
-    background: var(--warm-dark);
-    border: 1px solid rgba(255,255,255,0.06);
+    background: #FFFFFF;
+    border: 1px solid var(--beige);
     border-radius: 2px;
     padding: var(--sp-xl);
-    transition: border-color 200ms ease;
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
   }
-  .card-dark:hover { border-color: rgba(216,98,42,0.3); }
-  .card-dark .card-tag { color: var(--orange-mid); }
-  .card-dark h4 { color: var(--off-white); font-family: var(--font-heading); font-size: 24px; font-weight: 500; margin-bottom: var(--sp-sm); }
+  .card-dark:hover { border-color: var(--orange-pale); box-shadow: 0 8px 40px rgba(216,98,42,0.1); transform: translateY(-3px); }
+  .card-dark .card-tag { color: var(--orange); }
+  .card-dark h4 { color: var(--warm-black); font-family: var(--font-heading); font-size: 24px; font-weight: 500; margin-bottom: var(--sp-sm); }
   .card-dark p { color: var(--warm-gray); font-size: 14px; margin: 0; }
 
   /* Form Inputs */
@@ -516,11 +518,11 @@
     position: relative;
     overflow: hidden;
   }
-  .ig-cell-dark { background: var(--warm-dark); }
-  .ig-cell-brown { background: var(--warm-brown); }
+  .ig-cell-dark { background: #FFFFFF; }
+  .ig-cell-brown { background: var(--cream); }
   .ig-cell-beige { background: var(--beige); }
   .ig-cell-cream { background: var(--cream); }
-  .ig-cell-black { background: var(--warm-black); }
+  .ig-cell-black { background: var(--off-white); }
   .ig-cell-tan { background: var(--tan); }
 
   .ig-headline {
@@ -542,7 +544,7 @@
     font-family: var(--font-body);
     font-size: 11px;
     font-weight: 300;
-    color: rgba(251,247,242,0.65);
+    color: var(--warm-gray);
     line-height: 1.5;
   }
 
@@ -667,7 +669,8 @@
 
   /* ── FOOTER ── */
   .guide-footer {
-    background: var(--warm-black);
+    background: #FFFFFF;
+    border-top: 1px solid var(--beige);
     padding: var(--sp-xl) var(--sp-2xl);
     display: flex;
     align-items: center;
@@ -679,7 +682,7 @@
     font-family: var(--font-heading);
     font-size: 20px;
     font-weight: 500;
-    color: var(--off-white);
+    color: var(--warm-black);
   }
   .guide-footer-logo span { color: var(--orange); }
   .guide-footer-note {
@@ -1163,12 +1166,12 @@
           <a class="btn btn-outline-orange">Workshop ansehen</a>
         </div>
       </div>
-      <!-- Buttons dunkel -->
+      <!-- Buttons sekundär -->
       <div class="component-box-dark">
-        <div class="component-label" style="color:var(--warm-gray);">Buttons · Dunkler Kontext</div>
+        <div class="component-label" style="color:var(--warm-gray);">Buttons · Sekundärer Kontext</div>
         <div class="btn-group">
           <a class="btn btn-primary">Jetzt anmelden →</a>
-          <a class="btn btn-ghost">Mehr erfahren</a>
+          <a class="btn btn-outline">Mehr erfahren</a>
         </div>
         <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap;">
           <span class="badge badge-orange">Neu</span>
@@ -1256,16 +1259,16 @@
     </p>
 
     <div class="ig-grid">
-      <!-- Post 1: Dark with orange headline -->
+      <!-- Post 1: Light with orange headline -->
       <div class="ig-cell ig-cell-dark">
-        <div class="ig-headline light">
+        <div class="ig-headline dark">
           <em>Anti</em>Hooks<br>
-          <span style="font-size:14px;font-weight:400;color:rgba(251,247,242,0.5);line-height:1.5;">Wenn du willst, dass Menschen von deinem Content besessen sind</span>
+          <span style="font-size:14px;font-weight:400;color:var(--warm-gray);line-height:1.5;">Wenn du willst, dass Menschen von deinem Content besessen sind</span>
         </div>
       </div>
-      <!-- Post 2: Dark, orange text highlight -->
+      <!-- Post 2: Cream, orange text highlight -->
       <div class="ig-cell ig-cell-brown">
-        <div class="ig-headline light" style="font-size:18px;font-weight:600;">
+        <div class="ig-headline dark" style="font-size:18px;font-weight:600;">
           ChatGPT hat mir gezeigt, wie ich <em>jede Woche 71 €</em> beim Kauf von Lebensmitteln sparen kann
         </div>
       </div>
@@ -1275,16 +1278,16 @@
           Wenn du glaubst, dass du mit <em>KI</em> zu spät bist
         </div>
       </div>
-      <!-- Post 4: Dark, orange headline only -->
+      <!-- Post 4: White, orange headline -->
       <div class="ig-cell ig-cell-dark">
         <div style="text-align:center;">
           <div style="font-family:var(--font-body);font-size:38px;font-weight:800;color:var(--orange);line-height:1;">Fülle</div>
-          <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--off-white);margin-top:6px;">ist dein Geburtsrecht</div>
+          <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--warm-brown);margin-top:6px;">ist dein Geburtsrecht</div>
         </div>
       </div>
-      <!-- Post 5: Dark photo style -->
+      <!-- Post 5: Off-white style -->
       <div class="ig-cell ig-cell-black">
-        <div class="ig-headline light" style="font-size:16px;font-weight:500;">
+        <div class="ig-headline dark" style="font-size:16px;font-weight:500;">
           Anstatt Netflix zu glotzen kannst du in <em>45 Minuten</em> ein digitales Produkt erstellen
         </div>
       </div>
@@ -1295,15 +1298,15 @@
           <div style="font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--warm-black);margin-top:8px;">von 19.500 €</div>
         </div>
       </div>
-      <!-- Post 7: Medium brown -->
+      <!-- Post 7: Cream -->
       <div class="ig-cell ig-cell-brown">
-        <div class="ig-headline light" style="font-size:16px;font-weight:500;">
+        <div class="ig-headline dark" style="font-size:16px;font-weight:500;">
           Ich habe ChatGPT gefragt:<br>„Was würdest du tun, wenn du für einen Tag ein MENSCH sein könntest?"
         </div>
       </div>
-      <!-- Post 8: Warm dark -->
+      <!-- Post 8: White -->
       <div class="ig-cell ig-cell-dark">
-        <div class="ig-headline light" style="font-size:16px;font-weight:500;">
+        <div class="ig-headline dark" style="font-size:16px;font-weight:500;">
           Mein Alltag fühlte sich <em>monatelang chaotisch</em> an – bis ich KI meine Aufgaben zeigte
         </div>
       </div>

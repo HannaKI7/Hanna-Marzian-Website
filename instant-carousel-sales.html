@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Carousel – Hanna Marzian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────────
+   BRAND TOKENS
+───────────────────────────────────────────── */
+:root {
+  --orange:       #D8622A;
+  --orange-mid:   #E8894E;
+  --orange-pale:  #F5CFA8;
+  --orange-deep:  #B84E1E;
+  --warm-black:   #160C05;
+  --warm-dark:    #2A1608;
+  --warm-brown:   #472B18;
+  --mid-brown:    #6B4530;
+  --tan:          #A88960;
+  --sand:         #D0B896;
+  --beige:        #EDE4D7;
+  --cream:        #F6F0E6;
+  --off-white:    #FBF7F2;
+  --warm-gray:    #7A6A5A;
+  --mid-gray:     #BDB0A0;
+  --light-gray:   #D8CFC4;
+
+  --font-heading: 'Cormorant', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-accent:  'Montserrat', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #FFFFFF;
+  color: var(--warm-black);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.container--wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section { padding: 80px 0; }
+section.tight { padding: 60px 0; }
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.eyebrow::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--orange);
+  opacity: 0.6;
+}
+
+h1.hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(52px, 8vw, 100px);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -1px;
+  color: var(--warm-black);
+  margin-bottom: 28px;
+}
+h1.hero-headline em {
+  font-style: italic;
+  color: var(--orange-mid);
+}
+
+h2.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--warm-black);
+  margin-bottom: 20px;
+}
+h2.section-title em {
+  font-style: italic;
+  color: var(--orange-mid);
+}
+
+h3.sub-title {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  color: var(--warm-brown);
+  margin-bottom: 16px;
+}
+
+.lead {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.8;
+  max-width: 560px;
+}
+.lead strong { color: var(--warm-black); font-weight: 600; }
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 1px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 200ms ease;
+}
+.btn-primary {
+  background: var(--orange);
+  color: #FFFFFF;
+}
+.btn-primary:hover { background: var(--orange-deep); transform: translateY(-1px); }
+.btn-dark {
+  background: var(--warm-black);
+  color: var(--off-white);
+}
+.btn-dark:hover { background: var(--warm-brown); }
+.btn-outline {
+  background: transparent;
+  color: var(--warm-black);
+  border: 1.5px solid var(--warm-black);
+}
+.btn-outline:hover { background: var(--warm-black); color: #FFFFFF; }
+.btn--large { padding: 20px 48px; font-size: 12px; letter-spacing: 3px; }
+.btn--full { width: 100%; justify-content: center; }
+
+/* ─────────────────────────────────────────────
+   NAV
+───────────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--beige);
+  padding: 16px 0;
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.nav__logo {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--warm-black);
+  text-decoration: none;
+}
+.nav__logo span { color: var(--orange); }
+.nav__cta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav__price-hint {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--warm-gray);
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────── */
+.hero {
+  background: #FFFFFF;
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--beige);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -200px;
+  width: 650px; height: 650px;
+  background: radial-gradient(circle, rgba(216,98,42,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(216,98,42,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--beige);
+  flex-wrap: wrap;
+}
+.hero__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.hero__meta-item span {
+  font-family: var(--font-accent);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+}
+.hero__meta-item strong {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--warm-brown);
+}
+.hero__cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.hero__trust {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--mid-gray);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─────────────────────────────────────────────
+   PROBLEM SECTION
+───────────────────────────────────────────── */
+.section-problem {
+  background: var(--cream);
+  border-bottom: 1px solid var(--beige);
+}
+.problem__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+.problem__card {
+  background: #FFFFFF;
+  padding: 32px 28px;
+  border-top: 3px solid transparent;
+  transition: border-color 200ms ease;
+}
+.problem__card:hover { border-top-color: var(--orange); }
+.problem__icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: block;
+  opacity: 0.7;
+}
+.problem__card h4 {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--warm-black);
+  margin-bottom: 8px;
+}
+.problem__card p {
+  font-size: 14px;
+  color: var(--warm-gray);
+  line-height: 1.65;
+}
+.problem__statement {
+  background: var(--warm-dark);
+  border-left: 4px solid var(--orange);
+  padding: 36px 40px;
+  border-radius: 2px;
+  margin-top: 48px;
+}
+.problem__statement p {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--off-white);
+  line-height: 1.5;
+  margin: 0;
+}
+.problem__statement strong { color: var(--orange-mid); font-style: normal; }
+
+/* ─────────────────────────────────────────────
+   PRODUCT INTRO
+───────────────────────────────────────────── */
+.section-intro {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--beige);
+}
+.intro__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.intro__visual {
+  background: var(--warm-dark);
+  border-radius: 2px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.intro__visual::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(216,98,42,0.15) 0%, transparent 65%);
+}
+.intro__visual-label {
+  font-family: var(--font-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.intro__visual-headline {
+  font-family: var(--font-heading);
+  font-size: 52px;
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.05;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.intro__visual-headline em {
+  color: var(--orange-mid);
+  font-style: italic;
+}
+.intro__visual-sub {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--tan);
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+.intro__checklist {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+}
+.intro__checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--beige);
+  font-size: 15px;
+  color: var(--warm-gray);
+  line-height: 1.5;
+}
+.intro__checklist li:last-child { border-bottom: none; }
+.intro__checklist .check {
+  width: 22px;
+  height: 22px;
+  background: var(--orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────
+   MODULES / WHAT YOU GET
+───────────────────────────────────────────── */
+.section-modules {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--beige);
+}
+.modules__header {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 56px;
+}
+.modules__header .lead { max-width: none; margin: 0 auto; }
+.modules__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.module-card {
+  background: #FFFFFF;
+  border: 1px solid var(--beige);
+  border-top: 3px solid var(--orange);
+  border-radius: 2px;
+  padding: 32px 28px;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(216,98,42,0.1);
+}
+.module-card__number {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.module-card h4 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--warm-black);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.module-card p {
+  font-size: 14px;
+  color: var(--warm-gray);
+  line-height: 1.65;
+  margin: 0;
+}
+.module-card__bonus {
+  background: rgba(216,98,42,0.06);
+  border: 1px solid rgba(216,98,42,0.2);
+  border-top: 3px solid var(--orange-mid);
+  border-radius: 2px;
+  padding: 32px 28px;
+}
+.module-card__bonus .module-card__number { color: var(--orange-mid); }
+.modules__bonus-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: var(--orange);
+  padding: 4px 12px;
+  border-radius: 1px;
+  margin-bottom: 20px;
+}
+
+/* ─────────────────────────────────────────────
+   TESTIMONIALS
+───────────────────────────────────────────── */
+.section-testimonials {
+  background: var(--warm-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.testimonials__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.testimonials__header .eyebrow { color: var(--orange-mid); }
+.testimonials__header .eyebrow::after { background: var(--orange-mid); }
+.testimonials__header .section-title { color: var(--off-white); }
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.testimonial {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px;
+  padding: 32px 28px;
+}
+.testimonial__quote {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--off-white);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+.testimonial__quote strong { color: var(--orange-mid); font-style: normal; }
+.testimonial__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testimonial__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--warm-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--sand);
+  flex-shrink: 0;
+}
+.testimonial__name {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--sand);
+  display: block;
+  margin-bottom: 2px;
+}
+.testimonial__handle {
+  font-size: 12px;
+  color: var(--tan);
+}
+
+/* ─────────────────────────────────────────────
+   FOR WHOM
+───────────────────────────────────────────── */
+.section-forwhom {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--beige);
+}
+.forwhom__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.forwhom__block {
+  padding: 40px;
+  border-radius: 2px;
+}
+.forwhom__block--yes {
+  background: rgba(216,98,42,0.05);
+  border: 1px solid rgba(216,98,42,0.2);
+  border-top: 3px solid var(--orange);
+}
+.forwhom__block--no {
+  background: var(--off-white);
+  border: 1px solid var(--beige);
+  border-top: 3px solid var(--light-gray);
+}
+.forwhom__label {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+}
+.forwhom__block--yes .forwhom__label { color: var(--orange); }
+.forwhom__block--no .forwhom__label { color: var(--mid-gray); }
+.forwhom__list {
+  list-style: none;
+  padding: 0;
+}
+.forwhom__list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 15px;
+  color: var(--warm-gray);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+.forwhom__list li:last-child { border-bottom: none; }
+.forwhom__list li::before { flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+.forwhom__block--yes .forwhom__list li::before { content: '✓'; color: var(--orange); }
+.forwhom__block--no .forwhom__list li::before { content: '✕'; color: var(--mid-gray); }
+
+/* ─────────────────────────────────────────────
+   PRICING
+───────────────────────────────────────────── */
+.section-pricing {
+  background: var(--cream);
+  border-bottom: 1px solid var(--beige);
+}
+.pricing__inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.pricing__card {
+  background: #FFFFFF;
+  border: 1px solid var(--beige);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(22,12,5,0.08);
+}
+.pricing__card-header {
+  background: var(--warm-dark);
+  padding: 40px;
+  text-align: center;
+  position: relative;
+}
+.pricing__card-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--orange);
+}
+.pricing__product-name {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.pricing__headline {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.1;
+}
+.pricing__headline em { font-style: italic; color: var(--orange-mid); }
+.pricing__card-body {
+  padding: 40px;
+}
+.pricing__amount {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.pricing__currency {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--warm-gray);
+}
+.pricing__number {
+  font-family: var(--font-body);
+  font-size: 72px;
+  font-weight: 800;
+  color: var(--warm-black);
+  line-height: 1;
+}
+.pricing__note {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 32px;
+}
+.pricing__includes {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
+  border-top: 1px solid var(--beige);
+  padding-top: 24px;
+}
+.pricing__includes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--beige);
+  font-size: 14px;
+  color: var(--warm-gray);
+  line-height: 1.5;
+}
+.pricing__includes li:last-child { border-bottom: none; }
+.pricing__includes .check {
+  width: 20px;
+  height: 20px;
+  background: var(--orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+}
+.pricing__guarantee {
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: rgba(216,98,42,0.05);
+  border: 1px solid rgba(216,98,42,0.15);
+  border-radius: 2px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.pricing__guarantee-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.pricing__guarantee p {
+  font-size: 13px;
+  color: var(--warm-gray);
+  line-height: 1.6;
+  margin: 0;
+}
+.pricing__guarantee strong { color: var(--warm-brown); }
+
+/* ─────────────────────────────────────────────
+   FAQ
+───────────────────────────────────────────── */
+.section-faq {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--beige);
+}
+.faq__header {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 56px;
+}
+.faq__list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.faq__item {
+  border-bottom: 1px solid var(--beige);
+  padding: 28px 0;
+}
+.faq__item:first-child { border-top: 1px solid var(--beige); }
+.faq__q {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--warm-black);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.faq__q::before {
+  content: 'Q';
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--orange);
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+.faq__a {
+  font-size: 15px;
+  color: var(--warm-gray);
+  line-height: 1.75;
+  padding-left: 36px;
+}
+
+/* ─────────────────────────────────────────────
+   FINAL CTA
+───────────────────────────────────────────── */
+.section-final-cta {
+  background: var(--warm-dark);
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.section-final-cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(216,98,42,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+.section-final-cta .eyebrow { color: var(--orange); justify-content: center; }
+.final-cta__headline {
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.final-cta__headline em { font-style: italic; color: var(--orange-mid); }
+.final-cta__sub {
+  font-size: 16px;
+  color: var(--tan);
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
+}
+.final-cta__btn-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+.footer {
+  background: var(--warm-black);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0;
+}
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer__logo {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--off-white);
+}
+.footer__logo span { color: var(--orange); }
+.footer__note {
+  font-size: 12px;
+  color: var(--tan);
+}
+.footer__links {
+  display: flex;
+  gap: 24px;
+}
+.footer__links a {
+  font-family: var(--font-accent);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--tan);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.footer__links a:hover { color: var(--orange); }
+
+/* ─────────────────────────────────────────────
+   DIVIDER + HELPERS
+───────────────────────────────────────────── */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 1px;
+  margin: 24px 0;
+}
+.divider--center { margin: 24px auto; }
+.text-center { text-align: center; }
+.badge-new {
+  display: inline-flex;
+  align-items: center;
+  background: var(--orange);
+  color: #FFFFFF;
+  font-family: var(--font-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 1px;
+  margin-bottom: 20px;
+}
+.section-divider {
+  height: 1px;
+  background: var(--beige);
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  section { padding: 60px 0; }
+
+  .nav__price-hint { display: none; }
+
+  .hero { padding: 64px 0 56px; }
+
+  .problem__grid { grid-template-columns: 1fr; gap: 2px; }
+  .problem__statement { padding: 28px 24px; }
+
+  .intro__layout { grid-template-columns: 1fr; gap: 40px; }
+  .intro__visual { aspect-ratio: 4/3; }
+
+  .modules__grid { grid-template-columns: 1fr; gap: 12px; }
+
+  .testimonials__grid { grid-template-columns: 1fr; gap: 12px; }
+
+  .forwhom__layout { grid-template-columns: 1fr; gap: 16px; }
+
+  .pricing__card-header { padding: 28px 24px; }
+  .pricing__card-body { padding: 28px 24px; }
+  .pricing__number { font-size: 56px; }
+
+  .faq__list { max-width: 100%; }
+
+  .footer__inner { flex-direction: column; align-items: flex-start; }
+  .footer__links { flex-wrap: wrap; gap: 16px; }
+}
+@media (max-width: 480px) {
+  h1.hero-headline { font-size: 44px; }
+  .hero__cta-group { flex-direction: column; align-items: flex-start; }
+  .hero__meta { gap: 16px; }
+  .btn--large { padding: 16px 28px; font-size: 11px; }
+  .intro__visual-headline { font-size: 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="#">Hanna <span>Marzian</span></a>
+    <div class="nav__cta-wrap">
+      <span class="nav__price-hint">Einmalige Zahlung · Sofortiger Zugang</span>
+      <a href="#pricing" class="btn btn-primary">Jetzt holen →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero__inner">
+    <div class="eyebrow">Neues Produkt</div>
+    <h1 class="hero-headline">
+      Instant<br>
+      <em>Carousel.</em>
+    </h1>
+    <p class="lead" style="max-width: 520px;">
+      Du weißt, dass Carousels funktionieren. Du weißt, dass sie Reichweite bringen. Aber du sitzt zwei Stunden vor Canva und hast immer noch keinen einzigen Slide.<br><br>
+      <strong>Das hört jetzt auf.</strong>
+    </p>
+    <div class="hero__cta-group">
+      <a href="#pricing" class="btn btn-primary btn--large">Jetzt starten →</a>
+      <a href="#was-ist-das" class="btn btn-outline">Mehr erfahren</a>
+    </div>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <span>Format</span>
+        <strong>Templates + Prompts + System</strong>
+      </div>
+      <div class="hero__meta-item">
+        <span>Zeit bis zum ersten Carousel</span>
+        <strong>Unter 10 Minuten</strong>
+      </div>
+      <div class="hero__meta-item">
+        <span>Zugang</span>
+        <strong>Sofort nach Kauf</strong>
+      </div>
+      <div class="hero__meta-item">
+        <span>Zahlung</span>
+        <strong>Einmalig. Kein Abo.</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PROBLEM
+═══════════════════════════════════════════ -->
+<section class="section-problem">
+  <div class="container">
+    <div class="eyebrow">Das Problem</div>
+    <h2 class="section-title">Du postest.<br>Aber niemand <em>speichert.</em></h2>
+    <p class="lead">Carousels sind der am stärksten wachsende Format auf Instagram. Und gleichzeitig der, der die meisten Creator aufgibt, bevor sie anfangen.</p>
+
+    <div class="problem__grid">
+      <div class="problem__card">
+        <span class="problem__icon">⏳</span>
+        <h4>Stunden für einen Post</h4>
+        <p>Du denkst dir ein Thema aus, strukturierst es, designst jeden Slide einzeln und bis du fertig bist, hat der Algorithmus dich schon vergessen.</p>
+      </div>
+      <div class="problem__card">
+        <span class="problem__icon">📉</span>
+        <h4>Kein System dahinter</h4>
+        <p>Du weißt nicht genau, warum manche Carousels viral gehen und andere floppen. Also hoffst du einfach. Das ist kein Plan, das ist Glück.</p>
+      </div>
+      <div class="problem__card">
+        <span class="problem__icon">😩</span>
+        <h4>Design frisst dich auf</h4>
+        <p>Du bist Creator oder Unternehmerin, kein Grafik-Designer. Aber Canva fühlt sich an wie ein Vollzeitjob, den du dir nicht vorgestellt hattest.</p>
+      </div>
+    </div>
+
+    <div class="problem__statement">
+      <p>
+        Das Lustige: Das Problem ist nicht dein Thema, deine Nische oder deine Follower-Zahl. Das Problem ist, dass du <strong>kein System hast</strong>, das dir die Arbeit abnimmt.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRODUCT INTRO
+═══════════════════════════════════════════ -->
+<section class="section-intro" id="was-ist-das">
+  <div class="container">
+    <div class="intro__layout">
+      <div class="intro__visual">
+        <div class="intro__visual-label">Das Produkt</div>
+        <div class="intro__visual-headline">
+          Instant<br><em>Carousel</em>
+        </div>
+        <div class="intro__visual-sub">by Hanna Marzian</div>
+      </div>
+      <div>
+        <div class="eyebrow">Die Lösung</div>
+        <h2 class="section-title" style="font-size: clamp(28px, 4vw, 46px);">Von der Idee zum fertigen Carousel. In unter 10 Minuten.</h2>
+        <p class="lead">Instant Carousel ist ein Komplett-System aus bewährten Canva-Templates, KI-Prompts und einer klaren Inhalts-Formel. Du steckst dein Thema rein, das System spuckt deinen nächsten viralen Post aus.</p>
+        <div class="divider"></div>
+        <ul class="intro__checklist">
+          <li>
+            <span class="check">✓</span>
+            <span><strong style="color: var(--warm-black);">Keine Design-Kenntnisse nötig</strong> (die Templates sind fertig, du tauschst nur Text und Farbe aus)</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span><strong style="color: var(--warm-black);">KI schreibt den Content mit dir</strong> (keine leere Seite mehr, keine Blockade)</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span><strong style="color: var(--warm-black);">Bewährte Strukturen</strong> (die gleichen Formeln, die meine Carousels auf 100k+ Accounts gebracht haben)</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span><strong style="color: var(--warm-black);">Einmal kaufen, immer nutzen</strong> (kein Abo, kein monatlicher Stress)</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span><strong style="color: var(--warm-black);">Funktioniert in jeder Nische</strong> (Business, Lifestyle, Coaching, Health, alles)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MODULES
+═══════════════════════════════════════════ -->
+<section class="section-modules">
+  <div class="container--wide">
+    <div class="modules__header text-center">
+      <div class="eyebrow" style="justify-content: center;">Was du bekommst</div>
+      <h2 class="section-title">Alles, was du für viralen<br><em>Content brauchst.</em></h2>
+      <p class="lead">Kein Kurs, den du nie anschaust. Kein Kurs, bei dem du nach 3 Stunden noch keine Ergebnisse siehst. Direkt anwendbar, direkt nutzbar.</p>
+    </div>
+
+    <div class="modules__grid">
+      <div class="module-card">
+        <div class="module-card__number">Modul 01</div>
+        <h4>Die Carousel-Formel</h4>
+        <p>Du lernst die 5 Strukturen, die auf Instagram immer funktionieren. Welche du für welches Thema nimmst und warum der Einstiegs-Slide über alles entscheidet.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-card__number">Modul 02</div>
+        <h4>KI-Prompts für jeden Slide</h4>
+        <p>25 sofort einsetzbare Prompts, die dir Headline, Body-Text und CTA für jeden Slide schreiben. Du gibst das Thema an, die KI liefert den Roh-Content.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-card__number">Modul 03</div>
+        <h4>Canva-Templates (30+)</h4>
+        <p>30 fertige Carousel-Templates in verschiedenen Stilen. Du öffnest, du tauschst Text aus, du postest. Keine Designentscheidungen mehr.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-card__number">Modul 04</div>
+        <h4>Themen-Generator</h4>
+        <p>Nie wieder vor einem leeren Dokument sitzen. Der Themen-Generator liefert dir zu jeder Nische 50 bewährte Carousel-Ideen, die Menschen stoppen.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-card__number">Modul 05</div>
+        <h4>Hook-Bibliothek</h4>
+        <p>100 Einstiegs-Sätze, die auf dem ersten Slide sofort Interesse wecken. Kategorisiert nach Typ: Neugier, Schock, Versprechen, Story.</p>
+      </div>
+      <div class="module-card module-card__bonus">
+        <div class="modules__bonus-label">Bonus</div>
+        <div class="module-card__number">Bonus</div>
+        <h4>Meine persönliche Checkliste</h4>
+        <p>Die gleiche 10-Punkte-Checkliste, die ich vor jedem eigenen Carousel durchgehe. Was drin sein muss, damit es gespeichert und geteilt wird.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+<section class="section-testimonials">
+  <div class="container--wide">
+    <div class="testimonials__header">
+      <div class="eyebrow">Ergebnisse</div>
+      <h2 class="section-title">Was andere damit<br>schon erreicht haben.</h2>
+    </div>
+    <div class="testimonials__grid">
+      <div class="testimonial">
+        <p class="testimonial__quote">„Ich habe mein erstes Carousel mit der Formel erstellt und es hatte <strong>3x mehr Saves</strong> als alles, was ich vorher gepostet habe. Das System funktioniert wirklich."</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">S</div>
+          <div>
+            <span class="testimonial__name">Sarah K.</span>
+            <span class="testimonial__handle">Business Coach · 8.200 Follower</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial__quote">„Die KI-Prompts haben mir so viel Zeit gespart. <strong>Früher 2 Stunden, heute 15 Minuten.</strong> Und der Content ist ehrlich gesagt besser geworden."</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">M</div>
+          <div>
+            <span class="testimonial__name">Mia T.</span>
+            <span class="testimonial__handle">Health Creator · 12.400 Follower</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial__quote">„Ich bin keine Designerin. Die Templates haben mir das Gefühl genommen, dass mein Feed irgendwie schlechter aussieht als der anderer. <strong>Endlich professionell.</strong>"</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">J</div>
+          <div>
+            <span class="testimonial__name">Julia R.</span>
+            <span class="testimonial__handle">E-Commerce · 5.600 Follower</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOR WHOM
+═══════════════════════════════════════════ -->
+<section class="section-forwhom">
+  <div class="container">
+    <div class="eyebrow">Für wen?</div>
+    <h2 class="section-title">Ehrlich gesagt nicht<br>für <em>jeden.</em></h2>
+    <p class="lead" style="margin-bottom: 48px;">Instant Carousel ist für Creator und Unternehmerinnen, die endlich aufhören wollen, sich durch Content-Erstellung zu quälen.</p>
+
+    <div class="forwhom__layout">
+      <div class="forwhom__block forwhom__block--yes">
+        <span class="forwhom__label">Das bin ich</span>
+        <ul class="forwhom__list">
+          <li>Du postest auf Instagram (oder willst endlich anfangen)</li>
+          <li>Du weißt, dass du mehr Reichweite brauchst, um dein Business zu wachsen</li>
+          <li>Du hast zu wenig Zeit für stundenlange Content-Produktion</li>
+          <li>Du willst KI nutzen, aber weißt nicht wie du anfängst</li>
+          <li>Du bist Coach, Creator, Unternehmerin oder Freelancerin</li>
+          <li>Du willst einen Content-Workflow, der sich wie ein System anfühlt</li>
+        </ul>
+      </div>
+      <div class="forwhom__block forwhom__block--no">
+        <span class="forwhom__label">Nicht für dich</span>
+        <ul class="forwhom__list">
+          <li>Du erwartest, dass ein Produkt allein deinen Account wachsen lässt</li>
+          <li>Du willst keinen Prozess lernen, sondern nur Copy-Paste</li>
+          <li>Du postest nicht selbst und planst das auch nicht</li>
+          <li>Du suchst einen Rundum-sorglos-Service (dann wäre 1:1 Coaching richtig)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRICING
+═══════════════════════════════════════════ -->
+<section class="section-pricing" id="pricing">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 48px;">
+      <div class="eyebrow" style="justify-content: center;">Dein Zugang</div>
+      <h2 class="section-title">Einmal investieren.<br><em>Immer nutzen.</em></h2>
+    </div>
+    <div class="pricing__inner">
+      <div class="pricing__card">
+        <div class="pricing__card-header">
+          <div class="pricing__product-name">Instant Carousel</div>
+          <div class="pricing__headline">Alles was du<br><em>brauchst.</em></div>
+        </div>
+        <div class="pricing__card-body">
+          <div class="pricing__amount">
+            <span class="pricing__currency">€</span>
+            <span class="pricing__number">47</span>
+          </div>
+          <div class="pricing__note">Einmalige Zahlung · Kein Abo · Sofortiger Zugang</div>
+
+          <ul class="pricing__includes">
+            <li><span class="check">✓</span> Die 5-Schritt Carousel-Formel (Modul 01)</li>
+            <li><span class="check">✓</span> 25 KI-Prompts für jeden Slide-Typ (Modul 02)</li>
+            <li><span class="check">✓</span> 30+ Canva-Templates sofort einsetzbar (Modul 03)</li>
+            <li><span class="check">✓</span> Themen-Generator mit 50 Ideen pro Nische (Modul 04)</li>
+            <li><span class="check">✓</span> Hook-Bibliothek mit 100 Einstiegs-Sätzen (Modul 05)</li>
+            <li><span class="check">✓</span> Bonus: Persönliche Pre-Post Checkliste</li>
+            <li><span class="check">✓</span> Alle zukünftigen Updates inklusive</li>
+          </ul>
+
+          <a href="#" class="btn btn-primary btn--large btn--full">Jetzt für 47 € holen →</a>
+
+          <div class="pricing__guarantee">
+            <span class="pricing__guarantee-icon">🛡️</span>
+            <p><strong>14-Tage Geld-zurück-Garantie.</strong> Wenn du nach 14 Tagen denkst, das war nichts für dich, bekommst du jeden Cent zurück. Kein Drama, keine Fragen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════ -->
+<section class="section-faq">
+  <div class="container">
+    <div class="faq__header text-center">
+      <div class="eyebrow" style="justify-content: center;">FAQ</div>
+      <h2 class="section-title">Häufige<br><em>Fragen.</em></h2>
+    </div>
+
+    <div class="faq__list">
+      <div class="faq__item">
+        <div class="faq__q">Brauche ich Canva Pro?</div>
+        <p class="faq__a">Nein. Die Templates sind für die kostenlose Canva-Version optimiert. Du brauchst nur einen Canva-Account (kostenlos).</p>
+      </div>
+      <div class="faq__item">
+        <div class="faq__q">Funktioniert das in meiner Nische?</div>
+        <p class="faq__a">Ja. Die Carousel-Formel und die Prompts sind nischen-unabhängig. Der Themen-Generator hat spezifische Ideen für Business, Coaching, Health, Lifestyle, E-Commerce und mehr. Wenn deine Nische nicht dabei ist: Schreib mir.</p>
+      </div>
+      <div class="faq__item">
+        <div class="faq__q">Ich bin kein Design-Profi. Schaffe ich das trotzdem?</div>
+        <p class="faq__a">Das ist genau für dich. Die Templates sind fertig gestaltet. Du änderst nur den Text und passt bei Bedarf Farben an. Mehr nicht. Wenn du ein Dokument öffnen kannst, kannst du das.</p>
+      </div>
+      <div class="faq__item">
+        <div class="faq__q">Bekomme ich Zugang zu einem Kurs oder zu Dateien?</div>
+        <p class="faq__a">Du bekommst sofort nach dem Kauf Zugang zu einem Download-Bereich mit allen Templates, dem Prompt-Dokument, der Hook-Bibliothek und der Formel als PDF. Alles direkt, keine Plattform, kein Login-Stress.</p>
+      </div>
+      <div class="faq__item">
+        <div class="faq__q">Wie lange habe ich Zugang?</div>
+        <p class="faq__a">Unbegrenzt. Du kaufst einmal und hast dauerhaften Zugang, auch zu allen zukünftigen Updates.</p>
+      </div>
+      <div class="faq__item">
+        <div class="faq__q">Gilt die Garantie wirklich?</div>
+        <p class="faq__a">Ja. 14 Tage, kein Wenn und Aber. Wenn du denkst, das hat dir nicht geholfen, schicke mir eine Mail und du bekommst dein Geld zurück.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════ -->
+<section class="section-final-cta">
+  <div class="container">
+    <div class="eyebrow">Bereit?</div>
+    <h2 class="final-cta__headline">
+      Dein nächstes Carousel<br>wartet auf <em>dich.</em>
+    </h2>
+    <p class="final-cta__sub">Du hast die Wahl: nächste Woche wieder 2 Stunden vor einem leeren Dokument sitzen. Oder heute einmal 47 Euro investieren und das für immer hinter dir lassen.</p>
+    <div class="final-cta__btn-wrap">
+      <a href="#pricing" class="btn btn-primary btn--large">Instant Carousel holen →</a>
+      <span style="font-family: var(--font-accent); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--tan);">47 € · Einmalig · Sofortiger Zugang</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container--wide">
+    <div class="footer__inner">
+      <div class="footer__logo">Hanna <span>Marzian</span></div>
+      <div class="footer__note">© 2026 Hanna Marzian · Instant Carousel</div>
+      <div class="footer__links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+        <a href="#">Kontakt</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
