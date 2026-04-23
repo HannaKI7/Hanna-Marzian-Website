@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kostenloses Video-Training · Die Lösung für alle 3 Fehler</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/consent.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #160C05;
+      --charcoal: #2A1608;
+      --dark:     #3A1F0A;
+      --gold:     #D8622A;
+      --gold-l:   #E8894E;
+      --gold-d:   #B84E1A;
+      --cream:    #F6F0E6;
+      --white:    #FFFFFF;
+      --mist:     #F9F5F0;
+      --gray:     #7A6A5A;
+      --gray-l:   #A09080;
+      --serif:    'Cormorant', Georgia, serif;
+      --sans:     'Montserrat', system-ui, sans-serif;
+      --expo:     cubic-bezier(0.16, 1, 0.3, 1);
+      --snap:     cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ════════════════════════════════════════
+       HEADER
+    ════════════════════════════════════════ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(216,98,42,0.1);
+      padding: 0 48px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: box-shadow 0.3s ease;
+    }
+    .site-header.scrolled {
+      box-shadow: 0 4px 32px rgba(22,12,5,0.06);
+    }
+
+    .header-logos {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .logo-h {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--black);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      text-align: right;
+    }
+    .logo-h em { color: var(--gold); font-style: italic; }
+    .logo-h span {
+      display: block;
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .logo-sep {
+      width: 1px;
+      height: 32px;
+      background: rgba(160,144,126,0.3);
+      flex-shrink: 0;
+    }
+
+    .logo-m {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      font-style: italic;
+      color: #2db800;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      text-align: left;
+    }
+    .logo-m em { color: var(--black); font-style: italic; }
+    .logo-m span {
+      display: block;
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2db800;
+      margin-top: 3px;
+    }
+
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(216,98,42,0.07);
+      border: 1px solid rgba(216,98,42,0.2);
+    }
+    .header-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .header-badge-text {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    /* ════════════════════════════════════════
+       MAIN LAYOUT
+    ════════════════════════════════════════ */
+    main { flex: 1; }
+
+    /* ════════════════════════════════════════
+       HERO SECTION – 2-COLUMN
+    ════════════════════════════════════════ */
+    .hero-section {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 80px 64px 96px;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* LEFT COLUMN */
+    .hero-left { padding-top: 8px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .eyebrow-text {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(52px, 4.8vw, 76px);
+      font-weight: 600;
+      line-height: 1.04;
+      color: var(--black);
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+
+    .subline {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.85;
+      color: var(--gray);
+      margin-bottom: 48px;
+      max-width: 520px;
+    }
+    .subline strong { color: var(--black); font-weight: 600; }
+
+    /* Video Preview Mockup */
+    .video-mockup {
+      width: 100%;
+      max-width: 560px;
+      background: var(--black);
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-mockup-inner {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a0c04 0%, #3A1F0A 60%, #2A1608 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .video-mockup-grain {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .video-play-btn {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid rgba(216,98,42,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(216,98,42,0.15);
+      backdrop-filter: blur(8px);
+      transition: transform 0.35s var(--snap), background 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .video-play-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--gold);
+      margin-left: 4px;
+    }
+    .video-mockup:hover .video-play-btn {
+      transform: scale(1.12);
+      background: rgba(216,98,42,0.3);
+      border-color: var(--gold);
+    }
+
+    .video-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(216,98,42,0.7);
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-mockup-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 24px;
+      background: linear-gradient(to top, rgba(22,12,5,0.9) 0%, transparent 100%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1;
+    }
+    .video-time-badge {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 4px 10px;
+      border: 1px solid rgba(216,98,42,0.5);
+      background: rgba(216,98,42,0.1);
+    }
+    .video-name {
+      font-size: 11.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.3px;
+    }
+
+    /* RIGHT COLUMN – STICKY FORM */
+    .hero-right {
+      position: sticky;
+      top: 88px;
+    }
+
+    .form-card {
+      background: var(--mist);
+      border: 1px solid rgba(216,98,42,0.15);
+      border-top: 4px solid var(--gold);
+      padding: 36px 32px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216,98,42,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .form-card-eyebrow {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .form-card-headline {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    .form-card-headline em { font-style: italic; color: var(--gold); }
+
+    .form-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(216,98,42,0.12);
+      margin-bottom: 24px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .form-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .form-input {
+      padding: 14px 18px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid rgba(216,98,42,0.18);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+      width: 100%;
+    }
+    .form-input::placeholder { color: rgba(122,106,90,0.4); }
+    .form-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(216,98,42,0.07);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 19px 24px;
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.22s var(--expo), transform 0.25s var(--snap), box-shadow 0.3s ease;
+      -webkit-appearance: none;
+      border-radius: 0;
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-submit:hover::before { left: 100%; }
+    .btn-submit:hover {
+      background: var(--gold-l);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(216,98,42,0.3);
+    }
+    .btn-submit:active { transform: translateY(0); box-shadow: none; }
+
+    .form-trust-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(216,98,42,0.1);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+      flex: 1;
+    }
+    .trust-item svg {
+      width: 13px; height: 13px;
+      stroke: var(--gold);
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+
+    .privacy {
+      font-size: 10px;
+      color: rgba(122,106,90,0.5);
+      line-height: 1.7;
+      text-align: center;
+      margin-top: 14px;
+    }
+    .privacy a { color: inherit; text-decoration: underline; }
+
+    /* ════════════════════════════════════════
+       PROOF BAR
+    ════════════════════════════════════════ */
+    .proof-bar {
+      width: 100%;
+      background: var(--cream);
+      border-top: 1px solid rgba(216,98,42,0.12);
+      border-bottom: 1px solid rgba(216,98,42,0.12);
+      padding: 48px 64px;
+    }
+
+    .proof-bar-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .proof-item {
+      text-align: center;
+      padding: 0 32px;
+      position: relative;
+    }
+    .proof-item + .proof-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 15%; height: 70%;
+      width: 1px;
+      background: rgba(216,98,42,0.18);
+    }
+
+    .proof-num {
+      font-family: var(--serif);
+      font-size: clamp(48px, 5vw, 68px);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      letter-spacing: -0.02em;
+    }
+    .proof-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 10px;
+      display: block;
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════════════
+       CONTENT SECTIONS
+    ════════════════════════════════════════ */
+    .wide-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+
+    /* WHAT YOU GET */
+    .what-section {
+      padding: 100px 64px;
+    }
+
+    .what-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .what-left { position: sticky; top: 120px; }
+
+    .section-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(34px, 3vw, 48px);
+      font-weight: 500;
+      line-height: 1.12;
+      color: var(--black);
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+
+    .what-left-text {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--gray);
+    }
+
+    .what-right { display: flex; flex-direction: column; gap: 4px; }
+
+    .preview-item {
+      display: flex;
+      gap: 0;
+      border: 1px solid rgba(216,98,42,0.1);
+      border-left: 4px solid var(--gold);
+      background: var(--white);
+      padding: 28px 28px 28px 24px;
+      transition: transform 0.35s var(--expo), box-shadow 0.35s var(--expo), border-color 0.3s;
+      cursor: default;
+    }
+    .preview-item:hover {
+      transform: translateX(6px);
+      box-shadow: -6px 0 0 0 var(--gold), 0 12px 40px rgba(22,12,5,0.06);
+      border-color: rgba(216,98,42,0.25);
+    }
+
+    .preview-num {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 600;
+      color: rgba(216,98,42,0.18);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 44px;
+      margin-top: -2px;
+      transition: color 0.3s;
+    }
+    .preview-item:hover .preview-num { color: rgba(216,98,42,0.35); }
+
+    .preview-body { flex: 1; min-width: 0; }
+
+    .preview-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .preview-desc {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* ════════════════════════════════════════
+       FOR WHOM
+    ════════════════════════════════════════ */
+    .forwhom-section {
+      background: var(--mist);
+      border-top: 1px solid rgba(216,98,42,0.1);
+      border-bottom: 1px solid rgba(216,98,42,0.1);
+      padding: 100px 64px;
+    }
+
+    .forwhom-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 0;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.7;
+      padding: 20px 24px;
+      background: var(--white);
+      border: 1px solid rgba(216,98,42,0.08);
+      transition: border-color 0.3s, transform 0.3s var(--expo);
+    }
+    .check-item:hover {
+      border-color: rgba(216,98,42,0.22);
+      transform: translateX(4px);
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(216,98,42,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      background: rgba(216,98,42,0.04);
+    }
+    .check-icon svg {
+      width: 10px; height: 10px;
+      stroke: var(--gold);
+      stroke-width: 2.5;
+    }
+    .check-item strong { font-weight: 600; color: var(--black); }
+
+    /* Right side decorative */
+    .forwhom-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .quote-block {
+      padding: 36px 40px;
+      background: var(--white);
+      border-left: 4px solid var(--gold);
+      border: 1px solid rgba(216,98,42,0.12);
+      border-left: 4px solid var(--gold);
+      position: relative;
+    }
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 80px;
+      font-weight: 600;
+      color: rgba(216,98,42,0.1);
+      line-height: 0.8;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .quote-text {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--black);
+    }
+    .quote-text em { color: var(--gold); }
+    .quote-attr {
+      margin-top: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-l);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+    }
+    .stat-box {
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid rgba(216,98,42,0.1);
+      text-align: center;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .stat-box:hover {
+      border-color: rgba(216,98,42,0.3);
+      box-shadow: 0 8px 32px rgba(22,12,5,0.05);
+    }
+    .stat-box-num {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .stat-box-label {
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ════════════════════════════════════════
+       SECOND CTA
+    ════════════════════════════════════════ */
+    .cta2-section {
+      padding: 120px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta2-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(216,98,42,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta2-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .cta2-eyebrow {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-l);
+      margin-bottom: 24px;
+    }
+
+    .cta2-headline {
+      font-family: var(--serif);
+      font-size: clamp(38px, 4vw, 58px);
+      font-weight: 500;
+      line-height: 1.12;
+      color: var(--black);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .cta2-headline em { font-style: italic; color: var(--gold); }
+
+    .cta2-sub {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+
+    .cta2-form {
+      display: flex;
+      gap: 0;
+      max-width: 540px;
+      margin: 0 auto 16px;
+    }
+    .cta2-form .form-input {
+      flex: 1;
+      border-right: none;
+      font-size: 14px;
+      padding: 18px 20px;
+    }
+    .cta2-form .btn-submit {
+      width: auto;
+      white-space: nowrap;
+      padding: 18px 28px;
+      margin-top: 0;
+      font-size: 10px;
+    }
+
+    /* ════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════ */
+    footer {
+      border-top: 1px solid rgba(216,98,42,0.1);
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .footer-logo em { font-style: italic; color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .footer-links a,
+    .footer-links button {
+      font-size: 9.5px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: rgba(122,106,90,0.55);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-size: 9px;
+      color: rgba(122,106,90,0.4);
+      letter-spacing: 0.5px;
+    }
+
+    /* ════════════════════════════════════════
+       ANIMATIONS
+    ════════════════════════════════════════ */
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s var(--expo), transform 0.75s var(--expo);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-28px);
+      transition: opacity 0.75s var(--expo), transform 0.75s var(--expo);
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity 0.75s var(--expo), transform 0.75s var(--expo);
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Staggered children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--expo), transform 0.6s var(--expo);
+    }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 0.08s; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 0.16s; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
+    .stagger.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero entry animations */
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroCardIn {
+      from { opacity: 0; transform: translateX(32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .hero-animate-1 { animation: heroIn 0.75s var(--expo) 0.05s both; }
+    .hero-animate-2 { animation: heroIn 0.75s var(--expo) 0.15s both; }
+    .hero-animate-3 { animation: heroIn 0.75s var(--expo) 0.25s both; }
+    .hero-animate-4 { animation: heroIn 0.75s var(--expo) 0.38s both; }
+    .hero-animate-card { animation: heroCardIn 0.9s var(--expo) 0.25s both; }
+
+    /* Proof counter animation */
+    .proof-num { display: block; }
+
+    /* Line animation */
+    @keyframes lineGrow {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+    .animated-line {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 24px;
+      transform-origin: left;
+      animation: lineGrow 0.6s var(--expo) 0.5s both;
+    }
+
+    /* Floating particles (subtle) */
+    .particle {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+    }
+
+    /* Cursor glow */
+    .cursor-glow {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216,98,42,0.04) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: left 0.6s ease, top 0.6s ease;
+      z-index: 0;
+    }
+
+    /* Button shine animation */
+    @keyframes btnShine {
+      0%   { left: -100%; }
+      100% { left: 200%; }
+    }
+    .btn-submit-shine {
+      animation: btnShine 2.5s ease 1.2s infinite;
+    }
+
+    /* ════════════════════════════════════════
+       SCROLL PROGRESS BAR
+    ════════════════════════════════════════ */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-l));
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ══ HEADER ══════════════════════════════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-logos">
+      <div class="logo-h">
+        Hanna <em>Marzian</em>
+        <span>@hanna.gpt</span>
+      </div>
+      <div class="logo-sep"></div>
+      <div class="logo-m">
+        Martin <em>Thun</em>
+        <span>scale²</span>
+      </div>
+    </div>
+    <div class="header-badge">
+      <span class="header-badge-dot"></span>
+      <span class="header-badge-text">0 € · Kostenloses Video-Training</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══ HERO ════════════════════════════════ -->
+    <section class="hero-section">
+
+      <!-- LEFT -->
+      <div class="hero-left">
+
+        <div class="eyebrow hero-animate-1">
+          <span class="eyebrow-dot"></span>
+          <span class="eyebrow-text">Kostenloses Video-Training</span>
+        </div>
+
+        <h1 class="hero-animate-2">
+          Sieh zu, wie KI eine<br>
+          professionelle Website<br>
+          <em>in Minuten baut.</em>
+        </h1>
+
+        <p class="subline hero-animate-3">
+          Das Video zeigt dir live, wie aus einem einzigen Prompt eine fertige,
+          mobiloptimierte Website entsteht. <strong>Für die eine Agentur früher
+          8.000 € berechnet hätte.</strong> Trag dich ein und du bekommst den Link sofort.
+        </p>
+
+        <!-- Video Mockup -->
+        <div class="video-mockup hero-animate-4">
+          <div class="video-mockup-inner">
+            <div class="video-mockup-grain"></div>
+            <div class="video-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </div>
+            <span class="video-label">Vorschau · Jetzt kostenlos ansehen</span>
+          </div>
+          <div class="video-mockup-overlay">
+            <span class="video-time-badge">Live-Demo</span>
+            <span class="video-name">@hanna.gpt × Martin Thun · scale²</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: STICKY FORM -->
+      <div class="hero-right hero-animate-card">
+        <div class="form-card">
+          <div class="form-card-eyebrow">Jetzt kostenlos Zugang sichern</div>
+          <div class="form-card-headline">
+            Dein Platz ist<br><em>reserviert.</em>
+          </div>
+          <div class="form-divider"></div>
+
+          <!-- TODO: action="" durch E-Mail-Anbieter ersetzen -->
+          <form action="#" method="post">
+
+            <div class="form-field">
+              <label class="form-label" for="fname">Vorname</label>
+              <input
+                id="fname"
+                class="form-input"
+                type="text"
+                name="FNAME"
+                placeholder="Dein Vorname"
+                autocomplete="given-name"
+                required
+              >
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="email">E-Mail-Adresse</label>
+              <input
+                id="email"
+                class="form-input"
+                type="email"
+                name="EMAIL"
+                placeholder="deine@email.de"
+                autocomplete="email"
+                required
+              >
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <span class="btn-submit-shine" style="position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);pointer-events:none;"></span>
+              Ja, Video kostenlos zusenden →
+            </button>
+
+          </form>
+
+          <div class="form-trust-row">
+            <div class="trust-item">
+              <svg viewBox="0 0 14 14" fill="none" stroke-linecap="round"><polyline points="2 7 5.5 10.5 12 4"/></svg>
+              Kein Spam
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 14 14" fill="none" stroke-linecap="round"><polyline points="2 7 5.5 10.5 12 4"/></svg>
+              Kein Abo
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 14 14" fill="none" stroke-linecap="round"><polyline points="2 7 5.5 10.5 12 4"/></svg>
+              Jederzeit abmeldbar
+            </div>
+          </div>
+
+          <p class="privacy">
+            Mit der Eintragung stimmst du der
+            <a href="https://www.hannamarzian.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> zu.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ PROOF BAR ════════════════════════════ -->
+    <div class="proof-bar reveal">
+      <div class="proof-bar-inner stagger">
+        <div class="proof-item">
+          <span class="proof-num" data-target="60">0+</span>
+          <span class="proof-label">Begeisterte<br>Teilnehmer</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">0</span>
+          <span class="proof-label">Vorkenntnisse<br>nötig</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">∞</span>
+          <span class="proof-label">Möglichkeiten,<br>die sich öffnen</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">8.000 €</span>
+          <span class="proof-label">Agentur-Kosten,<br>die du sparst</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ WHAT YOU GET ════════════════════════ -->
+    <section class="what-section">
+      <div class="what-inner">
+
+        <!-- Left sticky -->
+        <div class="what-left reveal-left">
+          <span class="animated-line"></span>
+          <span class="section-label">Im Video siehst du</span>
+          <h2>Drei Dinge, die du nach<br><em>dem Video anders machst.</em></h2>
+          <p class="what-left-text">
+            Kein 90-Minuten-Webinar mit 70 Slides, kein Bullshit-Bingo.
+            Eine direkte Live-Demo. Ergebnisse in Echtzeit.
+            Und ein klarer nächster Schritt für dich.
+          </p>
+        </div>
+
+        <!-- Right items -->
+        <div class="what-right stagger reveal-right">
+
+          <div class="preview-item">
+            <span class="preview-num">1</span>
+            <div class="preview-body">
+              <p class="preview-title">Live-Demo: Website-Erstellung in Echtzeit</p>
+              <p class="preview-desc">Du siehst, wie aus einem einzigen Prompt eine fertige, SEO-optimierte Website entsteht. Inklusive Scroll-Animationen, mobiloptimiert, deploy-fertig. Kein Template. Kein Kompromiss.</p>
+            </div>
+          </div>
+
+          <div class="preview-item">
+            <span class="preview-num">2</span>
+            <div class="preview-body">
+              <p class="preview-title">Die Methode hinter 60+ fertigen Websites</p>
+              <p class="preview-desc">Warum Baukästen und Agenturen dich systematisch bremsen (und warum das so gewollt ist). Was Coaches und Creator stattdessen nutzen, um auf Agentur-Niveau zu kommen.</p>
+            </div>
+          </div>
+
+          <div class="preview-item">
+            <span class="preview-num">3</span>
+            <div class="preview-body">
+              <p class="preview-title">Dein konkreter nächster Schritt</p>
+              <p class="preview-desc">Kein „und jetzt weißt du Bescheid". Am Ende des Videos weißt du genau, was du heute noch tun kannst, um eine Website zu haben, die konvertiert.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOR WHOM ════════════════════════════ -->
+    <section class="forwhom-section">
+      <div class="forwhom-inner">
+
+        <!-- Left: checklist -->
+        <div>
+          <span class="section-label">Das hier ist für dich</span>
+          <h2>Wenn du dich in mindestens<br><em>einem Punkt erkennst.</em></h2>
+
+          <ul class="check-list stagger reveal">
+
+            <li class="check-item">
+              <span class="check-icon">
+                <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="2 6 5 9 10 3"/>
+                </svg>
+              </span>
+              <span>Du bist <strong>Coach, Creator, Speaker oder Solopreneur</strong> und deine Website spiegelt nicht wider, was du wirklich kannst.</span>
+            </li>
+
+            <li class="check-item">
+              <span class="check-icon">
+                <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="2 6 5 9 10 3"/>
+                </svg>
+              </span>
+              <span>Du hast eine Website, aber du weißt, dass sie Interessenten verliert. Du weißt nur nicht wo und warum.</span>
+            </li>
+
+            <li class="check-item">
+              <span class="check-icon">
+                <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="2 6 5 9 10 3"/>
+                </svg>
+              </span>
+              <span>Du willst <strong>keine weitere Agentur bezahlen</strong> und auch nicht monatelang an einem Baukasten herumschrauben.</span>
+            </li>
+
+            <li class="check-item">
+              <span class="check-icon">
+                <svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="2 6 5 9 10 3"/>
+                </svg>
+              </span>
+              <span>Du hast gehört, was KI heute kann. Du willst es <strong>endlich selbst sehen</strong>, nicht nur drüber lesen.</span>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Right: Quote + Stats -->
+        <div class="forwhom-right reveal-right">
+
+          <div class="quote-block">
+            <span class="quote-mark">"</span>
+            <p class="quote-text">
+              Ich habe die Website in einer Stunde fertig gehabt.
+              Früher hätte das <em>drei Monate und 6.000 €</em> gekostet.
+            </p>
+            <p class="quote-attr">Teilnehmerin aus dem Video-Training</p>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-box">
+              <span class="stat-box-num">60+</span>
+              <span class="stat-box-label">Websites live gegangen</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-box-num">∅ 47min</span>
+              <span class="stat-box-label">bis zur fertigen Seite</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECOND CTA ════════════════════════════ -->
+    <section class="cta2-section reveal">
+      <div class="cta2-bg"></div>
+      <div class="cta2-inner">
+
+        <p class="cta2-eyebrow">Bereit?</p>
+
+        <h2 class="cta2-headline">
+          Das Video kostet dich nichts.<br>
+          <em>Nicht zu schauen kostet dich alles.</em>
+        </h2>
+
+        <p class="cta2-sub">
+          Trag dich jetzt ein. Du bekommst den Zugang sofort zugeschickt.
+        </p>
+
+        <!-- TODO: action="" durch E-Mail-Anbieter ersetzen -->
+        <form class="cta2-form" action="#" method="post">
+          <input
+            class="form-input"
+            type="email"
+            name="EMAIL"
+            placeholder="deine@email.de"
+            autocomplete="email"
+            required
+          >
+          <button type="submit" class="btn-submit">
+            Kostenlos zusenden →
+          </button>
+        </form>
+
+        <p class="privacy">
+          Kein Spam. Kein Abo. Jederzeit abmeldbar.
+          Mit der Eintragung stimmst du der
+          <a href="https://www.hannamarzian.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> zu.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ════════════════════════════════ -->
+  <footer>
+    <a href="https://www.hannamarzian.com" class="footer-logo">Hanna <em>Marzian</em></a>
+    <div class="footer-links">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+      <a href="/agb.html">AGB</a>
+      <button id="consent-reopen">Cookie-Einstellungen</button>
+    </div>
+    <p class="footer-copy">© 2026 Hanna Marzian · hannamarzian.com</p>
+  </footer>
+
+  <script src="assets/consent.js"></script>
+  <script>
+    /* ── Scroll Progress Bar ── */
+    const progressBar = document.getElementById('progressBar');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressBar.style.width = progress + '%';
+    }
+
+    /* ── Header shadow on scroll ── */
+    const header = document.getElementById('siteHeader');
+    function updateHeader() {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      updateProgress();
+      updateHeader();
+    }, { passive: true });
+
+    /* ── Cursor Glow ── */
+    const cursorGlow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top  = e.clientY + 'px';
+    });
+
+    /* ── Scroll Reveal ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    /* ── Count-up Animation for proof numbers ── */
+    function animateCount(el, target, suffix = '') {
+      const duration = 1800;
+      const start = performance.now();
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out expo
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const current = Math.round(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+
+    const proofObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const nums = e.target.querySelectorAll('.proof-num[data-target]');
+          nums.forEach(el => {
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '+';
+            animateCount(el, target, suffix);
+          });
+          proofObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.proof-bar').forEach(el => proofObserver.observe(el));
+
+    /* ── Smooth parallax on hero video mockup ── */
+    const videoMockup = document.querySelector('.video-mockup');
+    if (videoMockup) {
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const offset = scrollY * 0.08;
+        videoMockup.style.transform = `translateY(${offset}px)`;
+      }, { passive: true });
+    }
+
+    /* ── Preview items: staggered reveal on scroll ── */
+    const previewItems = document.querySelectorAll('.preview-item');
+    const itemObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const items = e.target.querySelectorAll('.preview-item');
+          items.forEach((item, i) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(20px)';
+            setTimeout(() => {
+              item.style.transition = `opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1)`;
+              item.style.opacity = '1';
+              item.style.transform = 'translateX(0)';
+            }, i * 100);
+          });
+          itemObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    const whatRight = document.querySelector('.what-right');
+    if (whatRight) itemObserver.observe(whatRight);
+
+    /* ── Check items staggered ── */
+    const checkObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const items = e.target.querySelectorAll('.check-item');
+          items.forEach((item, i) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-12px)';
+            setTimeout(() => {
+              item.style.transition = `opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1)`;
+              item.style.opacity = '1';
+              item.style.transform = 'translateX(0)';
+            }, i * 90);
+          });
+          checkObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const checkList = document.querySelector('.check-list');
+    if (checkList) checkObserver.observe(checkList);
+  </script>
+
+</body>
+</html>
