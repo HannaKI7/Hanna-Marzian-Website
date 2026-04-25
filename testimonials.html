@@ -478,12 +478,14 @@
   /* ── LOAD ───────────────────────────────────── */
   window.addEventListener('load',()=>setTimeout(()=>document.body.classList.add('loaded'),80));
 
+
   /* ── SCROLL REVEAL ──────────────────────────── */
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('in'); obs.unobserve(e.target);} });
   },{threshold:.08, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
 </script>
+<script src="assets/consent.js"></script>
 
 </body>
 </html>
