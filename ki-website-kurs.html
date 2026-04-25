@@ -112,29 +112,6 @@
       .logo-martin { font-size: 11px; }
     }
 
-    /* ── STICKY BAR ───────────────────────────── */
-    #sticky {
-      position: fixed; top: 64px; left: 0; right: 0; z-index: 200;
-      background: rgba(22,12,5,0.92); backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(216,98,42,0.15);
-      padding: 14px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      transform: translateY(-100%);
-      transition: transform .5s var(--expo);
-    }
-    #sticky.show { transform: translateY(0); }
-    .sticky-text { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--white); }
-    .sticky-text span { color: var(--gold-l); font-style: italic; }
-    .sticky-right { display: flex; align-items: center; gap: 24px; }
-    .sticky-price { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--gold); }
-    .sticky-btn {
-      font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-      background: var(--gold); color: var(--black); padding: 11px 28px;
-      text-decoration: none; cursor: none;
-      transition: background .25s, transform .3s var(--expo);
-    }
-    .sticky-btn:hover { background: var(--gold-l); transform: translateY(-2px); }
-
     /* ── SCROLL REVEAL ────────────────────────── */
     .rv { opacity: 0; transform: translateY(48px); transition: opacity .9s var(--expo), transform .9s var(--expo); }
     .rv.in { opacity: 1; transform: translateY(0); }
@@ -723,8 +700,6 @@
       .day-row { grid-template-columns: 160px 1fr; }
       .fomo-grid { grid-template-columns: 1fr; gap: 48px; }
       .value-total { flex-direction: column; align-items: flex-start; gap: 16px; }
-      #sticky { padding: 14px 24px; }
-      .sticky-text { font-size: 15px; }
     }
     @media (max-width: 1024px) {
       .format-grid { grid-template-columns: 1fr !important; }
@@ -760,8 +735,6 @@
       .price-is { font-size: 64px; }
       footer { padding: 32px 24px; }
       .nav-links-sticky { display: none; }
-      #sticky { padding: 12px 20px; }
-      .sticky-text { display: none; }
       .hosts-grid { grid-template-columns: 1fr !important; }
       /* Warum-anders-Sektion: 2-Spalten → 1-Spalte */
       .warum-section { padding: 80px 24px !important; }
@@ -1151,15 +1124,6 @@
   <!-- Cursor -->
   <div class="cur cur-dot" id="cDot"></div>
   <div class="cur cur-ring" id="cRing"></div>
-
-  <!-- ═══ STICKY BAR ══════════════════════════════════════════════ -->
-  <div id="sticky">
-    <div class="sticky-text">AI WEBSITE CODE · <span>Sofortiger Zugang</span></div>
-    <div class="sticky-right">
-      <span class="sticky-price">nur 349 €</span>
-      <a class="sticky-btn" href="https://copecart.com/products/729ae42f/checkout" target="_blank" rel="noopener">Jetzt anmelden</a>
-    </div>
-  </div>
 
   <!-- ═══ HERO ════════════════════════════════════════════════════ -->
   <section id="hero">
@@ -2138,10 +2102,6 @@
 
     /* ── LOAD ───────────────────────────────── */
     window.addEventListener('load',()=>setTimeout(()=>document.body.classList.add('loaded'),80));
-
-    /* ── STICKY NAV ─────────────────────────── */
-    const sticky = document.getElementById('sticky');
-    window.addEventListener('scroll',()=>sticky.classList.toggle('show', scrollY>window.innerHeight*.6),{passive:true});
 
     /* ── SCROLL REVEAL ──────────────────────── */
     const obs = new IntersectionObserver(entries=>{
