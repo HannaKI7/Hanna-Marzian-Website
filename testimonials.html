@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teilnehmer-Stimmen · AI Website Code · Hanna Marzian</title>
-  <meta name="description" content="Was Teilnehmer des AI Website Code Kurses von Hanna Marzian sagen – echte Ergebnisse, echte Menschen.">
+  <meta name="description" content="Was Teilnehmer des AI Website Code Kurses von Hanna Marzian sagen – echte Ergebnisse, echte Websites.">
 
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="assets/consent.css">
@@ -29,56 +29,7 @@
       --lux:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: var(--sans); background: var(--black); color: var(--cream); overflow-x: hidden; }
-    @media (hover: hover) and (pointer: fine) { body { cursor: none; } }
-
-    /* ── GRAIN ────────────────────────────────── */
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9990; opacity: 0.5;
-    }
-
-    /* ── CURSOR ───────────────────────────────── */
-    .cur { position: fixed; pointer-events: none; z-index: 9999; top: 0; left: 0; display: none; }
-    @media (hover: hover) and (pointer: fine) {
-      .cur { display: block; }
-      .cur-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; transform: translate(-50%,-50%); }
-      .cur-ring { width: 36px; height: 36px; border: 1px solid rgba(216,98,42,0.65); border-radius: 50%; transform: translate(-50%,-50%); transition: width .35s var(--expo), height .35s var(--expo); }
-      body.cx .cur-ring { width: 56px; height: 56px; }
-    }
-
-    /* ── NAV ──────────────────────────────────── */
-    #logo-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 150;
-      background: rgba(22,12,5,0.94); backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(216,98,42,0.12);
-      padding: 0 48px;
-      height: 64px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo-hanna {
-      font-family: var(--serif);
-      font-size: 22px; font-weight: 600; font-style: italic;
-      color: var(--cream); letter-spacing: 0.04em; line-height: 1;
-      text-decoration: none;
-    }
-    .logo-hanna span {
-      display: block; font-size: 9px; font-family: var(--sans);
-      font-style: normal; font-weight: 700; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--gold); margin-top: 2px;
-    }
-    .nav-back {
-      font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--gold); text-decoration: none;
-      display: flex; align-items: center; gap: 8px;
-      transition: color .25s;
-    }
-    .nav-back:hover { color: var(--gold-l); }
-    .nav-back svg { transition: transform .3s var(--expo); }
-    .nav-back:hover svg { transform: translateX(-4px); }
-    @media (max-width: 640px) { #logo-nav { padding: 0 20px; height: 56px; } .logo-hanna { font-size: 18px; } }
+    body { font-family: var(--sans); background: var(--white); color: var(--black); overflow-x: hidden; }
 
     /* ── SCROLL REVEAL ────────────────────────── */
     .rv { opacity: 0; transform: translateY(48px); transition: opacity .9s var(--expo), transform .9s var(--expo); }
@@ -91,30 +42,17 @@
 
     /* ── HERO ─────────────────────────────────── */
     #hero {
-      min-height: 72vh;
-      background: var(--black);
+      background: var(--white);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 140px 48px 80px;
+      padding: 100px 48px 80px;
       text-align: center;
       position: relative; overflow: hidden;
-    }
-    #hero::before {
-      content: '';
-      position: absolute; top: 40%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 800px; height: 500px;
-      background: radial-gradient(ellipse, rgba(216,98,42,0.14) 0%, rgba(216,98,42,0.04) 40%, transparent 65%);
-      pointer-events: none;
-      animation: glowPulse 5s ease-in-out infinite;
-    }
-    @keyframes glowPulse {
-      0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
-      50% { opacity: 0.9; transform: translate(-50%,-50%) scale(1.1); }
+      border-bottom: 1px solid rgba(216,98,42,0.15);
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 9px; font-weight: 800; letter-spacing: 3.5px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 32px;
+      color: var(--gold); margin-bottom: 28px;
       opacity: 0; transform: translateY(20px);
       transition: opacity .8s .1s var(--expo), transform .8s .1s var(--expo);
     }
@@ -123,44 +61,17 @@
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
     .hero-h1 {
       font-family: var(--serif);
-      font-size: clamp(48px, 7vw, 100px);
+      font-size: clamp(44px, 6vw, 88px);
       font-weight: 300; font-style: italic;
       line-height: 1.05; letter-spacing: -0.01em;
-      color: var(--white);
+      color: var(--black);
       max-width: 820px;
       opacity: 0; transform: translateY(40px);
       transition: opacity 1s .25s var(--expo), transform 1s .25s var(--expo);
     }
     body.loaded .hero-h1 { opacity: 1; transform: translateY(0); }
-    .hero-h1 em { font-style: italic; color: var(--gold-l); }
-    .hero-sub {
-      font-size: 15px; font-weight: 400; line-height: 1.8;
-      color: var(--mist); max-width: 540px; margin-top: 28px;
-      opacity: 0; transform: translateY(30px);
-      transition: opacity .9s .45s var(--expo), transform .9s .45s var(--expo);
-    }
-    body.loaded .hero-sub { opacity: 1; transform: translateY(0); }
-    .hero-stats {
-      display: flex; gap: 48px; margin-top: 52px;
-      opacity: 0; transform: translateY(24px);
-      transition: opacity .9s .6s var(--expo), transform .9s .6s var(--expo);
-    }
-    body.loaded .hero-stats { opacity: 1; transform: translateY(0); }
-    .hero-stat { text-align: center; }
-    .hero-stat-num {
-      font-family: var(--serif); font-size: 52px; font-weight: 300; font-style: italic;
-      color: var(--gold-l); line-height: 1;
-    }
-    .hero-stat-label {
-      font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--gray); margin-top: 6px;
-    }
-    .hero-divider { width: 1px; height: 60px; background: rgba(216,98,42,0.25); }
-    @media (max-width: 640px) {
-      #hero { padding: 120px 24px 60px; }
-      .hero-stats { gap: 24px; }
-      .hero-stat-num { font-size: 38px; }
-    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    @media (max-width: 640px) { #hero { padding: 80px 24px 60px; } }
 
     /* ── GOLD TICKER ──────────────────────────── */
     .mq-wrap { overflow: hidden; background: var(--gold); padding: 16px 0; }
@@ -170,9 +81,9 @@
     .mq-item {
       display: inline-flex; align-items: center; gap: 32px; padding: 0 32px;
       font-size: 9px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--black); white-space: nowrap;
+      color: var(--white); white-space: nowrap;
     }
-    .mq-dot { width: 4px; height: 4px; background: rgba(22,12,5,0.4); border-radius: 50%; flex-shrink: 0; }
+    .mq-dot { width: 4px; height: 4px; background: rgba(251,247,242,0.5); border-radius: 50%; flex-shrink: 0; }
 
     /* ── SECTION HEADER ───────────────────────── */
     .sec-eyebrow {
@@ -190,22 +101,28 @@
     }
     .sec-sub {
       font-size: 15px; font-weight: 300; line-height: 1.85;
-      color: var(--mist); margin-top: 16px; max-width: 600px;
+      color: var(--dark); margin-top: 16px; max-width: 600px;
     }
 
     /* ── TESTIMONIAL MARQUEE ──────────────────── */
     .tmq-section {
-      background: var(--black);
+      background: var(--white);
       padding: 80px 0 60px;
       overflow: hidden; position: relative;
+      border-top: 1px solid rgba(216,98,42,0.1);
     }
-    .tmq-header { padding: 0 48px; margin-bottom: 48px; }
+    .tmq-header {
+      padding: 0 48px; margin-bottom: 48px;
+      text-align: center;
+    }
+    .tmq-header .sec-eyebrow { justify-content: center; }
+    .tmq-header .sec-eyebrow::before { display: none; }
     .tmq-section::before, .tmq-section::after {
       content: ''; position: absolute; top: 0; bottom: 0;
       width: 160px; z-index: 2; pointer-events: none;
     }
-    .tmq-section::before { left: 0; background: linear-gradient(90deg, var(--black) 0%, transparent 100%); }
-    .tmq-section::after  { right: 0; background: linear-gradient(-90deg, var(--black) 0%, transparent 100%); }
+    .tmq-section::before { left: 0; background: linear-gradient(90deg, var(--white) 0%, transparent 100%); }
+    .tmq-section::after  { right: 0; background: linear-gradient(-90deg, var(--white) 0%, transparent 100%); }
     .tmq-track {
       display: flex; gap: 20px; width: max-content; margin-bottom: 20px;
       will-change: transform; transform: translateZ(0); backface-visibility: hidden;
@@ -220,17 +137,15 @@
     .tmq-img {
       height: 300px; width: auto;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(0,0,0,0.08);
       object-fit: cover;
-      transition: transform .4s var(--expo), border-color .3s;
+      transition: transform .4s var(--expo), box-shadow .4s;
     }
-    .tmq-img:hover { transform: scale(1.04); border-color: rgba(216,98,42,0.45); }
+    .tmq-img:hover { transform: scale(1.04); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
     @media (max-width: 640px) { .tmq-img { height: 220px; } .tmq-header { padding: 0 24px; } }
 
     /* ── MASONRY GRID ─────────────────────────── */
-    .masonry-section {
-      padding: 100px 48px;
-    }
+    .masonry-section { padding: 100px 48px; }
     .masonry-header { max-width: 1200px; margin: 0 auto 64px; }
     .masonry-grid {
       max-width: 1200px; margin: 0 auto;
@@ -241,7 +156,7 @@
       border-radius: 14px; overflow: hidden;
       transition: transform .4s var(--expo), box-shadow .4s;
     }
-    .masonry-item:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.3); }
+    .masonry-item:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.12); }
     .masonry-item img { width: 100%; display: block; border-radius: 14px; }
     @media (max-width: 1024px) { .masonry-grid { columns: 3; } }
     @media (max-width: 768px)  { .masonry-grid { columns: 2; } .masonry-section { padding: 72px 24px; } }
@@ -249,16 +164,10 @@
 
     /* ── PROJECT GRID ─────────────────────────── */
     .proj-section {
-      background: var(--charcoal);
+      background: var(--cream);
       padding: 100px 48px;
       position: relative; overflow: hidden;
-    }
-    .proj-section::before {
-      content: 'ERGEBNISSE';
-      position: absolute; bottom: -40px; right: -20px;
-      font-family: var(--serif); font-size: 180px; font-weight: 700;
-      color: rgba(216,98,42,0.04); pointer-events: none; user-select: none;
-      letter-spacing: -6px;
+      border-top: 1px solid rgba(216,98,42,0.12);
     }
     .proj-header { max-width: 1200px; margin: 0 auto 64px; position: relative; z-index: 1; }
     .proj-grid {
@@ -270,12 +179,11 @@
     }
     .proj-card {
       border-radius: 14px; overflow: hidden;
-      border: 1px solid rgba(216,98,42,0.12);
-      background: rgba(22,12,5,0.4);
+      border: 1px solid rgba(0,0,0,0.08);
+      background: var(--white);
       transition: transform .4s var(--expo), border-color .3s, box-shadow .4s;
-      position: relative;
     }
-    .proj-card:hover { transform: translateY(-8px); border-color: rgba(216,98,42,0.4); box-shadow: 0 28px 56px rgba(0,0,0,0.4); }
+    .proj-card:hover { transform: translateY(-8px); border-color: rgba(216,98,42,0.35); box-shadow: 0 28px 56px rgba(0,0,0,0.12); }
     .proj-card a { display: block; text-decoration: none; }
     .proj-card img { width: 100%; display: block; aspect-ratio: 16/10; object-fit: cover; object-position: top; }
     .proj-card-label {
@@ -284,15 +192,15 @@
     }
     .proj-card-url {
       font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; color: var(--gold-l);
+      text-transform: uppercase; color: var(--gold);
     }
-    .proj-card-icon { color: var(--gold); opacity: 0.6; transition: opacity .25s, transform .3s var(--expo); }
+    .proj-card-icon { color: var(--gold); opacity: 0.5; transition: opacity .25s, transform .3s var(--expo); }
     .proj-card:hover .proj-card-icon { opacity: 1; transform: translate(3px,-3px); }
     .proj-card-nolabel { padding: 16px 20px; }
     .proj-card-tag {
       display: inline-block;
       font-size: 8px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gold); background: rgba(216,98,42,0.12); border: 1px solid rgba(216,98,42,0.2);
+      color: var(--gold); background: rgba(216,98,42,0.08); border: 1px solid rgba(216,98,42,0.2);
       padding: 4px 10px; border-radius: 4px;
     }
     @media (max-width: 1024px) { .proj-grid { grid-template-columns: repeat(2,1fr); } }
@@ -301,7 +209,7 @@
     /* ── CTA ──────────────────────────────────── */
     #cta {
       background: var(--black);
-      padding: 120px 48px;
+      padding: 100px 48px;
       text-align: center;
       position: relative; overflow: hidden;
     }
@@ -310,25 +218,21 @@
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%,-50%);
       width: 700px; height: 500px;
-      background: radial-gradient(ellipse, rgba(216,98,42,0.1) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(216,98,42,0.12) 0%, transparent 65%);
       pointer-events: none;
     }
-    .cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .cta-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
     .cta-eyebrow {
       font-size: 9px; font-weight: 800; letter-spacing: 3.5px; text-transform: uppercase;
       color: var(--gold); margin-bottom: 24px; display: block;
     }
-    .cta-h2 {
+    .cta-deadline {
       font-family: var(--serif);
-      font-size: clamp(32px, 4vw, 60px);
+      font-size: clamp(32px, 4.5vw, 68px);
       font-weight: 300; font-style: italic;
-      line-height: 1.1; color: var(--white); margin-bottom: 16px;
+      line-height: 1.1; color: var(--white); margin-bottom: 40px;
     }
-    .cta-h2 em { font-style: italic; color: var(--gold-l); }
-    .cta-sub {
-      font-size: 15px; font-weight: 300; color: var(--mist);
-      line-height: 1.8; margin-bottom: 48px;
-    }
+    .cta-deadline em { font-style: normal; color: var(--gold-l); font-weight: 600; }
     .cta-btn {
       display: inline-flex; align-items: center; gap: 12px;
       font-family: var(--sans); font-size: 11px; font-weight: 800;
@@ -358,68 +262,24 @@
     /* ── GOLD DIVIDER ─────────────────────────── */
     .gold-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(216,98,42,0.4) 30%, rgba(216,98,42,0.4) 70%, transparent);
+      background: linear-gradient(90deg, transparent, rgba(216,98,42,0.35) 30%, rgba(216,98,42,0.35) 70%, transparent);
     }
-
-    /* ── FLOAT ANIM ───────────────────────────── */
-    @keyframes floatUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
-    .float-a { animation: floatUp 8s ease-in-out infinite; }
-    .float-b { animation: floatUp 11s ease-in-out infinite; animation-delay: -5s; }
   </style>
 </head>
 <body>
-
-<!-- CURSOR -->
-<div class="cur" aria-hidden="true">
-  <div class="cur-dot" id="cDot"></div>
-  <div class="cur-ring" id="cRing"></div>
-</div>
-
-<!-- ═══ NAV ═════════════════════════════════════════════════════════ -->
-<nav id="logo-nav">
-  <a href="index.html" class="logo-hanna">
-    Hanna
-    <span>Marzian</span>
-  </a>
-  <a href="ki-website-kurs.html" class="nav-back">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-    Zurück zum Kurs
-  </a>
-</nav>
 
 <!-- ═══ HERO ═════════════════════════════════════════════════════════ -->
 <section id="hero">
   <span class="hero-eyebrow">
     <span class="dot"></span>
-    AI Website Code · Teilnehmer-Stimmen
+    AI Website Code · Kundenstimmen
     <span class="dot"></span>
   </span>
 
   <h1 class="hero-h1">
-    Was echte Menschen<br>
+    Was unsere Kunden<br>
     <em>damit gebaut haben.</em>
   </h1>
-
-  <p class="hero-sub">
-    Keine Werbeversprechen. Nur echte Screenshots, echte Teilnehmer, echte Websites. Sieht selbst, was in wenigen Tagen möglich ist.
-  </p>
-
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">31</div>
-      <div class="hero-stat-label">Kundenstimmen</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">6</div>
-      <div class="hero-stat-label">Live-Websites</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">0</div>
-      <div class="hero-stat-label">Vorkenntnisse nötig</div>
-    </div>
-  </div>
 </section>
 
 <!-- ═══ GOLD TICKER ══════════════════════════════════════════════════ -->
@@ -444,8 +304,8 @@
 <section class="tmq-section">
   <div class="tmq-header">
     <div class="sec-eyebrow rv">Stimmen während des Kurses</div>
-    <h2 class="sec-h2 rv d1" style="color: var(--white);">Die ersten Nachrichten kamen <em style="color: var(--gold-l); font-style: italic;">innerhalb von Stunden.</em></h2>
-    <p class="sec-sub rv d2">Noch während der Live-Sessions schrieben Teilnehmer ihre ersten Ergebnisse in den Gruppen-Chat.</p>
+    <h2 class="sec-h2 rv d1" style="color: var(--black);">Die ersten Nachrichten kamen <em style="color: var(--gold); font-style: italic;">innerhalb von Stunden.</em></h2>
+    <p class="sec-sub rv d2" style="margin: 16px auto 0; text-align: center;">Noch während der Live-Sessions schrieben Teilnehmer ihre ersten Ergebnisse in den Gruppen-Chat.</p>
   </div>
 
   <!-- Row 1 -->
@@ -485,10 +345,10 @@
 <div class="gold-divider"></div>
 
 <!-- ═══ ABSCHLUSS-STIMMEN (MASONRY) ═════════════════════════════════ -->
-<section class="masonry-section" style="background: var(--charcoal);">
+<section class="masonry-section" style="background: var(--white);">
   <div class="masonry-header">
     <div class="sec-eyebrow rv">Nach dem Kurs</div>
-    <h2 class="sec-h2 rv d1" style="color: var(--white);">Was Teilnehmer am <em style="color: var(--gold-l); font-style: italic;">Ende sagten.</em></h2>
+    <h2 class="sec-h2 rv d1" style="color: var(--black);">Was Teilnehmer am <em style="color: var(--gold); font-style: italic;">Ende sagten.</em></h2>
     <p class="sec-sub rv d2">Abschluss-Feedback aus den Q&A-Sessions, der Gruppe und direkt nach dem Kurs.</p>
   </div>
   <div class="masonry-grid">
@@ -516,11 +376,11 @@
 
 <div class="gold-divider"></div>
 
-<!-- ═══ ECHTE ERGEBNISSE (PROJECT GRID) ══════════════════════════════ -->
+<!-- ═══ LIVE EXAMPLES (PROJECT GRID) ══════════════════════════════════ -->
 <section class="proj-section">
   <div class="proj-header">
-    <div class="sec-eyebrow rv">Echte Ergebnisse</div>
-    <h2 class="sec-h2 rv d1" style="color: var(--white);">Websites, die <em style="color: var(--gold-l); font-style: italic;">wirklich live sind.</em></h2>
+    <div class="sec-eyebrow rv">Ergebnisse</div>
+    <h2 class="sec-h2 rv d1" style="color: var(--black);">Einige Live Beispiele der <em style="color: var(--gold); font-style: italic;">vielen Ergebnisse.</em></h2>
     <p class="sec-sub rv d2">Alles gebaut von absoluten Technik-Anfängern, mit KI. Kein Code-Vorwissen, keine Vorlage.</p>
   </div>
 
@@ -576,7 +436,7 @@
     </div>
 
     <div class="proj-card rv d5">
-      <img src="Testimonials/KI Website Kurs/bewusstseinsarchitektur.png" alt="Bewusstseinsarchitektur Website" style="cursor:default;">
+      <img src="Testimonials/KI Website Kurs/bewusstseinsarchitektur.png" alt="Bewusstseinsarchitektur Website">
       <div class="proj-card-nolabel">
         <span class="proj-card-tag">Bald online</span>
       </div>
@@ -587,18 +447,18 @@
 <!-- ═══ CTA ═══════════════════════════════════════════════════════════ -->
 <section id="cta">
   <div class="cta-inner">
-    <span class="cta-eyebrow rv">Du willst das auch?</span>
-    <h2 class="cta-h2 rv d1">Dein Angebot verdient eine Website, <em>die wirklich verkauft.</em></h2>
-    <p class="cta-sub rv d2">
-      Was du hier gesehen hast, waren echte Ergebnisse von echten Menschen ohne Technik-Vorwissen. Mit dem richtigen System baust du deine Website in Stunden, nicht Wochen.
-    </p>
-    <div class="rv d3">
+    <span class="cta-eyebrow rv">Nächster Kurs</span>
+    <h2 class="cta-deadline rv d1">
+      Anmeldung möglich bis<br>
+      <em>Montag, 27.04.28 · 18 Uhr</em>
+    </h2>
+    <div class="rv d2">
       <a class="cta-btn" href="ki-website-kurs.html">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        Zum Kurs
+        Jetzt anmelden
       </a>
     </div>
-    <p class="cta-note rv d4">Einmalig 349 € · oder 3 Raten je 120 €</p>
+    <p class="cta-note rv d3">Einmalig 349 € · oder 3 Raten je 120 €</p>
   </div>
 </section>
 
@@ -610,26 +470,11 @@
     <a href="/impressum.html" class="footer-link">Impressum</a>
     <a href="/datenschutz.html" class="footer-link">Datenschutz</a>
     <a href="/agb.html" class="footer-link">AGB</a>
-    <button id="consent-reopen" style="background:none;border:none;font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(122,106,90,.35);text-decoration:underline;cursor:pointer;">Cookie-Einstellungen</button>
+    <button id="consent-reopen" style="background:none;border:none;font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(255,255,255,.35);text-decoration:underline;cursor:pointer;">Cookie-Einstellungen</button>
   </div>
 </footer>
 
 <script>
-  /* ── CURSOR ─────────────────────────────────── */
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const dot = document.getElementById('cDot'), ring = document.getElementById('cRing');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove', e => {
-      mx=e.clientX; my=e.clientY;
-      dot.style.left=mx+'px'; dot.style.top=my+'px';
-    });
-    (function loop(){ rx+=(mx-rx)*.28; ry+=(my-ry)*.28; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
-    document.querySelectorAll('a,button,.proj-card').forEach(el=>{
-      el.addEventListener('mouseenter',()=>document.body.classList.add('cx'));
-      el.addEventListener('mouseleave',()=>document.body.classList.remove('cx'));
-    });
-  }
-
   /* ── LOAD ───────────────────────────────────── */
   window.addEventListener('load',()=>setTimeout(()=>document.body.classList.add('loaded'),80));
 
