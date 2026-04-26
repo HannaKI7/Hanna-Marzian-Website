@@ -123,6 +123,9 @@
     }
     .tmq-section::before { left: 0; background: linear-gradient(90deg, var(--white) 0%, transparent 100%); }
     .tmq-section::after  { right: 0; background: linear-gradient(-90deg, var(--white) 0%, transparent 100%); }
+    @media (max-width: 640px) {
+      .tmq-section::before, .tmq-section::after { width: 48px; }
+    }
     .tmq-track {
       display: flex; gap: 20px; width: max-content; margin-bottom: 20px;
       will-change: transform; transform: translateZ(0); backface-visibility: hidden;
