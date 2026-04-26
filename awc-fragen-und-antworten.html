@@ -202,6 +202,17 @@
       padding-top: 20px;
     }
     .faq-a-inner strong { color: var(--gold); font-weight: 600; }
+    .faq-category {
+      display: flex; align-items: center; gap: 16px;
+      margin: 52px 0 16px;
+      font-size: 9px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .faq-category::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(216,98,42,0.3), transparent);
+    }
+    .faq-category:first-child { margin-top: 0; }
     @media (max-width: 640px) {
       #faq { padding: 72px 24px; }
       .faq-q { padding: 22px 20px; font-size: 14px; }
@@ -334,16 +345,6 @@
       <em>ehrlich beantwortet.</em>
     </h1>
 
-    <p class="hero-sub">
-      Kein Tech-Kauderwelsch, kein Verkaufsgerede. Hier bekommst du klare Antworten auf die Fragen, die ich selbst hätte, bevor ich buche.
-    </p>
-
-    <div class="hero-cta">
-      <a class="btn-gold" href="https://copecart.com/products/729ae42f/checkout" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        Jetzt anmelden · 349 €
-      </a>
-    </div>
 
   </div>
 </section>
@@ -396,7 +397,7 @@
 
     <div class="faq-list">
 
-      <!-- ── EINSTIEG ───────────────────────────── -->
+      <div class="faq-category rv">Einstieg &amp; Grundlagen</div>
       <div class="faq-item rv">
         <button class="faq-q" aria-expanded="false">
           Brauche ich technische Vorkenntnisse?
@@ -447,7 +448,7 @@
         </div></div>
       </div>
 
-      <!-- ── DAS ERGEBNIS ───────────────────────── -->
+      <div class="faq-category rv">Das Ergebnis</div>
       <div class="faq-item rv">
         <button class="faq-q" aria-expanded="false">
           Wirklich nur ein Prompt?
@@ -528,7 +529,7 @@
         <a class="btn-outline-dark" href="testimonials.html">Teilnehmer-Stimmen ansehen</a>
       </div>
 
-      <!-- ── TECHNIK & HOSTING ──────────────────── -->
+      <div class="faq-category rv">Technik &amp; Hosting</div>
       <div class="faq-item rv">
         <button class="faq-q" aria-expanded="false">
           Wo wird die Website gehostet und wie wird sie live geschaltet?
@@ -571,7 +572,7 @@
         </div></div>
       </div>
 
-      <!-- ── DER KURS ───────────────────────────── -->
+      <div class="faq-category rv">Der Kurs</div>
       <div class="faq-item rv">
         <button class="faq-q" aria-expanded="false">
           Wie läuft AI WEBSITE CODE genau ab?
