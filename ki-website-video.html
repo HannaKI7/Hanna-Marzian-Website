@@ -300,7 +300,19 @@
     <!-- ── VIDEO ────────────────────────────── -->
     <div class="video-wrap">
 
-      <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/5bf7d9c1045a456e82f8f7a4a6f96850" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+      <div id="loom-wrap" style="position:relative;padding-bottom:56.25%;height:0;background:var(--mist);border:2px dashed rgba(216,98,42,0.25);">
+        <div id="loom-shield" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.5"><circle cx="26" cy="26" r="25" stroke="#D8622A" stroke-width="2"/><polygon points="21,16 38,26 21,36" fill="#D8622A"/></svg>
+          <p style="font-size:13px;color:var(--gray);max-width:380px;line-height:1.6;">Dieses Video wird über <strong style="color:var(--black)">Loom</strong> bereitgestellt (externer Anbieter). Durch Klick auf „Video laden" akzeptierst du, dass Loom Daten verarbeiten kann.</p>
+          <button onclick="loadLoomVideo()" style="background:var(--gold);color:#fff;border:none;padding:12px 28px;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Video laden</button>
+        </div>
+      </div>
+      <script>
+        function loadLoomVideo() {
+          const wrap = document.getElementById('loom-wrap');
+          wrap.innerHTML = '<iframe src="https://www.loom.com/embed/5bf7d9c1045a456e82f8f7a4a6f96850" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
+        }
+      </script>
 
     </div>
 
@@ -312,7 +324,7 @@
 
     <!-- ── CTA ──────────────────────────────── -->
     <div class="cta-wrap">
-      <a href="https://www.hannamarzian.com/ki-website-kurs" class="btn-cta">
+      <a href="https://www.hannamarzian.com/ai-website-code" class="btn-cta">
         Jetzt zum Kurs → Mehr Infos
       </a>
       <span class="btn-note">Einmalzahlung · Sofortiger Zugang · Ratenzahlung möglich</span>

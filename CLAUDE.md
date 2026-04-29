@@ -1,7 +1,7 @@
 # Hanna Brand – Kooperations-Kontext
 
 ## Trigger
-Wenn Martin schreibt **"hanna"**, **"hanna projekt"**, **"hanna brand"**, **"@hanna.gpt"** → diesen Kontext aktivieren und kurz bestätigen: "Hanna Brand geladen."
+Wenn Martin schreibt **"hanna"**, **"hanna projekt"**, **"hanna brand"**, **"hanna ki"**, **"@hanna.gpt"**, **"lade projekt hanna"** → diesen Kontext aktivieren und kurz bestätigen: "Hanna geladen."
 
 ---
 
@@ -40,6 +40,17 @@ Nicht KI-Tipps – sondern die Rückkehr zur mentalen Gesundheit durch technolog
 - Hannas Publikum als Hebel für Martins Instagram-Wachstum
 - Content muss für ein Creator-Publikum funktionieren, das über Hanna zu Martin kommt
 - Synergie: Martin liefert die technische Tiefe, Hanna die Reichweite
+
+---
+
+## Branding-Entscheidungen
+
+### Hintergründe: Weiß bevorzugt (Stand März 2026)
+- **Primärer Hintergrund:** Reinweiß (`#FFFFFF`) – kein dunkles Design mehr
+- Cover, Footer, Cards, Komponenten-Boxen und Instagram-Grid-Zellen: alle auf hell umgestellt
+- Orange (`#D8622A`) wirkt auf weißem Hintergrund stärker – bewusst so gewollt
+- Dunkle Brauntöne (`--warm-dark`, `--warm-black`) nur noch als Schriftfarbe oder Akzent, nicht als Flächenfarbe
+- Dokumentations-Beispiele im Style Guide (Farb-Kacheln, Logo-Varianten) dürfen weiterhin dunkle Varianten zeigen
 
 ---
 
