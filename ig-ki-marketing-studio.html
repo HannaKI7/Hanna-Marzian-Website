@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Studio · Hanna Marzian</title>
+  <meta name="description" content="10 spezialisierte KI-Tools für deinen kompletten Instagram-Workflow. Von der Hook über die Caption bis zum recycelten Post. Als Claude Skills oder ChatGPT Custom GPTs. Einmalig 49 €.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/consent.css">
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --orange: #D8622A;
+      --orange-mid: #E8894E;
+      --orange-pale: #F5CFA8;
+      --orange-deep: #B84E1E;
+      --warm-black: #160C05;
+      --warm-dark: #2A1608;
+      --warm-brown: #472B18;
+      --mid-brown: #6B4530;
+      --tan: #A88960;
+      --sand: #D0B896;
+      --beige: #EDE4D7;
+      --cream: #F6F0E6;
+      --off-white: #FBF7F2;
+      --warm-gray: #7A6A5A;
+      --font-heading: 'Cormorant', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-accent: 'Montserrat', sans-serif;
+      --nav-h: 72px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: #ffffff;
+      color: var(--warm-black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ============================================================
+       GRAIN TEXTURE OVERLAY (Hero)
+    ============================================================ */
+    .grain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .eyebrow {
+      font-family: var(--font-accent);
+      font-size: clamp(0.6rem, 1vw, 0.75rem);
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow--light { color: var(--orange-mid); }
+    .eyebrow--tan { color: var(--tan); }
+
+    h1.hero-title {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(3rem, 7vw, 7rem);
+      line-height: 0.95;
+      color: var(--warm-black);
+      letter-spacing: -0.02em;
+    }
+
+    h2.section-title {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+      line-height: 1.1;
+      color: var(--warm-black);
+      letter-spacing: -0.01em;
+    }
+
+    h2.section-title--light { color: var(--off-white); }
+    h2.section-title--cream { color: var(--cream); }
+
+    .italic-orange { font-style: italic; color: var(--orange); }
+    .italic-orange-mid { font-style: italic; color: var(--orange-mid); }
+
+    .hero-sub {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--warm-brown);
+      margin: 1.25rem 0 0;
+      line-height: 1.3;
+    }
+
+    .lead {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.75;
+      color: var(--warm-brown);
+      max-width: 60ch;
+    }
+
+    .lead--light { color: var(--sand); }
+    .lead--tan { color: var(--tan); }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+    .container--wide { max-width: 1400px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+    .container--narrow { max-width: 800px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(.25,.8,.25,1), transform 0.75s cubic-bezier(.25,.8,.25,1);
+    }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal--delay-1 { transition-delay: 0.1s; }
+    .reveal--delay-2 { transition-delay: 0.2s; }
+    .reveal--delay-3 { transition-delay: 0.3s; }
+    .reveal--delay-4 { transition-delay: 0.4s; }
+
+    .line-reveal {
+      overflow: hidden;
+    }
+    .line-reveal__inner {
+      display: block;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.9s cubic-bezier(.77,0,.18,1);
+    }
+    .line-reveal.revealed .line-reveal__inner { transform: scaleX(1); }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      border-radius: 1px;
+      font-family: var(--font-accent);
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      padding: 0.85rem 2rem;
+    }
+    .btn-primary:hover { background: var(--orange-deep); box-shadow: 0 8px 24px rgba(216,98,42,0.35); }
+
+    .btn-dark {
+      background: var(--warm-black);
+      color: var(--off-white);
+      padding: 0.85rem 2rem;
+    }
+    .btn-dark:hover { background: var(--warm-dark); box-shadow: 0 8px 24px rgba(22,12,5,0.35); }
+
+    .btn--nav { font-size: 0.7rem; letter-spacing: 2px; padding: 0.6rem 1.4rem; }
+
+    .btn--large { font-size: 0.75rem; letter-spacing: 2px; min-width: 240px; padding: 1.1rem 2.2rem; }
+
+    .btn__main { font-size: 0.75rem; letter-spacing: 2px; }
+    .btn__sub { font-size: 0.6rem; letter-spacing: 1.5px; opacity: 0.7; font-weight: 600; margin-top: 2px; }
+
+    /* Ripple */
+    .btn .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: scale(0);
+      animation: ripple-anim 0.55s linear;
+      pointer-events: none;
+    }
+    @keyframes ripple-anim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ============================================================
+       DUAL CTA
+    ============================================================ */
+    .dual-cta {
+      display: flex;
+      align-items: stretch;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .dual-cta__or {
+      font-family: var(--font-accent);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      align-self: center;
+    }
+
+    /* ============================================================
+       TRUST BAR
+    ============================================================ */
+    .trust-bar {
+      margin-top: 1.25rem;
+      font-family: var(--font-accent);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0;
+      transition: background 0.35s, backdrop-filter 0.35s, box-shadow 0.35s;
+    }
+
+    .nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(72,43,24,0.08);
+    }
+
+    .nav__inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Dual Logo Nav */
+    .nav__logos {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .nav__logo-hanna {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--warm-black);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+    .nav__logo-hanna span {
+      display: block;
+      font-size: 0.5rem;
+      font-family: var(--font-accent);
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-top: 2px;
+    }
+
+    .nav__logo-x {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .nav__logo-martin {
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--warm-black);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      line-height: 1;
+      text-align: right;
+    }
+    .nav__logo-martin span {
+      display: block;
+      font-size: 0.5rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--warm-gray);
+      margin-top: 3px;
+    }
+
+    .nav__cta-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav__price-hint {
+      font-family: var(--font-accent);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    /* ============================================================
+       SECTION DIVIDER (SVG WAVE)
+    ============================================================ */
+    .wave-divider {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .wave-divider svg { display: block; width: 100%; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      background: #ffffff;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero__bg-blob-1 {
+      position: absolute;
+      top: -15%;
+      right: -10%;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(ellipse at 60% 40%, rgba(216,98,42,0.11) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero__bg-blob-2 {
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 30vw;
+      height: 30vw;
+      background: radial-gradient(ellipse, rgba(216,98,42,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem clamp(1.25rem, 5vw, 3rem);
+      display: grid;
+      grid-template-columns: 60fr 40fr;
+      align-items: center;
+      gap: 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__content { position: relative; }
+
+    .hero__title { margin-bottom: 1.75rem; }
+
+    .hero__lead {
+      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      line-height: 1.75;
+      color: var(--warm-brown);
+      max-width: 55ch;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero__negation {
+      margin-top: 1rem;
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--warm-gray);
+    }
+
+    .hero__meta {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      border-top: 1px solid rgba(71,43,24,0.12);
+      padding-top: 2rem;
+    }
+
+    .hero__meta-item {}
+    .hero__meta-value {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--warm-black);
+      display: block;
+      line-height: 1.1;
+    }
+    .hero__meta-label {
+      font-family: var(--font-accent);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ============================================================
+       HERO TOOL PILLS
+    ============================================================ */
+    .hero__visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .tool-pills-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      padding: 2.25rem 2rem;
+      background: rgba(216,98,42,0.04);
+      border: 1px solid rgba(216,98,42,0.14);
+      border-radius: 3px;
+      width: 100%;
+      max-width: 360px;
+      position: relative;
+    }
+
+    .tool-pills-wrap::before {
+      content: '10 Tools im Studio';
+      display: block;
+      font-family: var(--font-accent);
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .tp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(216,98,42,0.18);
+      border-radius: 100px;
+      font-family: var(--font-accent);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--warm-black);
+      background: #fff;
+      width: fit-content;
+      white-space: nowrap;
+      animation: tp-float ease-in-out infinite;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .tp:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 16px rgba(216,98,42,0.15);
+    }
+
+    .tp__dot {
+      width: 6px; height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: tp-blink 2s ease-in-out infinite;
+    }
+
+    @keyframes tp-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-5px); }
+    }
+
+    @keyframes tp-blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+
+    /* Organic offsets + individual speeds */
+    .tp--1  { animation-duration: 3.1s; animation-delay: 0.0s; margin-left: 0rem; }
+    .tp--2  { animation-duration: 2.7s; animation-delay: 0.4s; margin-left: 1.5rem; }
+    .tp--3  { animation-duration: 3.5s; animation-delay: 0.8s; margin-left: 0.5rem; }
+    .tp--4  { animation-duration: 2.9s; animation-delay: 0.2s; margin-left: 2rem; }
+    .tp--5  { animation-duration: 3.3s; animation-delay: 1.0s; margin-left: 0.8rem; }
+    .tp--6  { animation-duration: 2.6s; animation-delay: 0.6s; margin-left: 1.2rem; }
+    .tp--7  { animation-duration: 3.8s; animation-delay: 0.3s; margin-left: 0rem; }
+    .tp--8  { animation-duration: 3.0s; animation-delay: 0.7s; margin-left: 1.8rem; }
+    .tp--9  { animation-duration: 2.8s; animation-delay: 0.9s; margin-left: 0.4rem; }
+    .tp--10 { animation-duration: 3.4s; animation-delay: 0.1s; margin-left: 1rem; }
+
+    /* ============================================================
+       SECTION BASE
+    ============================================================ */
+    .section { padding: clamp(4rem, 8vw, 7rem) 0; position: relative; }
+    .section--dark { background: var(--warm-dark); }
+    .section--cream { background: #ffffff; }
+    .section--off-white { background: #ffffff; }
+    .section--warm-black { background: var(--warm-black); }
+
+    /* ============================================================
+       DEKOR-TYPO (Hintergrund-Text)
+    ============================================================ */
+    .bg-typo {
+      position: absolute;
+      font-family: var(--font-heading);
+      font-size: 15vw;
+      font-weight: 400;
+      color: currentColor;
+      opacity: 0.04;
+      pointer-events: none;
+      white-space: nowrap;
+      user-select: none;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      letter-spacing: -0.03em;
+    }
+
+    /* ============================================================
+       PROBLEM SECTION
+    ============================================================ */
+    .problem__header { margin-bottom: 3rem; }
+    .problem__header .section-title { color: var(--off-white); }
+
+    .problem__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+    }
+
+    .problem-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      position: relative;
+      transition: background 0.3s, transform 0.3s;
+      border-radius: 2px;
+      cursor: default;
+    }
+
+    .problem-card:hover {
+      background: rgba(255,255,255,0.07);
+      transform: rotate(0.3deg) translateY(-3px);
+    }
+
+    .problem-card__icon {
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .problem-card__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 2vw, 1.75rem);
+      font-weight: 400;
+      color: var(--off-white);
+      margin-bottom: 0.85rem;
+      line-height: 1.2;
+    }
+
+    .problem-card__text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--sand);
+    }
+
+    .brand-statement {
+      margin-top: 3rem;
+      padding: 2rem 2rem 2rem 2.5rem;
+      border-left: 3px solid var(--orange);
+      background: rgba(216,98,42,0.07);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .brand-statement p {
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      font-weight: 400;
+      color: var(--sand);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       SOLUTION SECTION
+    ============================================================ */
+    .solution__inner {
+      display: grid;
+      grid-template-columns: 45fr 55fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .solution__visual {
+      background: var(--warm-dark);
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .solution__visual-dots {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .sol-dot {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: sol-drift 6s ease-in-out infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes sol-drift {
+      0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+      33% { transform: translate(8px, -12px); opacity: 0.7; }
+      66% { transform: translate(-5px, 6px); opacity: 0.3; }
+    }
+
+    .solution__visual-text {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .solution__visual-text .line1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .solution__visual-text .line2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--orange);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .solution__visual-text .byline {
+      margin-top: 1.25rem;
+      font-family: var(--font-accent);
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--tan);
+    }
+
+    .solution__text { padding-top: 0.5rem; }
+    .solution__text .lead { margin: 1.75rem 0 2rem; }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .checklist li {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--warm-brown);
+    }
+
+    .checklist li::before {
+      content: '✓';
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================================================
+       TOOLS SECTION – DARK THEME
+    ============================================================ */
+    #tools { background: var(--warm-black); }
+    .tools__header { margin-bottom: 1rem; }
+    .tools__header .section-title { color: var(--off-white); }
+    .tools__lead {
+      margin: 1.5rem 0 3rem;
+      color: var(--tan);
+    }
+
+    .tools__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .tool-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(216,98,42,0.12);
+      padding: clamp(1.5rem, 2.5vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+      border-radius: 1px;
+      transition: background 0.4s, border-color 0.4s, transform 0.3s, box-shadow 0.4s;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(32px);
+    }
+
+    .tool-card.card-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scan-line sweep on hover */
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+      transition: left 0.6s ease;
+      z-index: 3;
+    }
+    .tool-card:hover::before { left: 100%; }
+
+    /* Left accent bar */
+    .tool-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 0;
+      background: var(--orange);
+      transition: height 0.4s cubic-bezier(.25,.8,.25,1);
+    }
+    .tool-card:hover::after { height: 100%; }
+
+    .tool-card:hover {
+      background: rgba(216,98,42,0.07);
+      border-color: rgba(216,98,42,0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(216,98,42,0.18), 0 0 0 1px rgba(216,98,42,0.2);
+    }
+
+    .tool-card__num {
+      font-family: var(--font-heading);
+      font-size: clamp(4rem, 7vw, 7rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--orange);
+      opacity: 0.07;
+      position: absolute;
+      top: -0.5rem;
+      right: 1rem;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 0.4s;
+    }
+
+    .tool-card:hover .tool-card__num { opacity: 0.18; }
+
+    .tool-card__phase {
+      font-family: var(--font-accent);
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tool-card__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+      font-weight: 400;
+      color: var(--off-white);
+      margin-bottom: 0.85rem;
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tool-card__text {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--tan);
+      position: relative;
+      z-index: 1;
+    }
+
+    .tool-card__example {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: rgba(0,0,0,0.3);
+      border-left: 2px solid var(--orange);
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.3s, max-height 0.4s cubic-bezier(.25,.8,.25,1);
+    }
+
+    .tool-card:hover .tool-card__example {
+      opacity: 1;
+      max-height: 120px;
+    }
+
+    .tool-card__example-label {
+      font-family: var(--font-accent);
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange-mid);
+      margin-bottom: 0.35rem;
+    }
+
+    .tool-card__example-text {
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--sand);
+    }
+
+    @media (max-width: 768px) {
+      .tools__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       CTA BRIDGE
+    ============================================================ */
+    .bridge__inner {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .bridge__inner h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      color: var(--warm-black);
+      margin-bottom: 0.85rem;
+      line-height: 1.15;
+    }
+
+    .bridge__inner .lead { margin: 0 auto 2rem; }
+    .bridge__inner .dual-cta { justify-content: center; }
+    .bridge__inner .trust-bar { text-align: center; }
+
+    /* ============================================================
+       HOW IT WORKS
+    ============================================================ */
+    .workflow__inner {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .workflow-step {}
+
+    .workflow-step__num {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--orange);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .workflow-step__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400;
+      color: var(--warm-black);
+      margin-bottom: 0.6rem;
+    }
+
+    .workflow-step__text {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--warm-brown);
+    }
+
+    .workflow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1.5rem;
+    }
+
+    .workflow-arrow svg {
+      width: 40px;
+      stroke: var(--orange);
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      transition: stroke-dashoffset 1.2s cubic-bezier(.77,0,.18,1);
+    }
+
+    .workflow-arrow.revealed svg { stroke-dashoffset: 0; }
+
+    .workflow__example {
+      margin-top: 3rem;
+      padding: 2rem 2.5rem;
+      background: var(--cream);
+      border-radius: 2px;
+      border-left: 3px solid var(--orange);
+    }
+
+    .workflow__example p {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      color: var(--warm-brown);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       PLATFORM CARDS (Claude vs ChatGPT)
+    ============================================================ */
+    .platform__header { margin-bottom: 3rem; }
+
+    .platform__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .platform-card {
+      border: 1px solid rgba(71,43,24,0.12);
+      padding: clamp(2rem, 3vw, 3rem);
+      border-radius: 2px;
+      position: relative;
+      background: var(--off-white);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(71,43,24,0.1);
+    }
+
+    .platform-card--claude { border-top: 3px solid var(--orange); }
+    .platform-card--chatgpt { border-top: 3px solid var(--warm-brown); }
+
+    .platform-card__label {
+      font-family: var(--font-accent);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .platform-card--claude .platform-card__label { color: var(--orange); }
+    .platform-card--chatgpt .platform-card__label { color: var(--mid-brown); }
+
+    .platform-card__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2vw, 1.9rem);
+      font-weight: 400;
+      color: var(--warm-black);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .platform-card__section-label {
+      font-family: var(--font-accent);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.6rem;
+    }
+
+    .platform-card__list {
+      list-style: none;
+      margin-bottom: 1.75rem;
+    }
+
+    .platform-card__list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--warm-brown);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(71,43,24,0.06);
+    }
+
+    .platform-card__list li:last-child { border-bottom: none; }
+
+    .platform-card__list li::before {
+      content: '—';
+      font-size: 0.7rem;
+      color: var(--sand);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .platform-card__prereq {
+      margin-bottom: 2rem;
+      padding: 0.85rem 1rem;
+      background: rgba(71,43,24,0.05);
+      border-radius: 1px;
+    }
+
+    .platform-card__prereq p {
+      font-size: 0.82rem;
+      color: var(--warm-gray);
+      line-height: 1.5;
+    }
+
+    .platform-card .btn { width: 100%; }
+
+    .platform__footnote {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+    }
+
+    /* ============================================================
+       BONUS SECTION
+    ============================================================ */
+    .bonus__grid {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .bonus-card {
+      background: var(--off-white);
+      border: 1px solid rgba(71,43,24,0.1);
+      padding: clamp(1.5rem, 2.5vw, 2.25rem);
+      border-radius: 2px;
+      border-top: 2px solid var(--orange-pale);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .bonus-card:hover {
+      transform: rotate(0.3deg) translateY(-4px);
+      box-shadow: 0 12px 40px rgba(71,43,24,0.09);
+    }
+
+    .bonus-card__icon {
+      width: 40px; height: 40px;
+      background: var(--orange-pale);
+      border-radius: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .bonus-card__icon svg { width: 20px; height: 20px; stroke: var(--orange-deep); }
+
+    .bonus-card__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+      font-weight: 400;
+      color: var(--warm-black);
+      margin-bottom: 0.75rem;
+    }
+
+    .bonus-card__text {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--warm-brown);
+    }
+
+    /* ============================================================
+       HOSTS SECTION (Hanna + Martin)
+    ============================================================ */
+    .hosts__header { margin-bottom: 3rem; }
+
+    .hosts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .host-card {
+      background: #fff;
+      border: 1px solid rgba(71,43,24,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .host-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(71,43,24,0.1);
+    }
+
+    .host-img-wrap {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+
+    .host-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .host-img-placeholder {
+      width: 100%; height: 100%;
+      background: var(--warm-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .host-img-placeholder span {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-style: italic;
+      color: var(--orange);
+      opacity: 0.4;
+    }
+
+    .host-name-wrap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(22,12,5,0.88));
+      padding: 2rem 1.5rem 1.25rem;
+    }
+
+    .host-name {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--off-white);
+      line-height: 1.1;
+    }
+
+    .host-role {
+      font-family: var(--font-accent);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange-mid);
+      margin-top: 4px;
+    }
+
+    .host-bio {
+      padding: 1.75rem 1.5rem 2rem;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--warm-brown);
+    }
+
+    .host-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(71,43,24,0.08);
+    }
+
+    .host-stat {
+      padding: 1rem 1.25rem;
+      border-right: 1px solid rgba(71,43,24,0.08);
+      text-align: center;
+    }
+
+    .host-stat:last-child { border-right: none; }
+
+    .host-stat-num {
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      font-weight: 400;
+      color: var(--orange);
+      line-height: 1;
+      display: block;
+    }
+
+    .host-stat-label {
+      font-family: var(--font-accent);
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      display: block;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .hosts-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       FIT SECTION
+    ============================================================ */
+    .fit__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .fit__col-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .fit__col--yes .fit__col-title { color: var(--off-white); }
+    .fit__col--no .fit__col-title { color: var(--sand); opacity: 0.6; }
+
+    .fit-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+
+    .fit-list li {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .fit-list--yes li { color: var(--sand); }
+    .fit-list--no li { color: var(--tan); opacity: 0.75; }
+
+    .fit-list--yes li::before {
+      content: '✓';
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .fit-list--no li::before {
+      content: '✗';
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--mid-brown);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================================================
+       PRICING
+    ============================================================ */
+    .pricing__inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pricing__inner .eyebrow { justify-content: center; display: block; }
+    .pricing__inner .section-title { color: var(--off-white); }
+
+    .price-card {
+      background: var(--off-white);
+      border: 1px solid rgba(71,43,24,0.12);
+      padding: clamp(2.5rem, 4vw, 4rem);
+      border-radius: 1px;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .price-card__bg-num {
+      position: absolute;
+      font-family: var(--font-heading);
+      font-size: 20vw;
+      font-weight: 400;
+      color: var(--orange);
+      opacity: 0.04;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .price-card__product {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+      font-weight: 400;
+      color: var(--warm-black);
+      margin-bottom: 0.35rem;
+    }
+
+    .price-card__sub {
+      font-size: 0.88rem;
+      color: var(--warm-gray);
+      margin-bottom: 2rem;
+    }
+
+    .price-card__price {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 400;
+      color: var(--warm-black);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-card__conditions {
+      font-family: var(--font-accent);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 2.5rem;
+    }
+
+    .price-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .price-checklist li {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--warm-brown);
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(71,43,24,0.07);
+    }
+
+    .price-checklist li:last-child { border-bottom: none; }
+
+    .price-checklist li::before {
+      content: '✓';
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .price-card .dual-cta { margin-bottom: 2rem; }
+    .price-card .dual-cta .btn { flex: 1; }
+
+    .guarantee-box {
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: rgba(71,43,24,0.04);
+      border: 1px solid rgba(71,43,24,0.09);
+      border-radius: 2px;
+    }
+
+    .guarantee-box p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--warm-gray);
+      text-align: center;
+    }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq__list {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(71,43,24,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      background: var(--off-white);
+    }
+
+    .faq-item__q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.35rem 1.75rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-weight: 400;
+      color: var(--warm-black);
+      transition: background 0.2s;
+    }
+
+    .faq-item__q:hover { background: rgba(71,43,24,0.03); }
+
+    .faq-item__icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      position: relative;
+    }
+
+    .faq-item__icon::before,
+    .faq-item__icon::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      background: var(--orange);
+      border-radius: 1px;
+      transition: transform 0.3s;
+    }
+
+    .faq-item__icon::before {
+      width: 12px; height: 1.5px;
+      transform: translate(-50%, -50%);
+    }
+
+    .faq-item__icon::after {
+      width: 1.5px; height: 12px;
+      transform: translate(-50%, -50%);
+    }
+
+    .faq-item.open .faq-item__icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .faq-item__a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(.25,.8,.25,1);
+    }
+
+    .faq-item.open .faq-item__a { max-height: 400px; }
+
+    .faq-item__a-inner {
+      padding: 0 1.75rem 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--warm-brown);
+    }
+
+    /* ============================================================
+       FINAL CTA
+    ============================================================ */
+    .final-cta {
+      background: var(--warm-dark);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .final-cta__bg-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(216,98,42,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .final-cta__dots {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .final-dot {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      animation: final-pulse 3s ease-in-out infinite;
+      opacity: 0.15;
+    }
+
+    @keyframes final-pulse {
+      0%, 100% { opacity: 0.1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(1.5); }
+    }
+
+    .final-cta__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .final-cta__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 6vw, 5.5rem);
+      font-weight: 400;
+      color: var(--off-white);
+      line-height: 1.05;
+      margin-bottom: 2rem;
+    }
+
+    .final-cta__lead {
+      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      color: var(--tan);
+      margin-bottom: 2.5rem;
+    }
+
+    .final-cta .dual-cta { justify-content: center; }
+
+    .final-cta__footer-note {
+      margin-top: 1.75rem;
+      font-family: var(--font-accent);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mid-brown);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--warm-black);
+      padding: 44px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer__logo {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--cream);
+      font-style: italic;
+      text-decoration: none;
+    }
+
+    .footer__logo span { color: var(--orange); font-style: normal; }
+
+    .footer__note {
+      font-size: 0.58rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      font-family: var(--font-accent);
+      letter-spacing: 0.05em;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+    }
+
+    .footer__links a {
+      font-family: var(--font-accent);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--tan);
+      transition: color 0.2s;
+    }
+
+    .footer__links a:hover { color: var(--orange); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .hero__inner { grid-template-columns: 1fr; }
+      .hero__visual { display: none; }
+      .hero__meta { grid-template-columns: repeat(2, 1fr); }
+      .solution__inner { grid-template-columns: 1fr; }
+      .tools__grid { grid-template-columns: 1fr; }
+      .hosts-grid { grid-template-columns: 1fr; }
+      .workflow__inner { grid-template-columns: 1fr; }
+      .workflow-arrow { display: none; }
+      .platform__grid { grid-template-columns: 1fr; }
+      .fit__grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__price-hint { display: none; }
+      .nav__logo-x { display: none; }
+      .nav__logo-martin { font-size: 0.65rem; }
+      .dual-cta { flex-direction: column; align-items: stretch; }
+      .dual-cta__or { text-align: center; }
+      .hero__meta { grid-template-columns: repeat(2, 1fr); }
+      .problem__grid { grid-template-columns: 1fr; }
+      .footer__inner { flex-direction: column; text-align: center; }
+      .footer__links { justify-content: center; }
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .line-reveal__inner { transform: scaleX(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       A · NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <div class="nav__logos">
+        <div class="nav__logo-hanna">Hanna Marzian<span>@hanna.gpt</span></div>
+        <div class="nav__logo-x">×</div>
+        <div class="nav__logo-martin">Martin Thun<span>scale²</span></div>
+      </div>
+      <div class="nav__cta-wrap">
+        <span class="nav__price-hint">49 € · Einmalig · Sofort</span>
+        <a href="#pricing" class="btn btn-primary btn--nav">Jetzt holen →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       B · HERO
+  ============================================================ -->
+  <section class="hero">
+    <div class="grain"></div>
+    <div class="hero__bg-blob-1"></div>
+    <div class="hero__bg-blob-2"></div>
+
+    <div class="hero__inner">
+      <!-- TEXT (links, 60%) -->
+      <div class="hero__content">
+        <span class="eyebrow reveal">Instagram, das sich nicht mehr nach Arbeit anfühlt.</span>
+
+        <h1 class="hero-title reveal reveal--delay-1">
+          KI <em class="italic-orange">Marketing</em><br>Studio
+        </h1>
+
+        <div class="hero__lead reveal reveal--delay-2">
+          <p>10 spezialisierte KI-Tools, die dich Schritt für Schritt durch deinen kompletten Instagram-Content führen. Von der Hook über die Caption bis zum recycelten Post. Verfügbar als Skills für Claude oder als Custom GPTs für ChatGPT. Selbe Inhalte, dein Workflow, deine Wahl.</p>
+          <p class="hero__negation">Keine leere Seite mehr. &nbsp;·&nbsp; Keine generischen KI-Antworten. &nbsp;·&nbsp; Kein Raten.</p>
+        </div>
+
+        <div class="reveal reveal--delay-3">
+          <div class="dual-cta">
+            <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="hero">
+              <span class="btn__main">Claude Edition · 49 €</span>
+              <span class="btn__sub">10 Skills für Claude</span>
+            </a>
+            <span class="dual-cta__or">oder</span>
+            <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="hero">
+              <span class="btn__main">ChatGPT Edition · 49 €</span>
+              <span class="btn__sub">10 Custom GPTs für ChatGPT</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__meta reveal reveal--delay-4">
+          <div class="hero__meta-item">
+            <span class="hero__meta-value">10</span>
+            <span class="hero__meta-label">Skills + Custom GPTs</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="hero__meta-value">&lt; 10 Min.</span>
+            <span class="hero__meta-label">Bis zum ersten Post</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="hero__meta-value">Sofort</span>
+            <span class="hero__meta-label">Zugang per E-Mail</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="hero__meta-value">49 €</span>
+            <span class="hero__meta-label">Einmalige Zahlung</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL (rechts, 40%) -->
+      <div class="hero__visual reveal reveal--delay-2">
+        <div class="tool-pills-wrap">
+          <span class="tp tp--1"><span class="tp__dot"></span>Hook-Generator</span>
+          <span class="tp tp--2"><span class="tp__dot"></span>Caption Writer</span>
+          <span class="tp tp--3"><span class="tp__dot"></span>Reel-Skript Maschine</span>
+          <span class="tp tp--4"><span class="tp__dot"></span>Carousel-Themen</span>
+          <span class="tp tp--5"><span class="tp__dot"></span>Carousel-Aufbau</span>
+          <span class="tp tp--6"><span class="tp__dot"></span>Story-Sequenzen</span>
+          <span class="tp tp--7"><span class="tp__dot"></span>DM-Automation</span>
+          <span class="tp tp--8"><span class="tp__dot"></span>Content-Strategie</span>
+          <span class="tp tp--9"><span class="tp__dot"></span>Viral-Analyse</span>
+          <span class="tp tp--10"><span class="tp__dot"></span>Content-Recycler</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider" style="background:var(--off-white); color:var(--warm-dark);">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C240,60 480,60 720,30 C960,0 1200,0 1440,40 L1440,60 L0,60 Z"/>
+    </svg>
+  </div>
+
+  <!-- ============================================================
+       C · PROBLEM
+  ============================================================ -->
+  <section class="section section--dark" id="problem">
+    <div class="container">
+      <div class="problem__header">
+        <span class="eyebrow eyebrow--light reveal">Das eigentliche Problem</span>
+        <h2 class="section-title section-title--light reveal reveal--delay-1">
+          Du postest nicht zu wenig.<br>
+          Du postest <em class="italic-orange-mid">ohne System.</em>
+        </h2>
+        <p class="lead lead--light reveal reveal--delay-2" style="margin-top:1.5rem;">
+          Wenn du zwei Stunden für eine Caption brauchst, liegt das nicht am Talent. Es liegt am Prozess. Oder eher: am fehlenden Prozess.
+        </p>
+      </div>
+
+      <div class="problem__grid">
+        <div class="problem-card reveal">
+          <span class="problem-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--orange-mid);">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          <h3 class="problem-card__title">Du sitzt ewig an einer Caption</h3>
+          <p class="problem-card__text">Du öffnest ChatGPT, stierst auf den Cursor, schreibst drei Versionen, löschst alle. Eine Stunde später ist die Caption mittelmäßig und du fragst dich, warum es bei anderen so leicht aussieht.</p>
+        </div>
+
+        <div class="problem-card reveal reveal--delay-1">
+          <span class="problem-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--orange-mid);">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </span>
+          <h3 class="problem-card__title">Deine Reichweite stagniert</h3>
+          <p class="problem-card__text">Du postest unregelmäßig, weil jeder Post ein Riesenakt ist. Der Algorithmus merkt das. Du merkst es auch, wenn du in deine Insights schaust.</p>
+        </div>
+
+        <div class="problem-card reveal reveal--delay-2">
+          <span class="problem-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--orange-mid);">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+            </svg>
+          </span>
+          <h3 class="problem-card__title">KI klingt nach KI</h3>
+          <p class="problem-card__text">Generische Prompts geben generischen Output. Du erkennst es. Deine Follower erkennen es. Also postest du es lieber gar nicht.</p>
+        </div>
+      </div>
+
+      <div class="brand-statement reveal">
+        <p>„Das Lustige ist: Du brauchst nicht mehr Talent. Nicht mehr Zeit. Nicht mehr Disziplin. Du brauchst ein System, das die Arbeit übernimmt, die nicht von deinem Kopf kommen muss."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:var(--warm-dark); color:var(--off-white);">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,0 720,60 1080,20 C1260,0 1380,10 1440,0 L1440,60 L0,60 Z"/>
+    </svg>
+  </div>
+
+  <!-- ============================================================
+       D · SOLUTION
+  ============================================================ -->
+  <section class="section section--off-white" id="solution">
+    <div class="container">
+      <div class="solution__inner">
+        <!-- Visual links -->
+        <div class="solution__visual reveal">
+          <div class="solution__visual-dots" aria-hidden="true" id="sol-dots"></div>
+          <div class="solution__visual-text">
+            <div class="line1">Instagram</div>
+            <div class="line2">Studio</div>
+            <div class="byline">by Hanna × Martin</div>
+          </div>
+        </div>
+
+        <!-- Text rechts -->
+        <div class="solution__text">
+          <span class="eyebrow reveal">Die Lösung</span>
+          <h2 class="section-title reveal reveal--delay-1">Ein Werkzeugkasten,<br>der mit dir denkt.</h2>
+
+          <div class="lead reveal reveal--delay-2" style="margin-top:1.5rem;">
+            <p>Instagram Studio ist kein Kurs. Kein Mega-Prompt. Kein PDF, das in deinen Downloads vergammelt.</p>
+            <p style="margin-top:0.85rem;">Es sind 10 spezialisierte KI-Tools, jedes für eine andere Phase deines Workflows. Du hast eine Idee, der Hook-Generator macht 10 Varianten. Du nimmst die beste, der Caption-Writer baut den Post drumherum. Du hast den fertigen Post, der Recycler macht daraus 8 weitere Formate.</p>
+          </div>
+
+          <ul class="checklist reveal reveal--delay-3" style="margin-top:2rem;">
+            <li>10 Tools statt einem Mega-Prompt (jedes für genau einen Schritt gebaut)</li>
+            <li>Trainiert auf Hannas Anti-KI-Stimme (nicht generisch, sondern menschlich)</li>
+            <li>Wahl zwischen Claude und ChatGPT (gleiche Inhalte, deine Plattform)</li>
+            <li>Einmal kaufen, immer nutzen (kein Abo, Updates inklusive)</li>
+            <li>Bonus: Hannas eigener Redaktionsplan (das Template, mit dem sie selbst arbeitet)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       E · TOOLS
+  ============================================================ -->
+  <section class="section" id="tools">
+    <div class="container" style="position:relative;">
+      <span class="bg-typo" style="color:rgba(255,255,255,0.03);">STUDIO</span>
+
+      <div class="tools__header">
+        <span class="eyebrow eyebrow--light reveal">10 Tools, 10 Phasen</span>
+        <h2 class="section-title section-title--light reveal reveal--delay-1">Jedes Tool für genau einen Schritt.<br>Zusammen dein kompletter Workflow.</h2>
+      </div>
+
+      <p class="lead tools__lead reveal reveal--delay-2">
+        Generische KI-Prompts geben generische Ergebnisse. Spezialisierte Tools geben Output, den du tatsächlich posten kannst. Hier ist, was im Studio drin ist.
+      </p>
+
+      <div class="tools__grid">
+
+        <!-- 01 -->
+        <div class="tool-card">
+          <span class="tool-card__num">01</span>
+          <span class="tool-card__phase">Phase 01 · Attention</span>
+          <h3 class="tool-card__title">Hook-Generator</h3>
+          <p class="tool-card__text">Du gibst dein Thema ein. Das Tool produziert 10 verschiedene Hook-Varianten basierend auf 10 psychologischen Triggern (Specificity Bias, Pattern Interrupt, Curiosity Gap, Loss Aversion und mehr). Keine Phrase wie „Stop scrolling" oder „Niemand spricht darüber". Hook für Reels separat von Post-Hook.</p>
+          <div class="tool-card__example">
+            <div class="tool-card__example-label">Beispiel</div>
+            <p class="tool-card__example-text">Input: „Selbstständige, die in ihrem Business stagnieren"<br>Output: „Du verlierst gerade jeden Monat 6.000 € Umsatz, ohne es zu merken."</p>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="tool-card">
+          <span class="tool-card__num">02</span>
+          <span class="tool-card__phase">Phase 02 · Copy</span>
+          <h3 class="tool-card__title">Caption Writer</h3>
+          <p class="tool-card__text">Aus deiner Idee macht das Tool eine vollständige Caption mit Hook, Body und CTA. Trainiert auf Hannas Schreibstil: direkt, persönlich, ohne KI-Floskeln. Anti-Generic-Filter eingebaut. Optional mit verschiedenen Frames: Mini-Story, unpopuläre Meinung, Aha-Moment, direkte Ansprache.</p>
+        </div>
+
+        <!-- 03 -->
+        <div class="tool-card">
+          <span class="tool-card__num">03</span>
+          <span class="tool-card__phase">Phase 03 · Video</span>
+          <h3 class="tool-card__title">Reel-Skript Maschine</h3>
+          <p class="tool-card__text">Erstellt vollständige Reel-Skripte mit Hook-Satz, gesprochenem Text, On-Screen-Text-Vorschlägen, B-Roll-Hinweisen und CTA. Anti-Floskel-Filter erkennt und entfernt typische KI-Phrasen automatisch. Output ist sofort vor der Kamera nutzbar.</p>
+        </div>
+
+        <!-- 04 -->
+        <div class="tool-card">
+          <span class="tool-card__num">04</span>
+          <span class="tool-card__phase">Phase 04 · Strategy</span>
+          <h3 class="tool-card__title">Carousel-Themen-Generator</h3>
+          <p class="tool-card__text">Du gibst Nische und Zielgruppe ein. Output: 10 strategisch durchdachte Carousel-Themen, die für deine Audience funktionieren. Sortiert nach Hook-Stärke und Save-Wahrscheinlichkeit.</p>
+        </div>
+
+        <!-- 05 -->
+        <div class="tool-card">
+          <span class="tool-card__num">05</span>
+          <span class="tool-card__phase">Phase 05 · Design</span>
+          <h3 class="tool-card__title">Carousel-Aufbau</h3>
+          <p class="tool-card__text">Aus einem Thema entsteht ein vollständiger Slide-by-Slide-Aufbau: Titel-Slide, Inhalts-Slides, CTA-Slide. Inklusive Text-Vorschlägen pro Slide und Canva-kompatibler Struktur. Macht aus einer vagen Idee in 10 Minuten ein post-ready Carousel.</p>
+        </div>
+
+        <!-- 06 -->
+        <div class="tool-card">
+          <span class="tool-card__num">06</span>
+          <span class="tool-card__phase">Phase 06 · Stories</span>
+          <h3 class="tool-card__title">Story-Sequenzen</h3>
+          <p class="tool-card__text">Plant komplette Story-Sequenzen mit Spannungsbogen, der Swipes erzwingt. 5 bis 8 Slides, Bild-Basis, Text-Kacheln (schwarz auf weiß / weiß auf schwarz), strategische CTAs. Ideal für Launches, persönliche Einblicke, Tutorials.</p>
+        </div>
+
+        <!-- 07 -->
+        <div class="tool-card">
+          <span class="tool-card__num">07</span>
+          <span class="tool-card__phase">Phase 07 · Automation</span>
+          <h3 class="tool-card__title">DM-Automation</h3>
+          <p class="tool-card__text">Aufbau von DM-Flows: Trigger-Texte für Story-Replies, automatische Antworten bei Lead-Magnet-Anfragen, Follow-up-Sequenzen. Mit ManyChat-Logik kompatibel formuliert. Output direkt in Tools wie ManyChat oder ChatBot übertragbar.</p>
+        </div>
+
+        <!-- 08 -->
+        <div class="tool-card">
+          <span class="tool-card__num">08</span>
+          <span class="tool-card__phase">Phase 08 · Planning</span>
+          <h3 class="tool-card__title">Content-Strategie</h3>
+          <p class="tool-card__text">Erstellt einen vollständigen Monats-Content-Plan: Themen-Mix, Format-Verteilung (Reels/Carousels/Stories), Posting-Frequenz, strategische Phasen (Awareness / Consideration / Conversion). Personalisiert auf dein Business und deine Phase.</p>
+        </div>
+
+        <!-- 09 -->
+        <div class="tool-card">
+          <span class="tool-card__num">09</span>
+          <span class="tool-card__phase">Phase 09 · Analysis</span>
+          <h3 class="tool-card__title">Viral-Analyse</h3>
+          <p class="tool-card__text">Du lädst einen viralen Post ein, das Tool analysiert die Mechanik dahinter: Welcher Hook-Typ? Welcher psychologische Trigger? Welche Struktur? Welche Saves-Trigger? Output: konkretes Pattern, das du in deinem Content nachbauen kannst.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="tool-card">
+          <span class="tool-card__num">10</span>
+          <span class="tool-card__phase">Phase 10 · Amplify</span>
+          <h3 class="tool-card__title">Content-Recycler</h3>
+          <p class="tool-card__text">Du gibst einen bestehenden Post ein. Das Tool macht daraus 8 verschiedene Formate: Reel-Hook, Story-Sequenz, Carousel, Zitat-Post, Caption-Variante, LinkedIn-Adaption, Tweet-Thread, Newsletter-Snippet. Ein Stück Content, acht Ausgaben.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       F · CTA BRIDGE #1
+  ============================================================ -->
+  <section class="section section--cream" id="bridge">
+    <div class="container">
+      <div class="bridge__inner">
+        <div class="line-reveal reveal" style="height:1px;background:rgba(71,43,24,0.15);margin-bottom:3rem;">
+          <span class="line-reveal__inner" style="display:block;height:100%;background:var(--orange);"></span>
+        </div>
+
+        <h3 class="reveal" style="font-family:var(--font-heading);font-size:clamp(1.8rem,3.5vw,2.75rem);font-weight:400;color:var(--warm-black);margin-bottom:0.85rem;line-height:1.15;">Bereit, dein Setup aufzurüsten?</h3>
+        <p class="lead reveal reveal--delay-1" style="margin:0 auto 2rem;">Beide Versionen, identische Inhalte. Du wählst die KI, mit der du eh schon arbeitest.</p>
+
+        <div class="reveal reveal--delay-2">
+          <div class="dual-cta" style="justify-content:center;">
+            <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="bridge">
+              <span class="btn__main">Claude Edition · 49 €</span>
+              <span class="btn__sub">10 Skills für Claude</span>
+            </a>
+            <span class="dual-cta__or">oder</span>
+            <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="bridge">
+              <span class="btn__main">ChatGPT Edition · 49 €</span>
+              <span class="btn__sub">10 Custom GPTs für ChatGPT</span>
+            </a>
+          </div>
+          <p class="trust-bar">✓ Sofortiger Zugang per E-Mail &nbsp;·&nbsp; ✓ Updates inklusive &nbsp;·&nbsp; ✓ Einmalige Zahlung</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       G · HOW IT WORKS
+  ============================================================ -->
+  <section class="section section--off-white" id="workflow">
+    <div class="container">
+      <span class="eyebrow reveal">Der Workflow</span>
+      <h2 class="section-title reveal reveal--delay-1">So nutzt du Instagram Studio.</h2>
+      <p class="lead reveal reveal--delay-2" style="margin-top:1.25rem;">Drei Schritte. Egal welches Tool, egal welche Plattform.</p>
+
+      <div class="workflow__inner">
+        <div class="workflow-step reveal">
+          <div class="workflow-step__num">1</div>
+          <h3 class="workflow-step__title">Wählen</h3>
+          <p class="workflow-step__text">Du öffnest das passende Tool für die Phase, in der du gerade steckst.</p>
+        </div>
+
+        <div class="workflow-arrow reveal reveal--delay-1">
+          <svg viewBox="0 0 60 20" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 10 H52 M44 3 L52 10 L44 17"/>
+          </svg>
+        </div>
+
+        <div class="workflow-step reveal reveal--delay-1">
+          <div class="workflow-step__num">2</div>
+          <h3 class="workflow-step__title">Eingeben</h3>
+          <p class="workflow-step__text">Du gibst dein Thema in wenigen Worten ein.</p>
+        </div>
+
+        <div class="workflow-arrow reveal reveal--delay-2">
+          <svg viewBox="0 0 60 20" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 10 H52 M44 3 L52 10 L44 17"/>
+          </svg>
+        </div>
+
+        <div class="workflow-step reveal reveal--delay-2">
+          <div class="workflow-step__num">3</div>
+          <h3 class="workflow-step__title">Posten</h3>
+          <p class="workflow-step__text">Du nimmst den Output, optimierst kurz, postest raus.</p>
+        </div>
+      </div>
+
+      <div class="workflow__example reveal">
+        <p>Beispiel: Du hast einen Reel zum Thema „Mindset für Solo-Selbstständige" geplant. Du öffnest den Hook-Generator, gibst „Mindset für Solo-Selbstständige" und deine Zielgruppe ein, bekommst 10 Hook-Varianten. Wählst eine. Schickst sie an die Reel-Skript-Maschine. Hast in 12 Minuten ein fertiges Skript.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       H · CLAUDE VS CHATGPT
+  ============================================================ -->
+  <section class="section section--cream" id="platform">
+    <div class="container">
+      <div class="platform__header">
+        <span class="eyebrow reveal">Zwei Wege, ein Ergebnis</span>
+        <h2 class="section-title reveal reveal--delay-1">Claude oder ChatGPT?<br>Beide sind richtig.</h2>
+        <p class="lead reveal reveal--delay-2" style="margin-top:1.25rem;">Identische Inhalte, identische Funktionalität, identischer Preis. Der Unterschied ist nur, in welcher Oberfläche du arbeitest.</p>
+      </div>
+
+      <div class="platform__grid">
+        <!-- Claude -->
+        <div class="platform-card platform-card--claude reveal">
+          <div class="platform-card__label">Claude Edition</div>
+          <h3 class="platform-card__title">Instagram Studio · Skills für Claude</h3>
+
+          <div class="platform-card__section-label">Was du bekommst</div>
+          <ul class="platform-card__list">
+            <li>Alle 10 Tools als Claude Skills, direkt in claude.ai aktivierbar</li>
+            <li>Schritt-für-Schritt-Installations-Anleitung</li>
+            <li>Bonus-Materialien als PDF</li>
+            <li>Updates inklusive</li>
+          </ul>
+
+          <div class="platform-card__section-label">Für dich, wenn ...</div>
+          <ul class="platform-card__list">
+            <li>Du bereits Claude nutzt (Pro oder Free)</li>
+            <li>Du die saubere, ablenkungsfreie Oberfläche magst</li>
+            <li>Du planst, langfristig mit Claude zu arbeiten</li>
+          </ul>
+
+          <div class="platform-card__prereq">
+            <p><strong>Voraussetzung:</strong> Claude Account (Free funktioniert für die meisten Tools, Pro bei längerem Output empfohlen)</p>
+          </div>
+
+          <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary" style="width:100%;padding:1.1rem;" data-track="cta_claude" data-position="platform">
+            <span class="btn__main">Claude Edition holen · 49 €</span>
+          </a>
+        </div>
+
+        <!-- ChatGPT -->
+        <div class="platform-card platform-card--chatgpt reveal reveal--delay-1">
+          <div class="platform-card__label">ChatGPT Edition</div>
+          <h3 class="platform-card__title">Instagram Studio · Custom GPTs für ChatGPT</h3>
+
+          <div class="platform-card__section-label">Was du bekommst</div>
+          <ul class="platform-card__list">
+            <li>Alle 10 Tools als Custom GPTs in ChatGPT</li>
+            <li>Direkte Links zu jedem GPT, sofort einsatzbereit</li>
+            <li>Bonus-Materialien als PDF</li>
+            <li>Updates inklusive</li>
+          </ul>
+
+          <div class="platform-card__section-label">Für dich, wenn ...</div>
+          <ul class="platform-card__list">
+            <li>Du bereits ChatGPT Plus nutzt</li>
+            <li>Du am liebsten in der gewohnten ChatGPT-Umgebung arbeitest</li>
+            <li>Du eh schon Custom GPTs für andere Aufgaben nutzt</li>
+          </ul>
+
+          <div class="platform-card__prereq">
+            <p><strong>Voraussetzung:</strong> ChatGPT Plus Abo (20 $/Monat bei OpenAI, separat)</p>
+          </div>
+
+          <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark" style="width:100%;padding:1.1rem;" data-track="cta_chatgpt" data-position="platform">
+            <span class="btn__main">ChatGPT Edition holen · 49 €</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="platform__footnote reveal">Du wechselst irgendwann die KI? Schreib uns, wir tauschen die Version aus.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       J · HOSTS (Hanna + Martin)
+  ============================================================ -->
+  <section class="section section--cream" id="hanna">
+    <div class="container">
+      <div class="hosts__header">
+        <span class="eyebrow reveal">Wer dahintersteckt</span>
+        <h2 class="section-title reveal reveal--delay-1">Zwei Köpfe. Ein System.</h2>
+        <p class="lead reveal reveal--delay-2" style="margin-top:1rem;">Hanna bringt 100k Follower und tief verwurzelte Instagram-Expertise. Martin bringt die KI-Infrastruktur. Zusammen entstand das Studio.</p>
+      </div>
+
+      <div class="hosts-grid">
+
+        <!-- Hanna -->
+        <div class="host-card reveal">
+          <div class="host-img-wrap">
+            <img
+              src="hanna.jpg"
+              alt="Hanna Marzian"
+              loading="lazy"
+              decoding="async"
+              onerror="this.parentNode.innerHTML='<div class=\'host-img-placeholder\'><span>H</span></div>'"
+            >
+            <div class="host-name-wrap">
+              <div class="host-name">Hanna Marzian</div>
+              <div class="host-role">@hanna.gpt · 100K Follower · Creator & KI-Unternehmerin</div>
+            </div>
+          </div>
+          <div class="host-bio">Ich habe in den letzten Jahren 100.000 Follower auf Instagram aufgebaut, indem ich genau das gemacht habe, was ich dir hier verkaufe: Content nicht mit Inspiration, sondern mit Infrastruktur produzieren. Diese Tools sind nicht irgendwelche Best-Practice-Prompts. Das sind die genauen Werkzeuge, die ich selbst täglich nutze.</div>
+          <div class="host-stats">
+            <div class="host-stat">
+              <span class="host-stat-num" data-count="100" data-suffix="K+">100K+</span>
+              <span class="host-stat-label">Follower</span>
+            </div>
+            <div class="host-stat">
+              <span class="host-stat-num" data-count="4" data-suffix=" Jahre">4 Jahre</span>
+              <span class="host-stat-label">Online-Business</span>
+            </div>
+            <div class="host-stat">
+              <span class="host-stat-num" data-count="10" data-suffix=" Tools">10 Tools</span>
+              <span class="host-stat-label">täglich im Einsatz</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Martin -->
+        <div class="host-card reveal reveal--delay-1">
+          <div class="host-img-wrap">
+            <img
+              src="martin.jpg"
+              alt="Martin Thun"
+              loading="lazy"
+              decoding="async"
+              onerror="this.parentNode.innerHTML='<div class=\'host-img-placeholder\'><span>M</span></div>'"
+            >
+            <div class="host-name-wrap">
+              <div class="host-name">Martin Thun</div>
+              <div class="host-role">Gründer KI-Agentur scale² · KI-Stratege & Co-Creator</div>
+            </div>
+          </div>
+          <div class="host-bio">Ich habe klassisches Online-Marketing hinter mir gelassen, um in die erste Reihe der KI-Praktiker zu wechseln. Mit meiner Agentur scale² baue ich KI-Systeme für Solopreneure bis zu mehrfach 7-stelligen Unternehmen. Die technische Architektur hinter dem Instagram Studio kommt von mir.</div>
+          <div class="host-stats">
+            <div class="host-stat">
+              <span class="host-stat-num">scale²</span>
+              <span class="host-stat-label">KI-Agentur</span>
+            </div>
+            <div class="host-stat">
+              <span class="host-stat-num">7+</span>
+              <span class="host-stat-label">Jahre Marketing</span>
+            </div>
+            <div class="host-stat">
+              <span class="host-stat-num">100%</span>
+              <span class="host-stat-label">KI-fokussiert</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       K · FIT / NOT FIT
+  ============================================================ -->
+  <section class="section section--dark" id="fit">
+    <div class="container">
+      <span class="eyebrow eyebrow--light reveal">Ehrlichkeit ist effizient</span>
+      <h2 class="section-title section-title--light reveal reveal--delay-1">Nicht für jeden. Aber wenn für dich, dann richtig.</h2>
+
+      <div class="fit__grid">
+        <div class="fit__col fit__col--yes reveal">
+          <h3 class="fit__col-title">Das bist du</h3>
+          <ul class="fit-list fit-list--yes">
+            <li>Du postest auf Instagram (oder willst endlich anfangen) und meinst es ernst</li>
+            <li>Du nutzt KI bereits oder bist bereit, sie sinnvoll einzusetzen</li>
+            <li>Du sparst lieber 49 € einmal als jeden Monat 2 Stunden für eine Caption</li>
+            <li>Du bist Coach, Beraterin, Creator, Solopreneur oder Freelancer</li>
+            <li>Du willst Content, der nach dir klingt, nicht nach Roboter</li>
+            <li>Du verstehst, dass Tools dich nicht ersetzen, sondern beschleunigen</li>
+          </ul>
+        </div>
+
+        <div class="fit__col fit__col--no reveal reveal--delay-1">
+          <h3 class="fit__col-title">Nicht für dich</h3>
+          <ul class="fit-list fit-list--no">
+            <li>Du erwartest, dass das Tool allein deinen Account wachsen lässt</li>
+            <li>Du willst keinen Prozess lernen, sondern reinen Ghost-Service</li>
+            <li>Du suchst Done-for-you (dann wäre 1:1 mit Hanna richtig)</li>
+            <li>Du willst KI-Output ungeprüft posten (das funktioniert nirgendwo)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:var(--warm-dark); color:var(--warm-black);">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,20 C480,60 960,0 1440,40 L1440,60 L0,60 Z"/>
+    </svg>
+  </div>
+
+  <!-- ============================================================
+       L · PRICING
+  ============================================================ -->
+  <section class="section section--warm-black" id="pricing" style="position:relative;overflow:hidden;">
+    <span class="bg-typo" style="color:var(--off-white);">49</span>
+
+    <div class="container">
+      <div class="pricing__inner">
+        <span class="eyebrow reveal">Dein Zugang</span>
+        <h2 class="section-title section-title--cream reveal reveal--delay-1">Einmalig 49 €.<br>Für immer dein Werkzeugkasten.</h2>
+
+        <div class="price-card reveal reveal--delay-2">
+          <div class="price-card__bg-num">49</div>
+
+          <div class="price-card__product">Instagram Studio</div>
+          <div class="price-card__sub">10 KI-Tools für deinen kompletten Instagram-Workflow</div>
+
+          <div class="price-card__price">€ 49</div>
+          <div class="price-card__conditions">Einmalige Zahlung · Kein Abo · Sofortiger Zugang</div>
+
+          <ul class="price-checklist">
+            <li>10 spezialisierte KI-Tools (Hook, Caption, Reel-Skript, Carousel-Themen, Carousel-Aufbau, Story-Sequenzen, DM-Automation, Content-Strategie, Viral-Analyse, Content-Recycler)</li>
+            <li>Verfügbar als Claude Skills oder ChatGPT Custom GPTs (deine Wahl)</li>
+            <li>Hannas Feed-Strategie als PDF (Bonus)</li>
+            <li>Redaktionsplan-Template (Notion und Google Sheets)</li>
+            <li>15 Bonus-Prompts für Bio, Highlights, Welcome-DMs</li>
+            <li>Schritt-für-Schritt-Anleitung (kein Tech-Know-how nötig)</li>
+            <li>Alle zukünftigen Updates inklusive</li>
+            <li>E-Mail-Support bei Setup-Fragen</li>
+          </ul>
+
+          <div class="dual-cta">
+            <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="pricing" style="flex:1;">
+              <span class="btn__main">Claude Edition · 49 €</span>
+              <span class="btn__sub">10 Skills für Claude</span>
+            </a>
+            <span class="dual-cta__or">oder</span>
+            <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="pricing" style="flex:1;">
+              <span class="btn__main">ChatGPT Edition · 49 €</span>
+              <span class="btn__sub">10 Custom GPTs für ChatGPT</span>
+            </a>
+          </div>
+
+          <div class="guarantee-box">
+            <p>14-Tage Geld-zurück-Garantie. Wenn du nach zwei Wochen findest, das Studio ist nichts für dich, schreibst du eine kurze Mail. Du bekommst 49 € zurück, ohne Diskussion. So einfach.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       M · FAQ
+  ============================================================ -->
+  <section class="section section--off-white" id="faq">
+    <div class="container--narrow">
+      <span class="eyebrow reveal">Bevor du fragst</span>
+      <h2 class="section-title reveal reveal--delay-1">Häufige Fragen.</h2>
+
+      <div class="faq__list reveal reveal--delay-2">
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Brauche ich Vorkenntnisse in KI oder Prompting?
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" role="region">
+            <div class="faq-item__a-inner">
+              Nein. Die Tools sind so gebaut, dass du dein Thema reinschreibst und sofort Ergebnisse bekommst. Wer schon mit ChatGPT oder Claude geschrieben hat, kann das Studio in 5 Minuten benutzen. Wer noch nie KI genutzt hat, schafft es in 15 Minuten.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Klingt der Output nicht trotzdem nach KI?
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" role="region">
+            <div class="faq-item__a-inner">
+              Nur wenn du schlechte Tools benutzt. Die Skills hier sind auf Hannas direkten Schreibstil trainiert. Anti-Floskel-Filter eingebaut. Du erkennst keine generischen KI-Phrasen mehr im Output. Das gesagt: KI ersetzt deine Stimme nicht. Sie beschleunigt deinen Prozess. Du bleibst der kreative Kern.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Was ist der Unterschied zwischen Claude und ChatGPT Edition?
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" role="region">
+            <div class="faq-item__a-inner">
+              Inhaltlich nichts. Funktional nichts. Nur die Plattform unterscheidet sich. Wenn du eh ChatGPT Plus zahlst, nimm die ChatGPT Edition. Wenn du Claude bevorzugst, nimm die Claude Edition. Du kannst nicht falsch wählen.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Brauche ich ein bezahltes Abo bei Claude oder OpenAI?
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" role="region">
+            <div class="faq-item__a-inner">
+              ChatGPT Edition: ja, ChatGPT Plus (20 $/Monat) ist Voraussetzung für Custom GPTs. Claude Edition: nein, Free reicht für die meisten Tools. Pro empfehle ich, wenn du regelmäßig längeren Output brauchst. Beides ist separat von den 49 € für das Studio.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Was, wenn Claude oder ChatGPT sich in Zukunft ändern?
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" role="region">
+            <div class="faq-item__a-inner">
+              Updates der Tools sind im Kaufpreis enthalten. Wenn sich eine Plattform ändert, passe ich die Skills an und du bekommst die neue Version per E-Mail.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Wie schnell habe ich Zugang nach dem Kauf?
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" role="region">
+            <div class="faq-item__a-inner">
+              Sofort. Direkt nach dem Bezahlen kommt eine E-Mail mit allen Links und der Anleitung. Keine Plattform, kein Login-Prozess. Kein „Bitte 24 Stunden warten".
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Funktioniert das in meiner Nische?
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" role="region">
+            <div class="faq-item__a-inner">
+              Ja. Die Tools sind nischen-unabhängig gebaut. Du gibst deine Nische bei der ersten Nutzung an, dann ist der Output passend. Coaches, Berater, E-Commerce, Health, Lifestyle, B2B, alles getestet.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       N · FINAL CTA
+  ============================================================ -->
+  <section class="final-cta section" id="final">
+    <div class="final-cta__bg-glow"></div>
+    <div class="final-cta__dots" aria-hidden="true" id="final-dots"></div>
+
+    <div class="final-cta__inner">
+      <span class="eyebrow eyebrow--light reveal">Zum Schluss</span>
+
+      <h2 class="final-cta__title reveal reveal--delay-1">
+        <em class="italic-orange-mid">Wieder</em> Stunden für eine Caption.<br>
+        <em class="italic-orange-mid">Oder</em> einmal 49 € für ein System.
+      </h2>
+
+      <p class="final-cta__lead reveal reveal--delay-2">Du weißt schon, was die richtige Antwort ist. Wähle deine KI.</p>
+
+      <div class="reveal reveal--delay-3">
+        <div class="dual-cta" style="justify-content:center;">
+          <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="final">
+            <span class="btn__main">Claude Edition · 49 €</span>
+            <span class="btn__sub">10 Skills für Claude</span>
+          </a>
+          <span class="dual-cta__or" style="color:var(--mid-brown);">oder</span>
+          <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="final">
+            <span class="btn__main">ChatGPT Edition · 49 €</span>
+            <span class="btn__sub">10 Custom GPTs für ChatGPT</span>
+          </a>
+        </div>
+        <p class="final-cta__footer-note">49 € · einmalig · 14 Tage Geld-zurück-Garantie · sofortiger Zugang</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       O · FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container--wide">
+      <div class="footer__inner">
+        <a class="footer__logo" href="#">Hanna <span>×</span> Martin</a>
+        <span class="footer__note">© 2026 Hanna Marzian &amp; Martin Thun / scale²</span>
+        <div class="footer__links">
+          <a href="/impressum.html">Impressum</a>
+          <a href="/datenschutz.html">Datenschutz</a>
+          <a href="/agb.html">AGB</a>
+          <a href="#" id="consent-reopen">Cookie-Einstellungen</a>
+          <a href="mailto:hanna@hanna.gpt">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/consent.js"></script>
+
+  <script>
+    /* ============================================================
+       1. IntersectionObserver — Scroll Reveal
+    ============================================================ */
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReduced) {
+      const revealEls = document.querySelectorAll('.reveal, .line-reveal');
+      const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '-80px 0px 0px 0px' });
+
+      revealEls.forEach(el => revealObs.observe(el));
+    } else {
+      // Immediately reveal all
+      document.querySelectorAll('.reveal, .line-reveal').forEach(el => {
+        el.classList.add('revealed');
+      });
+    }
+
+    /* ============================================================
+       2. Nav — Scroll Effect
+    ============================================================ */
+    const nav = document.getElementById('nav');
+    function handleNavScroll() {
+      if (window.scrollY > 80) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
+    handleNavScroll();
+
+    /* ============================================================
+       3. FAQ Accordion
+    ============================================================ */
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const btn = item.querySelector('.faq-item__q');
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        // Close all
+        faqItems.forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-item__q').setAttribute('aria-expanded', 'false');
+        });
+        // Open clicked if was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ============================================================
+       4. Dual-CTA Hover Dim
+    ============================================================ */
+    document.querySelectorAll('.dual-cta').forEach(wrap => {
+      const btns = wrap.querySelectorAll('.btn');
+      btns.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          btns.forEach(other => {
+            if (other !== btn) other.style.opacity = '0.55';
+          });
+        });
+        btn.addEventListener('mouseleave', () => {
+          btns.forEach(other => { other.style.opacity = ''; });
+        });
+      });
+    });
+
+    /* ============================================================
+       5. CTA Click Tracking
+    ============================================================ */
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => {
+        const event = el.dataset.track;
+        const position = el.dataset.position || 'unknown';
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'cta_click', { event_category: 'CTA', event_label: event, position: position });
+        }
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'InitiateCheckout', { content_name: event, position: position });
+        }
+      });
+    });
+
+    /* ============================================================
+       6. Animated Number Counter (Stats)
+    ============================================================ */
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // easeOutQuart
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const current = Math.round(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const counterEls = document.querySelectorAll('[data-count]');
+    if (!prefersReduced && counterEls.length) {
+      const counterObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counterEls.forEach(el => counterObs.observe(el));
+    } else {
+      counterEls.forEach(el => {
+        el.textContent = el.dataset.count + (el.dataset.suffix || '');
+      });
+    }
+
+    /* ============================================================
+       8. Smooth Scroll for Anchor Links
+    ============================================================ */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ============================================================
+       9. Ripple Effect on Buttons
+    ============================================================ */
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        const size = Math.max(rect.width, rect.height);
+        ripple.classList.add('ripple');
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    /* ============================================================
+       10. Solution Section — Drifting Dots
+    ============================================================ */
+    const solDots = document.getElementById('sol-dots');
+    if (solDots) {
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement('span');
+        d.classList.add('sol-dot');
+        d.style.left = (Math.random() * 100) + '%';
+        d.style.top = (Math.random() * 100) + '%';
+        d.style.animationDelay = (Math.random() * 6) + 's';
+        d.style.animationDuration = (4 + Math.random() * 5) + 's';
+        solDots.appendChild(d);
+      }
+    }
+
+    /* ============================================================
+       11. Final Section — Pulsing Dots
+    ============================================================ */
+    const finalDots = document.getElementById('final-dots');
+    if (finalDots) {
+      const positions = [
+        [15, 20], [80, 15], [30, 75], [70, 60], [50, 85]
+      ];
+      positions.forEach(([x, y], i) => {
+        const d = document.createElement('span');
+        d.classList.add('final-dot');
+        d.style.left = x + '%';
+        d.style.top = y + '%';
+        d.style.animationDelay = (i * 0.7) + 's';
+        finalDots.appendChild(d);
+      });
+    }
+
+    /* ============================================================
+       12. Workflow Arrow Reveal
+    ============================================================ */
+    if (!prefersReduced) {
+      document.querySelectorAll('.workflow-arrow').forEach(arrow => {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+        obs.observe(arrow);
+      });
+    } else {
+      document.querySelectorAll('.workflow-arrow').forEach(a => a.classList.add('revealed'));
+    }
+
+    /* ============================================================
+       13. Tool Cards — Staggered Scroll Animation
+    ============================================================ */
+    (function() {
+      const cards = document.querySelectorAll('.tool-card');
+      if (!cards.length) return;
+
+      if (prefersReduced) {
+        cards.forEach(c => c.classList.add('card-in'));
+        return;
+      }
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            const idx = Array.from(cards).indexOf(card);
+            const col = idx % 2;
+            const row = Math.floor(idx / 2);
+            const delay = row * 120 + col * 60;
+            setTimeout(() => {
+              card.style.transition = 'opacity 0.65s cubic-bezier(.25,.8,.25,1), transform 0.65s cubic-bezier(.25,.8,.25,1), background 0.4s, border-color 0.4s, box-shadow 0.4s';
+              card.classList.add('card-in');
+            }, delay);
+            obs.unobserve(card);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '-40px 0px 0px 0px' });
+
+      cards.forEach(c => obs.observe(c));
+    })();
+  </script>
+
+</body>
+</html>
