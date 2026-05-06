@@ -275,28 +275,73 @@
     .nav__logos {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 2rem;
     }
 
-    .nav__logo-hanna-img {
-      height: 36px;
-      width: auto;
-      display: block;
+    .nav__logo-hanna {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      line-height: 1.1;
     }
 
-    .nav__logo-x {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+    .nav__logo-hanna__name {
+      font-family: 'Cormorant', Georgia, serif;
+      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--warm-black);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .nav__logo-hanna__handle {
+      font-family: 'Cormorant', Georgia, serif;
+      font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+      font-style: italic;
+      font-weight: 400;
       color: var(--orange);
-      text-transform: uppercase;
-      opacity: 0.6;
+      margin-top: 1px;
     }
 
-    .nav__logo-martin-img {
-      height: 32px;
-      width: auto;
-      display: block;
+    .nav__logo-divider {
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, transparent 0%, var(--orange) 35%, var(--orange) 65%, transparent 100%);
+      flex-shrink: 0;
+    }
+
+    .nav__logo-martin {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.1;
+    }
+
+    .nav__logo-martin__name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-black);
+      white-space: nowrap;
+    }
+
+    .nav__logo-martin__handle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.6rem, 0.9vw, 0.78rem);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--warm-gray);
+      margin-top: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .nav__logo-hanna__name { font-size: 1rem; }
+      .nav__logo-martin__name { font-size: 0.85rem; }
+      .nav__logo-divider { height: 40px; }
+      .nav__logos { gap: 1.25rem; }
     }
 
     /* ============================================================
@@ -2068,24 +2113,15 @@
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <div class="nav__logos">
-        <!-- Hanna Logo (hanna.gpt wordmark als SVG) -->
-        <svg class="nav__logo-hanna-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 45" aria-label="hanna.gpt">
-          <text x="0" y="32" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="600" fill="#160C05" letter-spacing="-1">hanna</text>
-          <text x="72" y="32" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="600" fill="#D8622A" letter-spacing="-1">.gpt</text>
-          <rect x="72" y="36" width="42" height="2" rx="1" fill="#D8622A"/>
-        </svg>
-        <div class="nav__logo-x">×</div>
-        <!-- scale² Logo als inline SVG, angepasst auf Warmton -->
-        <svg class="nav__logo-martin-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" aria-label="scale²">
-          <rect x="0" y="5" width="40" height="40" rx="8" fill="#160C05"/>
-          <rect x="6"  y="38" width="7" height="5"  rx="1.5" fill="#D8622A" opacity="0.5"/>
-          <rect x="16" y="28" width="7" height="15" rx="1.5" fill="#D8622A" opacity="0.15"/>
-          <rect x="27" y="10" width="8" height="33" rx="2" fill="#D8622A"/>
-          <text font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">
-            <tspan x="50" y="34" font-size="26" fill="#160C05">scale</tspan><tspan font-size="14" fill="#D8622A" dy="-9" dx="1">2</tspan>
-          </text>
-          <text x="51" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="7" fill="#7A6A5A" letter-spacing="2">MARTIN THUN</text>
-        </svg>
+        <div class="nav__logo-hanna">
+          <span class="nav__logo-hanna__name">Hanna Marzian</span>
+          <span class="nav__logo-hanna__handle">@hanna.gpt</span>
+        </div>
+        <div class="nav__logo-divider" aria-hidden="true"></div>
+        <div class="nav__logo-martin">
+          <span class="nav__logo-martin__name">Martin Thun</span>
+          <span class="nav__logo-martin__handle">@martin_thun_</span>
+        </div>
       </div>
     </div>
   </nav>
