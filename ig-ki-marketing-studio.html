@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instagram Studio · Hanna Marzian</title>
-  <meta name="description" content="10 spezialisierte KI-Tools für deinen kompletten Instagram-Workflow. Von der Hook über die Caption bis zum recycelten Post. Für Claude und ChatGPT. Einmalig 49 €.">
+  <title>Instagram Marketing Studio · Hanna Marzian × Martin Thun</title>
+  <meta name="description" content="10 spezialisierte KI-Tools für deinen kompletten Instagram-Workflow. Von der Hook über die Caption bis zum recycelten Post. Für Claude und ChatGPT. Einmalig 39 €.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -268,35 +268,20 @@
       height: var(--nav-h);
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
     }
 
-    /* Dual Logo Nav */
+    /* Dual Logo Nav — zentriert */
     .nav__logos {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 1.25rem;
     }
 
-    .nav__logo-hanna {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 500;
-      font-style: italic;
-      color: var(--warm-black);
-      letter-spacing: 0.02em;
-      line-height: 1;
-    }
-    .nav__logo-hanna span {
+    .nav__logo-hanna-img {
+      height: 36px;
+      width: auto;
       display: block;
-      font-size: 0.5rem;
-      font-family: var(--font-accent);
-      font-style: normal;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-top: 2px;
     }
 
     .nav__logo-x {
@@ -308,38 +293,10 @@
       opacity: 0.6;
     }
 
-    .nav__logo-martin {
-      font-family: var(--font-accent);
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--warm-black);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      line-height: 1;
-      text-align: right;
-    }
-    .nav__logo-martin span {
+    .nav__logo-martin-img {
+      height: 32px;
+      width: auto;
       display: block;
-      font-size: 0.5rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      color: var(--warm-gray);
-      margin-top: 3px;
-    }
-
-    .nav__cta-wrap {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-
-    .nav__price-hint {
-      font-family: var(--font-accent);
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--warm-gray);
     }
 
     /* ============================================================
@@ -422,7 +379,7 @@
     .hero__meta {
       margin-top: 3rem;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
       border-top: 1px solid rgba(71,43,24,0.12);
       padding-top: 2rem;
@@ -991,9 +948,12 @@
 
     .platform__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
     }
+
+    .platform-card--kombi { border-top: 3px solid var(--orange-mid); }
+    .platform-card--kombi .platform-card__label { color: var(--orange-mid); }
 
     .platform-card {
       border: 1px solid rgba(71,43,24,0.12);
@@ -1665,10 +1625,11 @@
       .fit__grid { grid-template-columns: 1fr; }
     }
 
+    @media (max-width: 1280px) {
+      .platform__grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 768px) {
-      .nav__price-hint { display: none; }
-      .nav__logo-x { display: none; }
-      .nav__logo-martin { font-size: 0.65rem; }
       .dual-cta { flex-direction: column; align-items: stretch; }
       .dual-cta__or { text-align: center; }
       .hero__meta { grid-template-columns: repeat(2, 1fr); }
@@ -2107,13 +2068,24 @@
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <div class="nav__logos">
-        <div class="nav__logo-hanna">Hanna Marzian<span>@hanna.gpt</span></div>
+        <!-- Hanna Logo (hanna.gpt wordmark als SVG) -->
+        <svg class="nav__logo-hanna-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 45" aria-label="hanna.gpt">
+          <text x="0" y="32" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="600" fill="#160C05" letter-spacing="-1">hanna</text>
+          <text x="72" y="32" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="600" fill="#D8622A" letter-spacing="-1">.gpt</text>
+          <rect x="72" y="36" width="42" height="2" rx="1" fill="#D8622A"/>
+        </svg>
         <div class="nav__logo-x">×</div>
-        <div class="nav__logo-martin">Martin Thun<span>scale²</span></div>
-      </div>
-      <div class="nav__cta-wrap">
-        <span class="nav__price-hint">49 € · Einmalig · Sofort</span>
-        <a href="#pricing" class="btn btn-primary btn--nav">Jetzt holen →</a>
+        <!-- scale² Logo als inline SVG, angepasst auf Warmton -->
+        <svg class="nav__logo-martin-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" aria-label="scale²">
+          <rect x="0" y="5" width="40" height="40" rx="8" fill="#160C05"/>
+          <rect x="6"  y="38" width="7" height="5"  rx="1.5" fill="#D8622A" opacity="0.5"/>
+          <rect x="16" y="28" width="7" height="15" rx="1.5" fill="#D8622A" opacity="0.15"/>
+          <rect x="27" y="10" width="8" height="33" rx="2" fill="#D8622A"/>
+          <text font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">
+            <tspan x="50" y="34" font-size="26" fill="#160C05">scale</tspan><tspan font-size="14" fill="#D8622A" dy="-9" dx="1">2</tspan>
+          </text>
+          <text x="51" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="7" fill="#7A6A5A" letter-spacing="2">MARTIN THUN</text>
+        </svg>
       </div>
     </div>
   </nav>
@@ -2132,34 +2104,35 @@
       <div class="hero__content">
         <span class="eyebrow reveal">Instagram, das sich nicht mehr nach Arbeit anfühlt.</span>
 
+        <!-- Preis-Angebot Banner -->
+        <div class="hero__preis-angebot reveal" style="margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:0.75rem;padding:0.6rem 1.2rem;background:rgba(216,98,42,0.08);border:1px solid rgba(216,98,42,0.25);border-radius:2px;">
+          <span style="font-family:var(--font-accent);font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);text-decoration:line-through;">Normalpreis 59 €</span>
+          <span style="font-family:var(--font-accent);font-size:0.7rem;font-weight:700;letter-spacing:1.5px;color:var(--orange);">→ bis 17.05. nur 39 €</span>
+        </div>
+
         <h1 class="hero-title reveal reveal--delay-1">
-          KI <em class="italic-orange">Marketing</em><br>Studio
+          Instagram <em class="italic-orange">Marketing</em><br>Studio
         </h1>
 
         <div class="hero__lead reveal reveal--delay-2">
           <p>10 spezialisierte KI-Tools, die dich Schritt für Schritt durch deinen kompletten Instagram-Content führen. Von der Hook über die Caption bis zum recycelten Post. Funktioniert mit Claude und ChatGPT. Deine Wahl.</p>
-          <p class="hero__negation">Keine leere Seite mehr. &nbsp;·&nbsp; Keine generischen KI-Antworten. &nbsp;·&nbsp; Kein Raten.</p>
         </div>
 
         <div class="reveal reveal--delay-3">
           <div class="dual-cta">
             <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="hero">
-              <span class="btn__main">Claude Edition · 49 €</span>
+              <span class="btn__main">Claude Edition · 39 €</span>
               <span class="btn__sub">Für Claude-Nutzer</span>
             </a>
             <span class="dual-cta__or">oder</span>
             <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="hero">
-              <span class="btn__main">ChatGPT Edition · 49 €</span>
+              <span class="btn__main">ChatGPT Edition · 39 €</span>
               <span class="btn__sub">Für ChatGPT-Nutzer</span>
             </a>
           </div>
         </div>
 
         <div class="hero__meta reveal reveal--delay-4">
-          <div class="hero__meta-item">
-            <span class="hero__meta-value">10</span>
-            <span class="hero__meta-label">KI-Tools</span>
-          </div>
           <div class="hero__meta-item">
             <span class="hero__meta-value">&lt; 10 Min.</span>
             <span class="hero__meta-label">Bis zum ersten Post</span>
@@ -2169,7 +2142,7 @@
             <span class="hero__meta-label">Zugang per E-Mail</span>
           </div>
           <div class="hero__meta-item">
-            <span class="hero__meta-value">49 €</span>
+            <span class="hero__meta-value">39 €</span>
             <span class="hero__meta-label">Einmalige Zahlung</span>
           </div>
         </div>
@@ -2206,7 +2179,6 @@
   <section class="section section--dark" id="problem">
     <div class="container">
       <div class="problem__header">
-        <span class="eyebrow eyebrow--light reveal">Das eigentliche Problem</span>
         <h2 class="section-title section-title--light reveal reveal--delay-1">
           Du postest nicht zu wenig.<br>
           Du postest <em class="italic-orange-mid">ohne System.</em>
@@ -2279,7 +2251,6 @@
 
         <!-- Text rechts -->
         <div class="solution__text">
-          <span class="eyebrow reveal">Die Lösung</span>
           <h2 class="section-title reveal reveal--delay-1">Ein Werkzeugkasten,<br>der mit dir denkt.</h2>
 
           <div class="lead reveal reveal--delay-2" style="margin-top:1.5rem;">
@@ -2291,8 +2262,7 @@
             <li>10 Tools statt einem Mega-Prompt (jedes für genau einen Schritt gebaut)</li>
             <li>Trainiert auf Hannas Anti-KI-Stimme (nicht generisch, sondern menschlich)</li>
             <li>Wahl zwischen Claude und ChatGPT (gleiche Inhalte, deine Plattform)</li>
-            <li>Einmal kaufen, immer nutzen (kein Abo, Updates inklusive)</li>
-            <li>Bonus: Hannas eigener Redaktionsplan (das Template, mit dem sie selbst arbeitet)</li>
+            <li>Einmal kaufen, immer nutzen (kein Abo)</li>
           </ul>
         </div>
       </div>
@@ -2307,7 +2277,6 @@
       <span class="bg-typo" style="color:rgba(255,255,255,0.03);">STUDIO</span>
 
       <div class="tools__header">
-        <span class="eyebrow eyebrow--light reveal">10 Tools, 10 Phasen</span>
         <h2 class="section-title section-title--light reveal reveal--delay-1">Jedes Tool für genau einen Schritt.<br>Zusammen dein kompletter Workflow.</h2>
       </div>
 
@@ -2421,16 +2390,16 @@
         <div class="reveal reveal--delay-2">
           <div class="dual-cta" style="justify-content:center;">
             <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="bridge">
-              <span class="btn__main">Claude Edition · 49 €</span>
+              <span class="btn__main">Claude Edition · 39 €</span>
               <span class="btn__sub">Für Claude-Nutzer</span>
             </a>
             <span class="dual-cta__or">oder</span>
             <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="bridge">
-              <span class="btn__main">ChatGPT Edition · 49 €</span>
+              <span class="btn__main">ChatGPT Edition · 39 €</span>
               <span class="btn__sub">Für ChatGPT-Nutzer</span>
             </a>
           </div>
-          <p class="trust-bar">✓ Sofortiger Zugang per E-Mail &nbsp;·&nbsp; ✓ Updates inklusive &nbsp;·&nbsp; ✓ Einmalige Zahlung</p>
+          <p class="trust-bar">✓ Sofortiger Zugang per E-Mail &nbsp;·&nbsp; ✓ Einmalige Zahlung</p>
         </div>
       </div>
     </div>
@@ -2441,7 +2410,6 @@
   ============================================================ -->
   <section class="section section--off-white" id="workflow">
     <div class="container">
-      <span class="eyebrow reveal">Der Workflow</span>
       <h2 class="section-title reveal reveal--delay-1">So nutzt du Instagram Studio.</h2>
       <p class="lead reveal reveal--delay-2" style="margin-top:1.25rem;">Drei Schritte. Egal welches Tool, egal welche Plattform.</p>
 
@@ -2489,7 +2457,6 @@
   <section class="section section--cream" id="platform">
     <div class="container">
       <div class="platform__header">
-        <span class="eyebrow reveal">Zwei Wege, ein Ergebnis</span>
         <h2 class="section-title reveal reveal--delay-1">Claude oder ChatGPT?<br>Beide sind richtig.</h2>
         <p class="lead reveal reveal--delay-2" style="margin-top:1.25rem;">Identische Inhalte, identische Funktionalität, identischer Preis. Der Unterschied ist nur, in welcher Oberfläche du arbeitest.</p>
       </div>
@@ -2498,14 +2465,12 @@
         <!-- Claude -->
         <div class="platform-card platform-card--claude reveal">
           <div class="platform-card__label">Claude Edition</div>
-          <h3 class="platform-card__title">Instagram Studio · Skills für Claude</h3>
+          <h3 class="platform-card__title">Instagram Marketing Studio · Skills für Claude</h3>
 
           <div class="platform-card__section-label">Was du bekommst</div>
           <ul class="platform-card__list">
             <li>Alle 10 Tools als Claude Skills, direkt in claude.ai aktivierbar</li>
             <li>Schritt-für-Schritt-Installations-Anleitung</li>
-            <li>Bonus-Materialien als PDF</li>
-            <li>Updates inklusive</li>
           </ul>
 
           <div class="platform-card__section-label">Für dich, wenn ...</div>
@@ -2520,21 +2485,19 @@
           </div>
 
           <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary" style="width:100%;padding:1.1rem;" data-track="cta_claude" data-position="platform">
-            <span class="btn__main">Claude Edition holen · 49 €</span>
+            <span class="btn__main">Claude Edition holen · 39 €</span>
           </a>
         </div>
 
         <!-- ChatGPT -->
         <div class="platform-card platform-card--chatgpt reveal reveal--delay-1">
           <div class="platform-card__label">ChatGPT Edition</div>
-          <h3 class="platform-card__title">Instagram Studio · Custom GPTs für ChatGPT</h3>
+          <h3 class="platform-card__title">Instagram Marketing Studio · Custom GPTs für ChatGPT</h3>
 
           <div class="platform-card__section-label">Was du bekommst</div>
           <ul class="platform-card__list">
             <li>Alle 10 Tools als Custom GPTs in ChatGPT</li>
             <li>Direkte Links zu jedem GPT, sofort einsatzbereit</li>
-            <li>Bonus-Materialien als PDF</li>
-            <li>Updates inklusive</li>
           </ul>
 
           <div class="platform-card__section-label">Für dich, wenn ...</div>
@@ -2549,12 +2512,39 @@
           </div>
 
           <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark" style="width:100%;padding:1.1rem;" data-track="cta_chatgpt" data-position="platform">
-            <span class="btn__main">ChatGPT Edition holen · 49 €</span>
+            <span class="btn__main">ChatGPT Edition holen · 39 €</span>
+          </a>
+        </div>
+
+        <!-- Kombi -->
+        <div class="platform-card platform-card--kombi reveal reveal--delay-2">
+          <div class="platform-card__label">Kombi Edition</div>
+          <h3 class="platform-card__title">Claude + ChatGPT · Beide Versionen zusammen</h3>
+
+          <div class="platform-card__section-label">Was du bekommst</div>
+          <ul class="platform-card__list">
+            <li>Claude Skills für claude.ai</li>
+            <li>Custom GPTs für ChatGPT</li>
+            <li>Alle 10 Tools auf beiden Plattformen</li>
+          </ul>
+
+          <div class="platform-card__section-label">Für dich, wenn ...</div>
+          <ul class="platform-card__list">
+            <li>Du beide Plattformen nutzt oder nutzen willst</li>
+            <li>Du flexibel bleiben und je nach Projekt wechseln möchtest</li>
+            <li>Du einfach alles haben willst</li>
+          </ul>
+
+          <div class="platform-card__prereq">
+            <p><strong>Kombipreis:</strong> Claude + ChatGPT Edition zusammen zum Sonderpreis</p>
+          </div>
+
+          <a href="#KOMBI_CHECKOUT_URL" class="btn btn-primary" style="width:100%;padding:1.1rem;background:linear-gradient(135deg,var(--orange-mid),var(--orange-deep));" data-track="cta_kombi" data-position="platform">
+            <span class="btn__main">Kombi Edition holen · 59 €</span>
           </a>
         </div>
       </div>
 
-      <p class="platform__footnote reveal">Du wechselst irgendwann die KI? Schreib uns, wir tauschen die Version aus.</p>
     </div>
   </section>
 
@@ -2564,7 +2554,6 @@
   <section class="section section--cream" id="hanna">
     <div class="container">
       <div class="hosts__header">
-        <span class="eyebrow reveal">Wer dahintersteckt</span>
         <h2 class="section-title reveal reveal--delay-1">Zwei Köpfe. Ein System.</h2>
         <p class="lead reveal reveal--delay-2" style="margin-top:1rem;">Hanna bringt 100k Follower und tief verwurzelte Instagram-Expertise. Martin bringt die KI-Infrastruktur. Zusammen entstand das Studio.</p>
       </div>
@@ -2575,7 +2564,7 @@
         <div class="host-card reveal">
           <div class="host-img-wrap">
             <img
-              src="hanna.jpg"
+              src="Photos Hanna/Neu/5352588596369626863.jpg"
               alt="Hanna Marzian"
               loading="lazy"
               decoding="async"
@@ -2644,29 +2633,18 @@
   ============================================================ -->
   <section class="section section--dark" id="fit">
     <div class="container">
-      <span class="eyebrow eyebrow--light reveal">Ehrlichkeit ist effizient</span>
       <h2 class="section-title section-title--light reveal reveal--delay-1">Nicht für jeden. Aber wenn für dich, dann richtig.</h2>
 
-      <div class="fit__grid">
+      <div class="fit__grid" style="grid-template-columns:1fr;max-width:600px;margin:3rem auto 0;text-align:center;">
         <div class="fit__col fit__col--yes reveal">
           <h3 class="fit__col-title">Das bist du</h3>
-          <ul class="fit-list fit-list--yes">
+          <ul class="fit-list fit-list--yes" style="align-items:center;">
             <li>Du postest auf Instagram (oder willst endlich anfangen) und meinst es ernst</li>
             <li>Du nutzt KI bereits oder bist bereit, sie sinnvoll einzusetzen</li>
-            <li>Du sparst lieber 49 € einmal als jeden Monat 2 Stunden für eine Caption</li>
+            <li>Du sparst lieber einmal als jeden Monat 2 Stunden für eine Caption</li>
             <li>Du bist Coach, Beraterin, Creator, Solopreneur oder Freelancer</li>
             <li>Du willst Content, der nach dir klingt, nicht nach Roboter</li>
             <li>Du verstehst, dass Tools dich nicht ersetzen, sondern beschleunigen</li>
-          </ul>
-        </div>
-
-        <div class="fit__col fit__col--no reveal reveal--delay-1">
-          <h3 class="fit__col-title">Nicht für dich</h3>
-          <ul class="fit-list fit-list--no">
-            <li>Du erwartest, dass das Tool allein deinen Account wachsen lässt</li>
-            <li>Du willst keinen Prozess lernen, sondern reinen Ghost-Service</li>
-            <li>Du suchst Done-for-you (dann wäre 1:1 mit Hanna richtig)</li>
-            <li>Du willst KI-Output ungeprüft posten (das funktioniert nirgendwo)</li>
           </ul>
         </div>
       </div>
@@ -2684,40 +2662,40 @@
        L · PRICING
   ============================================================ -->
   <section class="section section--warm-black" id="pricing" style="position:relative;overflow:hidden;">
-    <span class="bg-typo" style="color:var(--off-white);">49</span>
+    <span class="bg-typo" style="color:var(--off-white);">39</span>
 
     <div class="container">
       <div class="pricing__inner">
-        <h2 class="section-title section-title--cream reveal reveal--delay-1">Einmalig 49 €.<br>Für immer dein Werkzeugkasten.</h2>
+        <h2 class="section-title section-title--cream reveal reveal--delay-1">Einmalig 39 €.<br>Für immer dein Werkzeugkasten.</h2>
 
         <div class="price-card reveal reveal--delay-2">
-          <div class="price-card__bg-num">49</div>
+          <div class="price-card__bg-num">39</div>
 
-          <div class="price-card__product">Instagram Studio</div>
+          <div class="price-card__product">Instagram Marketing Studio</div>
           <div class="price-card__sub">10 KI-Tools für deinen kompletten Instagram-Workflow</div>
 
-          <div class="price-card__price">€ 49</div>
+          <!-- Preis mit Durchstreichung -->
+          <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:0.25rem;">
+            <div class="price-card__price">€ 39</div>
+            <div style="font-family:var(--font-heading);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:var(--warm-gray);text-decoration:line-through;opacity:0.5;">€ 59</div>
+          </div>
+          <div class="price-card__conditions" style="margin-bottom:0.75rem;">Angebot bis 17.05.2026</div>
           <div class="price-card__conditions">Einmalige Zahlung · Kein Abo · Sofortiger Zugang</div>
 
           <ul class="price-checklist">
             <li>10 spezialisierte KI-Tools (Hook, Caption, Reel-Skript, Carousel-Themen, Carousel-Aufbau, Story-Sequenzen, DM-Automation, Content-Strategie, Viral-Analyse, Content-Recycler)</li>
             <li>Funktioniert mit Claude und ChatGPT (deine Wahl, jederzeit wechselbar)</li>
-            <li>Hannas Feed-Strategie als PDF (Bonus)</li>
-            <li>Redaktionsplan-Template (Notion und Google Sheets)</li>
-            <li>15 Bonus-Prompts für Bio, Highlights, Welcome-DMs</li>
             <li>Schritt-für-Schritt-Anleitung (kein Tech-Know-how nötig)</li>
-            <li>Alle zukünftigen Updates inklusive</li>
-            <li>E-Mail-Support bei Setup-Fragen</li>
           </ul>
 
           <div class="dual-cta">
             <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="pricing" style="flex:1;">
-              <span class="btn__main">Claude Edition · 49 €</span>
+              <span class="btn__main">Claude Edition · 39 €</span>
               <span class="btn__sub">Für Claude-Nutzer</span>
             </a>
             <span class="dual-cta__or">oder</span>
             <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="pricing" style="flex:1;">
-              <span class="btn__main">ChatGPT Edition · 49 €</span>
+              <span class="btn__main">ChatGPT Edition · 39 €</span>
               <span class="btn__sub">Für ChatGPT-Nutzer</span>
             </a>
           </div>
@@ -2732,7 +2710,6 @@
   ============================================================ -->
   <section class="section section--off-white" id="faq">
     <div class="container--narrow">
-      <span class="eyebrow reveal">Bevor du fragst</span>
       <h2 class="section-title reveal reveal--delay-1">Häufige Fragen.</h2>
 
       <div class="faq__list reveal reveal--delay-2">
@@ -2745,18 +2722,6 @@
           <div class="faq-item__a" role="region">
             <div class="faq-item__a-inner">
               Nein. Die Tools sind so gebaut, dass du dein Thema reinschreibst und sofort Ergebnisse bekommst. Wer schon mit ChatGPT oder Claude geschrieben hat, kann das Studio in 5 Minuten benutzen. Wer noch nie KI genutzt hat, schafft es in 15 Minuten.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-item__q" aria-expanded="false">
-            Klingt der Output nicht trotzdem nach KI?
-            <span class="faq-item__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-item__a" role="region">
-            <div class="faq-item__a-inner">
-              Nur wenn du schlechte Tools benutzt. Die Skills hier sind auf Hannas direkten Schreibstil trainiert. Anti-Floskel-Filter eingebaut. Du erkennst keine generischen KI-Phrasen mehr im Output. Das gesagt: KI ersetzt deine Stimme nicht. Sie beschleunigt deinen Prozess. Du bleibst der kreative Kern.
             </div>
           </div>
         </div>
@@ -2780,7 +2745,7 @@
           </button>
           <div class="faq-item__a" role="region">
             <div class="faq-item__a-inner">
-              ChatGPT Edition: ja, ChatGPT Plus (20 $/Monat) ist Voraussetzung für Custom GPTs. Claude Edition: nein, Free reicht für die meisten Tools. Pro empfehle ich, wenn du regelmäßig längeren Output brauchst. Beides ist separat von den 49 € für das Studio.
+              ChatGPT Edition: ja, ChatGPT Plus (20 $/Monat) ist Voraussetzung für Custom GPTs. Claude Edition: nein, du brauchst kein bezahltes Abo. Free reicht für die meisten Tools. Wir empfehlen ein Pro-Abo jedoch, damit du längeren Output erhältst und nicht so schnell ans Limit kommst. Beides ist separat von den 39 € für das Studio.
             </div>
           </div>
         </div>
@@ -2792,7 +2757,7 @@
           </button>
           <div class="faq-item__a" role="region">
             <div class="faq-item__a-inner">
-              Updates der Tools sind im Kaufpreis enthalten. Wenn sich eine Plattform ändert, passe ich die Skills an und du bekommst die neue Version per E-Mail.
+              Je stärker die Modelle werden, desto stärker auch das Instagram Marketing Studio. Diese Ergänzungen sind also zeitlos.
             </div>
           </div>
         </div>
@@ -2816,7 +2781,7 @@
           </button>
           <div class="faq-item__a" role="region">
             <div class="faq-item__a-inner">
-              Ja. Die Tools sind nischen-unabhängig gebaut. Du gibst deine Nische bei der ersten Nutzung an, dann ist der Output passend. Coaches, Berater, E-Commerce, Health, Lifestyle, B2B, alles getestet.
+              Die Tools richten sich ganz klar an MENSCHEN, nicht UNTERNEHMEN. Wenn du eine Unternehmensseite betreibst, ist das eher nichts für dich. Wenn du als Person bei Instagram auftrittst (als Coach, Dienstleister*in, Personal Brand, Onlinekurserstellerin und vielem mehr), dann passt es wie die Faust aufs Auge.
             </div>
           </div>
         </div>
@@ -2833,11 +2798,10 @@
     <div class="final-cta__dots" aria-hidden="true" id="final-dots"></div>
 
     <div class="final-cta__inner">
-      <span class="eyebrow eyebrow--light reveal">Zum Schluss</span>
 
-      <h2 class="final-cta__title reveal reveal--delay-1">
-        <em class="italic-orange-mid">Wieder</em> Stunden für eine Caption.<br>
-        <em class="italic-orange-mid">Oder</em> einmal 49 € für ein System.
+      <h2 class="final-cta__title reveal reveal--delay-1" style="font-size:clamp(1.8rem,4vw,3.5rem);">
+        Jeden Monat dieselben 2 Stunden für Content.<br>
+        <em class="italic-orange-mid">Oder einmal investieren und für immer schneller sein.</em>
       </h2>
 
       <p class="final-cta__lead reveal reveal--delay-2">Du weißt schon, was die richtige Antwort ist. Wähle deine KI.</p>
@@ -2845,16 +2809,16 @@
       <div class="reveal reveal--delay-3">
         <div class="dual-cta" style="justify-content:center;">
           <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="final">
-            <span class="btn__main">Claude Edition · 49 €</span>
+            <span class="btn__main">Claude Edition · 39 €</span>
             <span class="btn__sub">10 Skills für Claude</span>
           </a>
           <span class="dual-cta__or" style="color:var(--mid-brown);">oder</span>
           <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="final">
-            <span class="btn__main">ChatGPT Edition · 49 €</span>
+            <span class="btn__main">ChatGPT Edition · 39 €</span>
             <span class="btn__sub">10 Custom GPTs für ChatGPT</span>
           </a>
         </div>
-        <p class="final-cta__footer-note">49 € · einmalig · sofortiger Zugang</p>
+        <p class="final-cta__footer-note">39 € · einmalig · sofortiger Zugang · Angebot bis 17.05.</p>
       </div>
     </div>
   </section>
