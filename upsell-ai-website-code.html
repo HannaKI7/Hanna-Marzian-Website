@@ -323,7 +323,7 @@
     /* ── TESTIMONIALS ────────────────────────────── */
     .testimonials {
       background: #faf7f3;
-      padding: 3rem clamp(1.5rem, 5vw, 4rem);
+      padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
       border-top: 1px solid rgba(71,43,24,0.08);
       flex-shrink: 0;
     }
@@ -336,7 +336,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--warm-gray);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .testimonials__grid {
@@ -349,11 +349,13 @@
 
     .testimonials__grid img {
       width: 100%;
+      height: auto;
       display: block;
       border-radius: 2px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.07);
     }
 
+    /* ── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 900px) {
       .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -361,10 +363,19 @@
     @media (max-width: 768px) {
       body { overflow: auto; }
       .main { grid-template-columns: 1fr; }
-      .col-left { border-right: none; border-bottom: 1px solid rgba(71,43,24,0.08); padding: 2rem 1.5rem 1.5rem; }
+      .col-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(71,43,24,0.08);
+        padding: 2rem 1.5rem 1.5rem;
+      }
       .col-right { padding: 1.5rem 1.5rem 2.5rem; }
+      .testimonials__grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
       .footer__inner { flex-direction: column; text-align: center; }
       .footer__links { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .testimonials__grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -429,10 +440,10 @@
   <div class="testimonials">
     <p class="testimonials__label">Was Teilnehmerinnen sagen</p>
     <div class="testimonials__grid">
-      <img src="Testimonials/KI Website Kurs/03-26/Abschluss/2503 Nicola.png" alt="Testimonial Nicola" loading="lazy">
-      <img src="Testimonials/KI Website Kurs/03-26/Abschluss/2503 anna.png" alt="Testimonial Anna" loading="lazy">
-      <img src="Testimonials/KI Website Kurs/03-26/Abschluss/2503 christina.png" alt="Testimonial Christina" loading="lazy">
-      <img src="Testimonials/KI Website Kurs/03-26/Abschluss/26.03. Kristin.png" alt="Testimonial Kristin" loading="lazy">
+      <img src="Testimonials/KI Website Kurs/Abschluss/2503 Nicola.png" alt="Testimonial Nicola" loading="lazy">
+      <img src="Testimonials/KI Website Kurs/Abschluss/2503 anna.png" alt="Testimonial Anna" loading="lazy">
+      <img src="Testimonials/KI Website Kurs/Abschluss/2503 christina.png" alt="Testimonial Christina" loading="lazy">
+      <img src="Testimonials/KI Website Kurs/Abschluss/26.03. Kristin.png" alt="Testimonial Kristin" loading="lazy">
     </div>
   </div>
 
