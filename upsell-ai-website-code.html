@@ -44,8 +44,29 @@
     .main {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      height: calc(100vh - 52px); /* volle Höhe minus confirm-bar */
-      min-height: 560px;
+    }
+
+    /* ── LEFT: Produktbild + Preis ───────────────── */
+    .col-left {
+      background: #faf7f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 3rem;
+      border-right: 1px solid rgba(71,43,24,0.08);
+      gap: 1.5rem;
+      min-height: calc(100vh - 52px);
+    }
+
+    /* ── RIGHT: Angebot ──────────────────────────── */
+    .col-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2.5rem 3.5rem;
+      gap: 1.25rem;
+      min-height: calc(100vh - 52px);
     }
 
     body {
