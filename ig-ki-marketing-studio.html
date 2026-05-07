@@ -644,14 +644,11 @@
     }
 
     .solution__visual {
-      background: var(--warm-dark);
-      aspect-ratio: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      background: transparent;
+      aspect-ratio: unset;
+      display: block;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       border-radius: 2px;
     }
 
@@ -1716,7 +1713,8 @@
 
     /* P1 — Solution visual: not flat */
     .solution__visual {
-      background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(216,98,42,0.09) 0%, var(--warm-dark) 70%);
+      background: transparent;
+      aspect-ratio: unset;
     }
 
     /* P1 — Fit "No" column: color not opacity */
@@ -2154,12 +2152,12 @@
 
         <div class="reveal reveal--delay-3">
           <div class="dual-cta">
-            <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="hero">
+            <a href="https://copecart.com/products/3b487266/checkout" class="btn btn-primary btn--large" data-track="cta_claude" data-position="hero">
               <span class="btn__main">Claude Edition · 39 €</span>
               <span class="btn__sub">Für Claude-Nutzer</span>
             </a>
             <span class="dual-cta__or">oder</span>
-            <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="hero">
+            <a href="https://copecart.com/products/9b02bcf5/checkout" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="hero">
               <span class="btn__main">ChatGPT Edition · 39 €</span>
               <span class="btn__sub">Für ChatGPT-Nutzer</span>
             </a>
@@ -2274,13 +2272,8 @@
     <div class="container">
       <div class="solution__inner">
         <!-- Visual links -->
-        <div class="solution__visual reveal">
-          <div class="solution__visual-dots" aria-hidden="true" id="sol-dots"></div>
-          <div class="solution__visual-text">
-            <div class="line1">Instagram</div>
-            <div class="line2">Studio</div>
-            <div class="byline">by Hanna × Martin</div>
-          </div>
+        <div class="solution__visual reveal" style="background:transparent;padding:0;overflow:visible;">
+          <img src="Angebote/INSTAGRAM KI MARKETING STUDIO/checkout.png" alt="KI-Marketing Studio – 10 spezialisierte Tools" style="width:100%;height:auto;display:block;border-radius:2px;">
         </div>
 
         <!-- Text rechts -->
@@ -2423,12 +2416,12 @@
 
         <div class="reveal reveal--delay-2">
           <div class="dual-cta" style="justify-content:center;">
-            <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="bridge">
+            <a href="https://copecart.com/products/3b487266/checkout" class="btn btn-primary btn--large" data-track="cta_claude" data-position="bridge">
               <span class="btn__main">Claude Edition · 39 €</span>
               <span class="btn__sub">Für Claude-Nutzer</span>
             </a>
             <span class="dual-cta__or">oder</span>
-            <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="bridge">
+            <a href="https://copecart.com/products/9b02bcf5/checkout" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="bridge">
               <span class="btn__main">ChatGPT Edition · 39 €</span>
               <span class="btn__sub">Für ChatGPT-Nutzer</span>
             </a>
@@ -2507,7 +2500,7 @@
             <li>Schritt-für-Schritt-Installations-Anleitung</li>
           </ul>
 
-          <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary" style="width:100%;padding:1.1rem;" data-track="cta_claude" data-position="platform">
+          <a href="https://copecart.com/products/3b487266/checkout" class="btn btn-primary" style="width:100%;padding:1.1rem;" data-track="cta_claude" data-position="platform">
             <span class="btn__main">Claude Edition holen · 39 €</span>
           </a>
         </div>
@@ -2523,7 +2516,7 @@
             <li>Direkte Links zu jedem GPT, sofort einsatzbereit</li>
           </ul>
 
-          <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark" style="width:100%;padding:1.1rem;" data-track="cta_chatgpt" data-position="platform">
+          <a href="https://copecart.com/products/9b02bcf5/checkout" class="btn btn-dark" style="width:100%;padding:1.1rem;" data-track="cta_chatgpt" data-position="platform">
             <span class="btn__main">ChatGPT Edition holen · 39 €</span>
           </a>
         </div>
@@ -2540,9 +2533,10 @@
             <li>Alle 10 Tools auf beiden Plattformen</li>
           </ul>
 
-          <a href="#KOMBI_CHECKOUT_URL" class="btn btn-primary" style="width:100%;padding:1.1rem;background:linear-gradient(135deg,var(--orange-mid),var(--orange-deep));" data-track="cta_kombi" data-position="platform">
+          <a href="https://copecart.com/products/3b487266/checkout" class="btn btn-primary" style="width:100%;padding:1.1rem;background:linear-gradient(135deg,var(--orange-mid),var(--orange-deep));" data-track="cta_kombi" data-position="platform">
             <span class="btn__main">Kombi Edition holen · 59 €</span>
           </a>
+          <p style="margin-top:0.75rem;font-size:0.78rem;color:var(--mid-brown);text-align:center;line-height:1.5;">Im Bestellformular einfach die ChatGPT-Erweiterung auswählen, um beide Editionen zu kaufen.</p>
         </div>
       </div>
 
@@ -2675,10 +2669,9 @@
           <div class="price-card__product">Instagram Marketing Studio</div>
           <div class="price-card__sub">10 KI-Tools für deinen kompletten Instagram-Workflow</div>
 
-          <!-- Preis mit Durchstreichung -->
+          <!-- Preis -->
           <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:0.25rem;">
             <div class="price-card__price">€ 39</div>
-            <div style="font-family:var(--font-heading);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:var(--warm-gray);text-decoration:line-through;opacity:0.5;">€ 59</div>
           </div>
           <div class="price-card__conditions" style="margin-bottom:0.75rem;">Angebot bis 17.05.2026</div>
           <div class="price-card__conditions">Einmalige Zahlung · Kein Abo · Sofortiger Zugang</div>
@@ -2690,12 +2683,12 @@
           </ul>
 
           <div class="dual-cta">
-            <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="pricing" style="flex:1;">
+            <a href="https://copecart.com/products/3b487266/checkout" class="btn btn-primary btn--large" data-track="cta_claude" data-position="pricing" style="flex:1;">
               <span class="btn__main">Claude Edition · 39 €</span>
               <span class="btn__sub">Für Claude-Nutzer</span>
             </a>
             <span class="dual-cta__or">oder</span>
-            <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="pricing" style="flex:1;">
+            <a href="https://copecart.com/products/9b02bcf5/checkout" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="pricing" style="flex:1;">
               <span class="btn__main">ChatGPT Edition · 39 €</span>
               <span class="btn__sub">Für ChatGPT-Nutzer</span>
             </a>
@@ -2809,12 +2802,12 @@
 
       <div class="reveal reveal--delay-3">
         <div class="dual-cta" style="justify-content:center;">
-          <a href="#CLAUDE_CHECKOUT_URL" class="btn btn-primary btn--large" data-track="cta_claude" data-position="final">
+          <a href="https://copecart.com/products/3b487266/checkout" class="btn btn-primary btn--large" data-track="cta_claude" data-position="final">
             <span class="btn__main">Claude Edition · 39 €</span>
             <span class="btn__sub">10 Skills für Claude</span>
           </a>
           <span class="dual-cta__or" style="color:var(--mid-brown);">oder</span>
-          <a href="#CHATGPT_CHECKOUT_URL" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="final">
+          <a href="https://copecart.com/products/9b02bcf5/checkout" class="btn btn-dark btn--large" data-track="cta_chatgpt" data-position="final">
             <span class="btn__main">ChatGPT Edition · 39 €</span>
             <span class="btn__sub">10 Custom GPTs für ChatGPT</span>
           </a>
