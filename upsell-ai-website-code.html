@@ -37,6 +37,23 @@
       color: var(--warm-black);
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
+    }
+
+    /* ── MAIN LAYOUT ─────────────────────────────── */
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: calc(100vh - 52px); /* volle Höhe minus confirm-bar */
+      min-height: 560px;
+    }
+
+    body {
+      font-family: var(--font-accent);
+      background: #fff;
+      color: var(--warm-black);
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
     }
 
@@ -366,7 +383,7 @@
     }
 
     @media (max-width: 768px) {
-      .main { grid-template-columns: 1fr; }
+      .main { grid-template-columns: 1fr; height: auto; min-height: unset; }
       .col-left {
         border-right: none;
         border-bottom: 1px solid rgba(71,43,24,0.08);
