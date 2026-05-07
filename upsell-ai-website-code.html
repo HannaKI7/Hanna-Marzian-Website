@@ -234,7 +234,67 @@
 
     .btn-no:hover { color: var(--warm-black); }
 
-    /* ── MOBILE: zurück zu vertikal ─────────────── */
+    /* ── FOOTER ──────────────────────────────────── */
+    .footer {
+      background: var(--warm-black);
+      padding: 28px 0;
+      border-top: 1px solid rgba(216,98,42,0.18);
+      flex-shrink: 0;
+    }
+
+    .footer__inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer__logo {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #F6F0E6;
+      font-style: italic;
+      text-decoration: none;
+    }
+
+    .footer__logo span { color: var(--orange); font-style: normal; }
+
+    .footer__note {
+      font-size: 0.58rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      font-family: var(--font-accent);
+      letter-spacing: 0.05em;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+    }
+
+    .footer__links a {
+      font-family: var(--font-accent);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #A88960;
+      text-decoration: none;
+      transition: color 280ms ease;
+    }
+
+    .footer__links a:hover { color: var(--orange); }
+
+    @media (max-width: 768px) {
+      .footer__inner { flex-direction: column; text-align: center; }
+      .footer__links { justify-content: center; }
+    }
     @media (max-width: 768px) {
       body { overflow: auto; }
 
@@ -296,7 +356,6 @@
       <ul class="what-list">
         <li>Kompletter Videokurs: Website von Null auf Live</li>
         <li>Kein Coding, kein Tech-Vorwissen nötig</li>
-        <li>Hannas eigene Methode aus der Praxis</li>
         <li>Sofortiger Zugang nach dem Kauf</li>
       </ul>
 
