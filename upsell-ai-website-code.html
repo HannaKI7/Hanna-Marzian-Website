@@ -37,7 +37,12 @@
       color: var(--warm-black);
       display: flex;
       flex-direction: column;
-      overflow: hidden; /* kein Scrollen auf Desktop */
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      html, body { height: auto; }
+      body { overflow: auto; }
     }
 
     /* ── CONFIRM BAR ─────────────────────────────── */
@@ -361,7 +366,6 @@
     }
 
     @media (max-width: 768px) {
-      body { overflow: auto; }
       .main { grid-template-columns: 1fr; }
       .col-left {
         border-right: none;
