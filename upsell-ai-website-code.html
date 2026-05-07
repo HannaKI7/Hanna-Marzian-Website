@@ -33,16 +33,14 @@
       font-family: var(--font-accent);
       background: #fff;
       color: var(--warm-black);
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      min-height: 100%;
+      margin: 0;
     }
 
     /* ── MAIN LAYOUT ─────────────────────────────── */
     .main {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 52px);
     }
 
     /* ── LEFT: Produktbild + Preis ───────────────── */
@@ -55,7 +53,6 @@
       padding: 2.5rem 3rem;
       border-right: 1px solid rgba(71,43,24,0.08);
       gap: 1.5rem;
-      min-height: calc(100vh - 52px);
     }
 
     /* ── RIGHT: Angebot ──────────────────────────── */
@@ -65,7 +62,6 @@
       justify-content: center;
       padding: 2.5rem 3.5rem;
       gap: 1.25rem;
-      min-height: calc(100vh - 52px);
     }
 
     @media (max-width: 768px) {
@@ -394,13 +390,14 @@
     }
 
     @media (max-width: 768px) {
-      .main { grid-template-columns: 1fr; height: auto; min-height: unset; }
+      .main { grid-template-columns: 1fr; min-height: unset; }
       .col-left {
         border-right: none;
         border-bottom: 1px solid rgba(71,43,24,0.08);
         padding: 2rem 1.5rem 1.5rem;
+        min-height: unset;
       }
-      .col-right { padding: 1.5rem 1.5rem 2.5rem; }
+      .col-right { padding: 1.5rem 1.5rem 2.5rem; min-height: unset; }
       .testimonials__grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
       .footer__inner { flex-direction: column; text-align: center; }
       .footer__links { justify-content: center; }
