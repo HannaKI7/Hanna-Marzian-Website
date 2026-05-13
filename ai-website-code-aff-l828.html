@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI WEBSITE CODE – Website. Salespage. Funnel. Mit nur einem Prompt. · Hanna Marzian</title>
+  <meta name="description" content="Baue deine professionelle Website, Salespage oder Funnel mit Claude AI – ohne Vorkenntnisse. Sofortiger Zugang. Private Community. Jetzt für 199 €.">
+
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/consent.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:    #160C05;
+      --charcoal: #2A1608;
+      --dark:     #472B18;
+      --gold:     #D8622A;
+      --gold-l:   #E8894E;
+      --gold-p:   #F5CFA8;
+      --cream:    #F6F0E6;
+      --white:    #FBF7F2;
+      --mist:     #EDE4D7;
+      --gray:     #A8998A;
+      --serif:    'Cormorant', Georgia, serif;
+      --sans:     'Montserrat', system-ui, sans-serif;
+      --expo:     cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--black); overflow-x: hidden; }
+    @media (hover: hover) and (pointer: fine) { body { cursor: none; } }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9990; opacity: 0.45;
+    }
+
+    /* ── CURSOR */
+    .cur { position: fixed; pointer-events: none; z-index: 9999; top: 0; left: 0; display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .cur { display: block; }
+      .cur-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; transform: translate(-50%,-50%); }
+      .cur-ring { width: 36px; height: 36px; border: 1px solid rgba(216,98,42,.65); border-radius: 50%; transform: translate(-50%,-50%); transition: width .35s var(--expo), height .35s var(--expo); }
+      body.cx .cur-ring { width: 56px; height: 56px; }
+    }
+
+    /* ── NAV */
+    #logo-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 150;
+      background: rgba(251,247,242,0.97); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(216,98,42,.15);
+      padding: 0 48px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-hanna { font-family: var(--serif); font-size: 22px; font-weight: 600; font-style: italic; color: var(--black); letter-spacing: .04em; line-height: 1; }
+    .logo-hanna span { display: block; font-size: 9px; font-family: var(--sans); font-style: normal; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
+    .logo-collab { font-size: 10px; font-weight: 700; letter-spacing: .3em; color: var(--gold); text-transform: uppercase; opacity: .6; }
+    .logo-martin { font-family: var(--sans); font-size: 13px; font-weight: 800; color: var(--black); letter-spacing: .18em; text-transform: uppercase; line-height: 1; text-align: right; }
+    .logo-martin span { display: block; font-size: 9px; font-weight: 500; letter-spacing: .2em; color: var(--gray); margin-top: 3px; }
+    @media (max-width: 640px) {
+      #logo-nav { padding: 0 20px; height: 56px; }
+      .logo-collab { display: none; }
+      .logo-martin { font-size: 11px; }
+    }
+
+    /* ── SCROLL REVEAL */
+    .rv  { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--expo), transform .9s var(--expo); }
+    .rv.in  { opacity: 1; transform: none; }
+    .rv-l { opacity: 0; transform: translateX(-48px); transition: opacity .9s var(--expo), transform .9s var(--expo); }
+    .rv-l.in { opacity: 1; transform: none; }
+    .rv-r { opacity: 0; transform: translateX(48px); transition: opacity .9s var(--expo), transform .9s var(--expo); }
+    .rv-r.in { opacity: 1; transform: none; }
+    .rv-s { opacity: 0; transform: scale(.92) translateY(24px); transition: opacity 1s var(--expo), transform 1s var(--expo); }
+    .rv-s.in { opacity: 1; transform: none; }
+    .d1{transition-delay:.10s}.d2{transition-delay:.22s}.d3{transition-delay:.36s}.d4{transition-delay:.50s}.d5{transition-delay:.65s}
+
+    /* ── BUTTONS */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--gold); color: var(--black);
+      font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+      padding: 22px 52px; text-decoration: none; cursor: none;
+      transition: background .3s, transform .4s var(--expo), box-shadow .4s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transition: left .5s; }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { background: var(--gold-l); transform: translateY(-3px); box-shadow: 0 28px 80px rgba(216,98,42,.35); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1.5px solid rgba(216,98,42,.45); color: var(--gold);
+      font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 22px 40px; text-decoration: none; cursor: none;
+      transition: border-color .3s, background .3s, transform .3s var(--expo);
+    }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(216,98,42,.07); transform: translateY(-2px); }
+
+    /* ── EYEBROW */
+    .eyebrow {
+      font-size: 9px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
+    }
+    .eyebrow::after { content: ''; width: 48px; height: 1px; background: var(--gold); opacity: .4; }
+
+    /* ── GOLD DIVIDER */
+    .gold-divider { height: 1px; position: relative; background: linear-gradient(to right, transparent, rgba(216,98,42,.35) 20%, rgba(216,98,42,.35) 80%, transparent); }
+    .gold-divider::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(45deg); width: 7px; height: 7px; background: var(--gold); box-shadow: 0 0 10px rgba(216,98,42,.5); }
+
+    /* ── MARQUEE */
+    .mq-wrap { overflow: hidden; background: var(--charcoal); padding: 15px 0; }
+    .mq-track { display: flex; animation: mq 28s linear infinite; width: max-content; }
+    .mq-track:hover { animation-play-state: paused; }
+    @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .mq-item { display: inline-flex; align-items: center; gap: 28px; padding: 0 28px; font-size: 9px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-p); white-space: nowrap; }
+    .mq-dot { width: 4px; height: 4px; background: rgba(216,98,42,.5); border-radius: 50%; flex-shrink: 0; }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--white);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 164px 48px 100px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: 35%; left: 50%; transform: translate(-50%,-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse, rgba(216,98,42,.14) 0%, rgba(216,98,42,.05) 40%, transparent 65%);
+      pointer-events: none; animation: glowPulse 5s ease-in-out infinite;
+    }
+    @keyframes glowPulse { 0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)} 50%{opacity:.8;transform:translate(-50%,-50%) scale(1.1)} }
+    .hero-inner { position: relative; z-index: 2; max-width: 880px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(216,98,42,.08); border: 1px solid rgba(216,98,42,.25);
+      padding: 9px 22px; margin-bottom: 48px;
+      font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold-l);
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .8s .1s var(--expo), transform .8s .1s var(--expo);
+    }
+    .hero-badge .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: blink 1.5s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+    body.loaded .hero-badge { opacity: 1; transform: none; }
+
+    .hero-h1 {
+      font-family: var(--sans); font-weight: 900; letter-spacing: .16em;
+      font-size: clamp(30px, 4.2vw, 68px); text-transform: uppercase;
+      background: linear-gradient(135deg, var(--black) 0%, var(--gold) 45%, var(--charcoal) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 8px;
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 1s .25s var(--expo), transform 1s .25s var(--expo);
+    }
+    body.loaded .hero-h1 { opacity: 1; transform: none; }
+
+    .hero-sub-line {
+      font-size: clamp(18px, 2.2vw, 26px); font-weight: 300; color: var(--charcoal);
+      margin-bottom: 40px;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .9s .38s var(--expo), transform .9s .38s var(--expo);
+    }
+    .hero-sub-line strong { color: var(--gold); font-weight: 600; }
+    body.loaded .hero-sub-line { opacity: 1; transform: none; }
+
+    .hero-body {
+      font-size: 16px; font-weight: 300; line-height: 1.9; color: var(--charcoal);
+      max-width: 600px; margin: 0 auto 52px;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .9s .48s var(--expo), transform .9s .48s var(--expo);
+    }
+    body.loaded .hero-body { opacity: 1; transform: none; }
+
+    .hero-meta {
+      display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;
+      margin-bottom: 52px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .9s .58s var(--expo), transform .9s .58s var(--expo);
+    }
+    body.loaded .hero-meta { opacity: 1; transform: none; }
+    .meta-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+    .meta-val { font-family: var(--serif); font-size: 32px; font-weight: 600; color: var(--gold-l); line-height: 1; }
+    .meta-lbl { font-size: 9px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gray); }
+    .meta-sep { width: 1px; height: 44px; background: rgba(216,98,42,.2); }
+
+    .hero-cta {
+      display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .9s .7s var(--expo), transform .9s .7s var(--expo);
+    }
+    body.loaded .hero-cta { opacity: 1; transform: none; }
+
+    /* ─────────────────────────────────────────────
+       TESTIMONIALS MARQUEE (IMAGE SCROLL)
+    ───────────────────────────────────────────── */
+    .tmq-section {
+      background: var(--charcoal); padding: 72px 0; overflow: hidden; position: relative;
+    }
+    .tmq-section::before,.tmq-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+    .tmq-section::before { left: 0; background: linear-gradient(90deg, var(--charcoal) 0%, transparent 100%); }
+    .tmq-section::after  { right: 0; background: linear-gradient(-90deg, var(--charcoal) 0%, transparent 100%); }
+    .tmq-track { display: flex; gap: 18px; width: max-content; margin-bottom: 18px; will-change: transform; }
+    .tmq-track.row1 { animation: tmqScroll 35s linear infinite; }
+    .tmq-track.row2 { animation: tmqScroll 42s linear infinite reverse; }
+    @keyframes tmqScroll { 0%{transform:translate3d(0,0,0)} 100%{transform:translate3d(-50%,0,0)} }
+    @media (hover: hover) { .tmq-track:hover { animation-play-state: paused; } }
+    .tmq-img { height: 260px; width: auto; border-radius: 10px; object-fit: contain; background: rgba(255,255,255,.03); border: 1px solid rgba(216,98,42,.15); flex-shrink: 0; transition: transform .4s var(--expo), border-color .3s; cursor: none; }
+    .tmq-img:hover { transform: scale(1.04); border-color: rgba(216,98,42,.4); }
+
+    /* ─────────────────────────────────────────────
+       PROOF CALLOUT
+    ───────────────────────────────────────────── */
+    #proof {
+      background: var(--cream); padding: 100px 48px;
+      position: relative; overflow: hidden;
+    }
+    #proof::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(216,98,42,.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .proof-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .proof-box {
+      background: var(--white);
+      border: 1px solid rgba(216,98,42,.18);
+      border-left: 5px solid var(--gold);
+      padding: 56px 64px;
+      box-shadow: 0 8px 48px rgba(216,98,42,.08), 0 2px 12px rgba(0,0,0,.04);
+      position: relative;
+    }
+    .proof-tag { position: absolute; top: -13px; left: 52px; background: var(--gold); color: var(--black); font-size: 9px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 16px; }
+    .proof-quote { font-family: var(--serif); font-size: clamp(26px, 3.2vw, 46px); font-weight: 400; font-style: italic; line-height: 1.35; color: var(--black); margin-bottom: 18px; }
+    .proof-quote strong { font-weight: 600; color: var(--gold); font-style: italic; }
+    .proof-sub { font-size: 15px; font-weight: 400; line-height: 1.8; color: var(--charcoal); }
+
+    /* ─────────────────────────────────────────────
+       WARUM ANDERS
+    ───────────────────────────────────────────── */
+    #warum {
+      background: var(--white); padding: 120px 48px;
+      position: relative; overflow: hidden;
+    }
+    #warum::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(216,98,42,.012) 80px, rgba(216,98,42,.012) 81px);
+    }
+    .warum-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .warum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .warum-h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 50px); font-weight: 500; line-height: 1.15; color: var(--black); margin-bottom: 24px; }
+    .warum-h2 em { font-style: italic; color: var(--gold); }
+    .warum-body { font-size: 16px; font-weight: 300; line-height: 1.9; color: var(--charcoal); margin-bottom: 28px; }
+    .warum-list { display: flex; flex-direction: column; gap: 2px; }
+    .warum-item { background: var(--cream); border: 1px solid rgba(0,0,0,.05); border-left: 3px solid var(--gold); padding: 26px 30px; display: flex; align-items: flex-start; gap: 18px; box-shadow: 0 2px 12px rgba(0,0,0,.03); }
+    .warum-item svg { flex-shrink: 0; margin-top: 2px; }
+    .warum-item span { font-size: 14px; font-weight: 400; line-height: 1.8; color: var(--charcoal); }
+    .warum-item strong { color: var(--black); font-weight: 600; }
+
+    /* ─────────────────────────────────────────────
+       WIE ES FUNKTIONIERT
+    ───────────────────────────────────────────── */
+    #prozess {
+      background: var(--cream); padding: 120px 48px;
+    }
+    .prozess-inner { max-width: 820px; margin: 0 auto; }
+    .prozess-header { text-align: center; margin-bottom: 64px; }
+    .prozess-h2 { font-family: var(--serif); font-size: clamp(32px, 3.8vw, 58px); font-weight: 500; color: var(--black); line-height: 1.15; }
+    .prozess-h2 em { font-style: italic; color: var(--gold-l); }
+
+    .prozess-steps { display: flex; flex-direction: column; }
+    .pstep { display: grid; grid-template-columns: 100px 1fr; border-top: 1px solid rgba(216,98,42,.15); }
+    .pstep:last-child { border-bottom: 1px solid rgba(216,98,42,.15); }
+    .pstep-num { padding: 36px 0; border-right: 1px solid rgba(216,98,42,.15); display: flex; align-items: center; justify-content: center; }
+    .pstep-num span { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--gold); }
+    .pstep-body { padding: 36px 40px; }
+    .pstep-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .pstep-text { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--charcoal); }
+    .pstep-text strong { font-weight: 600; color: var(--black); }
+
+    .prozess-note { text-align: center; margin-top: 48px; font-size: 14px; font-weight: 300; color: var(--gray); line-height: 1.8; }
+    .prozess-note strong { color: var(--charcoal); font-weight: 500; }
+
+    /* ─────────────────────────────────────────────
+       FÜR WEN
+    ───────────────────────────────────────────── */
+    #whom {
+      background: var(--white); padding: 120px 48px;
+      position: relative; overflow: hidden;
+    }
+    #whom::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(216,98,42,.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .whom-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .whom-h2 { font-family: var(--serif); font-size: clamp(26px, 2.8vw, 46px); font-weight: 500; line-height: 1.15; color: var(--black); margin-bottom: 64px; }
+    .whom-h2 em { font-style: italic; color: var(--gold); }
+    .whom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .whom-card {
+      background: var(--cream); border: 1px solid rgba(0,0,0,.06);
+      padding: 40px 36px; position: relative; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.04);
+      transition: transform .4s var(--expo), box-shadow .4s, border-color .3s;
+      cursor: none;
+    }
+    .whom-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--expo); }
+    .whom-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(216,98,42,.1); border-color: rgba(216,98,42,.2); }
+    .whom-card:hover::after { transform: scaleX(1); }
+    .whom-icon { width: 32px; height: 32px; color: var(--gold); margin-bottom: 20px; display: block; }
+    .whom-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--black); margin-bottom: 10px; }
+    .whom-text { font-size: 14px; font-weight: 400; line-height: 1.8; color: var(--charcoal); }
+
+    .whom-not {
+      margin-top: 52px; padding: 36px 44px;
+      background: var(--mist); border: 1px solid rgba(0,0,0,.07);
+      display: flex; align-items: flex-start; gap: 20px;
+    }
+    .whom-not svg { color: var(--gray); flex-shrink: 0; margin-top: 2px; }
+    .whom-not-text { font-size: 14px; font-weight: 400; line-height: 1.8; color: var(--charcoal); }
+    .whom-not-text strong { font-weight: 600; color: var(--black); }
+
+    .claude-hint {
+      margin-top: 24px; padding: 24px 36px;
+      background: rgba(216,98,42,.06); border: 1px solid rgba(216,98,42,.2); border-left: 4px solid var(--gold);
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .claude-hint svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .claude-hint p { font-size: 14px; font-weight: 400; line-height: 1.8; color: var(--charcoal); margin: 0; }
+    .claude-hint strong { color: var(--black); font-weight: 600; }
+
+    /* ─────────────────────────────────────────────
+       WAS DU BEKOMMST (MODULE)
+    ───────────────────────────────────────────── */
+    #was {
+      background: var(--cream); padding: 120px 48px;
+    }
+    .was-inner { max-width: 1100px; margin: 0 auto; }
+    .was-header { text-align: center; margin-bottom: 80px; }
+    .was-h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 64px); font-weight: 500; color: var(--black); line-height: 1.12; }
+    .was-h2 em { font-style: italic; color: var(--gold-l); }
+    .was-sub { font-size: 15px; font-weight: 300; color: var(--charcoal); max-width: 540px; margin: 20px auto 0; line-height: 1.85; }
+
+    .was-modules { display: flex; flex-direction: column; gap: 2px; }
+    .was-row {
+      display: grid; grid-template-columns: 180px 1fr;
+      background: var(--white); border: 1px solid rgba(0,0,0,.06);
+      overflow: hidden; transition: border-color .3s, box-shadow .3s;
+      box-shadow: 0 2px 12px rgba(0,0,0,.03);
+    }
+    .was-row:hover { border-color: rgba(216,98,42,.25); box-shadow: 0 6px 24px rgba(216,98,42,.07); }
+    .was-label {
+      background: var(--mist); padding: 40px 32px;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid rgba(0,0,0,.06); position: relative;
+    }
+    .was-label::after { content: ''; position: absolute; right: 0; top: 20%; bottom: 20%; width: 2px; background: var(--gold); opacity: 0; transition: opacity .3s; }
+    .was-row:hover .was-label::after { opacity: 1; }
+    .was-num { font-family: var(--serif); font-size: 44px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 6px; opacity: .55; }
+    .was-title-sm { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--black); margin-top: 6px; }
+    .was-content { padding: 40px 48px; }
+    .was-items { display: flex; flex-direction: column; gap: 14px; }
+    .was-item { display: flex; align-items: flex-start; gap: 14px; font-size: 14px; font-weight: 400; line-height: 1.75; color: var(--charcoal); }
+    .was-check { width: 18px; height: 18px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .was-check svg { width: 10px; height: 10px; color: var(--gold); }
+
+    /* ─────────────────────────────────────────────
+       FORMAT (Zugang, Aufzeichnungen, Community)
+    ───────────────────────────────────────────── */
+    #format {
+      background: var(--white); padding: 100px 48px;
+    }
+    .format-inner { max-width: 1100px; margin: 0 auto; }
+    .format-h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 48px); font-weight: 500; line-height: 1.15; color: var(--black); margin-bottom: 56px; }
+    .format-h2 em { font-style: italic; color: var(--gold-l); }
+    .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .format-card {
+      background: var(--cream); border: 1px solid rgba(0,0,0,.06);
+      border-top: 4px solid var(--gold);
+      padding: 44px 36px; position: relative; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.05);
+    }
+    .format-card-num { position: absolute; top: 18px; right: 22px; font-family: var(--serif); font-size: 60px; font-weight: 300; color: rgba(216,98,42,.07); line-height: 1; }
+    .format-card svg { width: 32px; height: 32px; color: var(--gold); margin-bottom: 20px; display: block; }
+    .format-card-title { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--black); margin-bottom: 14px; }
+    .format-card-text { font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--charcoal); }
+    .format-badge { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(216,98,42,.1); border: 1px solid rgba(216,98,42,.25); padding: 6px 14px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-l); }
+
+    /* ─────────────────────────────────────────────
+       PROJECT SHOWCASE
+    ───────────────────────────────────────────── */
+    #projekte {
+      background: var(--charcoal); padding: 100px 48px;
+    }
+    .proj-inner { max-width: 1200px; margin: 0 auto; }
+    .proj-header { text-align: center; margin-bottom: 52px; }
+    .proj-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 56px); font-weight: 500; color: var(--white); line-height: 1.15; }
+    .proj-sub { font-size: 14px; color: var(--gray); margin-top: 12px; }
+
+    .pcar-wrap { max-width: 1200px; margin: 0 auto; position: relative; }
+    .pcar-viewport { overflow: hidden; }
+    .pcar-track { display: flex; gap: 24px; transition: transform .6s cubic-bezier(0.25,.46,.45,.94); }
+    .pcar-slide { flex: 0 0 calc(33.333% - 16px); }
+    .pcar-slide a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid rgba(216,98,42,.12); transition: transform .6s var(--expo), box-shadow .6s; text-decoration: none; }
+    .pcar-slide a:hover { transform: translateY(-6px); box-shadow: 0 32px 64px rgba(0,0,0,.45); }
+    .pcar-slide img { width: 100%; height: auto; display: block; }
+    .pcar-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: rgba(216,98,42,.15); border: 1px solid rgba(216,98,42,.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3; color: var(--gold); transition: background .3s, transform .3s var(--expo); }
+    .pcar-btn:hover { background: rgba(216,98,42,.3); transform: translateY(-50%) scale(1.1); }
+    .pcar-btn.prev { left: -64px; }
+    .pcar-btn.next { right: -64px; }
+    .pcar-btn:disabled { opacity: .2; pointer-events: none; }
+    .pcar-dots { display: flex; justify-content: center; gap: 10px; margin-top: 32px; }
+    .pcar-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(216,98,42,.3); border: none; cursor: pointer; transition: background .3s, transform .3s; }
+    .pcar-dot.active { background: var(--gold); transform: scale(1.4); }
+
+    /* ─────────────────────────────────────────────
+       HOSTS
+    ───────────────────────────────────────────── */
+    #hosts {
+      background: var(--cream); padding: 120px 48px;
+      position: relative; overflow: hidden;
+    }
+    #hosts::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(216,98,42,.07) 0%, transparent 65%); pointer-events: none; }
+    .hosts-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .hosts-h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 64px); font-weight: 500; line-height: 1.12; color: var(--black); margin-bottom: 64px; }
+    .hosts-h2 em { font-style: italic; color: var(--gold-l); }
+    .hosts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .host-card { display: flex; flex-direction: column; box-shadow: 0 8px 40px rgba(0,0,0,.08); }
+    .host-img-wrap { aspect-ratio: 4/5; overflow: hidden; position: relative; }
+    .host-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: brightness(.93) contrast(1.04); }
+    .host-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(22,12,5,.72) 0%, transparent 50%); }
+    .host-name-wrap { position: absolute; bottom: 24px; left: 24px; z-index: 1; }
+    .host-name { font-family: var(--serif); font-size: 34px; font-weight: 500; color: var(--white); line-height: 1; }
+    .host-role { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-top: 5px; }
+    .host-bio { background: var(--white); padding: 28px 32px; border: 1px solid rgba(0,0,0,.07); border-top: 2px solid var(--gold); font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--charcoal); }
+
+    /* ─────────────────────────────────────────────
+       VALUE STACK
+    ───────────────────────────────────────────── */
+    #value {
+      background: var(--white); padding: 120px 48px;
+      position: relative; overflow: hidden;
+    }
+    #value::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(216,98,42,.015) 80px, rgba(216,98,42,.015) 81px); }
+    .value-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .value-h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 60px); font-weight: 500; line-height: 1.15; color: var(--black); text-align: center; margin-bottom: 72px; }
+    .value-h2 em { font-style: italic; color: var(--gold-l); }
+
+    .value-list { display: flex; flex-direction: column; }
+    .value-item { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; border-bottom: 1px solid rgba(0,0,0,.07); gap: 20px; }
+    .value-item:first-child { border-top: 1px solid rgba(0,0,0,.07); }
+    .value-desc { font-size: 15px; font-weight: 400; color: var(--charcoal); }
+    .value-price { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--dark); white-space: nowrap; text-decoration: line-through; opacity: .7; }
+
+    .value-total {
+      margin-top: 44px; padding: 40px 52px;
+      background: linear-gradient(135deg, rgba(216,98,42,.08) 0%, rgba(216,98,42,.04) 100%);
+      border: 1px solid rgba(216,98,42,.22);
+      box-shadow: 0 8px 40px rgba(216,98,42,.1);
+      display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    }
+    .vt-left-label { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--charcoal); margin-bottom: 6px; }
+    .vt-left-was { font-family: var(--serif); font-size: 24px; color: var(--gray); text-decoration: line-through; opacity: .8; }
+    .vt-today-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 10px; }
+    .vt-price { display: flex; align-items: baseline; gap: 8px; }
+    .vt-eur { font-size: 26px; font-weight: 300; color: var(--gold); align-self: flex-start; margin-top: 8px; }
+    .vt-amount { font-family: var(--serif); font-size: 80px; font-weight: 600; color: var(--gold-l); line-height: 1; }
+    .vt-note { font-size: 11px; font-weight: 300; color: var(--gray); margin-top: 8px; font-style: italic; }
+
+    .value-cta { text-align: center; margin-top: 52px; }
+
+    /* ─────────────────────────────────────────────
+       TESTIMONIALS GRID
+    ───────────────────────────────────────────── */
+    #testimonials {
+      background: var(--cream); padding: 100px 48px;
+    }
+    .tmos-inner { max-width: 1100px; margin: 0 auto; }
+    .tmos-grid { columns: 4; column-gap: 18px; }
+    .tmos-item { break-inside: avoid; margin-bottom: 18px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(216,98,42,.12); box-shadow: 0 4px 16px rgba(0,0,0,.06); transition: transform .4s var(--expo), box-shadow .4s; cursor: none; }
+    .tmos-item:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,.12); }
+    .tmos-item img { width: 100%; height: auto; display: block; }
+
+    /* ─────────────────────────────────────────────
+       FAQ
+    ───────────────────────────────────────────── */
+    #faq {
+      background: var(--white); padding: 100px 48px;
+    }
+    .faq-inner { max-width: 780px; margin: 0 auto; }
+    .faq-h2 { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 52px); font-weight: 500; color: var(--black); text-align: center; margin-bottom: 64px; }
+    .faq-list { display: flex; flex-direction: column; gap: 2px; }
+    .faq-item { background: var(--cream); border: 1px solid rgba(0,0,0,.07); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.03); }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 26px 32px; cursor: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--black); transition: color .25s; }
+    .faq-q:hover { color: var(--gold); }
+    .faq-q svg { width: 20px; height: 20px; stroke: currentColor; flex-shrink: 0; transition: transform .35s var(--expo); }
+    .faq-item.open .faq-q { color: var(--gold); }
+    .faq-item.open .faq-q svg { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .5s var(--expo); }
+    .faq-item.open .faq-a { max-height: 320px; }
+    .faq-a-inner { padding: 0 32px 26px; font-size: 14px; font-weight: 400; line-height: 1.85; color: var(--charcoal); }
+
+    /* ─────────────────────────────────────────────
+       FINAL CTA
+    ───────────────────────────────────────────── */
+    #final {
+      background: var(--gold); padding: 100px 48px; text-align: center; position: relative; overflow: hidden;
+    }
+    #final::before { content: ''; position: absolute; top: -50%; left: -10%; right: -10%; bottom: -50%; background: repeating-linear-gradient(-45deg, rgba(0,0,0,0) 0, rgba(0,0,0,0) 20px, rgba(0,0,0,.025) 20px, rgba(0,0,0,.025) 21px); }
+    .final-inner { position: relative; z-index: 1; }
+    .final-h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 68px); font-weight: 600; line-height: 1.1; color: var(--black); margin-bottom: 16px; }
+    .final-sub { font-size: 16px; font-weight: 400; color: rgba(22,12,5,.65); margin-bottom: 44px; }
+    .final-btn { display: inline-flex; align-items: center; gap: 14px; background: var(--black); color: var(--gold-l); font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; padding: 22px 56px; text-decoration: none; cursor: none; transition: background .3s, transform .4s var(--expo), box-shadow .4s; }
+    .final-btn:hover { background: var(--charcoal); transform: translateY(-3px); box-shadow: 0 28px 80px rgba(0,0,0,.4); }
+    .final-note { margin-top: 22px; font-size: 12px; font-weight: 500; color: rgba(22,12,5,.5); }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    footer { background: var(--black); padding: 44px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.04); flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--cream); text-decoration: none; cursor: none; }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { font-size: 10px; font-weight: 300; color: rgba(255,255,255,.45); }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-link { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); text-decoration: none; cursor: none; transition: color .25s; }
+    .footer-link:hover { color: var(--gold); }
+
+    /* ─────────────────────────────────────────────
+       FLOAT / GLOW HELPERS
+    ───────────────────────────────────────────── */
+    .sec-glow { position: absolute; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(216,98,42,.08) 0%, transparent 65%); }
+    @keyframes floatUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    .float-a { animation: floatUp 8s ease-in-out infinite; }
+    .float-b { animation: floatUp 11s ease-in-out infinite; animation-delay: -5s; }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .warum-grid { grid-template-columns: 1fr; gap: 48px; }
+      .whom-grid { grid-template-columns: repeat(2, 1fr); }
+      .format-grid { grid-template-columns: 1fr; }
+      .hosts-grid { grid-template-columns: 1fr; }
+      .tmos-grid { columns: 2; }
+      .value-total { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .pcar-btn.prev { left: 4px; }
+      .pcar-btn.next { right: 4px; }
+    }
+    @media (max-width: 680px) {
+      .cur { display: none !important; }
+      body { cursor: auto !important; }
+      #hero { padding: 100px 24px 64px; }
+      .hero-body { white-space: normal !important; }
+      .hero-cta { flex-direction: column; width: 100%; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; padding: 18px 28px; }
+      .hero-meta { gap: 16px; }
+      .meta-val { font-size: 26px; }
+      #proof { padding: 72px 24px; }
+      .proof-box { padding: 36px 24px; }
+      #warum, #prozess, #whom, #was, #format, #hosts, #value, #testimonials, #faq { padding: 80px 24px; }
+      .warum-grid { grid-template-columns: 1fr; gap: 40px; }
+      .whom-grid { grid-template-columns: 1fr; }
+      .was-row { grid-template-columns: 1fr; }
+      .was-label { padding: 24px 24px 0; border-right: none; border-bottom: 1px solid rgba(0,0,0,.06); }
+      .was-content { padding: 24px; }
+      .pstep { grid-template-columns: 72px 1fr; }
+      .format-grid { grid-template-columns: 1fr; }
+      .hosts-grid { grid-template-columns: 1fr; }
+      .tmos-grid { columns: 1; }
+      .value-total { padding: 28px 24px; }
+      #projekte { padding: 80px 24px; }
+      .pcar-slide { flex: 0 0 80%; }
+      footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .cur { display: none; } body { cursor: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="logo-nav">
+    <div class="logo-hanna">Hanna Marzian<span>@hanna.gpt</span></div>
+    <div class="logo-collab">×</div>
+    <div class="logo-martin">Martin Thun<span>@martin_thun_</span></div>
+  </nav>
+
+  <div class="cur cur-dot" id="cDot"></div>
+  <div class="cur cur-ring" id="cRing"></div>
+
+  <!-- ═══ HERO ═══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Für Coaches, Creator, Unternehmer und Mitarbeiter
+      </div>
+
+      <h1 class="hero-h1">AI WEBSITE CODE</h1>
+
+      <p class="hero-sub-line">
+        Websites. Salespages. Funnel <strong>— mit nur einem Prompt.</strong>
+      </p>
+
+      <p class="hero-body">
+        Du tippst, was du willst. KI baut es. Keine Agentur, keine Templates, keine teuren Tools. Nur du, ein Prompt und ein <strong style="color:var(--gold);font-weight:500;">professioneller Online-Auftritt</strong>, der Kunden anzieht, überzeugt und konvertiert.
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-val">Sofortig</span>
+          <span class="meta-lbl">Zugang zu allen Inhalten</span>
+        </div>
+        <div class="meta-sep"></div>
+        <div class="meta-item">
+          <span class="meta-val">Erstes WOW-</span>
+          <span class="meta-lbl">Ergebnis in wenigen Minuten</span>
+        </div>
+        <div class="meta-sep"></div>
+        <div class="meta-item">
+          <span class="meta-val" style="color:var(--gold);">99 €</span>
+          <span class="meta-lbl">Netto · Sofortiger Zugang</span>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn-primary" href="https://copecart.com/products/b1c1cf88/checkout" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Jetzt Zugang sichern – 99 €
+        </a>
+        <a class="btn-outline" href="#was">Was bekomme ich?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TEXT MARQUEE ════════════════════════════════════════ -->
+  <div class="mq-wrap">
+    <div class="mq-track">
+      <span class="mq-item">Website in Minuten<span class="mq-dot"></span></span>
+      <span class="mq-item">Kein Code nötig<span class="mq-dot"></span></span>
+      <span class="mq-item">Keine Agentur<span class="mq-dot"></span></span>
+      <span class="mq-item">Salespage &amp; Funnel<span class="mq-dot"></span></span>
+      <span class="mq-item">Sofortige Ergebnisse<span class="mq-dot"></span></span>
+      <span class="mq-item">99 € netto<span class="mq-dot"></span></span>
+      <span class="mq-item">Website in Minuten<span class="mq-dot"></span></span>
+      <span class="mq-item">Kein Code nötig<span class="mq-dot"></span></span>
+      <span class="mq-item">Keine Agentur<span class="mq-dot"></span></span>
+      <span class="mq-item">Salespage &amp; Funnel<span class="mq-dot"></span></span>
+      <span class="mq-item">Sofortige Ergebnisse<span class="mq-dot"></span></span>
+      <span class="mq-item">99 € netto<span class="mq-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- ═══ TESTIMONIALS MARQUEE ════════════════════════════════ -->
+  <section class="tmq-section">
+    <div class="tmq-track row1">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/16.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03. (1).jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03.jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18032.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/19.03..png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/16.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03. (1).jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18.03.jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/18032.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/19.03..png" alt="" loading="eager">
+    </div>
+    <div class="tmq-track row2">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21.03.jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21033.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/22.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24.03..png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24031.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/27.03 andrea.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21.03.jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/21033.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/22.03..jpg" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24.03..png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/testimonial24031.png" alt="" loading="eager">
+      <img class="tmq-img" src="Testimonials/KI Website Kurs/Zwischendurch/27.03 andrea.png" alt="" loading="eager">
+    </div>
+  </section>
+
+  <!-- ═══ PROOF ════════════════════════════════════════════════ -->
+  <section id="proof">
+    <div class="proof-inner">
+      <div class="eyebrow rv">Das Versprechen</div>
+      <div class="proof-box rv-s d1">
+        <div class="proof-tag">Das ist kaum zu glauben:</div>
+        <p class="proof-quote">
+          Was früher <strong>Monate, eine Agentur und 5.000–15.000 €</strong> kostete, baust du jetzt selbst. In wenigen Stunden, kostenlos und 3x so geil.
+        </p>
+        <p class="proof-sub">
+          Kein Vorwissen. Kein Design-Talent. Kein Budget. Du brauchst nur einen Prompt, den du nach diesem Kurs schreiben kannst.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ WARUM ANDERS ═════════════════════════════════════════ -->
+  <section id="warum">
+    <div class="warum-inner">
+      <div class="eyebrow rv" style="color:var(--gold);">Warum AI WEBSITE CODE anders ist</div>
+      <div class="warum-grid">
+        <div>
+          <h2 class="warum-h2 rv-l d1">
+            Ja, jede KI kann dir<br><em>irgendwie eine Website bauen.</em><br>Das hier ist anders.
+          </h2>
+          <p class="warum-body rv-l d2">
+            Du bekommst keine zufällig generierte Seite. Du bekommst eine klare Struktur und eine Schritt-für-Schritt-Anleitung, was eine wirklich gute Website ausmacht. Das, wofür andere 10.000 € zahlen.
+          </p>
+          <p class="warum-body rv-l d3" style="margin-bottom:0;">
+            Dieses Wissen kommt aus <strong>7 Jahren Online-Marketing-Erfahrung</strong> und über <strong>100 umgesetzten Projekten</strong> für Großkunden, Creator und Personal Brands.
+          </p>
+        </div>
+        <div class="warum-list rv-r d1">
+          <div class="warum-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8622A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Du lernst <strong>warum</strong> eine Website konvertiert, nicht nur wie man sie baut</span>
+          </div>
+          <div class="warum-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8622A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Echte Erfahrung statt Theorie:</strong> Strukturen aus 100+ realen Projekten für echte Kunden</span>
+          </div>
+          <div class="warum-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8622A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Du weißt <strong>genau, was</strong> eine 10.000 € Website von einer 500 € Website unterscheidet</span>
+          </div>
+          <div class="warum-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8622A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Das Ergebnis: ein Online-Auftritt, der <strong>professionell wirkt</strong> und tatsächlich verkauft</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ WIE ES FUNKTIONIERT ══════════════════════════════════ -->
+  <section id="prozess">
+    <div class="prozess-inner">
+      <div class="prozess-header">
+        <div class="eyebrow rv" style="justify-content:center;">Der Prozess</div>
+        <h2 class="prozess-h2 rv d1">Einmal einrichten.<br><em>Danach immer bauen.</em></h2>
+      </div>
+      <div class="prozess-steps">
+        <div class="pstep rv d2">
+          <div class="pstep-num"><span>15–30</span></div>
+          <div class="pstep-body">
+            <div class="pstep-label">Einmalige Einrichtung (Minuten)</div>
+            <p class="pstep-text">Claude Code installieren, Kontext hinterlegen (Branding, Tonalität, Angebote, Zielgruppe). Beim ersten Mal dauert das 15 bis 30 Minuten. Danach ist das System startklar.</p>
+          </div>
+        </div>
+        <div class="pstep rv d3">
+          <div class="pstep-num"><span>&lt; 5</span></div>
+          <div class="pstep-body">
+            <div class="pstep-label">Website bauen (Minuten)</div>
+            <p class="pstep-text">Ein gut formulierter Prompt, und Claude generiert die komplette Seite mit allen Unterseiten. In unter 5 Minuten. Kein Copy-Paste, kein manuelles Einbetten. Die KI übernimmt alles.</p>
+          </div>
+        </div>
+        <div class="pstep rv d4">
+          <div class="pstep-num"><span>∞</span></div>
+          <div class="pstep-body">
+            <div class="pstep-label">Wächst mit dir</div>
+            <p class="pstep-text">Dank Memory-Funktion lernt die KI deinen Business-Kontext kennen. <strong>Brandbook, Tonalität, Angebotspalette, alles hinterlegt.</strong> Mit jeder Session wird das System schneller und präziser.</p>
+          </div>
+        </div>
+      </div>
+      <p class="prozess-note rv d4">Teilnehmer hatten <strong>einen Tag nach dem Kauf</strong> den ersten Entwurf einer kompletten Website stehen.</p>
+      <div class="rv d5" style="text-align:center; margin-top:48px;">
+        <a class="btn-primary" href="https://copecart.com/products/b1c1cf88/checkout" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Jetzt für 99 € anmelden
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ FÜR WEN ═══════════════════════════════════════════════ -->
+  <section id="whom">
+    <div class="whom-inner">
+      <div class="eyebrow rv">Für wen ist das?</div>
+      <h2 class="whom-h2 rv d1">
+        Für dich, wenn du mehr willst als eine schöne Website:<br>
+        <em>Ein Markenzeichen, das dein Angebot wirklich in Szene setzt.</em>
+      </h2>
+
+      <div class="whom-grid">
+        <div class="whom-card rv">
+          <svg class="whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <div class="whom-title">Selbstständige &amp; Coaches</div>
+          <p class="whom-text">Du berätst, coachst oder bietest Dienstleistungen an. Du brauchst keine Visitenkarte, du brauchst eine Salespage, die Interessenten in Kunden verwandelt.</p>
+        </div>
+        <div class="whom-card rv d1">
+          <svg class="whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <div class="whom-title">Unternehmer mit veralteter Website</div>
+          <p class="whom-text">Deine aktuelle Website ist peinlich oder veraltet. Du zögerst den Neustart, weil dir Zeit oder Budget fehlt. Das ändert sich heute.</p>
+        </div>
+        <div class="whom-card rv d2">
+          <svg class="whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <div class="whom-title">Personal Brands &amp; Experten</div>
+          <p class="whom-text">Du bist Experte in deinem Feld, aber dein Online-Auftritt spiegelt das nicht wider. Ein Prompt ändert das.</p>
+        </div>
+        <div class="whom-card rv d1">
+          <svg class="whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="whom-title">Gründer &amp; Startups</div>
+          <p class="whom-text">Du startest neu und brauchst sofort eine professionelle Basis, ohne monatelange Agentur-Kommunikation und ohne fünfstelliges Budget.</p>
+        </div>
+        <div class="whom-card rv d2">
+          <svg class="whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <div class="whom-title">Führungskräfte &amp; Mitarbeiter</div>
+          <p class="whom-text">Du willst den wichtigsten KI-Skill 2026 in deinem Team? Wer das beherrscht, baut digitale Assets, die für das Unternehmen arbeiten.</p>
+        </div>
+        <div class="whom-card rv d3">
+          <svg class="whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <div class="whom-title">Alle ohne Zeit für Umwege</div>
+          <p class="whom-text">Kein Tool-Dschungel. Keine Agentur, die Monate braucht. Du sagst, was du willst. KI baut es. Fertig.</p>
+        </div>
+      </div>
+
+      <div class="whom-not rv d4">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <div class="whom-not-text">
+          <strong>Nicht geeignet für:</strong> Onlineshops mit großer Produktpalette (kein Shopify-Ersatz) · Technische Web-Apps oder SaaS · WordPress-CMS mit hunderten Seiten · Menschen, die glauben, dass KI zu kompliziert ist (der Kurs beweist das Gegenteil, aber du musst mitmachen wollen)
+        </div>
+      </div>
+
+      <div class="claude-hint rv d5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p><strong>Wir arbeiten im Kurs mit Claude AI.</strong> Ein bestehendes Konto oder die Bereitschaft, den Pro-Tarif zu buchen (ca. 18–20 €/Monat, jederzeit kündbar), ist Voraussetzung für die Teilnahme.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ WAS DU BEKOMMST ═══════════════════════════════════════ -->
+  <section id="was">
+    <div class="was-inner">
+      <div class="was-header">
+        <div class="eyebrow rv" style="justify-content:center;">AI WEBSITE CODE</div>
+        <h2 class="was-h2 rv d1"><em>Dein fertiger Online-Auftritt.</em></h2>
+        <p class="was-sub rv d2">Du wirst begleitet, vom ersten Klick bis zur Veröffentlichung. Du gehst nicht nur mit einer Website raus, sondern mit der Fähigkeit, ab sofort selbst zu bauen.</p>
+      </div>
+
+      <div class="was-modules">
+        <div class="was-row rv-l">
+          <div class="was-label">
+            <div class="was-num">01</div>
+            <div class="was-title-sm">Strategie</div>
+          </div>
+          <div class="was-content">
+            <div class="was-items">
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Deine komplette Online-Präsenz als ein durchdachtes System, kein Flickenteppich aus einzelnen Seiten</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Website, Salespage und Funnel aufeinander abgestimmt, mit einer Strategie, die Besucher in Kunden verwandelt</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Texte und Botschaft mit Formulierungen, die ins Schwarze treffen</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="was-row rv-r d1">
+          <div class="was-label">
+            <div class="was-num">02</div>
+            <div class="was-title-sm">Brand</div>
+          </div>
+          <div class="was-content">
+            <div class="was-items">
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Farben, Typografie und Stil, die wirklich zu dir passen, kein generischer Template-Look</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Eine visuelle Identität mit Wiedererkennungswert, die Vertrauen aufbaut bevor ein Wort gelesen wird</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>KI entwickelt dein komplettes Erscheinungsbild aus einem einzigen Briefing</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="was-row rv-l d1">
+          <div class="was-label">
+            <div class="was-num">03</div>
+            <div class="was-title-sm">Design</div>
+          </div>
+          <div class="was-content">
+            <div class="was-items">
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Scroll-Animationen, Hover-Effekte und visuelle Details, für die Agenturen Tausende berechnen</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Design auf Hochglanz poliert, professionell wie eine Top-Agentur-Arbeit</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Bilder und Effekte: KI integriert alles ohne manuelles Feintuning</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="was-row rv-r d2">
+          <div class="was-label">
+            <div class="was-num">04</div>
+            <div class="was-title-sm">Seiten</div>
+          </div>
+          <div class="was-content">
+            <div class="was-items">
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Seiten, die in Design, Qualität und Wirkung mit 10.000 € Websites mithalten können</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Kein Prototyp, kein „fast fertig", live, einsatzbereit und auf Conversion optimiert</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="was-row rv-l d2">
+          <div class="was-label">
+            <div class="was-num">05</div>
+            <div class="was-title-sm">Technik</div>
+          </div>
+          <div class="was-content">
+            <div class="was-items">
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>SEO vollständig eingerichtet, Google findet dich ab Tag 1</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Kontaktformular, Domain verknüpfen, Hosting einrichten, alles erklärt</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Mobile-Optimierung, technisch einwandfrei, ohne eine Zeile Code zu schreiben</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="was-row rv d3">
+          <div class="was-label">
+            <div class="was-num">06</div>
+            <div class="was-title-sm">Skill</div>
+          </div>
+          <div class="was-content">
+            <div class="was-items">
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Was du lernst, funktioniert für jede neue Seite, jeden neuen Funnel, jedes Projekt, für immer</span></div>
+              <div class="was-item"><div class="was-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Du bist nie wieder abhängig von Agenturen, Freelancern oder Tool-Abos</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rv d3" style="text-align:center; margin-top:56px;">
+        <a class="btn-primary" href="https://copecart.com/products/b1c1cf88/checkout" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Jetzt für 99 € anmelden
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ FORMAT (Zugang / Aufzeichnungen / Community) ═══════════ -->
+  <section id="format">
+    <div class="format-inner">
+      <div class="eyebrow rv">So funktioniert's</div>
+      <h2 class="format-h2 rv d1">Struktur, die<br><em>wirklich funktioniert.</em></h2>
+      <div class="format-grid">
+        <div class="format-card rv d1">
+          <div class="format-card-num">01</div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <div class="format-card-title">Sofortiger Zugang</div>
+          <p class="format-card-text">Alle Video-Tutorials sind sofort nach dem Kauf freigeschaltet. Du arbeitest in deinem eigenen Tempo, wann und wo du willst. Kein Zeitdruck, kein fester Starttermin.</p>
+          <div class="format-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Ab Tag 1 startklar</div>
+        </div>
+        <div class="format-card rv d2">
+          <div class="format-card-num">02</div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          <div class="format-card-title">Aufzeichnungen – 1 Jahr</div>
+          <p class="format-card-text">Dauerhafter Zugriff für 12 Monate auf alle Kursinhalte. Jedes Video, jede Anleitung, jedes Update. Du kannst alles so oft nachschauen wie du willst.</p>
+        </div>
+        <div class="format-card rv d3" style="background: rgba(216,98,42,.06); border-color: rgba(216,98,42,.2);">
+          <div class="format-card-num">03</div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="format-card-title" style="color:var(--gold-l);">Erstes WOW-Ergebnis in wenigen Minuten</div>
+          <p class="format-card-text">Kein langes Einlesen, kein Rumprobieren. Du folgst der Schritt-für-Schritt-Anleitung und siehst schon nach kurzer Zeit, wie deine Seite entsteht.</p>
+          <div class="format-badge">Sofort anwendbar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ PROJECT SHOWCASE ══════════════════════════════════════ -->
+  <section id="projekte">
+    <div class="proj-inner">
+      <div class="proj-header">
+        <div class="eyebrow rv" style="color:var(--gold-l);justify-content:center;">Echte Ergebnisse</div>
+        <h2 class="proj-h2 rv d1">Projektvorstellungen</h2>
+        <p class="proj-sub rv d2">Beispiele der Websites einiger Teilnehmer (absolute Technik-Anfänger!)</p>
+      </div>
+      <div class="pcar-wrap">
+        <div class="pcar-viewport">
+          <div class="pcar-track" id="pcarTrack">
+            <div class="pcar-slide rv">
+              <a href="https://www.andrea-luedtke.de/" target="_blank" rel="noopener">
+                <img src="Testimonials/KI Website Kurs/Projektvorstellungen/andrea-website.png" alt="Andrea Lüdtke Website">
+              </a>
+            </div>
+            <div class="pcar-slide rv d1">
+              <a href="https://kristin-schnoedt.de/" target="_blank" rel="noopener">
+                <img src="Testimonials/KI Website Kurs/Projektvorstellungen/kristin-website.png" alt="Kristin Schnoedt Website">
+              </a>
+            </div>
+            <div class="pcar-slide rv d2">
+              <a href="https://waldmomente.me/" target="_blank" rel="noopener">
+                <img src="Testimonials/KI Website Kurs/Projektvorstellungen/waldmomente-website.png" alt="Waldmomente Website">
+              </a>
+            </div>
+            <div class="pcar-slide rv d3">
+              <a href="https://woehl.de/" target="_blank" rel="noopener">
+                <img src="Testimonials/KI Website Kurs/woehl.de.png" alt="Wöhl Website">
+              </a>
+            </div>
+            <div class="pcar-slide rv d4">
+              <a href="https://lak-cleaningservice.de/" target="_blank" rel="noopener">
+                <img src="Testimonials/KI Website Kurs/lak-cleaningservice.de.png" alt="LAK Cleaning Service Website">
+              </a>
+            </div>
+          </div>
+        </div>
+        <button class="pcar-btn prev" id="pcarPrev" aria-label="Zurück">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="pcar-btn next" id="pcarNext" aria-label="Weiter">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="pcar-dots" id="pcarDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ HOSTS ═════════════════════════════════════════════════ -->
+  <section id="hosts">
+    <div class="hosts-inner">
+      <div class="eyebrow rv">Deine Hosts</div>
+      <h2 class="hosts-h2 rv d1">Zwei Menschen.<br><em>Eine Mission.</em></h2>
+      <div class="hosts-grid">
+        <div class="host-card rv d1">
+          <div class="host-img-wrap">
+            <img src="hanna.jpg" alt="Hanna Marzian">
+            <div class="host-name-wrap">
+              <div class="host-name">Hanna Marzian</div>
+              <div class="host-role">KI-Influencerin &amp; Host</div>
+            </div>
+          </div>
+          <div class="host-bio">In unter einem Jahr auf 100.000 Follower. Nicht durch Glück, sondern weil Hanna früher als alle anderen versteht, wohin sich KI entwickelt, und es zeigt, bevor es Mainstream wird. Sie baut keine Websites. Sie baut Systeme, die verkaufen. Und genau das bringt sie dir in diesem Kurs bei.</div>
+        </div>
+        <div class="host-card rv d2">
+          <div class="host-img-wrap">
+            <img src="martin.jpg" alt="Martin Thun">
+            <div class="host-name-wrap">
+              <div class="host-name">Martin Thun</div>
+              <div class="host-role">Gründer KI-Agentur scale² &amp; Co-Host</div>
+            </div>
+          </div>
+          <div class="host-bio">Martin hat klassisches Online Marketing letztes Jahr hinter sich gelassen, um zu den Vorreitern in Sachen KI zu werden. Von Solopreneuren bis mehrfach 7-stelligen Unternehmen sorgt er dafür, dass ethische KI in der deutschen Unternehmerlandschaft vorangetrieben wird.</div>
+        </div>
+      </div>
+      <div class="rv d3" style="text-align:center; margin-top:56px;">
+        <a class="btn-primary" href="https://copecart.com/products/b1c1cf88/checkout" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Jetzt für 99 € anmelden
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ VALUE STACK ════════════════════════════════════════════ -->
+  <section id="value">
+    <div class="value-inner">
+      <h2 class="value-h2 rv">Was du hier bekommst<br><em>und was es wirklich wert ist.</em></h2>
+      <div class="value-list">
+        <div class="value-item rv">
+          <span class="value-desc">Website + Salespage + Funnel (Agentur-Preis)</span>
+          <span class="value-price">7.000–15.000 €</span>
+        </div>
+        <div class="value-item rv d2">
+          <span class="value-desc">SEO-Vollsetup inklusive</span>
+          <span class="value-price">800 €</span>
+        </div>
+        <div class="value-item rv d2">
+          <span class="value-desc">Tool-Einsparungen (Website-Builder, Funnel-Tools, Design-Abo...)</span>
+          <span class="value-price">800–1.200 €/Jahr</span>
+        </div>
+        <div class="value-item rv d3">
+          <span class="value-desc">Erstes WOW-Ergebnis in wenigen Minuten – sofort anwendbar</span>
+          <span class="value-price">inklusive</span>
+        </div>
+      </div>
+      <div class="value-total rv d4">
+        <div>
+          <div class="vt-left-label">Gesamtwert</div>
+          <div class="vt-left-was">9.694 €+</div>
+        </div>
+        <div>
+          <div class="vt-today-label">Was du heute bezahlst:</div>
+          <div class="vt-price">
+            <span class="vt-eur">€</span>
+            <span class="vt-amount">99</span>
+          </div>
+          <div class="vt-note">(zzgl. MwSt. · sofortiger Zugang)</div>
+        </div>
+      </div>
+      <div class="value-cta rv d5">
+        <a class="btn-primary" href="https://copecart.com/products/b1c1cf88/checkout" target="_blank" rel="noopener" style="cursor:none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Jetzt für 99 € anmelden
+        </a>
+        <p style="margin-top:14px; font-size:11px; font-weight:500; letter-spacing:1.5px; color:var(--gray); text-transform:uppercase;">Sofortiger Zugang · Kein Abo · Kein Risiko</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ TESTIMONIALS GRID ════════════════════════════════════ -->
+  <section id="testimonials">
+    <div class="tmos-inner">
+      <div class="tmos-grid">
+        <div class="tmos-item rv"><img src="Testimonials/KI Website Kurs/Abschluss/2503 Nicola.png" alt="" loading="lazy"></div>
+        <div class="tmos-item rv d1"><img src="Testimonials/KI Website Kurs/Abschluss/2503 anna.png" alt="" loading="lazy"></div>
+        <div class="tmos-item rv d2"><img src="Testimonials/KI Website Kurs/Abschluss/2503 christina.png" alt="" loading="lazy"></div>
+        <div class="tmos-item rv d3"><img src="Testimonials/KI Website Kurs/Abschluss/2503 cornelia .png" alt="" loading="lazy"></div>
+        <div class="tmos-item rv d1"><img src="Testimonials/KI Website Kurs/Abschluss/2503 elisabeth.png" alt="" loading="lazy"></div>
+        <div class="tmos-item rv d2"><img src="Testimonials/KI Website Kurs/Abschluss/2503 linda.png" alt="" loading="lazy"></div>
+        <div class="tmos-item rv d3"><img src="Testimonials/KI Website Kurs/Abschluss/2503 lisa.png" alt="" loading="lazy"></div>
+        <div class="tmos-item rv d4"><img src="Testimonials/KI Website Kurs/Abschluss/2503 maria.png" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ FAQ ═══════════════════════════════════════════════════ -->
+  <section id="faq">
+    <div class="faq-inner">
+      <h2 class="faq-h2 rv">Häufige Fragen.</h2>
+      <div class="faq-list">
+        <div class="faq-item rv">
+          <button class="faq-q" aria-expanded="false">
+            Brauche ich technische Vorkenntnisse?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Der Video-Selbstlernkursist so aufgebaut, dass du auch ohne jegliche Erfahrung vom ersten Tag an mitkommst. Wir fangen bei null an und begleiten dich Schritt für Schritt. Wenn du ein Smartphone bedienen kannst, kannst du auch diesen Kurs absolvieren.</div></div>
+        </div>
+        <div class="faq-item rv d1">
+          <button class="faq-q" aria-expanded="false">
+            Bekomme ich wirklich eine fertige Website?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Ja. Das ist das Versprechen. Du gehst mit einem fertigen Ergebnis raus – Website, Salespage oder kompletter Funnel mit allen Seiten und Unterseiten. Echte Domain, echter Content, echtes Design. Kein Prototyp, kein „fast fertig".</div></div>
+        </div>
+        <div class="faq-item rv d1">
+          <button class="faq-q" aria-expanded="false">
+            Was kostet die Website danach monatlich?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Nichts. Wir laden deine Website mit einem kostenlosen Entwickler-Tool hoch, das du dauerhaft kostenlos nutzen kannst. Du zahlst einzig die Domain – das sind in der Regel 10–15 € pro Jahr.</div></div>
+        </div>
+        <div class="faq-item rv d2">
+          <button class="faq-q" aria-expanded="false">
+            Wirklich nur ein Prompt?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Im Kern ja. Sobald das System einmal eingerichtet ist und dein Kontext hinterlegt ist (Branding, Tonalität, Angebote, Zielgruppe), reicht ein gut formulierter Prompt, um eine komplette Seite zu generieren. Beim ersten Mal gibt es etwas mehr Einrichtungsschritte. Danach baust du Seiten in Minuten.</div></div>
+        </div>
+        <div class="faq-item rv d2">
+          <button class="faq-q" aria-expanded="false">
+            Was kommt dabei heraus? Muss ich Code anfassen?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Nein. Die KI übernimmt das komplett. Du siehst das fertige Ergebnis und verbindest am Ende deine Domain damit. Was im Hintergrund entsteht, ist sauberer Code ohne Lock-in durch einen Baukasten – deine Website läuft überall, ist superschnell und du bist von keiner Plattform abhängig.</div></div>
+        </div>
+        <div class="faq-item rv d3">
+          <button class="faq-q" aria-expanded="false">
+            Ist das DSGVO-sicher?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Ja. Cookie-Banner, Datenschutzerklärung, Impressum, lokales Hosting von Schriften – alles ist mit einem Prompt umsetzbar. Wir arbeiten im Kurs sogar mit KI-Agenten, die auf DSGVO spezialisiert sind.</div></div>
+        </div>
+        <div class="faq-item rv d3">
+          <button class="faq-q" aria-expanded="false">
+            Wie lange habe ich Zugang zu den Inhalten?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><strong>Ein Jahr.</strong> Alle Videos und Aufzeichnungen bleiben dir für 12 Monate erhalten. Du kannst jederzeit zurückgehen, etwas nachholen oder eine zweite Website mit denselben Methoden bauen.</div></div>
+        </div>
+        <div class="faq-item rv d4">
+          <button class="faq-q" aria-expanded="false">
+            Was ist, wenn ich nicht weiterkomme?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Du folgst der Schritt-für-Schritt-Anleitung und kannst jederzeit zurückgehen. Der Kurs ist so aufgebaut, dass du auch ohne direkten Support weiterkommst. Du bist nie allein, auch wenn der Kurs asynchron und in deinem eigenen Tempo läuft.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FINAL CTA ═════════════════════════════════════════════ -->
+  <section id="final">
+    <div class="final-inner">
+<a class="final-btn rv d2" href="https://copecart.com/products/b1c1cf88/checkout" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        Jetzt anmelden – 99 €
+      </a>
+      <p class="final-note rv d3">Sofortiger Zugang · Kein Abo · Zugang für 12 Monate</p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+  <footer>
+    <a class="footer-logo" href="#">Hanna <span>×</span> Martin</a>
+    <span class="footer-copy">© 2025 Hanna Marzian &amp; Martin Thun / scale²</span>
+    <div class="footer-links">
+      <a class="footer-link" href="agb.html">AGB</a>
+      <a class="footer-link" href="impressum.html">Impressum</a>
+      <a class="footer-link" href="datenschutz.html">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── BODY LOADED
+    window.addEventListener('load', () => document.body.classList.add('loaded'));
+
+    // ── CUSTOM CURSOR
+    const dot  = document.getElementById('cDot');
+    const ring = document.getElementById('cRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function tick() {
+      rx += (mx - rx) * 0.14; ry += (my - ry) * 0.14;
+      if (dot)  dot.style.transform  = `translate(${mx}px,${my}px)`;
+      if (ring) ring.style.transform = `translate(${rx}px,${ry}px)`;
+      requestAnimationFrame(tick);
+    })();
+    document.querySelectorAll('a,button').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cx'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cx'));
+    });
+
+    // ── SCROLL REVEAL
+    const revealEls = document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── FAQ
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+
+    // ── CAROUSEL
+    (function() {
+      const track  = document.getElementById('pcarTrack');
+      const btnP   = document.getElementById('pcarPrev');
+      const btnN   = document.getElementById('pcarNext');
+      const dotsW  = document.getElementById('pcarDots');
+      if (!track) return;
+      const slides = track.querySelectorAll('.pcar-slide');
+      let current = 0;
+      const visible = () => window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+
+      // build dots
+      slides.forEach((_,i) => {
+        const d = document.createElement('button');
+        d.className = 'pcar-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsW.appendChild(d);
+      });
+
+      function goTo(n) {
+        const v = visible();
+        const max = Math.max(0, slides.length - v);
+        current = Math.max(0, Math.min(n, max));
+        const w = slides[0].offsetWidth + 24;
+        track.style.transform = `translateX(-${current * w}px)`;
+        dotsW.querySelectorAll('.pcar-dot').forEach((d,i) => d.classList.toggle('active', i === current));
+        btnP.disabled = current === 0;
+        btnN.disabled = current >= max;
+      }
+      btnP.addEventListener('click', () => goTo(current - 1));
+      btnN.addEventListener('click', () => goTo(current + 1));
+      goTo(0);
+      window.addEventListener('resize', () => goTo(current));
+    })();
+  </script>
+
+</body>
+</html>
