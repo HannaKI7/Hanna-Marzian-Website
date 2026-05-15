@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI offline auf deinem Handy – Schritt-für-Schritt Anleitung | Hanna Marzian × Martin Thun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:       #D8622A;
+    --orange-mid:   #E8894E;
+    --orange-pale:  #F5CFA8;
+    --orange-deep:  #B84E1E;
+    --warm-black:   #160C05;
+    --warm-dark:    #2A1608;
+    --warm-brown:   #472B18;
+    --mid-brown:    #6B4530;
+    --tan:          #A88960;
+    --sand:         #D0B896;
+    --beige:        #EDE4D7;
+    --cream:        #F6F0E6;
+    --off-white:    #FBF7F2;
+    --warm-gray:    #7A6A5A;
+    --mid-gray:     #BDB0A0;
+    --light-gray:   #D8CFC4;
+    --neon-green:   #39FF14;
+
+    --font-heading: 'Cormorant', Georgia, serif;
+    --font-body:    'DM Sans', system-ui, sans-serif;
+    --font-accent:  'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--warm-black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--warm-dark);
+    padding: 72px 40px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -180px; right: -180px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(216,98,42,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(57,255,20,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .collab-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .collab-name {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .collab-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* scale² Logo inline SVG */
+  .scale2-logo-svg {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+  .scale2-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .scale2-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .scale2-text {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+  .scale2-text sup {
+    color: var(--neon-green);
+    font-size: 10px;
+    vertical-align: super;
+  }
+  .scale2-sub {
+    font-family: var(--font-accent);
+    font-size: 7px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+
+  .hero-tag {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--orange);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(38px, 6vw, 72px);
+    font-weight: 500;
+    color: var(--off-white);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--orange-mid);
+  }
+
+  .hero-sub {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(251,247,242,0.65);
+    line-height: 1.75;
+    max-width: 540px;
+    margin-bottom: 36px;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 1px;
+  }
+  .badge-orange { background: var(--orange); color: var(--off-white); }
+  .badge-outline { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.55); }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 64px 40px 80px;
+  }
+
+  /* Intro Note */
+  .intro-note {
+    background: var(--off-white);
+    border: 1px solid var(--beige);
+    border-left: 4px solid var(--orange);
+    border-radius: 2px;
+    padding: 28px 32px;
+    margin-bottom: 56px;
+  }
+  .intro-note p {
+    font-family: var(--font-heading);
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--warm-brown);
+    margin: 0;
+  }
+  .intro-note p strong { color: var(--orange); font-style: normal; font-weight: 600; }
+
+  /* App choice */
+  .app-choice-section {
+    margin-bottom: 56px;
+  }
+  .section-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--beige);
+    max-width: 120px;
+  }
+  .app-choice-section h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .app-choice-section > p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    line-height: 1.75;
+    max-width: 600px;
+    margin-bottom: 28px;
+  }
+
+  .app-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .app-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--beige);
+    border-radius: 2px;
+    padding: 28px 24px;
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .app-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+  }
+  .app-card:hover {
+    border-color: var(--orange-pale);
+    box-shadow: 0 6px 32px rgba(216,98,42,0.1);
+  }
+  .app-card-name {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--warm-black);
+    margin-bottom: 6px;
+  }
+  .app-card-name span { color: var(--orange); }
+  .app-card-platform {
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 14px;
+  }
+  .app-card p {
+    font-size: 14px;
+    color: var(--warm-gray);
+    line-height: 1.65;
+    margin: 0;
+  }
+  .app-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+  }
+  .app-card-link:hover { color: var(--orange-deep); }
+
+  /* ── STEPS ── */
+  .steps-section { margin-bottom: 56px; }
+  .steps-section h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .steps-section > p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    margin-bottom: 40px;
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 28px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .step:not(:last-child) .step-left::after {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 56px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--orange-pale), transparent);
+  }
+
+  .step-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 48px;
+  }
+  .step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--warm-dark);
+    border: 2px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-accent);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--orange);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-right {
+    padding-top: 12px;
+    padding-bottom: 48px;
+  }
+  .step-title {
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 500;
+    color: var(--warm-black);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .step-title em { font-style: italic; color: var(--orange); }
+  .step-body {
+    font-size: 15px;
+    color: var(--warm-gray);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  /* Substeps list */
+  .substep-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+  }
+  .substep-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--beige);
+    font-size: 14px;
+    color: var(--warm-gray);
+    line-height: 1.6;
+  }
+  .substep-list li:last-child { border-bottom: none; }
+  .substep-list li::before {
+    content: '→';
+    color: var(--orange);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Model cards */
+  .model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .model-card {
+    background: var(--warm-dark);
+    border: 1px solid rgba(216,98,42,0.2);
+    border-radius: 2px;
+    padding: 20px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .model-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--orange);
+  }
+  .model-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .model-name {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--off-white);
+    margin-bottom: 4px;
+  }
+  .model-maker {
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .model-desc {
+    font-size: 12px;
+    color: rgba(251,247,242,0.5);
+    line-height: 1.5;
+  }
+
+  /* Info box */
+  .info-box {
+    background: var(--beige);
+    border-radius: 2px;
+    border-left: 4px solid var(--orange);
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .info-box-label {
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .info-box p {
+    font-size: 14px;
+    color: var(--warm-brown);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* Success step */
+  .step-success {
+    background: var(--warm-dark);
+    border: 1px solid rgba(216,98,42,0.25);
+    border-radius: 2px;
+    padding: 32px 28px;
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .step-success::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(216,98,42,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .step-success-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .step-success h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 500;
+    color: var(--off-white);
+    margin-bottom: 12px;
+  }
+  .step-success h3 em { font-style: italic; color: var(--orange); }
+  .step-success p {
+    font-size: 15px;
+    color: rgba(251,247,242,0.6);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Warning box */
+  .warning-section {
+    background: var(--off-white);
+    border: 1.5px solid var(--beige);
+    border-top: 4px solid var(--warm-brown);
+    border-radius: 2px;
+    padding: 32px 32px;
+    margin-bottom: 56px;
+  }
+  .warning-section .warn-label {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--warm-brown);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .warning-section h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 500;
+    color: var(--warm-black);
+    margin-bottom: 12px;
+  }
+  .warning-section p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    line-height: 1.75;
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+  .warning-section p:last-child { margin-bottom: 0; }
+  .warning-section strong { color: var(--warm-brown); font-weight: 700; }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--orange);
+    border-radius: 2px;
+    padding: 40px 36px;
+    margin-bottom: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cta-section-text h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 500;
+    color: var(--off-white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .cta-section-text h3 em { font-style: italic; }
+  .cta-section-text p {
+    font-size: 14px;
+    color: rgba(251,247,242,0.8);
+    line-height: 1.65;
+    max-width: 400px;
+    margin: 0;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 15px 32px;
+    border-radius: 1px;
+    text-decoration: none;
+    flex-shrink: 0;
+    white-space: nowrap;
+    background: var(--warm-black);
+    color: var(--off-white);
+    transition: background 200ms ease;
+  }
+  .cta-btn:hover { background: var(--warm-dark); }
+
+  /* Authors */
+  .authors-section {
+    margin-bottom: 56px;
+  }
+  .authors-section h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 500;
+    color: var(--warm-black);
+    margin-bottom: 24px;
+  }
+  .authors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .author-card {
+    background: var(--off-white);
+    border: 1px solid var(--beige);
+    border-radius: 2px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .author-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--beige);
+    border: 2px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--orange);
+    flex-shrink: 0;
+  }
+  .author-info-tag {
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+  .author-name {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--warm-black);
+    margin-bottom: 4px;
+  }
+  .author-handle {
+    font-family: var(--font-accent);
+    font-size: 11px;
+    color: var(--mid-gray);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .author-desc {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* scale² author card special */
+  .author-card.scale2 {
+    background: #0a0a0a;
+    border: 1px solid rgba(57,255,20,0.15);
+  }
+  .author-card.scale2 .author-avatar {
+    background: #111;
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+  }
+  .author-card.scale2 .author-info-tag { color: var(--neon-green); }
+  .author-card.scale2 .author-name { color: #fff; }
+  .author-card.scale2 .author-handle { color: rgba(255,255,255,0.3); }
+  .author-card.scale2 .author-desc { color: rgba(255,255,255,0.5); }
+
+  .author-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--neon-green);
+    transition: opacity 200ms;
+  }
+  .author-link:hover { opacity: 0.7; }
+  .author-link.orange { color: var(--orange); }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--beige);
+    margin: 48px 0;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    border-top: 1px solid var(--beige);
+    padding: 24px 40px;
+  }
+  .footer-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    text-decoration: none;
+    transition: color 200ms;
+  }
+  .footer-links a:hover { color: var(--orange); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 48px 24px 48px; }
+    .content { padding: 48px 24px 64px; }
+    .app-cards { grid-template-columns: 1fr; }
+    .model-grid { grid-template-columns: 1fr; }
+    .authors-grid { grid-template-columns: 1fr; }
+    .step { grid-template-columns: 44px 1fr; gap: 0 16px; }
+    .step-number { width: 44px; height: 44px; font-size: 12px; }
+    .cta-section { flex-direction: column; }
+    .site-footer { padding: 32px 24px 28px; }
+    .footer-top { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+
+    <div class="collab-bar">
+      <!-- Hanna Handle -->
+      <div class="collab-name">@Hanna.GPT</div>
+      <div class="collab-divider"></div>
+      <!-- Martin Handle -->
+      <div class="collab-name" style="color: var(--neon-green);">@martin_thun_</div>
+      <div class="collab-divider"></div>
+      <!-- scale² Logo -->
+      <a href="https://scale-square.com/" target="_blank" rel="noopener noreferrer" class="scale2-logo-svg" title="scale² – AI Growth Partner">
+        <svg class="scale2-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="scale² Icon">
+          <rect width="48" height="48" rx="8" fill="#111111"/>
+          <!-- Bar chart icon matching scale² brand -->
+          <rect x="8" y="28" width="8" height="12" rx="1" fill="#39FF14" opacity="0.4"/>
+          <rect x="20" y="16" width="8" height="24" rx="1" fill="#39FF14" opacity="0.7"/>
+          <rect x="32" y="8" width="8" height="32" rx="1" fill="#39FF14"/>
+        </svg>
+        <div class="scale2-wordmark">
+          <div class="scale2-text">scale<sup>2</sup></div>
+          <div class="scale2-sub">AI Growth Partner</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hero-tag">Kostenloses Guide</div>
+
+    <h1>
+      KI auf deinem Handy –<br>
+      <em>auch ohne Internet.</em>
+    </h1>
+
+    <p class="hero-sub">
+      Schritt-für-Schritt Anleitung: So installierst du ein lokales KI-Modell direkt auf deinem Smartphone. Kein Account. Kein Abo. Keine Cloud. Deine Daten bleiben bei dir.
+    </p>
+
+    <div class="hero-badges">
+      <span class="badge badge-orange">100 % Kostenlos</span>
+      <span class="badge badge-outline">Keine Registrierung</span>
+      <span class="badge badge-outline">iOS & Android</span>
+      <span class="badge badge-outline">Offline nutzbar</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── CONTENT ── -->
+<div class="content">
+
+  <!-- Intro Quote -->
+  <div class="intro-note">
+    <p>
+      Stell dir vor: du sitzt im Zug ohne Netz, mitten in der Vorbereitung für einen Kunden – und <strong>dein KI-Assistent funktioniert trotzdem.</strong> Genau das macht dieser Guide möglich.
+    </p>
+  </div>
+
+  <!-- App Auswahl -->
+  <div class="app-choice-section">
+    <div class="section-eyebrow">Welche App?</div>
+    <h2>Zwei Apps, eine Mission</h2>
+    <p>
+      Es gibt zwei starke, kostenlose Apps mit denen du KI komplett offline auf dein Handy bringst. Beide sind 100 % kostenlos, brauchen keinen Account und speichern nichts in der Cloud.
+    </p>
+
+    <div class="app-cards">
+      <div class="app-card">
+        <div class="app-card-name"><span>Off</span>Grid</div>
+        <div class="app-card-platform">iOS & Android</div>
+        <p>Sehr benutzerfreundliche Oberfläche für iPhone und Android. Sauberes Design, einfacher Modell-Download, klarer Chat-Interface.</p>
+        <a href="https://apps.apple.com/app/offgrid" target="_blank" rel="noopener" class="app-card-link">→ Im App Store / Play Store</a>
+      </div>
+      <div class="app-card">
+        <div class="app-card-name"><span>Pocket</span>Pal</div>
+        <div class="app-card-platform">iOS & Android</div>
+        <p>Verfügbar für iPhone und Android. Unterstützt besonders viele Modell-Formate und gibt dir mehr Kontrolle über technische Einstellungen.</p>
+        <a href="https://github.com/a-ghorbani/pocketpal-ai" target="_blank" rel="noopener" class="app-card-link">→ Auf GitHub / App Store</a>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-label">💡 Tipp</div>
+      <p>Wenn du unsicher bist: Starte mit <strong>OffGrid</strong> (iOS) – die App ist am einfachsten zu bedienen und perfekt für den Einstieg.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Steps -->
+  <div class="steps-section">
+    <div class="section-eyebrow">Die Anleitung</div>
+    <h2>In 5 Schritten zur eigenen KI</h2>
+    <p>Folge einfach den Schritten – du brauchst kein technisches Vorwissen. Die gesamte Einrichtung dauert ca. 10–15 Minuten (je nach Internetgeschwindigkeit beim Modell-Download).</p>
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-number">01</div>
+      </div>
+      <div class="step-right">
+        <div class="step-title">App <em>herunterladen</em></div>
+        <p class="step-body">Öffne den App Store (iPhone) oder Google Play Store (Android) und such nach der App deiner Wahl.</p>
+        <ul class="substep-list">
+          <li><strong>iPhone:</strong> Suche nach „OffGrid AI" oder „PocketPal AI" im App Store</li>
+          <li><strong>Android:</strong> Suche nach „PocketPal AI" im Google Play Store</li>
+          <li>Tippe auf „Laden" oder „Installieren" – die App ist gratis</li>
+          <li>Kein Kauf nötig, keine In-App-Käufe für den Grundbetrieb</li>
+        </ul>
+        <div class="info-box">
+          <div class="info-box-label">📱 Speicherplatz</div>
+          <p>Stelle sicher, dass du mindestens <strong>3–8 GB freien Speicherplatz</strong> auf deinem Handy hast – das KI-Modell wird direkt auf deinem Gerät gespeichert.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-number">02</div>
+      </div>
+      <div class="step-right">
+        <div class="step-title">Keine Registrierung <em>nötig</em></div>
+        <p class="step-body">Hier unterscheiden sich diese Apps fundamental von ChatGPT & Co.: Einfach App öffnen – fertig. Kein E-Mail, kein Passwort, kein Konto.</p>
+        <ul class="substep-list">
+          <li>App öffnen → direkt in die Benutzeroberfläche</li>
+          <li>Keine E-Mail-Adresse erforderlich</li>
+          <li>Kein Konto erstellen, kein Abo, keine Bezahlschranke</li>
+          <li>Deine Daten bleiben auf deinem Gerät – immer</li>
+        </ul>
+        <div class="info-box" style="border-left-color: var(--warm-brown);">
+          <div class="info-box-label" style="color: var(--warm-brown);">🔒 Datenschutz</div>
+          <p>Alles läuft lokal auf deinem Handy. <strong>Nichts wird an Server übertragen.</strong> Perfekt für sensible Geschäftsinhalte, Kundeninfos oder persönliche Projekte.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-number">03</div>
+      </div>
+      <div class="step-right">
+        <div class="step-title">Hardware-Check & <em>Modell auswählen</em></div>
+        <p class="step-body">Die App analysiert automatisch dein Handy und schlägt passende KI-Modelle vor. Je leistungsfähiger dein Gerät, desto stärkere Modelle laufen flüssig.</p>
+        <ul class="substep-list">
+          <li>App prüft Prozessor (Chip), RAM und Speicher deines Handys</li>
+          <li>Du bekommst Empfehlungen: welche Modelle gut auf deinem Gerät laufen</li>
+          <li>Modelle mit mehr Parametern (z.B. 7B, 13B) sind mächtiger, brauchen aber mehr Rechenleistung</li>
+          <li>Für ältere Handys: kleinere Modelle (1B–3B) empfohlen</li>
+        </ul>
+
+        <p class="step-body" style="margin-top: 8px; margin-bottom: 12px;">Die <strong>stärksten empfohlenen Modelle</strong> für dein Handy:</p>
+
+        <div class="model-grid">
+          <div class="model-card">
+            <span class="model-icon">🦙</span>
+            <div class="model-name">Llama 3</div>
+            <div class="model-maker">Meta (Facebook)</div>
+            <div class="model-desc">Einer der besten Open-Source-Modelle. Stark für Texte & Erklärungen.</div>
+          </div>
+          <div class="model-card">
+            <span class="model-icon">💎</span>
+            <div class="model-name">Gemma 4</div>
+            <div class="model-maker">Google</div>
+            <div class="model-desc">Googles schlankes, schnelles Modell. Läuft gut auf neueren Smartphones.</div>
+          </div>
+          <div class="model-card">
+            <span class="model-icon">🌐</span>
+            <div class="model-name">Qwen</div>
+            <div class="model-maker">Alibaba</div>
+            <div class="model-desc">Überraschend stark, besonders in Mehrsprachigkeit und Analyse-Aufgaben.</div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-box-label">📊 Welches Modell passt zu mir?</div>
+          <p>Einfache Faustregel: <strong>iPhone 14 Pro oder neuer / Android Flaggschiff der letzten 2 Jahre</strong> → Gemma 4 oder Llama 3 (7B). Ältere Geräte → Qwen 0.5B oder Llama 1B versuchen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-number">04</div>
+      </div>
+      <div class="step-right">
+        <div class="step-title">KI-Modell <em>herunterladen</em></div>
+        <p class="step-body">Tippe auf das Modell deiner Wahl und bestätige den Download. Das ist der einzige Schritt, der eine Internetverbindung erfordert – danach läuft alles offline.</p>
+        <ul class="substep-list">
+          <li>Wähle ein empfohlenes Modell aus der Liste aus</li>
+          <li>Tippe auf „Download" oder „Herunterladen"</li>
+          <li>Download dauert je nach Modell 2–10 Minuten (am besten über WLAN!)</li>
+          <li>Modell wird lokal auf deinem Gerät gespeichert</li>
+          <li>Du kannst auch mehrere Modelle herunterladen und vergleichen</li>
+        </ul>
+        <div class="info-box">
+          <div class="info-box-label">📶 Wichtig</div>
+          <p>Lade das Modell am besten über <strong>WLAN</strong> herunter – die Dateigrößen liegen zwischen 500 MB und mehreren GB. Über Mobilfunk kann das teuer werden.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5 (final) -->
+    <div class="step" style="margin-bottom: 0;">
+      <div class="step-left" style="padding-bottom: 0;">
+        <div class="step-number" style="background: var(--orange); border-color: var(--orange-deep); color: var(--off-white);">05</div>
+      </div>
+      <div class="step-right" style="padding-bottom: 0;">
+        <div class="step-title">Fertig! <em>Jetzt loslegen</em></div>
+        <p class="step-body">Das Modell ist installiert. Ab sofort kannst du deine KI direkt auf dem Handy benutzen – ohne Netz, ohne Account, ohne Datenschutzbedenken.</p>
+        <ul class="substep-list">
+          <li>Modell in der App auswählen und auf „Chat starten" tippen</li>
+          <li>Tippe deine Frage oder Aufgabe ein – genau wie bei ChatGPT</li>
+          <li>Antworten kommen direkt vom Gerät (kein Internet nötig!)</li>
+          <li>Du kannst Prompts speichern und Gespräche exportieren</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success State -->
+  <div class="step-success">
+    <span class="step-success-icon">🎉</span>
+    <h3>Du hast jetzt <em>deine eigene KI</em> – direkt auf dem Handy.</h3>
+    <p>Keine monatlichen Kosten. Keine Daten in der Cloud. Kein Internet notwendig. Läuft im Zug, im Keller, im Ausland – überall.</p>
+  </div>
+
+  <!-- Wichtiger Hinweis -->
+  <div class="warning-section">
+    <div class="warn-label">⚠️ Wichtiger Hinweis</div>
+    <h3>Lokale KI vs. Online-KI – der ehrliche Vergleich</h3>
+    <p>
+      Die Leistung eines lokalen Modells auf deinem Handy ist <strong>nicht zu vergleichen mit ChatGPT Plus, Claude oder Gemini Advanced</strong> – diese Online-Modelle laufen auf Servern mit hundertfacher Rechenpower.
+    </p>
+    <p>
+      Lokale Modelle auf dem Handy sind <strong>langsamer, etwas weniger präzise</strong> und bei komplexen Aufgaben (z.B. langen Texten oder Programmieraufgaben) eingeschränkter.
+    </p>
+    <p>
+      <strong>Aber: In Notsituationen ohne Netz</strong> – auf Reisen, bei schlechtem Empfang, in sensiblen Kundengesprächen – können sie dir goldwerte Antworten liefern. Fragen klären, Texte strukturieren, Ideen brainstormen. Das klappt hervorragend auch offline.
+    </p>
+  </div>
+
+</div><!-- end .content -->
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://hannamarzian.com/impressum">Impressum</a>
+      <a href="https://hannamarzian.com/datenschutz">Datenschutz</a>
+      <a href="https://hannamarzian.com/agb">AGB</a>
+      <a href="https://hannamarzian.com/cookie">Cookie-Einstellungen</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
