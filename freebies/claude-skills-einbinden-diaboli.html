@@ -91,10 +91,26 @@
     padding: 72px 48px 80px;
     display: grid;
     grid-template-columns: 1fr 420px;
-    gap: 64px;
-    align-items: center;
+    grid-template-rows: auto auto;
+    gap: 0 64px;
     max-width: 1240px;
     margin: 0 auto;
+  }
+  .hero-text {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    padding-bottom: 24px;
+  }
+  .hero-benefits {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+  }
+  .hero-optin {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
   }
   .hero-kicker {
     font-family: var(--font-b);
@@ -822,9 +838,13 @@
   @media (max-width: 960px) {
     .hero {
       grid-template-columns: 1fr;
-      gap: 40px;
+      grid-template-rows: unset;
+      gap: 0;
       padding: 48px 32px 56px;
     }
+    .hero-text    { grid-column: unset; grid-row: unset; order: 3; padding-bottom: 0; padding-top: 32px; }
+    .hero-benefits { grid-column: unset; grid-row: unset; order: 2; margin-top: 0; margin-bottom: 32px; padding-top: 20px; }
+    .hero-optin   { grid-column: unset; grid-row: unset; order: 1; margin-bottom: 0; }
     .stats-bar {
       grid-template-columns: repeat(2, 1fr);
       padding: 36px 32px;
@@ -874,22 +894,24 @@
 <section class="hero">
 
   <!-- Links: Copy -->
-  <div>
-    <div class="hero-kicker">Kostenloser Skill-Download</div>
+  <div class="hero-text">
+    <div class="hero-kicker">0€ Skill-Download</div>
     <h1>Dein schärfster<br>Gegner in<br><em>Claude.</em></h1>
     <p class="hero-sub">
       Er stimmt nicht einfach zu. Er sucht den Haken, zeigt dir die Schwachstellen und liefert dir den Gegenvorschlag, den du brauchst, bevor eine Entscheidung teuer wird.
     </p>
-    <ul class="hero-benefits">
-      <li>Zeigt blinde Flecken, bevor sie dich Geld kosten</li>
-      <li>Kein Schönreden: echte Schwachstellen-Analyse auf Knopfdruck</li>
-      <li>Liefert immer einen konkreten Gegenvorschlag, nicht nur Kritik</li>
-    </ul>
   </div>
+
+  <!-- Benefits: eigenes Grid-Child für Mobile-Ordering -->
+  <ul class="hero-benefits">
+    <li>Zeigt blinde Flecken, bevor sie dich Geld kosten</li>
+    <li>Kein Schönreden: echte Schwachstellen-Analyse auf Knopfdruck</li>
+    <li>Liefert immer einen konkreten Gegenvorschlag, nicht nur Kritik</li>
+  </ul>
 
   <!-- Rechts: Optin-Box -->
   <div class="hero-optin">
-    <div class="optin-label">Gratis herunterladen</div>
+    <div class="optin-label">0€ herunterladen</div>
     <div class="optin-title">Advocatus Diaboli<br><em>Skill sichern.</em></div>
     <p class="optin-sub">E-Mail eintragen, Skill sofort runterladen. Kein Spam, nur relevante KI-Insights.</p>
     <div class="optin-form">
@@ -1118,7 +1140,7 @@
   <p class="cta-text">Tritt der Telegram Community bei und bekomm exklusiven Zugang zu neuen Tools, Deals und Angeboten, direkt auf deinem Handy.</p>
   <a href="https://t.me/+FqudiTcL7JgyZmUy" target="_blank" rel="noopener" class="cta-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
-    <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.2;">Jetzt beitreten<small style="font-size:9px;font-weight:400;letter-spacing:1.5px;opacity:0.8;text-transform:uppercase;">Kostenlos</small></span>
+    <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.2;">Jetzt beitreten<small style="font-size:9px;font-weight:400;letter-spacing:1.5px;opacity:0.8;text-transform:uppercase;">0€</small></span>
   </a>
 </div>
 
