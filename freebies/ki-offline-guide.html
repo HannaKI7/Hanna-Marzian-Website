@@ -6,7 +6,7 @@
 <title>KI offline auf deinem Handy – Schritt-für-Schritt Anleitung | Hanna Marzian × Martin Thun</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --orange:       #D8622A;
@@ -75,64 +75,83 @@
     z-index: 1;
   }
 
-  .collab-bar {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 36px;
-    flex-wrap: wrap;
+  /* ── JV LOGO ── */
+  .jv-logo-panel {
+    display: inline-block;
+    background: #efefef;
+    padding: 16px 20px;
+    border-radius: 2px;
   }
-  .collab-name {
-    font-family: var(--font-accent);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--orange);
+  .jv-logo { display: inline-block; }
+  .logo-table { border-collapse: collapse; border-spacing: 0; }
+  .logo-table td { padding: 0; vertical-align: bottom; }
+  .logo-table tr:last-child td { vertical-align: top; padding-top: 4px; }
+  .logo-table .td-divider { vertical-align: middle; padding: 0 1.2rem; }
+  .divider-line {
+    width: 1.5px;
+    display: block;
+    background: linear-gradient(to bottom, transparent, #D8622A 15%, #D8622A 85%, transparent);
   }
-  .collab-divider {
-    width: 1px;
-    height: 16px;
-    background: rgba(255,255,255,0.15);
-  }
-
-  /* scale² Logo inline SVG */
-  .scale2-logo-svg {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-  }
-  .scale2-icon {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-  }
-  .scale2-wordmark {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
-  .scale2-text {
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.3px;
-  }
-  .scale2-text sup {
-    color: var(--neon-green);
-    font-size: 10px;
-    vertical-align: super;
-  }
-  .scale2-sub {
-    font-family: var(--font-accent);
-    font-size: 7px;
+  .hanna-name {
+    font-family: 'Cormorant', Georgia, serif;
+    font-style: italic;
     font-weight: 500;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-top: 2px;
+    line-height: 1;
+    white-space: nowrap;
+    display: block;
+    text-align: right;
+  }
+  .hanna-handle {
+    font-family: 'Cormorant', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    display: block;
+    text-align: right;
+  }
+  .martin-name {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    white-space: nowrap;
+    display: block;
+    text-align: left;
+  }
+  .martin-handle {
+    font-family: 'Cormorant', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1;
+    display: block;
+    text-align: left;
+  }
+  .jv-logo--hero .hanna-name,
+  .jv-logo--footer .hanna-name {
+    font-size: clamp(2rem, 4.8vw, 4.5rem);
+    color: #160C05;
+  }
+  .jv-logo--hero .hanna-handle,
+  .jv-logo--footer .hanna-handle {
+    font-size: clamp(1rem, 2.4vw, 2.2rem);
+    color: #D8622A;
+  }
+  .jv-logo--hero .martin-name,
+  .jv-logo--footer .martin-name {
+    font-size: clamp(1.4rem, 3.1vw, 3.6rem);
+    color: #160C05;
+    position: relative;
+    top: -3px;
+  }
+  .jv-logo--hero .martin-handle,
+  .jv-logo--footer .martin-handle {
+    font-size: clamp(1rem, 2.2vw, 2.1rem);
+    color: #7A6A5A;
+  }
+  .jv-logo--hero .divider-line,
+  .jv-logo--footer .divider-line {
+    min-height: clamp(64px, 8vw, 120px);
+    background: linear-gradient(to bottom, transparent, #E8894E 15%, #D8622A 85%, transparent);
   }
 
   .hero-tag {
@@ -704,21 +723,6 @@
     margin: 0;
   }
 
-  /* scale² author card special */
-  .author-card.scale2 {
-    background: #0a0a0a;
-    border: 1px solid rgba(57,255,20,0.15);
-  }
-  .author-card.scale2 .author-avatar {
-    background: #111;
-    border-color: var(--neon-green);
-    color: var(--neon-green);
-  }
-  .author-card.scale2 .author-info-tag { color: var(--neon-green); }
-  .author-card.scale2 .author-name { color: #fff; }
-  .author-card.scale2 .author-handle { color: rgba(255,255,255,0.3); }
-  .author-card.scale2 .author-desc { color: rgba(255,255,255,0.5); }
-
   .author-link {
     display: inline-flex;
     align-items: center;
@@ -746,11 +750,26 @@
   /* ── FOOTER ── */
   .site-footer {
     border-top: 1px solid var(--beige);
-    padding: 24px 40px;
+    padding: 40px 40px 28px;
   }
   .footer-inner {
     max-width: 780px;
     margin: 0 auto;
+  }
+  .footer-top {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--beige);
+    margin-bottom: 20px;
+  }
+  .footer-top .jv-logo-panel {
+    background: #efefef;
+  }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
   }
   .footer-links {
     display: flex;
@@ -766,8 +785,76 @@
     color: var(--mid-gray);
     text-decoration: none;
     transition: color 200ms;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
   }
   .footer-links a:hover { color: var(--orange); }
+  .footer-copy {
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--mid-gray);
+  }
+
+  /* ── COOKIE BANNER ── */
+  .cookie-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--warm-black);
+    border-top: 2px solid var(--orange);
+    z-index: 9999;
+    padding: 20px 40px;
+    box-shadow: 0 -8px 32px rgba(22,12,5,0.35);
+  }
+  .cookie-banner-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cookie-banner-text { flex: 1; min-width: 200px; }
+  .cookie-banner-text strong {
+    font-family: var(--font-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    display: block;
+    margin-bottom: 5px;
+  }
+  .cookie-banner-text p {
+    font-size: 13px;
+    color: rgba(251,247,242,0.6);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .cookie-banner-actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .cookie-btn {
+    font-family: var(--font-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 200ms;
+    border: none;
+  }
+  .cookie-btn--decline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.55);
+  }
+  .cookie-btn--decline:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+  .cookie-btn--accept { background: var(--orange); color: var(--off-white); }
+  .cookie-btn--accept:hover { background: var(--orange-deep); }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
@@ -780,7 +867,14 @@
     .step-number { width: 44px; height: 44px; font-size: 12px; }
     .cta-section { flex-direction: column; }
     .site-footer { padding: 32px 24px 28px; }
-    .footer-top { flex-direction: column; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+    .cookie-banner { padding: 20px 24px; }
+    .cookie-banner-inner { flex-direction: column; gap: 16px; }
+    .cookie-banner-actions { width: 100%; }
+    .cookie-btn { flex: 1; text-align: center; }
+    .jv-logo-panel { padding: 12px 14px; }
+    .logo-table .td-divider { padding: 0 0.65rem; }
+    .martin-name { letter-spacing: 0.12em; }
   }
 </style>
 </head>
@@ -790,30 +884,23 @@
 <div class="hero">
   <div class="hero-inner">
 
-    <div class="collab-bar">
-      <!-- Hanna Handle -->
-      <div class="collab-name">@Hanna.GPT</div>
-      <div class="collab-divider"></div>
-      <!-- Martin Handle -->
-      <div class="collab-name" style="color: var(--neon-green);">@martin_thun_</div>
-      <div class="collab-divider"></div>
-      <!-- scale² Logo -->
-      <a href="https://scale-square.com/" target="_blank" rel="noopener noreferrer" class="scale2-logo-svg" title="scale² – AI Growth Partner">
-        <svg class="scale2-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="scale² Icon">
-          <rect width="48" height="48" rx="8" fill="#111111"/>
-          <!-- Bar chart icon matching scale² brand -->
-          <rect x="8" y="28" width="8" height="12" rx="1" fill="#39FF14" opacity="0.4"/>
-          <rect x="20" y="16" width="8" height="24" rx="1" fill="#39FF14" opacity="0.7"/>
-          <rect x="32" y="8" width="8" height="32" rx="1" fill="#39FF14"/>
-        </svg>
-        <div class="scale2-wordmark">
-          <div class="scale2-text">scale<sup>2</sup></div>
-          <div class="scale2-sub">AI Growth Partner</div>
-        </div>
-      </a>
+    <div class="jv-logo-panel" style="margin-bottom: 36px;" aria-label="Hanna Marzian und Martin Thun Logo">
+      <div class="jv-logo jv-logo--hero">
+        <table class="logo-table">
+          <tr>
+            <td><span class="hanna-name">Hanna Marzian</span></td>
+            <td class="td-divider" rowspan="2"><span class="divider-line"></span></td>
+            <td><span class="martin-name">MARTIN THUN</span></td>
+          </tr>
+          <tr>
+            <td><span class="hanna-handle">@hanna.gpt</span></td>
+            <td><span class="martin-handle">@martin_thun_</span></td>
+          </tr>
+        </table>
+      </div>
     </div>
 
-    <div class="hero-tag">Kostenloses Guide</div>
+    <div class="hero-tag">Leitfaden</div>
 
     <h1>
       KI auf deinem Handy –<br>
@@ -823,13 +910,6 @@
     <p class="hero-sub">
       Schritt-für-Schritt Anleitung: So installierst du ein lokales KI-Modell direkt auf deinem Smartphone. Kein Account. Kein Abo. Keine Cloud. Deine Daten bleiben bei dir.
     </p>
-
-    <div class="hero-badges">
-      <span class="badge badge-orange">100 % Kostenlos</span>
-      <span class="badge badge-outline">Keine Registrierung</span>
-      <span class="badge badge-outline">iOS & Android</span>
-      <span class="badge badge-outline">Offline nutzbar</span>
-    </div>
 
   </div>
 </div>
@@ -857,13 +937,11 @@
         <div class="app-card-name"><span>Off</span>Grid</div>
         <div class="app-card-platform">iOS & Android</div>
         <p>Sehr benutzerfreundliche Oberfläche für iPhone und Android. Sauberes Design, einfacher Modell-Download, klarer Chat-Interface.</p>
-        <a href="https://apps.apple.com/app/offgrid" target="_blank" rel="noopener" class="app-card-link">→ Im App Store / Play Store</a>
       </div>
       <div class="app-card">
         <div class="app-card-name"><span>Pocket</span>Pal</div>
         <div class="app-card-platform">iOS & Android</div>
         <p>Verfügbar für iPhone und Android. Unterstützt besonders viele Modell-Formate und gibt dir mehr Kontrolle über technische Einstellungen.</p>
-        <a href="https://github.com/a-ghorbani/pocketpal-ai" target="_blank" rel="noopener" class="app-card-link">→ Auf GitHub / App Store</a>
       </div>
     </div>
 
@@ -1035,14 +1113,92 @@
 <!-- ── FOOTER ── -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-links">
-      <a href="https://hannamarzian.com/impressum">Impressum</a>
-      <a href="https://hannamarzian.com/datenschutz">Datenschutz</a>
-      <a href="https://hannamarzian.com/agb">AGB</a>
-      <a href="https://hannamarzian.com/cookie">Cookie-Einstellungen</a>
+    <div class="footer-top">
+      <div class="jv-logo-panel" aria-label="Hanna Marzian und Martin Thun Logo">
+        <div class="jv-logo jv-logo--footer">
+          <table class="logo-table">
+            <tr>
+              <td><span class="hanna-name">Hanna Marzian</span></td>
+              <td class="td-divider" rowspan="2"><span class="divider-line"></span></td>
+              <td><span class="martin-name">MARTIN THUN</span></td>
+            </tr>
+            <tr>
+              <td><span class="hanna-handle">@hanna.gpt</span></td>
+              <td><span class="martin-handle">@martin_thun_</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="https://hannamarzian.com/impressum">Impressum</a>
+        <a href="https://hannamarzian.com/datenschutz">Datenschutz</a>
+        <a href="https://hannamarzian.com/agb">AGB</a>
+        <a href="#" onclick="showCookieBanner(); return false;">Cookie-Einstellungen</a>
+      </div>
+      <p class="footer-copy">© 2026 Hanna Marzian & Martin Thun · Alle Rechte vorbehalten</p>
     </div>
   </div>
 </footer>
+
+
+<!-- ── COOKIE BANNER ── -->
+<div id="cookie-banner" class="cookie-banner" style="display:none;">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <strong>Cookies & Tracking</strong>
+      <p>Wir nutzen den Facebook Pixel und ähnliche Tools, um dir relevante Inhalte zu zeigen. Du entscheidest, was du erlaubst.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Nur notwendige</button>
+      <button class="cookie-btn cookie-btn--accept" onclick="acceptCookies()">Alles akzeptieren</button>
+    </div>
+  </div>
+</div>
+
+<!-- FB Pixel & Consent -->
+<script>
+  var FB_PIXEL_ID = 'DEINE_PIXEL_ID'; // ← hier Pixel-ID eintragen
+
+  function loadFBPixel() {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', FB_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('cookie_consent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+    loadFBPixel();
+  }
+
+  function declineCookies() {
+    localStorage.setItem('cookie_consent', 'declined');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  function showCookieBanner() {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+
+  (function() {
+    var consent = localStorage.getItem('cookie_consent');
+    if (consent === 'accepted') {
+      loadFBPixel();
+    } else if (!consent) {
+      setTimeout(function() {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }, 800);
+    }
+  })();
+</script>
 
 </body>
 </html>
