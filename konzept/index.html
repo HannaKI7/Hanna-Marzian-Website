@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI Business Club · Konzeptpapier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @media print {
+            @page { margin: 2cm 2.5cm; size: A4; }
+            body { padding: 0; max-width: 100%; font-size: 11pt; }
+            .screen-only { display: none !important; }
+            .print-only { display: block !important; }
+            .cta-section { display: none !important; }
+            .hosts { grid-template-columns: 1fr 1fr !important; }
+            .two-col { grid-template-columns: 1fr 1fr !important; }
+            a { color: inherit !important; text-decoration: none; }
+            .section { break-inside: avoid; }
+            .pricing-block { break-inside: avoid; }
+            .beta-box { break-inside: avoid; }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --orange: #D8622A;
+            --dark: #111111;
+            --text: #2a2a2a;
+            --mid: #666666;
+            --light: #9a9a9a;
+            --bg: #ffffff;
+            --bg-subtle: #f7f6f4;
+            --border: #e2deda;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 80px 64px;
+            font-size: 15px;
+        }
+
+        /* ─── Document Header ─── */
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .doc-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--orange);
+        }
+
+        .doc-date {
+            font-size: 11px;
+            color: var(--light);
+            letter-spacing: 0.06em;
+        }
+
+        .doc-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin-bottom: 56px;
+        }
+
+        /* ─── Title Block ─── */
+
+        .title-block {
+            margin-bottom: 72px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .promise {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 14px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--mid);
+            font-weight: 300;
+            line-height: 1.65;
+            max-width: 580px;
+        }
+
+        /* ─── Sections ─── */
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: var(--text);
+        }
+
+        p:last-child { margin-bottom: 0; }
+
+        .callout {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--dark);
+            line-height: 1.55;
+            margin-bottom: 18px;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .problem-block {
+            display: flex;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+
+        .problem-block:first-of-type {
+            border-top: 1px solid var(--border);
+        }
+
+        .problem-num {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 0.08em;
+            min-width: 24px;
+            padding-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .problem-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .credibility-bar {
+            margin-top: 24px;
+            padding: 20px 24px;
+            border-left: 3px solid var(--orange);
+            background: var(--bg-subtle);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        /* ─── Deliverable List ─── */
+
+        .deliverable-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .deliverable-list li {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .deliverable-list li:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .arrow {
+            color: var(--orange);
+            font-size: 13px;
+            padding-top: 3px;
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+
+        .deliverable-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .deliverable-sub {
+            font-size: 13px;
+            color: var(--mid);
+            line-height: 1.6;
+        }
+
+        /* ─── Module List ─── */
+
+        .module-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .module-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .module-list li:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .module-num {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 0.08em;
+            min-width: 24px;
+            padding-top: 2px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .module-title {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .module-sub {
+            font-size: 13px;
+            color: var(--mid);
+            margin-top: 4px;
+            line-height: 1.55;
+        }
+
+        /* ─── Hosts ─── */
+
+        .hosts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .host {
+            padding: 28px 32px;
+            background: var(--bg-subtle);
+        }
+
+        .host-name {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+
+        .host-handle {
+            font-size: 11px;
+            color: var(--orange);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+        }
+
+        .host-focus {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+        }
+
+        .host-desc {
+            font-size: 13px;
+            color: var(--mid);
+            line-height: 1.65;
+        }
+
+        /* ─── For Whom ─── */
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .simple-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .simple-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .simple-list li:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .simple-list .li-mark {
+            color: var(--orange);
+            font-size: 12px;
+            padding-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* ─── Beta Box ─── */
+
+        .beta-box {
+            border: 1px solid var(--border);
+            padding: 36px 40px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .beta-left {
+            text-align: center;
+        }
+
+        .beta-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--orange);
+            line-height: 1;
+            display: block;
+        }
+
+        .beta-unit {
+            font-size: 11px;
+            color: var(--light);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .beta-right p {
+            font-size: 14px;
+            color: var(--mid);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .beta-right p:last-child { margin-bottom: 0; }
+
+        .beta-expect {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .beta-expect-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        /* ─── Pricing ─── */
+
+        .pricing-block {
+            background: var(--bg-subtle);
+            border-left: 3px solid var(--orange);
+            padding: 36px 40px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .price-main {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .price-period {
+            font-size: 12px;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 6px;
+        }
+
+        .price-note {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        .price-alt {
+            font-size: 13px;
+            color: var(--mid);
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .price-future {
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--light);
+            font-style: italic;
+        }
+
+        /* ─── CTA ─── */
+
+        .cta-section {
+            background: var(--dark);
+            color: white;
+            padding: 56px 64px;
+            text-align: center;
+            margin-top: 72px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: white;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 32px;
+            font-size: 15px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-link {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 15px 36px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: opacity 0.2s;
+        }
+
+        .cta-link:hover { opacity: 0.88; }
+
+        /* ─── Print CTA ─── */
+
+        .print-only {
+            display: none;
+        }
+
+        /* ─── Footer ─── */
+
+        footer {
+            margin-top: 56px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            font-size: 11px;
+            color: var(--light);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-handles {
+            font-size: 11px;
+            color: var(--orange);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* ─── Responsive ─── */
+
+        @media (max-width: 640px) {
+            body { padding: 44px 28px; }
+            h1 { font-size: 38px; }
+            .subtitle { font-size: 16px; }
+            .hosts { grid-template-columns: 1fr; }
+            .two-col { grid-template-columns: 1fr; }
+            .cta-section { padding: 44px 28px; }
+            .beta-box { grid-template-columns: 1fr; gap: 20px; }
+            .pricing-block { grid-template-columns: 1fr; gap: 20px; }
+            .doc-meta { flex-direction: column; align-items: flex-start; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Document Header -->
+    <div class="doc-meta">
+        <span class="doc-label">Angebotskonzept</span>
+        <span class="doc-date">Mai 2026</span>
+    </div>
+    <hr class="doc-divider">
+
+    <!-- Title -->
+    <div class="title-block">
+        <h1>KI Business Club</h1>
+        <p class="promise">Das KI Business System für Coaches, Creator und Onlinekursersteller</p>
+    </div>
+
+    <!-- Problem -->
+    <div class="section">
+        <div class="section-label">Ausgangslage</div>
+
+        <div class="problem-block">
+            <div class="problem-num">01</div>
+            <div>
+                <div class="problem-title">Das Content-Hamsterrad</div>
+                <p>Du postest täglich. Antwortest auf Kommentare und DMs. Der Algorithmus verlangt mehr, du lieferst mehr, aber dein Umsatz steigt nicht proportional. Du bist in einer Produktionsmaschine gefangen, die dich auffrisst, ohne dich wirklich weiterzubringen.</p>
+            </div>
+        </div>
+
+        <div class="problem-block">
+            <div class="problem-num">02</div>
+            <div>
+                <div class="problem-title">Du bist der Engpass</div>
+                <p>Jeder neue Kunde bedeutet mehr Arbeit für dich persönlich. Jede Anfrage, jede Folgefrage landet in deinem Postfach. Du kannst nicht krank sein, keinen Urlaub machen, keinen Tag offline gehen, weil das Business ohne dich schlicht aufhört zu laufen.</p>
+            </div>
+        </div>
+
+        <div class="problem-block">
+            <div class="problem-num">03</div>
+            <div>
+                <div class="problem-title">KI-Tool-Chaos ohne System</div>
+                <p>Du hast ChatGPT. Vielleicht noch drei andere Tools. Du hast Tutorials geschaut, Prompts gesammelt, Workflows angefangen. Aber ein echtes System, das dein Business trägt, hast du nicht.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approach -->
+    <div class="section">
+        <div class="section-label">Unser Ansatz</div>
+        <p class="callout">Gemeinsam bauen wir dein KI-gestütztes Online Business, das skalierfähig auf mehrfach 5-stellige Monate geht.</p>
+        <p>In 3 Monaten entsteht dein digitales Business-Fundament: deine Positionierung wird scharf, dein Angebot verkauft sich ohne Dauererklärung, dein Content läuft über Systeme, und deine Verkaufsprozesse funktionieren, ohne dass du bei jedem Schritt persönlich eingreifen musst.</p>
+        <p>Das Ergebnis ist ein lebendes System, das mit jeder unternehmerischen Entscheidung und neuen KI-Tools wächst.</p>
+        <p>Weil die KI-Welt sich schnell bewegt, gibt es keinen aufgeblähten Videokurs, der in 6 Monaten veraltet ist. Stattdessen: on-demand Inhalte, die entstehen, wenn sie gebraucht werden.</p>
+        <div class="credibility-bar">
+            Keine generischen KI-Unternehmenstipps, sondern spezialisiert auf deine Bedürfnisse, mit 10+ Jahren Erfahrung aus dem Online-Coaching-Markt, 100.000 Followern, mehrfach 5-stelligen Monaten und 150k&thinsp;€ Umsatz-Launches.
+        </div>
+    </div>
+
+    <!-- What You Get -->
+    <div class="section">
+        <div class="section-label">Was du bekommst</div>
+        <ul class="deliverable-list">
+            <li>
+                <span class="arrow">→</span>
+                <div>
+                    <div class="deliverable-title">1 Live-Call pro Woche (12 Calls gesamt)</div>
+                    <div class="deliverable-sub">Themengebunden, kein freies Q&A-Chaos. Jeder Call hat ein klares Thema aus einem der Module. Hanna übernimmt Content- und Reichweite-Wochen, Martin Tech, Angebot und Sales.</div>
+                </div>
+            </li>
+            <li>
+                <span class="arrow">→</span>
+                <div>
+                    <div class="deliverable-title">Telegram-Gruppe</div>
+                    <div class="deliverable-sub">Direkter Zugang zu Hanna und Martin. Kein Support-Team, kein Ticket-System.</div>
+                </div>
+            </li>
+            <li>
+                <span class="arrow">→</span>
+                <div>
+                    <div class="deliverable-title">On-Demand-Videoinhalt</div>
+                    <div class="deliverable-sub">Neue KI-Updates, Tools und Business-Konzepte werden bedarfsorientiert geteilt, wenn sie relevant sind, nicht nach Redaktionsplan. Kein Kurs, der nach 3 Monaten veraltet ist.</div>
+                </div>
+            </li>
+            <li>
+                <span class="arrow">→</span>
+                <div>
+                    <div class="deliverable-title">Grundlagenkurs (5 Module)</div>
+                    <div class="deliverable-sub">Die Basis, die du brauchst, um in den Live-Calls sofort anzusetzen. Kurz, strukturiert, auf den Punkt.</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Modules -->
+    <div class="section">
+        <div class="section-label">Die Module</div>
+        <ul class="module-list">
+            <li>
+                <span class="module-num">01</span>
+                <div>
+                    <div class="module-title">Positionierung &amp; Branding</div>
+                    <div class="module-sub">Wer du bist, für wen du das machst, und warum genau das zählt. Die Grundlage für alles andere.</div>
+                </div>
+            </li>
+            <li>
+                <span class="module-num">02</span>
+                <div>
+                    <div class="module-title">Angebotsstrategie</div>
+                    <div class="module-sub">Ein Angebot, das sich verkauft. Nicht eines, das erklärt werden muss.</div>
+                </div>
+            </li>
+            <li>
+                <span class="module-num">03</span>
+                <div>
+                    <div class="module-title">Content &amp; Reichweite</div>
+                    <div class="module-sub">Content, der dein Angebot verkauft, ohne dass du jeden Post von Hand schreibst und jeden Tag auf der Plattform kämpfst.</div>
+                </div>
+            </li>
+            <li>
+                <span class="module-num">04</span>
+                <div>
+                    <div class="module-title">Sales</div>
+                    <div class="module-sub">Vom ersten Kontakt bis zum Ja. Ein Verkaufsprozess, der sich nicht wie Verkaufen anfühlt, weder für dich noch für den Kunden.</div>
+                </div>
+            </li>
+            <li>
+                <span class="module-num">05</span>
+                <div>
+                    <div class="module-title">KI &amp; Technik</div>
+                    <div class="module-sub">Die konkreten Systeme, die deinen Digitalen Zwilling bauen und am Laufen halten. Keine Vorkenntnisse nötig.</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Hosts -->
+    <div class="section">
+        <div class="section-label">Wer dahinter steckt</div>
+        <div class="hosts">
+            <div class="host">
+                <div class="host-name">Hanna Marzian</div>
+                <div class="host-handle">@hanna.gpt</div>
+                <div class="host-focus">Content &middot; Reichweite &middot; Instagram</div>
+                <div class="host-desc">100.000 Follower auf Instagram. Hat ihr eigenes Business von manueller Schwerstarbeit zu einem durch KI gesteuerten System transformiert und diesen Weg dokumentiert. Sie zeigt, wie Reichweite entsteht und wie Content zu einem System wird, das verkauft.</div>
+            </div>
+            <div class="host">
+                <div class="host-name">Martin Thun</div>
+                <div class="host-handle">@martin_thun_</div>
+                <div class="host-focus">Technik &middot; Angebotsstrategie &middot; Sales</div>
+                <div class="host-desc">7 Jahre Online-Unternehmer, Gründer der KI-Agentur scale². Selbst mehrfach 5-stellige Launches gemacht und Kunden mit 150k€ Umsatzmonaten begleitet. Er bringt die technische Tiefe und die Angebots-Mechanik, die den Unterschied zwischen einem Kurs und einem funktionierenden System macht.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- For Whom -->
+    <div class="section">
+        <div class="two-col">
+            <div>
+                <div class="section-label">Für wen</div>
+                <ul class="simple-list">
+                    <li><span class="li-mark">→</span> Coaches mit bestehendem Angebot</li>
+                    <li><span class="li-mark">→</span> Creator mit eigener Community</li>
+                    <li><span class="li-mark">→</span> Onlinekursersteller</li>
+                    <li><span class="li-mark">→</span> Wer schon etwas verkauft oder kurz davor ist</li>
+                    <li><span class="li-mark">→</span> Wer echte Systeme bauen will, nicht nur lernen</li>
+                </ul>
+            </div>
+            <div>
+                <div class="section-label">Nicht für</div>
+                <ul class="simple-list">
+                    <li><span class="li-mark" style="color: var(--mid);">×</span> Du hast noch keinen zahlenden Kunden und hoffst, der Club ändert das automatisch.</li>
+                    <li><span class="li-mark" style="color: var(--mid);">×</span> Du kaufst Kurse, schaust sie nie fertig und machst „irgendwann" weiter.</li>
+                    <li><span class="li-mark" style="color: var(--mid);">×</span> Du suchst den nächsten KI-Hack, nicht das Fundament.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="section">
+        <div class="section-label">Investition</div>
+        <div class="pricing-block">
+            <div>
+                <div class="price-main">1.900 €</div>
+                <div class="price-period">3 Monate</div>
+            </div>
+            <div>
+                <p class="price-note">Einmalige Zahlung. Oder in 3 Raten zu je 700 € (= 2.100 €).</p>
+                <div class="price-alt">Der Beta-Preis ist der niedrigste Preis, den dieses Programm je haben wird. Die nächste Runde startet mit Cases, Ergebnissen und Testimonials, mit einem anderen Preis.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Beta Round -->
+    <div class="section">
+        <div class="section-label">Die Beta-Runde</div>
+        <div class="beta-box">
+            <div class="beta-left">
+                <span class="beta-number">12</span>
+                <span class="beta-unit">Plätze</span>
+            </div>
+            <div class="beta-right">
+                <p>Wir öffnen 12 Plätze für die erste Runde. Wir bauen gemeinsam mit euch, iterieren in Echtzeit, und nehmen mit, was wir lernen, in die nächste Runde.</p>
+                <p>Als Beta-Teilnehmer bist du Gründungsmitglied, du hast direkten Einfluss darauf, was entsteht, und bekommst den günstigsten Preis, den dieses Programm je haben wird.</p>
+                <p>Als Mitglied der Beta-Runde genießt du fast schon VIP-Sonderstatus: Auch nach Ablauf der 3 Monate erhältst du aufgrund der engen Zusammenarbeit weiterhin Zugang zu Hanna und Martin, mit der Möglichkeit auf weitere erschwingliche Business-Betreuung.</p>
+                <div class="beta-expect">
+                    <div class="beta-expect-label">Was wir von dir erwarten</div>
+                    <p>Aktive Teilnahme in den Calls. Ehrliches Feedback an uns, keine halbe Stunde, aber ehrlich. Die Bereitschaft, das zu nutzen, was wir gemeinsam aufbauen. Wer Ergebnisse erzielt und möchte, kann uns als Referenz zur Verfügung stehen.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA (Screen only) -->
+    <div class="cta-section screen-only">
+        <h2>Nächster Schritt</h2>
+        <p>Kein langer Bewerbungsprozess. Fülle einfach das Formular aus. Wir melden uns.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3lQXYR31Su8pnUEEOR3F5ucz4iMs8aAz5bHP96OM50VZV7w/viewform?usp=publish-editor" class="cta-link">Fülle dieses Formular aus</a>
+    </div>
+
+    <!-- CTA (Print only) -->
+    <div class="print-only" style="margin-top: 48px; padding: 32px 40px; border: 1px solid var(--border); text-align: center;">
+        <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px;">Nächster Schritt</div>
+        <p style="font-size: 15px; font-weight: 500; color: var(--dark); margin-bottom: 8px;">Fülle dieses Formular aus.</p>
+        <p style="font-size: 14px; color: var(--mid);"><a href="https://docs.google.com/forms/d/e/1FAIpQLSe3lQXYR31Su8pnUEEOR3F5ucz4iMs8aAz5bHP96OM50VZV7w/viewform?usp=publish-editor" style="color: var(--orange); text-decoration: none; font-weight: 600;">Zum Bewerbungsformular</a> &nbsp;&middot;&nbsp; Kein langer Bewerbungsprozess.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">Hanna Marzian &times; Martin Thun &nbsp;&middot;&nbsp; 2026</div>
+        <div class="footer-handles">@hanna.gpt &nbsp;&middot;&nbsp; @martin_thun_</div>
+    </footer>
+
+</body>
+</html>
