@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Claude Skills einbinden – Schritt-für-Schritt Anleitung | Hanna Marzian</title>
+<title>Claude Skills einbinden – Schritt-für-Schritt Anleitung | Hanna Marzian × Martin Thun</title>
 <link rel="stylesheet" href="../assets/consent.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,9 +34,8 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--cream);
+    background: #fff;
     color: var(--warm-black);
     font-family: var(--font-b);
     font-size: 15px;
@@ -44,88 +43,63 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ─── COVER ─── */
-  .cover {
-    background: var(--warm-dark);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 0 72px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(216,98,42,.15) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .cover::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: -40px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(216,98,42,.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  /* ─ Nav Bar ─ */
-  .cover-nav {
+  /* ─── NAV ─── */
+  .site-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--beige);
+    padding: 20px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 28px 0 0;
-    position: relative;
-    z-index: 2;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  .cover-nav-brand {
+  .nav-brand {
     font-family: var(--font-a);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--warm-black);
   }
-  .cover-nav-brand span { color: var(--orange); }
-  .cover-nav-social {
+  .nav-brand span { color: var(--orange); }
+  .nav-badge {
     display: flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.1);
+    background: var(--cream);
+    border: 1px solid var(--beige);
     border-radius: 100px;
     padding: 6px 14px 6px 10px;
   }
-  .cover-nav-dot {
+  .nav-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--orange);
     flex-shrink: 0;
   }
-  .cover-nav-social-text {
+  .nav-badge-text {
     font-family: var(--font-a);
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--warm-gray);
   }
 
-  /* ─ Two-Col Grid ─ */
-  .cover-grid {
-    flex: 1;
+  /* ─── HERO ─── */
+  .hero {
+    background: #fff;
+    padding: 72px 72px 80px;
     display: grid;
     grid-template-columns: 1fr 420px;
     gap: 64px;
     align-items: center;
-    padding: 40px 0 32px;
-    position: relative;
-    z-index: 2;
+    max-width: 1240px;
+    margin: 0 auto;
   }
-  .cover-left {}
-  .cover-kicker {
+  .hero-kicker {
     font-family: var(--font-a);
     font-size: 10px;
     font-weight: 700;
@@ -137,54 +111,54 @@
     align-items: center;
     gap: 10px;
   }
-  .cover-kicker::before {
+  .hero-kicker::before {
     content: '';
     width: 24px; height: 1px;
     background: var(--orange);
     opacity: .6;
   }
-  .cover h1 {
+  .hero h1 {
     font-family: var(--font-h);
     font-size: clamp(40px, 5.5vw, 64px);
     font-weight: 500;
-    color: var(--off-white);
+    color: var(--warm-black);
     line-height: 1.05;
     letter-spacing: -1px;
     margin-bottom: 24px;
   }
-  .cover h1 em { font-style: italic; color: var(--orange-mid); }
-  .cover-sub {
+  .hero h1 em { font-style: italic; color: var(--orange); }
+  .hero-sub {
     font-family: var(--font-b);
     font-size: 16px;
     font-weight: 300;
-    color: var(--sand);
+    color: var(--warm-gray);
     line-height: 1.8;
     margin-bottom: 32px;
     max-width: 440px;
   }
-  .cover-benefits {
+  .hero-benefits {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 36px;
   }
-  .cover-benefits li {
+  .hero-benefits li {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     font-size: 14px;
     font-weight: 400;
-    color: var(--sand);
+    color: var(--warm-gray);
     line-height: 1.5;
   }
-  .cover-benefits li::before {
+  .hero-benefits li::before {
     content: '✓';
     font-size: 11px;
     font-weight: 700;
     color: var(--orange);
-    background: rgba(216,98,42,.15);
-    border: 1px solid rgba(216,98,42,.3);
+    background: rgba(216,98,42,.1);
+    border: 1px solid rgba(216,98,42,.25);
     border-radius: 50%;
     width: 20px; height: 20px;
     display: flex;
@@ -193,51 +167,51 @@
     flex-shrink: 0;
     margin-top: 1px;
   }
-  .cover-social-proof {
+  .hero-social-proof {
     display: flex;
     align-items: center;
     gap: 16px;
     padding-top: 28px;
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid var(--beige);
   }
-  .proof-avatar {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    background: var(--warm-brown);
-    border: 2px solid rgba(216,98,42,.4);
-    overflow: hidden;
+  .proof-avatars {
+    display: flex;
     flex-shrink: 0;
   }
-  .proof-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .proof-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--beige);
+    border: 2px solid #fff;
+    flex-shrink: 0;
+  }
+  .proof-avatar + .proof-avatar { margin-left: -10px; }
   .proof-text {
     font-size: 13px;
     font-weight: 300;
-    color: var(--tan);
+    color: var(--warm-gray);
     line-height: 1.5;
   }
-  .proof-text strong {
-    color: var(--off-white);
-    font-weight: 500;
-  }
+  .proof-text strong { color: var(--warm-black); font-weight: 600; }
 
-  /* ─ Optin Box ─ */
-  .cover-optin {
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.1);
+  /* ─── HERO OPTIN BOX ─── */
+  .hero-optin {
+    background: var(--off-white);
+    border: 1px solid var(--beige);
     border-top: 3px solid var(--orange);
     border-radius: 3px;
     padding: 36px 36px 32px;
     position: relative;
   }
-  .cover-optin::before {
+  .hero-optin::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(216,98,42,.04) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(216,98,42,.03) 0%, transparent 60%);
     border-radius: 3px;
     pointer-events: none;
   }
-  .cover-optin-label {
+  .optin-label {
     font-family: var(--font-a);
     font-size: 9px;
     font-weight: 700;
@@ -246,23 +220,23 @@
     color: var(--orange);
     margin-bottom: 14px;
   }
-  .cover-optin-title {
+  .optin-title {
     font-family: var(--font-h);
     font-size: 28px;
     font-weight: 500;
-    color: var(--off-white);
+    color: var(--warm-black);
     line-height: 1.15;
     margin-bottom: 10px;
   }
-  .cover-optin-title em { font-style: italic; color: var(--orange-mid); }
-  .cover-optin-sub {
+  .optin-title em { font-style: italic; color: var(--orange); }
+  .optin-sub {
     font-size: 13px;
     font-weight: 300;
-    color: var(--sand);
+    color: var(--warm-gray);
     line-height: 1.7;
     margin-bottom: 24px;
   }
-  .cover-optin-trust {
+  .optin-trust {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -275,172 +249,51 @@
     color: var(--tan);
     opacity: .7;
   }
-  .cover-optin-trust::before {
-    content: '🔒';
-    font-size: 10px;
-    opacity: .8;
-  }
+  .optin-trust::before { content: '🔒'; font-size: 10px; opacity: .8; }
 
-  /* ─ Footer Bar ─ */
-  .cover-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid rgba(255,255,255,.07);
-    padding-top: 20px;
-    flex-wrap: wrap;
-    gap: 16px;
-    position: relative;
-    z-index: 2;
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: var(--warm-black);
+    padding: 44px 72px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
   }
-  .cover-authors {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+  .stat-item {
+    text-align: center;
+    padding: 0 32px;
+    border-right: 1px solid rgba(255,255,255,.08);
   }
-  .cover-author {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  .stat-item:first-child { padding-left: 0; }
+  .stat-item:last-child { border-right: none; padding-right: 0; }
+  .stat-number {
+    font-family: var(--font-h);
+    font-size: 44px;
+    font-weight: 500;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 10px;
   }
-  .cover-author-label {
+  .stat-label {
     font-family: var(--font-a);
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--tan);
-    opacity: .5;
-  }
-  .cover-author-name {
-    font-family: var(--font-h);
-    font-size: 15px;
-    color: var(--off-white);
-  }
-  .cover-author-name span { color: var(--orange); }
-  .cover-author-handle {
-    font-family: var(--font-a);
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    color: var(--tan);
-  }
-  .author-divider {
-    width: 1px;
-    height: 36px;
-    background: rgba(255,255,255,.1);
-    flex-shrink: 0;
+    color: var(--sand);
+    line-height: 1.5;
   }
 
-  /* ─── LAYOUT ─── */
-  .wrap {
+  /* ─── „SO NUTZT DU DIESEN SKILL" ─── */
+  .skill-intro {
+    background: var(--off-white);
+    padding: 80px 72px 64px;
+    border-top: 1px solid var(--beige);
+    border-bottom: 1px solid var(--beige);
+  }
+  .skill-intro-inner {
     max-width: 760px;
     margin: 0 auto;
-    padding: 0 48px;
-  }
-
-  /* ─── OPT-IN SECTION ─── */
-  .optin-section {
-    background: var(--off-white);
-    border-bottom: 1px solid var(--beige);
-    padding: 64px 0;
-  }
-  .optin-eyebrow {
-    font-family: var(--font-a);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .optin-eyebrow::after {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background: var(--orange);
-    opacity: .4;
-  }
-  .optin-section h2 {
-    font-family: var(--font-h);
-    font-size: clamp(28px, 4.5vw, 42px);
-    font-weight: 500;
-    color: var(--warm-black);
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-  .optin-section h2 em { font-style: italic; color: var(--orange); }
-  .optin-lead {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--warm-gray);
-    line-height: 1.85;
-    max-width: 520px;
-    margin-bottom: 32px;
-  }
-  .optin-box {
-    background: var(--cream);
-    border: 1px solid var(--beige);
-    border-top: 3px solid var(--orange);
-    border-radius: 2px;
-    padding: 40px 40px 36px;
-    max-width: 560px;
-  }
-  .optin-box-label {
-    font-family: var(--font-a);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 12px;
-  }
-  .optin-box-title {
-    font-family: var(--font-h);
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--warm-black);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  .optin-box-sub {
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--warm-gray);
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-  /* ── PLATZHALTER: Hier das E-Mail-Formular einbetten ── */
-  .optin-placeholder {
-    background: rgba(216,98,42,.04);
-    border: 2px dashed rgba(216,98,42,.3);
-    border-radius: 2px;
-    padding: 36px 24px;
-    text-align: center;
-  }
-  .optin-placeholder-label {
-    font-family: var(--font-a);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--orange);
-    opacity: .7;
-    margin-bottom: 8px;
-  }
-  .optin-placeholder-text {
-    font-size: 13px;
-    color: var(--warm-gray);
-    line-height: 1.6;
-  }
-
-  /* ─── INTRO ─── */
-  .intro {
-    padding: 80px 0 64px;
-    border-bottom: 1px solid var(--beige);
   }
   .eyebrow {
     font-family: var(--font-a);
@@ -456,33 +309,32 @@
   }
   .eyebrow::after {
     content: '';
-    width: 32px;
-    height: 1px;
+    width: 32px; height: 1px;
     background: var(--orange);
     opacity: .4;
   }
-  .intro h2 {
+  .skill-intro h2 {
     font-family: var(--font-h);
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 500;
     color: var(--warm-black);
     line-height: 1.15;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
-  .intro h2 em { font-style: italic; color: var(--orange); }
-  .intro-lead {
+  .skill-intro h2 em { font-style: italic; color: var(--orange); }
+  .skill-intro-lead {
     font-size: 16px;
     font-weight: 300;
     color: var(--warm-gray);
     line-height: 1.85;
-    max-width: 580px;
-    margin-bottom: 20px;
+    max-width: 560px;
   }
   .what-box {
-    background: var(--beige);
+    background: var(--cream);
     border-left: 4px solid var(--orange);
     padding: 28px 32px;
-    margin: 36px 0;
+    margin: 36px 0 0;
+    border-radius: 0 2px 2px 0;
   }
   .what-box-label {
     font-family: var(--font-a);
@@ -503,12 +355,40 @@
   }
   .what-box p strong { color: var(--orange); font-style: normal; font-weight: 600; }
 
-  /* ─── STEP ─── */
+  /* ─── WRAP ─── */
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 48px;
+    background: #fff;
+  }
+
+  /* ─── STEPS ─── */
   .step {
     padding: 64px 0;
     border-bottom: 1px solid var(--beige);
   }
   .step:last-of-type { border-bottom: none; }
+  .step-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .step-progress-label {
+    font-family: var(--font-a);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    white-space: nowrap;
+  }
+  .step-progress-line {
+    flex: 1;
+    height: 1px;
+    background: var(--beige);
+  }
   .step-head {
     display: flex;
     align-items: flex-start;
@@ -554,9 +434,7 @@
     max-width: 580px;
     margin: 20px 0 28px;
   }
-  .step-desc + .step-desc {
-    margin-top: -16px;
-  }
+  .step-desc + .step-desc { margin-top: -16px; }
 
   /* Action list */
   .action-list {
@@ -573,8 +451,7 @@
   }
   .action-list li:last-child { border-bottom: none; }
   .action-dot {
-    width: 28px;
-    height: 28px;
+    width: 28px; height: 28px;
     background: var(--orange);
     color: var(--off-white);
     font-family: var(--font-a);
@@ -600,7 +477,7 @@
     line-height: 1.7;
   }
 
-  /* Callout / Tipp */
+  /* Tipp */
   .tip {
     background: rgba(216,98,42,.06);
     border: 1px solid rgba(216,98,42,.2);
@@ -637,7 +514,7 @@
   }
   .warning-text { font-size: 13px; color: var(--warm-gray); line-height: 1.65; }
 
-  /* Erfolg-Highlight */
+  /* Erfolg */
   .success-bar {
     background: rgba(39,201,63,.08);
     border: 1px solid rgba(39,201,63,.25);
@@ -651,7 +528,7 @@
     margin-top: 16px;
   }
 
-  /* Code-Inline */
+  /* Code */
   .code-inline {
     font-family: 'Courier New', monospace;
     font-size: 12px;
@@ -662,7 +539,7 @@
     white-space: nowrap;
   }
 
-  /* Path-Indicator */
+  /* Path */
   .path-row {
     display: flex;
     align-items: center;
@@ -681,13 +558,10 @@
     text-transform: uppercase;
     color: var(--off-white);
   }
-  .path-arrow {
-    color: var(--orange);
-    font-size: 12px;
-  }
+  .path-arrow { color: var(--orange); font-size: 12px; }
   .path-step.highlight { color: var(--orange); }
 
-  /* ─── RECAP / CHECKLISTE ─── */
+  /* ─── RECAP ─── */
   .recap {
     background: var(--warm-dark);
     padding: 52px 56px;
@@ -725,11 +599,59 @@
   .checklist li:last-child { border-bottom: none; }
   .check-icon { color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
+  /* ─── AUTHORS BAR ─── */
+  .authors-bar {
+    background: var(--cream);
+    border-top: 1px solid var(--beige);
+    border-bottom: 1px solid var(--beige);
+    padding: 36px 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+  }
+  .author-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    text-align: center;
+  }
+  .author-label {
+    font-family: var(--font-a);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .5;
+  }
+  .author-name {
+    font-family: var(--font-h);
+    font-size: 20px;
+    color: var(--warm-black);
+  }
+  .author-name span { color: var(--orange); }
+  .author-handle {
+    font-family: var(--font-a);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--tan);
+  }
+  .author-x {
+    font-family: var(--font-h);
+    font-size: 32px;
+    color: var(--light-gray);
+    font-style: italic;
+    line-height: 1;
+  }
+
   /* ─── CTA ─── */
   .cta {
-    background: var(--beige);
-    padding: 64px 40px;
+    background: #fff;
+    padding: 80px 40px;
     text-align: center;
+    border-top: 1px solid var(--beige);
   }
   .cta-eye {
     font-family: var(--font-a);
@@ -742,7 +664,7 @@
   }
   .cta h2 {
     font-family: var(--font-h);
-    font-size: 42px;
+    font-size: clamp(32px, 5vw, 48px);
     font-weight: 500;
     color: var(--warm-black);
     line-height: 1.15;
@@ -776,12 +698,11 @@
     text-decoration: none;
   }
 
-
   /* ─── SITE FOOTER ─── */
   .site-footer {
-    background: #ffffff;
+    background: #fff;
     border-top: 1px solid var(--beige);
-    padding: 32px 48px;
+    padding: 28px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -825,8 +746,7 @@
     text-decoration: none;
   }
   .scale2-icon-sm {
-    width: 20px;
-    height: 20px;
+    width: 20px; height: 20px;
     background: #111;
     border-radius: 4px;
     display: flex;
@@ -836,11 +756,7 @@
     gap: 1.5px;
     flex-shrink: 0;
   }
-  .scale2-bar-sm {
-    background: #22c55e;
-    border-radius: 1px;
-    width: 4px;
-  }
+  .scale2-bar-sm { background: #22c55e; border-radius: 1px; width: 4px; }
   .scale2-wordmark-sm {
     font-family: var(--font-b);
     font-size: 12px;
@@ -848,93 +764,130 @@
     color: #222;
     letter-spacing: -0.3px;
   }
-  .scale2-wordmark-sm sup {
-    color: #22c55e;
-    font-size: 9px;
-  }
+  .scale2-wordmark-sm sup { color: #22c55e; font-size: 9px; }
 
-  @media (max-width: 900px) {
-    .cover { padding: 0 40px 32px; }
-    .cover-grid { grid-template-columns: 1fr; gap: 40px; padding: 32px 0 24px; }
-    .cover-optin { order: -1; }
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 960px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 48px 40px 56px;
+      max-width: 100%;
+    }
+    .stats-bar {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 36px 40px;
+      gap: 32px;
+    }
+    .stat-item { border-right: none; padding: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .stat-item:last-child, .stat-item:nth-child(3) { border-bottom: none; }
+    .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.08); padding-right: 32px; }
+    .skill-intro { padding: 64px 40px 48px; }
+    .authors-bar { padding: 28px 40px; gap: 28px; }
   }
   @media (max-width: 680px) {
-    .cover { padding: 0 20px 28px; }
+    .site-nav { padding: 16px 20px; }
+    .nav-badge { display: none; }
+    .hero { padding: 40px 20px 48px; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 28px 20px; gap: 24px; }
+    .stat-item:nth-child(odd) { padding-right: 20px; }
+    .skill-intro { padding: 48px 20px 36px; }
     .wrap { padding: 0 20px; }
-    .recap { padding: 36px 24px; }
-    .cta { padding: 48px 24px; }
-    .site-footer { padding: 20px 20px; }
-    .cover h1 { font-size: clamp(34px, 9vw, 52px); letter-spacing: -0.5px; }
-    .cover-sub { font-size: 15px; }
-    .cover-authors { gap: 16px; }
-    .author-divider { display: none; }
+    .recap { padding: 36px 24px; margin: 48px 0; }
+    .cta { padding: 56px 20px; }
     .cta h2 { font-size: 28px; }
-    .cta-text { font-size: 14px; }
+    .site-footer { padding: 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .authors-bar { padding: 28px 20px; flex-direction: column; gap: 16px; }
+    .author-x { display: none; }
     .step-num { font-size: 52px; min-width: 44px; }
-    .site-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .cover-optin { padding: 28px 24px; }
-    .path-row { gap: 4px; }
-    .cover-nav-social { display: none; }
+    .hero h1 { font-size: clamp(34px, 9vw, 52px); }
   }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════ COVER ═══════════════════ -->
-<div class="cover">
-
-  <!-- Nav -->
-  <div class="cover-nav">
-    <div class="cover-nav-brand">@hanna<span>.gpt</span></div>
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="site-nav">
+  <div class="nav-brand">@hanna<span>.gpt</span> × <span>@martin_thun_</span></div>
+  <div class="nav-badge">
+    <div class="nav-dot"></div>
+    <span class="nav-badge-text">Kostenloser Skill</span>
   </div>
+</nav>
 
-  <!-- Two-Col Grid -->
-  <div class="cover-grid">
 
-    <!-- Left: Copy -->
-    <div class="cover-left">
-      <div class="cover-kicker">Kostenloser Skill-Download</div>
-      <h1>Dein erster<br>fertiger Claude<br><em>Prompt-Helper.</em></h1>
-      <p class="cover-sub">
-        Trag dich ein, lade den Skill herunter und aktiviere ihn in Claude mit einem einzigen Befehl. Kein Setup, kein Vorwissen nötig.
-      </p>
-      <ul class="cover-benefits">
-        <li>Sofort einsatzbereit, direkt nach dem Download</li>
-        <li>Bessere Prompts mit weniger Aufwand, in jedem Chat</li>
-        <li>Einmal einrichten, dauerhaft nutzen</li>
-      </ul>
-    </div>
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
 
-    <!-- Right: Opt-in Form -->
-    <div class="cover-optin">
-      <div class="cover-optin-label">Gratis herunterladen</div>
-      <div class="cover-optin-title">Prompt-Helper<br><em>Skill sichern.</em></div>
-      <p class="cover-optin-sub">E-Mail eintragen, Skill sofort runterladen. Kein Spam, nur relevante KI-Insights.</p>
-      <script id="form-script-tag-23607178" src="https://member.hannamarzian.com/public/remote/page/39951405c4cce4c9c51fc196d08dfe6b3ba8d73e.js"></script>
-      <div class="cover-optin-trust">Kein Spam &nbsp;·&nbsp; Jederzeit abmeldbar</div>
-    </div>
-
-  </div>
-
-  <!-- Footer Bar -->
-  <div class="cover-foot">
-    <div class="cover-authors">
-      <div class="cover-author">
-        <div class="cover-author-label">Präsentiert von</div>
-        <div class="cover-author-name">Hanna <span>Marzian</span></div>
-        <div class="cover-author-handle">@hanna.gpt</div>
+  <!-- Links: Copy -->
+  <div>
+    <div class="hero-kicker">Kostenloser Skill-Download</div>
+    <h1>Dein erster<br>fertiger Claude<br><em>Prompt-Helper.</em></h1>
+    <p class="hero-sub">
+      Trag dich ein, lade den Skill herunter und aktiviere ihn in Claude mit einem einzigen Befehl. Kein Setup, kein Vorwissen nötig.
+    </p>
+    <ul class="hero-benefits">
+      <li>Sofort einsatzbereit, direkt nach dem Download</li>
+      <li>Bessere Prompts mit weniger Aufwand, in jedem Chat</li>
+      <li>Einmal einrichten, dauerhaft nutzen</li>
+    </ul>
+    <div class="hero-social-proof">
+      <div class="proof-avatars">
+        <div class="proof-avatar"></div>
+        <div class="proof-avatar"></div>
+        <div class="proof-avatar"></div>
       </div>
-      <div class="author-divider"></div>
-      <div class="cover-author">
-        <div class="cover-author-label">In Zusammenarbeit mit</div>
-        <div class="cover-author-name">Martin <span>Thun</span></div>
-        <div class="cover-author-handle">scale²</div>
-      </div>
+      <p class="proof-text"><strong>100.000+ Community</strong> von Hanna x Martin nutzt täglich KI-Skills wie diesen</p>
     </div>
   </div>
 
+  <!-- Rechts: Optin-Box -->
+  <div class="hero-optin">
+    <div class="optin-label">Gratis herunterladen</div>
+    <div class="optin-title">Prompt-Helper<br><em>Skill sichern.</em></div>
+    <p class="optin-sub">E-Mail eintragen, Skill sofort runterladen. Kein Spam, nur relevante KI-Insights.</p>
+    <script id="form-script-tag-23607178" src="https://member.hannamarzian.com/public/remote/page/39951405c4cce4c9c51fc196d08dfe6b3ba8d73e.js"></script>
+    <div class="optin-trust">Kein Spam &nbsp;·&nbsp; Jederzeit abmeldbar</div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════ STATS BAR ═══════════════════ -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">100k+</div>
+    <div class="stat-label">Community auf Instagram</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">7 J.</div>
+    <div class="stat-label">Online-Business-Erfahrung</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">4</div>
+    <div class="stat-label">Schritte zur Aktivierung</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">0 €</div>
+    <div class="stat-label">Komplett kostenlos</div>
+  </div>
 </div>
 
+
+<!-- ═══════════════════ „SO NUTZT DU DIESEN SKILL" ═══════════════════ -->
+<section class="skill-intro">
+  <div class="skill-intro-inner">
+    <div class="eyebrow">So nutzt du diesen Skill</div>
+    <h2>In 4 Schritten <em>startklar.</em></h2>
+    <p class="skill-intro-lead">
+      Der Prompt-Helper Skill ist in wenigen Minuten eingerichtet, egal ob du Claude im Browser oder als Desktop-App nutzt. Hier ist alles, was du brauchst.
+    </p>
+    <div class="what-box">
+      <div class="what-box-label">Was dieser Skill macht</div>
+      <p>Er analysiert deinen Prompt und macht ihn <strong>sofort besser</strong>, präziser und effektiver, ohne dass du Prompt-Engineering lernen musst.</p>
+    </div>
+  </div>
+</section>
 
 
 <!-- ═══════════════════ SCHRITTE ═══════════════════ -->
@@ -942,9 +895,9 @@
 
   <!-- SCHRITT 1 -->
   <div class="step">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
-      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 1 von 4</div>
-      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    <div class="step-progress">
+      <div class="step-progress-label">Schritt 1 von 4</div>
+      <div class="step-progress-line"></div>
     </div>
     <div class="step-head">
       <div class="step-num">01</div>
@@ -956,7 +909,6 @@
     <p class="step-desc">
       Du hast nach der Eintragung einen Link zu einem Google Drive Ordner erhalten. Öffne den Link, klicke auf <strong>„Herunterladen"</strong> und speichere die .skill-Datei auf deinem Computer.
     </p>
-
     <div class="tip">
       <span class="tip-icon">💡</span>
       <div>
@@ -968,9 +920,9 @@
 
   <!-- SCHRITT 2 -->
   <div class="step">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
-      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 2 von 4</div>
-      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    <div class="step-progress">
+      <div class="step-progress-label">Schritt 2 von 4</div>
+      <div class="step-progress-line"></div>
     </div>
     <div class="step-head">
       <div class="step-num">02</div>
@@ -982,7 +934,6 @@
     <p class="step-desc">
       Jetzt kommt es darauf an, welche Version von Claude du nutzt. Wähle die Option, die auf dich zutrifft.
     </p>
-
     <ul class="action-list">
       <li>
         <div class="action-dot">A</div>
@@ -999,7 +950,6 @@
         </div>
       </li>
     </ul>
-
     <div class="warning">
       <span style="font-size:16px;flex-shrink:0;margin-top:2px;">⚠️</span>
       <p class="warning-text">Nicht sicher, welche Version du nutzt? Wenn du Claude über den Browser auf <strong>claude.ai</strong> öffnest, bist du in der Browser-Version. Claude Code läuft im Terminal oder als Desktop-App.</p>
@@ -1008,9 +958,9 @@
 
   <!-- SCHRITT 3 -->
   <div class="step">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
-      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 3 von 4</div>
-      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    <div class="step-progress">
+      <div class="step-progress-label">Schritt 3 von 4</div>
+      <div class="step-progress-line"></div>
     </div>
     <div class="step-head">
       <div class="step-num">03</div>
@@ -1022,7 +972,6 @@
     <p class="step-desc">
       Dieser Schritt gilt nur für die Browser-Version. Claude Code-Nutzer können direkt zu Schritt 4 springen.
     </p>
-
     <ul class="action-list">
       <li>
         <div class="action-dot">1</div>
@@ -1046,7 +995,6 @@
         </div>
       </li>
     </ul>
-
     <div class="path-row">
       <span class="path-step">Anpassen</span>
       <span class="path-arrow">→</span>
@@ -1062,9 +1010,9 @@
 
   <!-- SCHRITT 4 -->
   <div class="step">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
-      <div style="font-family:var(--font-a);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);">Schritt 4 von 4</div>
-      <div style="flex:1;height:1px;background:var(--beige);"></div>
+    <div class="step-progress">
+      <div class="step-progress-label">Schritt 4 von 4</div>
+      <div class="step-progress-line"></div>
     </div>
     <div class="step-head">
       <div class="step-num">04</div>
@@ -1079,9 +1027,7 @@
     <p class="step-desc">
       Claude greift jetzt automatisch auf alle Anweisungen des Skills zurück. Du musst nichts weiter erklären.
     </p>
-
     <div class="success-bar">✅ <span>Skill eingebunden und aktiv. Du kannst jetzt loslegen.</span></div>
-
     <div class="tip">
       <span class="tip-icon">🔁</span>
       <div>
@@ -1091,26 +1037,55 @@
     </div>
   </div>
 
+  <!-- RECAP -->
+  <div class="recap">
+    <div class="recap-eye">Kurz zusammengefasst</div>
+    <h3>Das hast du gerade<br>in 4 Schritten erledigt.</h3>
+    <ul class="checklist">
+      <li><span class="check-icon">✓</span>Skill-Datei heruntergeladen</li>
+      <li><span class="check-icon">✓</span>Datei an der richtigen Stelle abgelegt (Claude Code oder Browser)</li>
+      <li><span class="check-icon">✓</span>Skill in claude.ai hochgeladen (nur Browser-Version)</li>
+      <li><span class="check-icon">✓</span>Mit <span class="code-inline" style="color:var(--sand);background:rgba(255,255,255,.1);">/prompt-helper</span> aktiviert und einsatzbereit</li>
+    </ul>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════ AUTHORS BAR ═══════════════════ -->
+<div class="authors-bar">
+  <div class="author-item">
+    <div class="author-label">Präsentiert von</div>
+    <div class="author-name">Hanna <span>Marzian</span></div>
+    <div class="author-handle">@hanna.gpt</div>
+  </div>
+  <div class="author-x">×</div>
+  <div class="author-item">
+    <div class="author-label">In Zusammenarbeit mit</div>
+    <div class="author-name">Martin <span>Thun</span></div>
+    <div class="author-handle">@martin_thun_</div>
+  </div>
 </div>
 
 
 <!-- ═══════════════════ CTA ═══════════════════ -->
 <div class="cta">
-  <div class="cta-eye">Exklusive KI-Insights und Video-Anleitungen, gibts nur hier👇</div>
+  <div class="cta-eye">Exklusive KI-Insights und Video-Anleitungen, gibts nur hier 👇</div>
   <h2>Hier beginnt dein<br><em>Vorsprung mit KI.</em></h2>
-  <p class="cta-text">Tritt der Telegram Community bei und bekomm exklusiven Zugang zu neuen Tools, Deals und Angeboten – direkt auf deinem Handy.</p>
+  <p class="cta-text">Tritt der Telegram Community bei und bekomm exklusiven Zugang zu neuen Tools, Deals und Angeboten, direkt auf deinem Handy.</p>
   <a href="https://t.me/+FqudiTcL7JgyZmUy" target="_blank" rel="noopener" class="cta-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
     <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.2;">Jetzt beitreten<small style="font-size:9px;font-weight:400;letter-spacing:1.5px;opacity:0.8;text-transform:uppercase;">Kostenlos</small></span>
   </a>
 </div>
 
+
 <!-- ═══════════════════ SITE FOOTER ═══════════════════ -->
 <div class="site-footer">
-  <div class="site-footer-copy">© 2026 Hanna Marzian</div>
+  <div class="site-footer-copy">© 2026 Hanna Marzian × Martin Thun</div>
 
   <div class="site-footer-collab">
-    <div class="site-footer-collab-label">In Zusammenarbeit mit</div>
+    <div class="site-footer-collab-label">Powered by</div>
     <a href="https://scale-square.com/" target="_blank" rel="noopener" class="scale2-footer-logo">
       <div class="scale2-icon-sm">
         <div class="scale2-bar-sm" style="height:8px;"></div>
