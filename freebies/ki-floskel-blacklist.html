@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>KI-Floskeln: Die Blacklist – Hanna Marzian × Martin Thun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:      #D8622A;
+    --orange-mid:  #E8894E;
+    --orange-pale: #F5CFA8;
+    --orange-deep: #B84E1E;
+    --warm-black:  #160C05;
+    --warm-dark:   #2A1608;
+    --warm-brown:  #472B18;
+    --mid-brown:   #6B4530;
+    --tan:         #A88960;
+    --sand:        #D0B896;
+    --beige:       #EDE4D7;
+    --cream:       #F6F0E6;
+    --off-white:   #FBF7F2;
+    --warm-gray:   #7A6A5A;
+    --mid-gray:    #BDB0A0;
+    --light-gray:  #D8CFC4;
+    --green:       #27C93F;
+    --green-deep:  #1a7a2a;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'Nunito', sans-serif;
+    --font-serif:   'Cormorant', Georgia, serif;
+    --font-sans:    'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #fff;
+    color: var(--warm-black);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  .site-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--beige);
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo-link { text-decoration: none; display: inline-block; }
+  .logo-table { border-collapse: collapse; border-spacing: 0; }
+  .logo-table td { padding: 0; vertical-align: bottom; }
+  .logo-table tr:last-child td { vertical-align: top; padding-top: 4px; }
+  .logo-table .td-divider { vertical-align: middle; padding: 0 1.1rem; }
+  .divider-line { width: 1.5px; min-height: 42px; background: linear-gradient(to bottom, transparent, #D8622A 15%, #D8622A 85%, transparent); display: block; }
+  .hanna-name { font-family: 'Cormorant', Georgia, serif; font-style: italic; font-weight: 500; font-size: 1.45rem; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; display: block; text-align: right; color: var(--warm-black); }
+  .hanna-handle { font-family: 'Cormorant', Georgia, serif; font-style: italic; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.02em; line-height: 1; display: block; text-align: right; color: var(--orange); }
+  .martin-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.18em; line-height: 1; white-space: nowrap; display: block; text-align: left; color: var(--warm-black); }
+  .martin-handle { font-family: 'Cormorant', Georgia, serif; font-style: italic; font-weight: 500; font-size: 0.78rem; letter-spacing: 0.02em; line-height: 1; display: block; text-align: left; color: var(--warm-brown); }
+  .nav-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--cream);
+    border: 1px solid var(--beige);
+    border-radius: 100px;
+    padding: 6px 14px 6px 10px;
+  }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+  .nav-badge-text { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--warm-gray); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--off-white);
+    border-bottom: 1px solid var(--beige);
+    padding: 80px 48px 72px;
+    text-align: center;
+  }
+  .hero-kicker {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-kicker::before, .hero-kicker::after {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--orange);
+    opacity: .5;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 9vw, 104px);
+    font-weight: 400;
+    color: var(--warm-black);
+    line-height: 0.93;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+  }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--warm-gray);
+    line-height: 1.75;
+    max-width: 540px;
+    margin: 0 auto 40px;
+  }
+  .hero-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    background: #fff;
+    border: 1px solid var(--beige);
+    border-radius: 100px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--warm-gray);
+  }
+  .hero-stat + .hero-stat { border-left: 1px solid var(--beige); }
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 30px;
+    color: var(--orange);
+    letter-spacing: 0.5px;
+    line-height: 1;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 72px 48px 36px;
+  }
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--orange); opacity: .4; }
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 400;
+    color: var(--warm-black);
+    line-height: 0.97;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .section-header h2 em { font-style: normal; color: var(--orange); }
+  .section-header p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    max-width: 500px;
+  }
+
+  /* ─── RULE CARDS ─── */
+  .rules-list {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .rule-card {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 0 18px;
+    align-items: start;
+    padding: 18px 22px 18px 20px;
+    border: 1px solid var(--beige);
+    border-radius: 12px;
+    background: #fff;
+    transition: box-shadow .2s, border-color .2s;
+  }
+  .rule-card:hover {
+    box-shadow: 0 3px 16px rgba(0,0,0,.05);
+    border-color: var(--mid-gray);
+  }
+  .rule-card.verboten { border-left: 3px solid var(--orange); padding-left: 18px; }
+  .rule-card.geboten  { border-left: 3px solid var(--green);  padding-left: 18px; }
+
+  .rule-num {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1;
+    padding-top: 4px;
+    letter-spacing: 0.5px;
+  }
+  .rule-card.verboten .rule-num { color: var(--orange-pale); }
+  .rule-card.geboten  .rule-num { color: rgba(39,201,63,.3); }
+
+  .rule-body {}
+  .rule-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .rule-title {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--warm-black);
+    line-height: 1.3;
+  }
+  .rule-badge {
+    padding: 3px 9px;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-verboten { background: rgba(216,98,42,.1); color: var(--orange-deep); border: 1px solid rgba(216,98,42,.22); }
+  .badge-geboten  { background: rgba(39,201,63,.1);  color: var(--green-deep);  border: 1px solid rgba(39,201,63,.25); }
+
+  .rule-desc {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .rule-replacement {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--warm-brown);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .rule-replacement::before { content: '→'; color: var(--orange); flex-shrink: 0; font-weight: 700; line-height: 1.5; }
+  .rule-example {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--mid-brown);
+    background: var(--cream);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  /* ─── PITCH ─── */
+  .pitch-wrap {
+    padding: 0 48px;
+    max-width: 996px;
+    margin: 0 auto 8px;
+  }
+  .pitch {
+    background: var(--warm-dark);
+    border-radius: 20px;
+    padding: 64px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pitch::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 340px; height: 340px;
+    background: radial-gradient(circle at 80% 20%, rgba(216,98,42,.18), transparent 70%);
+    pointer-events: none;
+  }
+  .pitch::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle at 20% 80%, rgba(216,98,42,.07), transparent 70%);
+    pointer-events: none;
+  }
+  .pitch-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 56px;
+    align-items: center;
+  }
+  .pitch-eye {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pitch-eye::after { content: ''; width: 24px; height: 1px; background: var(--orange); opacity: .5; }
+  .pitch h3 {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4.5vw, 54px);
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 0.97;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+  }
+  .pitch h3 em { font-style: normal; color: var(--orange-mid); }
+  .pitch-text {
+    font-size: 14px;
+    color: var(--sand);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+  .pitch-features {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .pitch-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    font-size: 13px;
+    color: var(--sand);
+    line-height: 1.5;
+  }
+  .pitch-feature::before {
+    content: '✓';
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--orange);
+    background: rgba(216,98,42,.18);
+    border: 1px solid rgba(216,98,42,.3);
+    border-radius: 50%;
+    width: 19px; height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .pitch-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .pitch-cta-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .7;
+  }
+  .pitch-count {
+    font-family: var(--font-display);
+    font-size: 72px;
+    color: var(--orange);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+  .pitch-count-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--sand);
+    margin-top: -4px;
+    margin-bottom: 16px;
+  }
+  .pitch-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 15px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(216,98,42,.35);
+    transition: background .2s, box-shadow .2s;
+    white-space: nowrap;
+  }
+  .pitch-btn:hover { background: var(--orange-deep); box-shadow: 0 6px 28px rgba(216,98,42,.5); }
+  .pitch-trust {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .55;
+  }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    background: var(--warm-black);
+    padding: 44px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 80px;
+    border-top: 1px solid rgba(255,255,255,.04);
+  }
+  .footer-logo-link { text-decoration: none; }
+  .footer-hanna-name { font-family: 'Cormorant', Georgia, serif; font-style: italic; font-weight: 500; font-size: 1.2rem; color: var(--off-white); }
+  .footer-hanna-handle { font-family: 'Cormorant', Georgia, serif; font-style: italic; font-weight: 400; font-size: 0.72rem; color: var(--orange-mid); display: block; }
+  .footer-martin-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.18em; color: var(--off-white); }
+  .footer-martin-handle { font-family: 'Cormorant', Georgia, serif; font-style: italic; font-size: 0.72rem; color: var(--sand); display: block; }
+  .footer-copy { font-size: 10px; font-weight: 300; color: rgba(255,255,255,.4); }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-link { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--warm-gray); text-decoration: none; transition: color .25s; }
+  .footer-link:hover { color: var(--orange); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 960px) {
+    .pitch-inner { grid-template-columns: 1fr; gap: 36px; }
+    .pitch-cta { flex-direction: row; flex-wrap: wrap; align-items: center; }
+    .pitch-count { font-size: 56px; }
+  }
+  @media (max-width: 680px) {
+    .site-nav { padding: 12px 20px; }
+    .hero { padding: 40px 20px 40px; }
+    .hero h1 { font-size: clamp(48px, 13vw, 72px); }
+    .hero-sub { font-size: 15px; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 16px;
+      padding: 0;
+      width: 100%;
+    }
+    .hero-stat { justify-content: center; text-align: center; padding: 16px 12px; }
+    .hero-stat + .hero-stat { border-left: none; }
+    .hero-stat:nth-child(odd)  { border-right: 1px solid var(--beige); }
+    .hero-stat:nth-child(n+3)  { border-top:  1px solid var(--beige); }
+    .hero-stat-num { font-size: 26px; }
+    .section-header { padding: 44px 20px 24px; }
+    .rules-list { padding: 0 16px 44px; gap: 4px; }
+    .rule-card { padding: 14px 16px 14px 14px; gap: 0 14px; }
+    .rule-card.verboten, .rule-card.geboten { padding-left: 12px; }
+    .rule-num { font-size: 22px; }
+    .rule-title { font-size: 13px; }
+    .rule-desc, .rule-replacement { font-size: 12px; }
+    .pitch-wrap { padding: 0 16px; }
+    .pitch { padding: 36px 24px; }
+    .pitch h3 { font-size: clamp(28px, 7vw, 42px); }
+    .pitch-text { font-size: 13px; }
+    .pitch-features { gap: 7px; }
+    .pitch-feature { font-size: 12px; }
+    .pitch-count { font-size: 64px; }
+    .pitch-cta { gap: 10px; }
+    .site-footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 40px; }
+    .footer-links { gap: 20px; }
+  }
+  @media (max-width: 400px) {
+    .hero-stats { grid-template-columns: 1fr; }
+    .hero-stat:nth-child(odd)  { border-right: none; }
+    .hero-stat:nth-child(n+3)  { border-top: 1px solid var(--beige); }
+    .hero-stat + .hero-stat    { border-top: 1px solid var(--beige); }
+    .logo-table .td-divider { padding: 0 0.7rem; }
+    .martin-name { letter-spacing: 0.13em; font-size: 0.9rem; }
+    .section-header h2 { font-size: 34px; }
+    .footer-links { flex-wrap: wrap; gap: 14px; }
+  }
+
+  /* ─── COOKIE BANNER ─── */
+  .cookie-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--warm-black);
+    border-top: 2px solid var(--orange);
+    z-index: 9999;
+    padding: 20px 40px;
+    box-shadow: 0 -8px 32px rgba(22,12,5,.35);
+  }
+  .cookie-banner-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cookie-banner-text { flex: 1; min-width: 200px; }
+  .cookie-banner-text strong {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    display: block;
+    margin-bottom: 5px;
+  }
+  .cookie-banner-text p {
+    font-size: 13px;
+    color: rgba(251,247,242,.6);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .cookie-banner-actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .cookie-btn {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .2s;
+    border: none;
+  }
+  .cookie-btn--decline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.2);
+    color: rgba(255,255,255,.55);
+  }
+  .cookie-btn--decline:hover { border-color: rgba(255,255,255,.45); color: #fff; }
+  .cookie-btn--accept { background: var(--orange); color: var(--off-white); }
+  .cookie-btn--accept:hover { background: var(--orange-deep); }
+  @media (max-width: 680px) {
+    .cookie-banner { padding: 20px 20px; }
+    .cookie-banner-inner { flex-direction: column; gap: 14px; }
+    .cookie-banner-actions { width: 100%; }
+    .cookie-btn { flex: 1; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="site-nav">
+  <a class="nav-logo-link" href="#">
+    <table class="logo-table">
+      <tr>
+        <td><span class="hanna-name">Hanna Marzian</span></td>
+        <td class="td-divider" rowspan="2"><span class="divider-line"></span></td>
+        <td><span class="martin-name">MARTIN THUN</span></td>
+      </tr>
+      <tr>
+        <td><span class="hanna-handle">@hanna.gpt</span></td>
+        <td><span class="martin-handle">@martin_thun_</span></td>
+      </tr>
+    </table>
+  </a>
+</nav>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-kicker">KI in Einfach</div>
+  <h1>KI-Floskeln:<br><em>Die Blacklist.</em></h1>
+  <p class="hero-sub">
+    45 Regeln für Texte, die nach Mensch klingen. Was KI-Texte sofort verrät, warum es auffliegt und wie du es besser machst.
+  </p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">17</span>
+      Grundregeln
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">22</span>
+      weitere KI-Muster
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">6</span>
+      Gesprächsmuster
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">45</span>
+      Regeln gesamt
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ABSCHNITT 1: Die 19 Grundregeln ═══ -->
+<div class="section-header">
+  <div class="eyebrow">Teil 1 von 3</div>
+  <h2>Die 17 <em>Grundregeln</em></h2>
+  <p>Das sind die häufigsten und auffälligsten Muster. Wer diese 17 Regeln kennt, hat schon 80 Prozent der KI-Muster im Griff.</p>
+</div>
+
+<div class="rules-list">
+
+  <div class="rule-card verboten">
+    <div class="rule-num">01</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Gedankenstriche im Fließtext</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">War mal elegant, heute ist jeder zweite KI-Text damit zugepflastert. Erlaubt nur in Überschriften, UI-Labels und Aufzählungen.</p>
+      <div class="rule-replacement">Nebengedanken einklammern statt aufblähen. Wenn ein Zusatz keinen eigenen Satz braucht, gehört er in Klammern (so wie hier).</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">02</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Ankündigungsphrasen</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Die Wahrheit ist…", „Das Geheimnis ist…", „Die Realität ist…". Reine Aufmerksamkeitsgeneratoren ohne Substanz.</p>
+      <div class="rule-replacement">Den Satz einfach sagen, ohne Trommelwirbel.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">03</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Stakkato-Dreier</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Kein Wachstum. Keine Strategie. Keine Ergebnisse." Klingt dramatisch, ist aber hohl und TED-Talk-Klischee.</p>
+      <div class="rule-replacement">Unrhythmisch schreiben. Sätze auch mal länger atmen lassen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">04</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„Stell dir vor" ohne konkrete Szene</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Stell dir vor, du wachst auf und alles ist möglich" ist KI pur. Nur erlaubt, wenn eine konkrete Szene folgt (Geruch, Uhrzeit, Gefühl, Gegenstand).</p>
+      <div class="rule-replacement">Bild zeigen oder ganz weglassen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">05</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Ausgelutschte Phrasen und Anglizismen-Schwall</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Game-Changer", „Lass uns eintauchen", „auf das nächste Level", „die Zukunft ist da", „bahnbrechend". Dazu der Anglizismen-Reflex: Mindset, Boost, Insights, Deep Dive, Learnings, Hustle.</p>
+      <div class="rule-replacement">Direkt sagen, was gemeint ist. Das deutsche Wort, wenn es eins gibt.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">06</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Seltsame Emojis</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Lotusblüte, Wasserwelle, Funken. Emojis, für die du 10 Minuten in der Tastatur scrollen müsstest. Faustregel: Wenn du es nicht aus dem Kopf tippen kannst, war es KI.</p>
+      <div class="rule-replacement">Normale Emojis oder keins.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">07</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Alles ist gleich wichtig</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">KI schreibt über Brunch mit derselben Dringlichkeit wie über den Tod der Mutter. Echte Menschen gewichten.</p>
+      <div class="rule-replacement">Sag, ob ein Moment groß oder klein ist.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">08</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Dreierreihen</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Smart. Strategisch. Kraftvoll." KI liebt die Drei, klingt nach Rhythmus, ist aber Schema.</p>
+      <div class="rule-replacement">Mal ein Adjektiv, mal fünf. Nie drei symmetrische.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">09</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„Es geht nicht um X, es geht um Y"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">War mal ein echter Reframe, heute sagt KI es in jeder Variation.</p>
+      <div class="rule-replacement">Einfach sagen, was es ist. Die Negation davor braucht keiner.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">10</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Schwurbel-Füllwörter</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Zweifellos, unbestreitbar, selbstverständlich, fraglos. Tragen null bei.</p>
+      <div class="rule-replacement">Streichen. Immer.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">11</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„Man"-Sprache</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Man merkt…", „Wenn man…", „Man sollte…". Distanziert und unpersönlich.</p>
+      <div class="rule-replacement">Immer „du". Den Leser direkt ansprechen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">12</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Einleitung-3-Punkte-Fazit-Schema</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Jeder KI-Text folgt demselben Bauplan. Vorhersehbar.</p>
+      <div class="rule-replacement">Keine vorhersehbaren Strukturen, keine leeren Wiederholungen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">13</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Abstrakt statt konkret</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Mehr Sichtbarkeit" ist schwach. „Dein Telefon klingelt dreimal am Tag" ist besser.</p>
+      <div class="rule-replacement">Konkret werden. Beispiele, Zahlen, Szenen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">14</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Subtile Negation</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Nicht X, sondern Y", „Du zahlst nicht für X, du zahlst für Y". Weiche Form von Regel 09. Selbst „Du zahlst nicht für die KI, du zahlst für die Oberfläche" hat die Negation vorne.</p>
+      <div class="rule-replacement">Direkt sagen, was ist: „Dein Geld geht an die Oberfläche davor."</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">15</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„euch" / „Euch"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Distanziert und unpersönlich.</p>
+      <div class="rule-replacement">Immer „du", „dir", „dich".</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">16</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Apostroph</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Das gerade Apostroph wirkt schludrig im Fließtext.</p>
+      <div class="rule-replacement">Deutsche Gänsefüßchen „ und ".</div>
+    </div>
+  </div>
+
+
+  <div class="rule-card verboten">
+    <div class="rule-num">19</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„auf das nächste Level"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Ausgelutscht bis zur Bedeutungslosigkeit.</p>
+      <div class="rule-replacement">Konkret: „bringt echte Sichtbarkeit", „zeigt endlich, was du wirklich kannst".</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══ PITCH: Skill-Download ═══ -->
+<div class="pitch-wrap">
+  <div class="pitch">
+    <div class="pitch-inner">
+      <div>
+        <div class="pitch-eye">Skill-Download</div>
+        <h3>Alle 45 Regeln.<br><em>Automatisch geprüft.</em></h3>
+        <p class="pitch-text">
+          Dieser kostenlose Claude-Skill kennt jede Regel auf dieser Liste. Du kopierst deinen Text rein, tippst einen Slash-Befehl, und Claude zeigt dir sofort, was auffliegt und wie die menschlichere Formulierung lautet.
+        </p>
+        <div class="pitch-features">
+          <div class="pitch-feature">Alle 45 Regeln in einem einzigen Skill hinterlegt</div>
+          <div class="pitch-feature">Konkrete Alternativ-Formulierungen direkt im Chat</div>
+          <div class="pitch-feature">Funktioniert in claude.ai (Browser) und Claude Code (Desktop)</div>
+          <div class="pitch-feature">Einmal einrichten, dauerhaft nutzen</div>
+        </div>
+      </div>
+      <div class="pitch-cta">
+        <div class="pitch-cta-label">Gratis herunterladen</div>
+        <div class="pitch-count">45</div>
+        <div class="pitch-count-label">Regeln, ein Skill.</div>
+        <a href="https://www.hannamarzian.com/freebies/claude-skills-einbinden-ki-floskeln" target="_blank" rel="noopener" class="pitch-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Skill sichern
+        </a>
+        <div class="pitch-trust">🔒 Kein Spam &nbsp;·&nbsp; Jederzeit abmeldbar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ ABSCHNITT 2: 22 weitere KI-Tells ═══ -->
+<div class="section-header">
+  <div class="eyebrow">Teil 2 von 3</div>
+  <h2>22 weitere <em>KI-Muster</em></h2>
+  <p>Diese Muster sind subtiler, aber genauso verräterisch. Wer sie kennt, klingt in jeder Situation authentisch.</p>
+</div>
+
+<div class="rules-list">
+
+  <div class="rule-card verboten">
+    <div class="rule-num">20</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Aufwärm-Eröffnungen</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„In der heutigen schnelllebigen Welt", „In einer Welt, in der…", „In Zeiten von…". Leerlauf, bevor der Text anfängt.</p>
+      <div class="rule-replacement">Beim ersten Satz schon beim Thema sein.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">21</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„Es ist wichtig zu beachten"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Auch „Es sei erwähnt", „Beachte, dass". Wenn es wichtig ist, schreib es einfach. Die Ankündigung der Wichtigkeit ist nie wichtig.</p>
+      <div class="rule-replacement">Den Punkt direkt machen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">22</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Zusammenfassungs-Floskeln</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Zusammenfassend lässt sich sagen", „Letztendlich", „Im Kern geht es darum". Kündigt ein Fazit an, das keiner bestellt hat.</p>
+      <div class="rule-replacement">Aufhören, wenn du fertig bist.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">23</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Journey-Metapher</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Deine Reise", „auf dem Weg zu", „Schritt für Schritt zu deinem Ziel". Coaching-Bingo.</p>
+      <div class="rule-replacement">Konkret benennen, was passiert.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">24</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„volles Potenzial entfalten / ausschöpfen"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Klingt nach Bewegung, sagt aber nichts.</p>
+      <div class="rule-replacement">Das konkrete Ergebnis nennen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">25</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„entfesseln / freisetzen"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Entfessle deine Kreativität." Werbesprech aus dem Übersetzer.</p>
+      <div class="rule-replacement">Direkt sagen, was die Sache bewirkt.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">26</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Aufgeblasene Adjektive</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Nahtlos, robust, leistungsstark, innovativ, maßgeschneidert, ganzheitlich, vielseitig. Klingt nach Produktbroschüre.</p>
+      <div class="rule-replacement">Zeigen statt behaupten.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">27</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„die Macht von / die Welt des"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Die Macht des Storytellings", „die Welt des Marketings". Aufgeblasene Themenrahmung.</p>
+      <div class="rule-replacement">Direkt das Thema nennen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">28</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„spielt eine entscheidende Rolle"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Auch „von entscheidender Bedeutung", „ein zentraler Faktor". Füllt Platz, sagt nichts.</p>
+      <div class="rule-replacement">Sagen, was die Sache konkret tut.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">29</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Rhetorische Übergangsfragen</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Was bedeutet das für dich?", „Klingt gut, oder?", „Doch was steckt dahinter?". Künstliche Spannung statt Inhalt.</p>
+      <div class="rule-replacement">Den nächsten Gedanken einfach hinschreiben.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">30</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">CTA-Klischees</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Bereit, durchzustarten?", „Worauf wartest du noch?", „Mach jetzt den ersten Schritt".</p>
+      <div class="rule-replacement">Konkret sagen, was zu tun ist und warum.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">31</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„Die gute Nachricht ist"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Auch „Aber hier kommt der Clou", „Und jetzt das Beste". Aufmerksamkeits-Trommel.</p>
+      <div class="rule-replacement">Die Nachricht direkt liefern.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">32</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Steife Konnektoren</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Darüber hinaus, des Weiteren, ferner, überdies, zudem (im Überfluss). Klingt nach Behördenbrief.</p>
+      <div class="rule-replacement">„und", „auch", oder ein neuer Satz.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">33</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Etiketten-Labels</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Fazit:", „Pro-Tipp:", „Merke:", „Spoiler:", „Plot Twist:", „TL;DR", „Wichtig:". Blog-Schablone.</p>
+      <div class="rule-replacement">Den Inhalt ohne Vor-Etikett sagen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">34</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Weichmacher</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Sozusagen, gewissermaßen, quasi, im Wesentlichen, im Grunde genommen. Verwässern jede Aussage.</p>
+      <div class="rule-replacement">Streichen, klare Aussage stehen lassen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">35</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Corporate-Schwurbel</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Mehrwert, Synergien, proaktiv, zielführend, nachhaltig (wenn nicht wörtlich gemeint).</p>
+      <div class="rule-replacement">Den konkreten Nutzen benennen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">36</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Emoji-Bullets</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">✨ 🚀 💡 🔥 ✅ als Aufzählungspunkte. Verstärkt Regel 06.</p>
+      <div class="rule-replacement">Saubere Aufzählung oder Fließtext.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">37</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Superlativ-Etiketten</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„ein Muss", „unverzichtbar", „das A und O", „der heilige Gral", „Eckpfeiler", „Grundstein".</p>
+      <div class="rule-replacement">Belegen, warum es zählt, statt es zu behaupten.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">38</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Überbetonte Verstärker</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Absolut, definitiv, garantiert, zu 100 Prozent.</p>
+      <div class="rule-replacement">Die Aussage trägt sich selbst, der Verstärker fällt weg.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">39</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Falscher Konsens</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Wie wir alle wissen", „es liegt auf der Hand", „es ist kein Geheimnis", „bekanntermaßen". Unterstellt Zustimmung, statt sie zu verdienen.</p>
+      <div class="rule-replacement">Die Behauptung aufstellen und stützen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">40</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Hero-Verben</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Meistern, durchstarten, transformieren, revolutionieren. Motivations-Sprech.</p>
+      <div class="rule-replacement">Das konkrete Tun beschreiben.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">41</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„nicht nur, sondern auch" / „sowohl als auch"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Im Überfluss ein Tell. Gehört zur Negations-Familie (09, 14).</p>
+      <div class="rule-replacement">Beide Punkte einfach nebeneinander nennen.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══ ABSCHNITT 3: Gesprächs- und Struktur-Tells ═══ -->
+<div class="section-header">
+  <div class="eyebrow">Teil 3 von 3</div>
+  <h2>Gesprächs- und <em>Strukturmuster</em></h2>
+  <p>Diese sechs Muster verraten KI-Texte besonders in Dialogen und strukturierten Inhalten. Universell in jedem Format relevant.</p>
+</div>
+
+<div class="rules-list">
+
+  <div class="rule-card verboten">
+    <div class="rule-num">42</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Schmeichel-Opener</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Gute Frage!", „Tolle Idee!", „Du hast völlig recht", „Spannend!". Das Loben des Nutzers, bevor etwas Substanzielles kommt. Deutlichstes Chat-KI-Signal.</p>
+      <div class="rule-replacement">Direkt antworten, ohne Vorab-Lob.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">43</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Prozess-Narration</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Lass mich das aufschlüsseln", „Schauen wir uns das genauer an", „Ich werde jetzt X tun". Die KI erzählt, was sie gleich tut, statt es zu tun.</p>
+      <div class="rule-replacement">Tun, nicht ankündigen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">44</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Wischiwaschi-Schluss</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Am Ende des Tages", „letztlich kommt es auf dich an", „es hängt von deinen Zielen ab". Klingt nach Abschluss, sagt nichts.</p>
+      <div class="rule-replacement">Eine klare Aussage oder konkrete Empfehlung.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">45</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Strohmann-Eröffnung</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Die meisten glauben X. Falsch.", „Was viele nicht wissen:". Erfindet einen Gegner, um sich klug abzusetzen.</p>
+      <div class="rule-replacement">Die Aussage ohne den erfundenen Gegner.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">46</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">Listicle-Rahmung</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">„Hier sind 5 Wege, um…", „3 Dinge, die du wissen musst". Die Verpackung statt des Inhalts.</p>
+      <div class="rule-replacement">Mit dem ersten Punkt anfangen.</div>
+    </div>
+  </div>
+
+  <div class="rule-card verboten">
+    <div class="rule-num">47</div>
+    <div class="rule-body">
+      <div class="rule-head">
+        <span class="rule-title">„Egal ob … oder …"</span>
+        <span class="rule-badge badge-verboten">Verboten</span>
+      </div>
+      <p class="rule-desc">Falsche All-Inklusivität: „egal ob Anfänger oder Profi", „ganz gleich, ob groß oder klein".</p>
+      <div class="rule-replacement">Konkret sagen, für wen es ist.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══ SKILL-DOWNLOAD (Bottom) ═══ -->
+<div class="pitch-wrap" style="margin-top: 0; margin-bottom: 64px;">
+  <div class="pitch" style="text-align: center;">
+    <div style="position: relative; z-index: 1;">
+      <div class="pitch-eye" style="justify-content: center;">Skill-Download</div>
+      <h3 style="font-size: clamp(36px, 5.5vw, 64px);">Du hast alle 45 Regeln.<br><em>Jetzt prüft Claude sie automatisch.</em></h3>
+      <p class="pitch-text" style="max-width: 520px; margin: 0 auto 28px;">
+        Einmal einrichten, dauerhaft nutzen. Der kostenlose Skill kennt jede Regel auf dieser Liste und zeigt dir direkt, was in deinem Text auffliegt.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 14px;">
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--sand);">
+          <span style="color: var(--orange); font-weight: 700;">✓</span> Für claude.ai (Browser)
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--sand);">
+          <span style="color: var(--orange); font-weight: 700;">✓</span> Für Claude Code (Desktop)
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--sand);">
+          <span style="color: var(--orange); font-weight: 700;">✓</span> Kein Google-Account nötig
+        </div>
+      </div>
+      <a href="https://www.hannamarzian.com/freebies/claude-skills-einbinden-ki-floskeln" target="_blank" rel="noopener" class="pitch-btn" style="display: inline-flex; margin: 8px auto 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Skill sichern
+      </a>
+      <div class="pitch-trust" style="margin-top: 12px;">🔒 Kein Spam &nbsp;·&nbsp; Jederzeit abmeldbar</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <a class="footer-logo-link" href="#">
+    <table class="logo-table">
+      <tr>
+        <td><span class="footer-hanna-name">Hanna Marzian</span></td>
+        <td class="td-divider" rowspan="2" style="padding:0 1rem;"><span class="divider-line" style="min-height:36px;background:linear-gradient(to bottom,transparent,#E8894E 15%,#E8894E 85%,transparent);"></span></td>
+        <td><span class="footer-martin-name">MARTIN THUN</span></td>
+      </tr>
+      <tr>
+        <td><span class="footer-hanna-handle">@hanna.gpt</span></td>
+        <td><span class="footer-martin-handle">@martin_thun_</span></td>
+      </tr>
+    </table>
+  </a>
+  <span class="footer-copy">© 2026 Hanna Marzian &amp; Martin Thun · Alle Rechte vorbehalten</span>
+  <div class="footer-links">
+    <a class="footer-link" href="https://www.hannamarzian.com/agb.html" target="_blank" rel="noopener">AGB</a>
+    <a class="footer-link" href="https://www.hannamarzian.com/impressum.html" target="_blank" rel="noopener">Impressum</a>
+    <a class="footer-link" href="https://www.hannamarzian.com/datenschutz.html" target="_blank" rel="noopener">Datenschutz</a>
+  </div>
+</footer>
+
+
+<!-- ─── COOKIE BANNER ─── -->
+<div id="cookie-banner" class="cookie-banner" style="display:none;">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <strong>Cookies &amp; Tracking</strong>
+      <p>Wir nutzen den Facebook Pixel, um dir relevante Inhalte zu zeigen. Du entscheidest, was du erlaubst. <a href="https://www.hannamarzian.com/datenschutz.html" style="color:var(--orange-mid);">Datenschutz</a></p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Nur notwendige</button>
+      <button class="cookie-btn cookie-btn--accept" onclick="acceptCookies()">Alles akzeptieren</button>
+    </div>
+  </div>
+</div>
+
+<!-- FB Pixel & Consent -->
+<script>
+  var FB_PIXEL_ID = '1418911535795598';
+
+  function loadFBPixel() {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', FB_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('cookie_consent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+    loadFBPixel();
+  }
+
+  function declineCookies() {
+    localStorage.setItem('cookie_consent', 'declined');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  function showCookieBanner() {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+
+  (function() {
+    var consent = localStorage.getItem('cookie_consent');
+    if (consent === 'accepted') {
+      loadFBPixel();
+    } else if (!consent) {
+      setTimeout(function() {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }, 800);
+    }
+  })();
+</script>
+
+</body>
+</html>
