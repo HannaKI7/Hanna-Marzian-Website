@@ -564,6 +564,95 @@
     .cookie-banner-actions { width: 100%; }
     .cookie-btn { flex: 1; text-align: center; }
   }
+
+  /* ─── GEHEIMTIPP ─── */
+  .geheimtipp-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 0;
+  }
+  .geheimtipp {
+    background: var(--cream);
+    border: 1px solid var(--beige);
+    border-left: 4px solid var(--orange);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px 22px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px 32px;
+    align-items: center;
+  }
+  .geheimtipp-left {}
+  .geheimtipp-badge {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .geheimtipp-text {
+    font-size: 14px;
+    color: var(--warm-brown);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .geheimtipp-or {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--orange);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .geheimtipp-sub {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.5;
+  }
+  .geheimtipp-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .geheimtipp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 3px 14px rgba(216,98,42,.28);
+    transition: background .2s, box-shadow .2s;
+    white-space: nowrap;
+  }
+  .geheimtipp-btn:hover { background: var(--orange-deep); box-shadow: 0 5px 20px rgba(216,98,42,.4); }
+  .geheimtipp-free {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .65;
+  }
+  @media (max-width: 680px) {
+    .geheimtipp-wrap { padding: 0 16px 0; }
+    .geheimtipp { grid-template-columns: 1fr; gap: 16px; }
+    .geheimtipp-right { align-items: flex-start; }
+    .geheimtipp-btn { width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -612,6 +701,26 @@
     </div>
   </div>
 </section>
+
+
+<!-- ═══ GEHEIMTIPP ═══ -->
+<div class="geheimtipp-wrap">
+  <div class="geheimtipp">
+    <div class="geheimtipp-left">
+      <div class="geheimtipp-badge">💡 Geheimtipp</div>
+      <p class="geheimtipp-text">Kopiere diese Regeln und füttere sie deiner KI, damit sie diese ab sofort beherrscht.</p>
+      <div class="geheimtipp-or">Oder noch besser!</div>
+      <p class="geheimtipp-sub">Klicke rechts, um den fertigen Skill herunterzuladen. Ich habe mir nämlich schon die Mühe gemacht, das für dich zu tun!</p>
+    </div>
+    <div class="geheimtipp-right">
+      <a href="https://www.hannamarzian.com/freebies/claude-skills-einbinden-ki-floskeln" target="_blank" rel="noopener" class="geheimtipp-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Skill herunterladen
+      </a>
+      <div class="geheimtipp-free">🔒 Kostenlos &nbsp;·&nbsp; 0€</div>
+    </div>
+  </div>
+</div>
 
 
 <!-- ═══ ABSCHNITT 1: Die 17 Grundregeln ═══ -->
