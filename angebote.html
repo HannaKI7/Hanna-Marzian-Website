@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alle Produkte · Hanna Marzian × Martin Thun</title>
+  <meta name="description" content="Kurse, Studio-Kits und kostenlose Tools von Hanna Marzian und Martin Thun – KI in Einfach.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/consent.css">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:           #FFFFFF;
+      --surface:      #F8FAFB;
+      --border:       #E5E7EB;
+      --text:         #0F172A;
+      --text-muted:   #64748B;
+      --text-light:   #94A3B8;
+      --radius-sm:    10px;
+      --radius-md:    16px;
+      --radius-lg:    22px;
+      --radius-xl:    28px;
+      --shadow-sm:    0 1px 2px rgba(15,23,42,.05), 0 1px 3px rgba(15,23,42,.08);
+      --shadow-md:    0 4px 6px -1px rgba(15,23,42,.06), 0 6px 16px -2px rgba(15,23,42,.08);
+      --shadow-lg:    0 12px 28px -6px rgba(15,23,42,.12), 0 4px 8px -2px rgba(15,23,42,.04);
+      --shadow-xl:    0 20px 40px -8px rgba(15,23,42,.16), 0 8px 16px -4px rgba(15,23,42,.06);
+      --ease:         cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* Hanna palette */
+      --orange:       #D8622A;
+      --orange-mid:   #E8894E;
+      --warm-black:   #160C05;
+      --warm-dark:    #2A1608;
+      --warm-brown:   #472B18;
+      --cream:        #F6F0E6;
+      --tan:          #A88960;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9998;
+      pointer-events: none; opacity: 0.35; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2.5px;
+      background: linear-gradient(90deg, #D8622A, #F97316, #EC4899, #6366F1, #10B981);
+      background-size: 300% 100%;
+      animation: progressGrad 4s linear infinite;
+      width: 0; z-index: 9999;
+      transition: width 0.12s ease-out;
+    }
+    @keyframes progressGrad {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 300% 0%; }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 24px;
+    }
+
+    /* JV Logo */
+    .logo-table { border-collapse: collapse; border-spacing: 0; }
+    .logo-table td { padding: 0; vertical-align: bottom; }
+    .logo-table tr:last-child td { vertical-align: top; padding-top: 4px; }
+    .logo-table .td-divider { vertical-align: middle; padding: 0 1rem; }
+    .divider-line {
+      width: 1.5px; min-height: 36px; display: block;
+      background: linear-gradient(to bottom, transparent, #D8622A 15%, #D8622A 85%, transparent);
+    }
+    .hanna-name {
+      font-family: 'Cormorant', Georgia, serif; font-style: italic;
+      font-weight: 500; font-size: 1.35rem; color: #160C05;
+      letter-spacing: -0.01em; line-height: 1; white-space: nowrap;
+      display: block; text-align: right;
+    }
+    .hanna-handle {
+      font-family: 'Cormorant', Georgia, serif; font-style: italic;
+      font-weight: 400; font-size: 0.72rem; color: #D8622A;
+      letter-spacing: 0.02em; line-height: 1; display: block; text-align: right;
+    }
+    .martin-name {
+      font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 800;
+      font-size: 0.82rem; color: #160C05; letter-spacing: 0.2em;
+      text-transform: uppercase; white-space: nowrap; display: block; text-align: left;
+    }
+    .martin-handle {
+      font-family: 'Cormorant', Georgia, serif; font-style: italic;
+      font-weight: 500; font-size: 0.72rem; color: #472B18;
+      letter-spacing: 0.02em; line-height: 1; display: block; text-align: left;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 88px 24px 76px;
+      text-align: center;
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(ellipse 70% 60% at 15% 20%, rgba(216,98,42,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 80%, rgba(99,102,241,0.06) 0%, transparent 60%),
+        linear-gradient(180deg, #F8FAFB 0%, #FFFFFF 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(15,23,42,.028) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,23,42,.028) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse 65% 65% at 50% 45%, black 0%, transparent 80%);
+      mask-image: radial-gradient(ellipse 65% 65% at 50% 45%, black 0%, transparent 80%);
+    }
+
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      animation: fadeDown 0.7s var(--ease) both;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 6vw, 62px);
+      font-weight: 600; color: #0F172A;
+      margin-bottom: 20px;
+      animation: fadeUp 0.8s var(--ease) 0.1s both;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 18px);
+      color: var(--text-muted);
+      max-width: 500px; margin: 0 auto;
+      line-height: 1.75;
+      animation: fadeUp 0.8s var(--ease) 0.2s both;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 84px 0; }
+
+    .section-alt {
+      background-color: var(--surface);
+      background-image: radial-gradient(circle at 1px 1px, rgba(15,23,42,.04) 1px, transparent 0);
+      background-size: 22px 22px;
+      border-top: 1px solid rgba(16,185,129,.12);
+      border-bottom: 1px solid rgba(16,185,129,.08);
+    }
+
+    .section-head { text-align: center; margin-bottom: 56px; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: ''; width: 22px; height: 2px;
+      background: currentColor; border-radius: 2px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 600; color: #0F172A; margin-bottom: 14px;
+    }
+    .section-head p {
+      font-size: 17px; color: var(--text-muted);
+      max-width: 460px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ── PRODUCT GRID ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    /* ── PRODUCT CARD ── */
+    .product-card {
+      background: var(--bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.9);
+      transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-xl), inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    /* ── CARD VISUAL ── */
+    .card-visual {
+      height: 226px;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Grid overlay */
+    .card-visual::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Bottom vignette */
+    .card-visual::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+      background: linear-gradient(to top, rgba(0,0,0,.22) 0%, transparent 100%);
+      z-index: 1; pointer-events: none;
+    }
+
+    /* Product gradients – same structure, different palette */
+    .cv-ig {
+      background:
+        radial-gradient(ellipse 85% 70% at 15% 10%, rgba(255,247,237,.9) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 65% at 90% 95%, rgba(234,88,12,.45) 0%, transparent 55%),
+        linear-gradient(150deg, #FFF3E0 0%, #FDBA74 45%, #EA580C 100%);
+    }
+    .cv-fir {
+      background:
+        radial-gradient(ellipse 85% 70% at 15% 10%, rgba(253,244,255,.9) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 65% at 90% 95%, rgba(219,39,119,.45) 0%, transparent 55%),
+        linear-gradient(150deg, #FDF4FF 0%, #F9A8D4 45%, #DB2777 100%);
+    }
+    .cv-awc {
+      background:
+        radial-gradient(ellipse 85% 70% at 15% 10%, rgba(238,242,255,.9) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 65% at 90% 95%, rgba(79,70,229,.45) 0%, transparent 55%),
+        linear-gradient(150deg, #EEF2FF 0%, #A5B4FC 45%, #4F46E5 100%);
+    }
+    .cv-zero {
+      background:
+        radial-gradient(ellipse 85% 70% at 15% 10%, rgba(240,253,244,.9) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 65% at 90% 95%, rgba(5,150,105,.45) 0%, transparent 55%),
+        linear-gradient(150deg, #F0FFF4 0%, #6EE7B7 45%, #059669 100%);
+    }
+
+    /* ── CARD WORDMARK ── */
+    .card-wordmark {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      color: rgba(255,255,255,0.95);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+      padding: 16px;
+      transition: transform 0.5s var(--ease);
+    }
+    .product-card:hover .card-wordmark { transform: translateY(-5px); }
+
+    .wm-sup {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      opacity: 0.75; display: block; margin-bottom: 6px;
+      line-height: 1;
+    }
+    .wm-script {
+      font-family: 'Cormorant', Georgia, serif;
+      font-style: italic; font-weight: 500;
+      line-height: 1; display: block;
+    }
+    .wm-bold {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1; display: block;
+    }
+    .wm-caps {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; line-height: 1; display: block;
+    }
+    .wm-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      opacity: 0.7; display: block; margin-top: 8px;
+      line-height: 1;
+    }
+
+    /* Floating chips */
+    .chip {
+      position: absolute; z-index: 3;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 100px;
+      padding: 7px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px; font-weight: 700;
+      color: #0F172A;
+      box-shadow: 0 4px 16px rgba(0,0,0,.14);
+      white-space: nowrap;
+    }
+    .chip-tl { top: 14px; left: 14px; }
+    .chip-tr { top: 14px; right: 14px; }
+
+    /* ── CARD BODY ── */
+    .card-body {
+      padding: 24px 26px 26px;
+      display: flex; flex-direction: column; flex: 1;
+    }
+
+    .card-cat {
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cat-ig   { color: #EA580C; }
+    .cat-fir  { color: #DB2777; }
+    .cat-awc  { color: #4F46E5; }
+    .cat-zero { color: #059669; }
+
+    .card-title {
+      font-size: 22px; font-weight: 700;
+      color: #0F172A; margin-bottom: 7px;
+      letter-spacing: -0.02em;
+    }
+    .card-tagline {
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.55; margin-bottom: 18px;
+    }
+
+    .card-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 7px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      margin-bottom: 22px;
+    }
+    .card-features li {
+      font-size: 13.5px; color: var(--text);
+      display: flex; align-items: flex-start; gap: 9px; line-height: 1.45;
+    }
+    .feat-check {
+      flex-shrink: 0; width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9.5px; font-weight: 900; margin-top: 1px;
+    }
+    .fc-ig   { background: rgba(249,115,22,.12); color: #EA580C; }
+    .fc-fir  { background: rgba(236,72,153,.12); color: #DB2777; }
+    .fc-awc  { background: rgba(99,102,241,.12); color: #4F46E5; }
+    .fc-zero { background: rgba(16,185,129,.12); color: #059669; }
+
+    .card-footer {
+      margin-top: auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .card-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px; font-weight: 700;
+      color: #0F172A; letter-spacing: -0.03em; white-space: nowrap;
+    }
+    .card-price small {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 500;
+      color: var(--text-muted); letter-spacing: 0;
+    }
+
+    .card-btn {
+      flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 12px 22px; border-radius: var(--radius-md);
+      font-size: 13.5px; font-weight: 700;
+      color: #fff; white-space: nowrap; overflow: hidden; position: relative;
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+    .card-btn::before {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transition: left 0.55s ease;
+    }
+    .card-btn:hover::before { left: 100%; }
+
+    .btn-ig   { background: linear-gradient(135deg, #F97316, #EA580C); box-shadow: 0 6px 20px rgba(234,88,12,.32); }
+    .btn-fir  { background: linear-gradient(135deg, #EC4899, #DB2777); box-shadow: 0 6px 20px rgba(219,39,119,.32); }
+    .btn-awc  { background: linear-gradient(135deg, #818CF8, #4F46E5); box-shadow: 0 6px 20px rgba(99,102,241,.32); }
+    .btn-zero { background: linear-gradient(135deg, #34D399, #059669); box-shadow: 0 6px 20px rgba(16,185,129,.32); }
+
+    .btn-ig:hover   { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(234,88,12,.45); }
+    .btn-fir:hover  { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(219,39,119,.45); }
+    .btn-awc:hover  { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(99,102,241,.45); }
+    .btn-zero:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(16,185,129,.45); }
+
+    .card-detail-link {
+      display: block; font-size: 12px; font-weight: 500;
+      color: var(--text-light); text-align: center; margin-top: 12px;
+      transition: color 0.2s;
+    }
+    .card-detail-link:hover { color: var(--text-muted); }
+
+    /* ── FREEBIES ── */
+    .freebies-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .freebie-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 26px 24px;
+      box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,.8);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.3s;
+    }
+    .freebie-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,.8);
+      border-color: rgba(16,185,129,.25);
+    }
+    .free-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+      border: 1px solid rgba(16,185,129,.2);
+      color: #065F46;
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 100px; padding: 4px 12px; margin-bottom: 16px;
+    }
+    .free-icon { font-size: 30px; display: block; margin-bottom: 12px; transition: transform 0.4s var(--ease); }
+    .freebie-card:hover .free-icon { transform: translateY(-4px) scale(1.08); }
+    .free-title { font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 7px; letter-spacing: -0.015em; }
+    .free-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px; }
+    .free-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 13px; font-weight: 600; color: #059669;
+      transition: gap 0.3s var(--ease);
+    }
+    .free-link:hover { gap: 9px; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .rd1 { transition-delay: 0.08s; }
+    .rd2 { transition-delay: 0.18s; }
+    .rd3 { transition-delay: 0.28s; }
+    .rd4 { transition-delay: 0.38s; }
+
+    /* ── FOOTER (Hanna-Branding) ── */
+    footer {
+      background: var(--warm-black);
+      padding: 48px 24px 40px;
+      border-top: 1px solid rgba(255,255,255,.04);
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo {
+      font-family: 'Cormorant', Georgia, serif;
+      font-size: 1.15rem; font-weight: 500;
+      font-style: italic; color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    .footer-logo .x { color: var(--orange); font-style: normal; }
+    .footer-copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+    }
+    .footer-links {
+      display: flex; flex-wrap: wrap; gap: 24px; align-items: center;
+    }
+    .footer-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--tan); transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-links button {
+      background: none; border: none; cursor: pointer; padding: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--tan); transition: color 0.2s;
+    }
+    .footer-links button:hover { color: var(--orange); }
+    @media (max-width: 768px) {
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .product-grid { grid-template-columns: 1fr; gap: 22px; }
+      .freebies-grid { grid-template-columns: 1fr; gap: 16px; }
+      .hero { padding: 64px 20px 56px; }
+      .section { padding: 64px 0; }
+      .section-head { margin-bottom: 40px; }
+      .card-visual { height: 210px; }
+    }
+    @media (min-width: 861px) and (max-width: 1100px) {
+      .freebies-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 420px) {
+      .card-body { padding: 20px 18px 22px; }
+      .card-title { font-size: 20px; }
+      .card-price { font-size: 22px; }
+      .card-btn { padding: 11px 18px; font-size: 13px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="sp"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" aria-label="Startseite">
+    <table class="logo-table" aria-hidden="true">
+      <tr>
+        <td><span class="hanna-name">Hanna Marzian</span></td>
+        <td class="td-divider" rowspan="2"><span class="divider-line"></span></td>
+        <td><span class="martin-name">Martin Thun</span></td>
+      </tr>
+      <tr>
+        <td><span class="hanna-handle">@hanna.gpt</span></td>
+        <td><span class="martin-handle">@martin_thun_</span></td>
+      </tr>
+    </table>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-pill">Produkte zum Start</p>
+  <h1>Eine Übersicht aller Produkte</h1>
+  <p class="hero-sub">Kurse, Tools und Freebies für deinen KI-Alltag. Einmalig kaufen. Sofort anwenden.</p>
+</section>
+
+<!-- BEZAHLTE PRODUKTE -->
+<section class="section">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="section-label">Bezahlte Produkte</span>
+      <h2>Kurse und Studio-Kits</h2>
+      <p>Einmalzahlung. Kein Abo. Sofortiger Zugang nach dem Kauf.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- 1 – Instagram Marketing Studio -->
+      <article class="product-card reveal rd1">
+        <div class="card-visual cv-ig">
+          <span class="chip chip-tl">🎨 Studio Kit</span>
+          <span class="chip chip-tr">59 &thinsp;€</span>
+          <div class="card-wordmark">
+            <span class="wm-sup">Instagram</span>
+            <span class="wm-script" style="font-size:48px;">Marketing</span>
+            <span class="wm-caps" style="font-size:16px;letter-spacing:0.2em;margin-top:4px;">Studio</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-cat cat-ig">Instagram KI Marketing</p>
+          <h3 class="card-title">Instagram Marketing Studio</h3>
+          <p class="card-tagline">11 spezialisierte KI-Tools für deinen kompletten Instagram-Workflow. Für Claude und ChatGPT.</p>
+          <ul class="card-features">
+            <li><span class="feat-check fc-ig">✓</span>Captions, Hooks, Carousels auf Knopfdruck</li>
+            <li><span class="feat-check fc-ig">✓</span>Kompatibel mit Claude und ChatGPT</li>
+            <li><span class="feat-check fc-ig">✓</span>Sofort in deinen Workflow integrierbar</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-price">59&thinsp;€ <small>einmalig</small></span>
+            <a href="ig-ki-marketing-studio.html" class="card-btn btn-ig">Mehr erfahren →</a>
+          </div>
+          <a href="https://copecart.com/products/3b487266/checkout" target="_blank" rel="noopener" class="card-detail-link">Direkt zum Checkout ↗</a>
+        </div>
+      </article>
+
+      <!-- 2 – Fake it Real -->
+      <article class="product-card reveal rd2">
+        <div class="card-visual cv-fir">
+          <span class="chip chip-tl">📸 Videokurs</span>
+          <span class="chip chip-tr">49 &thinsp;€</span>
+          <div class="card-wordmark">
+            <span class="wm-bold" style="font-size:36px;">Fake it</span>
+            <span class="wm-script" style="font-size:58px;margin-top:-4px;">Real</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-cat cat-fir">KI Fotografie</p>
+          <h3 class="card-title">Fake it Real</h3>
+          <p class="card-tagline">KI-Fotos erstellen, die verblüffend echt aussehen. Kein Equipment, keine teure Ausrüstung.</p>
+          <ul class="card-features">
+            <li><span class="feat-check fc-fir">✓</span>Professionelle Ergebnisse ohne Kamera</li>
+            <li><span class="feat-check fc-fir">✓</span>Schritt-für-Schritt Anleitung mit echten Beispielen</li>
+            <li><span class="feat-check fc-fir">✓</span>Für Creator, Coaches und Selbstständige</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-price">49&thinsp;€ <small>einmalig</small></span>
+            <a href="fake-it-real.html" class="card-btn btn-fir">Mehr erfahren →</a>
+          </div>
+          <a href="https://copecart.com/products/64198c1b/checkout" target="_blank" rel="noopener" class="card-detail-link">Direkt zum Checkout ↗</a>
+        </div>
+      </article>
+
+      <!-- 3 – AI Website Code -->
+      <article class="product-card reveal rd3">
+        <div class="card-visual cv-awc">
+          <span class="chip chip-tl">💻 Videokurs</span>
+          <span class="chip chip-tr">99 &thinsp;€</span>
+          <div class="card-wordmark">
+            <span class="wm-bold" style="font-size:58px;letter-spacing:-0.04em;">AI</span>
+            <span class="wm-sub" style="font-size:13px;letter-spacing:0.16em;margin-top:2px;">Website Code</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-cat cat-awc">KI Website Builder</p>
+          <h3 class="card-title">AI Website Code</h3>
+          <p class="card-tagline">Website, Salespage oder Funnel mit nur einem Prompt. Kein Code-Wissen, kein Designer nötig.</p>
+          <ul class="card-features">
+            <li><span class="feat-check fc-awc">✓</span>Professionelles Ergebnis in Minuten</li>
+            <li><span class="feat-check fc-awc">✓</span>Claude AI als dein persönlicher Web-Developer</li>
+            <li><span class="feat-check fc-awc">✓</span>Absolut kein Vorwissen nötig</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-price">99&thinsp;€ <small>einmalig</small></span>
+            <a href="ai-website-code.html" class="card-btn btn-awc">Mehr erfahren →</a>
+          </div>
+          <a href="https://copecart.com/products/b1c1cf88/checkout" target="_blank" rel="noopener" class="card-detail-link">Direkt zum Checkout ↗</a>
+        </div>
+      </article>
+
+      <!-- 4 – ZERO -->
+      <article class="product-card reveal rd4">
+        <div class="card-visual cv-zero">
+          <span class="chip chip-tl">⚡ Minikurs</span>
+          <span class="chip chip-tr">22 &thinsp;€</span>
+          <div class="card-wordmark">
+            <span class="wm-bold" style="font-size:72px;letter-spacing:-0.06em;">ZERO</span>
+            <span class="wm-sub" style="margin-top:4px;">KI ohne Abo &amp; Limits</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-cat cat-zero">KI Setup</p>
+          <h3 class="card-title">ZERO</h3>
+          <p class="card-tagline">KI ohne Abo und Nutzungslimits. Das Setup, das KI wirklich produktiv macht.</p>
+          <ul class="card-features">
+            <li><span class="feat-check fc-zero">✓</span>Kein Abo, keine monatlichen Fixkosten</li>
+            <li><span class="feat-check fc-zero">✓</span>Alle Top-Modelle (GPT, Claude, Gemini) an einem Ort</li>
+            <li><span class="feat-check fc-zero">✓</span>In unter einer Stunde startklar</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-price">22&thinsp;€ <small>einmalig</small></span>
+            <a href="zero-ki-ohne-abo/" class="card-btn btn-zero">Mehr erfahren →</a>
+          </div>
+          <a href="https://copecart.com/products/fedfdfed/checkout" target="_blank" rel="noopener" class="card-detail-link">Direkt zum Checkout ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- FREEBIES -->
+<section class="section section-alt">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="section-label">Kostenlose Inhalte</span>
+      <h2>Freebies für dich</h2>
+      <p>Nützliche Claude-Skills und Guides, komplett kostenlos.</p>
+    </div>
+
+    <div class="freebies-grid">
+
+      <div class="freebie-card reveal rd1">
+        <span class="free-badge">✦ Kostenlos</span>
+        <span class="free-icon">🎓</span>
+        <h4 class="free-title">Platzhalter Skill 1</h4>
+        <p class="free-desc">Beschreibung kommt noch. Kurze, klare Info, was den Nutzer erwartet und wie er profitiert.</p>
+        <span class="free-link">Bald verfügbar →</span>
+      </div>
+
+      <div class="freebie-card reveal rd2">
+        <span class="free-badge">✦ Kostenlos</span>
+        <span class="free-icon">📋</span>
+        <h4 class="free-title">Platzhalter Skill 2</h4>
+        <p class="free-desc">Beschreibung kommt noch. Kurze, klare Info, was den Nutzer erwartet und wie er profitiert.</p>
+        <span class="free-link">Bald verfügbar →</span>
+      </div>
+
+      <div class="freebie-card reveal rd3">
+        <span class="free-badge">✦ Kostenlos</span>
+        <span class="free-icon">⚡</span>
+        <h4 class="free-title">Platzhalter Skill 3</h4>
+        <p class="free-desc">Beschreibung kommt noch. Kurze, klare Info, was den Nutzer erwartet und wie er profitiert.</p>
+        <span class="free-link">Bald verfügbar →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER – Hanna Branding -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Hanna <span class="x">×</span> Martin</span>
+    <span class="footer-copy">© 2026 Hanna Marzian &amp; Martin Thun · Alle Rechte vorbehalten</span>
+    <div class="footer-links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="agb.html">AGB</a>
+      <button id="consent-reopen">Cookies</button>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const sp = document.getElementById('sp');
+  window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    sp.style.width = Math.min((window.scrollY / total) * 100, 100) + '%';
+  }, { passive: true });
+
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+
+<script src="assets/consent.js"></script>
+</body>
+</html>
