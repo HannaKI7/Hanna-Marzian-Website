@@ -135,9 +135,9 @@
       text-align: center;
       position: relative; overflow: hidden;
       background:
-        radial-gradient(ellipse 70% 60% at 15% 20%, rgba(216,98,42,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 85% 80%, rgba(99,102,241,0.06) 0%, transparent 60%),
-        linear-gradient(180deg, #F8FAFB 0%, #FFFFFF 100%);
+        radial-gradient(ellipse 70% 60% at 15% 20%, rgba(216,98,42,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 80%, rgba(216,98,42,0.04) 0%, transparent 60%),
+        linear-gradient(180deg, #FBF7F2 0%, #FFFFFF 100%);
       border-bottom: 1px solid var(--border);
     }
 
@@ -182,6 +182,58 @@
       margin-bottom: 20px;
       animation: fadeUp 0.8s var(--ease) 0.1s both;
     }
+
+    /* ── BES LOGO ── */
+    .hero-welcome {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 28px;
+      animation: fadeDown 0.6s var(--ease) both;
+    }
+    .bes-logo {
+      display: inline-flex; flex-direction: column;
+      align-items: center; gap: 0;
+      animation: fadeUp 0.9s var(--ease) 0.15s both;
+    }
+    .bes-w1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: clamp(58px, 16vw, 148px);
+      letter-spacing: -0.045em; line-height: 0.9;
+      color: #160C05;
+      text-shadow: 0 6px 80px rgba(216,98,42,0.14);
+    }
+    .bes-divider {
+      display: flex; align-items: center; gap: 12px;
+      width: min(520px, 88vw);
+      margin: 10px 0 9px;
+    }
+    .bes-line {
+      flex: 1; height: 1.5px;
+      background: linear-gradient(to right, transparent, #D8622A);
+    }
+    .bes-line-r {
+      flex: 1; height: 1.5px;
+      background: linear-gradient(to left, transparent, #D8622A);
+    }
+    .bes-gem {
+      width: 8px; height: 8px;
+      background: #D8622A;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(216,98,42,0.5);
+    }
+    .bes-w2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(19px, 4.8vw, 44px);
+      letter-spacing: 0.09em;
+      color: #160C05;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .bes-dot { color: #D8622A; margin: 0 1px; font-style: normal; }
 
     .hero-sub {
       font-size: clamp(16px, 2.2vw, 18px);
@@ -620,7 +672,16 @@
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Eine Übersicht aller Produkte</h1>
+  <p class="hero-welcome">Willkommen bei</p>
+  <div class="bes-logo" role="img" aria-label="Business Einfach Smarter">
+    <div class="bes-w1">BUSINESS</div>
+    <div class="bes-divider">
+      <span class="bes-line"></span>
+      <span class="bes-gem"></span>
+      <span class="bes-line-r"></span>
+    </div>
+    <div class="bes-w2">EINFACH<em class="bes-dot">.</em>SMARTER</div>
+  </div>
 </section>
 
 <!-- BEZAHLTE PRODUKTE -->
