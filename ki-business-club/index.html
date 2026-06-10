@@ -189,10 +189,30 @@ a { color: inherit; }
   color: var(--ink);
   text-decoration: none;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .brandmark .dot { color: var(--orange); }
 
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--s-6);
+}
+.nav__link {
+  font-family: var(--f-brand);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color var(--fast) var(--ease-out);
+  white-space: nowrap;
+}
+.nav__link:hover { color: var(--orange); }
+
 .nav__cta {
+  flex-shrink: 0;
   font-family: var(--f-brand);
   font-size: var(--t-xs);
   font-weight: 700;
@@ -1504,6 +1524,7 @@ a { color: inherit; }
   .price-card__grid { grid-template-columns: 1fr; gap: var(--s-8); }
 }
 @media (max-width: 640px) {
+  .nav__links { display: none; }
   .section { padding: var(--s-24) 0; }
   .module { grid-template-columns: 1fr; gap: var(--s-2); }
   .module__num { font-size: var(--t-2xl); }
@@ -1537,7 +1558,12 @@ a { color: inherit; }
 
 <!-- ═══════════ NAV ═══════════ -->
 <nav class="nav">
-  <a href="#top" class="brandmark">BUSINESS<span class="dot">.</span>EINFACH<span class="dot">.</span>SMART</a>
+  <a href="#top" class="brandmark">KI BUSINESS<span class="dot">.</span>CLUB</a>
+  <div class="nav__links">
+    <a href="#ansatz" class="nav__link">Ansatz</a>
+    <a href="#leistungen" class="nav__link">Inhalte</a>
+    <a href="#investition" class="nav__link">Invest</a>
+  </div>
   <a class="nav__cta" href="https://docs.google.com/forms/d/e/1FAIpQLSe3lQXYR31Su8pnUEEOR3F5ucz4iMs8aAz5bHP96OM50VZV7w/viewform?usp=publish-editor" target="_blank" rel="noopener">Platz sichern</a>
 </nav>
 
@@ -1637,7 +1663,7 @@ a { color: inherit; }
 </section>
 
 <!-- ═══════════ APPROACH (DARK) ═══════════ -->
-<section class="section approach has-noise">
+<section class="section approach has-noise" id="ansatz">
   <div class="wrap" style="position: relative; z-index: 2;">
     <div data-reveal>
       <div class="kicker">Unser Ansatz</div>
