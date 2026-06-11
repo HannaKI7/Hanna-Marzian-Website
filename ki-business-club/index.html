@@ -950,15 +950,20 @@ a { color: inherit; }
 .host:hover::before { transform: scale(1.35); }
 
 .host__mono {
-  width: 96px; height: 96px;
+  width: 80px; height: 80px;
   border-radius: 50%;
   object-fit: cover;
+  overflow: hidden;
   box-shadow: 0 6px 20px rgba(216,98,42,0.28), 0 0 0 3px var(--orange), 0 0 0 6px rgba(216,98,42,0.12);
   margin-bottom: var(--s-6);
 }
+.host__mono--hanna {
+  object-position: 50% 5%;
+  transform: scale(1.3);
+}
 .host__mono--martin {
-  object-position: 50% 35%;
-  transform: scale(1.15);
+  object-position: 50% 40%;
+  transform: scale(1.6);
 }
 
 .host h3 {
@@ -1883,7 +1888,7 @@ a { color: inherit; }
 
     <div class="hosts">
       <article class="host" data-reveal>
-        <img class="host__mono" src="hanna-portrait.jpg" alt="Hanna Marzian">
+        <img class="host__mono host__mono--hanna" src="hanna-portrait.jpg" alt="Hanna Marzian">
         <h3>Hanna Marzian</h3>
         <div class="host__handle">@hanna.gpt</div>
         <div class="host__tags"><span>Content</span><span>Reichweite</span><span>Instagram</span></div>
