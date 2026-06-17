@@ -98,35 +98,29 @@
       padding: 0 24px;
     }
 
-    /* JV Logo */
-    .logo-table { border-collapse: collapse; border-spacing: 0; }
-    .logo-table td { padding: 0; vertical-align: bottom; }
-    .logo-table tr:last-child td { vertical-align: top; padding-top: 4px; }
-    .logo-table .td-divider { vertical-align: middle; padding: 0 1rem; }
-    .divider-line {
-      width: 1.5px; min-height: 36px; display: block;
-      background: linear-gradient(to bottom, transparent, #D8622A 15%, #D8622A 85%, transparent);
+    /* Nav BES Logo */
+    .nav-bes {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0; line-height: 1; text-decoration: none;
     }
-    .hanna-name {
+    .nav-bes-b {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 800;
+      font-size: 11px; letter-spacing: 0.18em; color: #160C05;
+      text-transform: uppercase;
+    }
+    .nav-bes-mid {
+      display: flex; align-items: center; gap: 5px;
+      margin-top: 2px;
+    }
+    .nav-bes-e {
       font-family: 'Cormorant', Georgia, serif; font-style: italic;
-      font-weight: 500; font-size: 1.35rem; color: #160C05;
-      letter-spacing: -0.01em; line-height: 1; white-space: nowrap;
-      display: block; text-align: right;
+      font-weight: 500; font-size: 14px; color: #160C05; letter-spacing: 0.01em;
     }
-    .hanna-handle {
-      font-family: 'Cormorant', Georgia, serif; font-style: italic;
-      font-weight: 400; font-size: 0.72rem; color: #D8622A;
-      letter-spacing: 0.02em; line-height: 1; display: block; text-align: right;
-    }
-    .martin-name {
-      font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 800;
-      font-size: 0.82rem; color: #160C05; letter-spacing: 0.2em;
-      text-transform: uppercase; white-space: nowrap; display: block; text-align: left;
-    }
-    .martin-handle {
-      font-family: 'Cormorant', Georgia, serif; font-style: italic;
-      font-weight: 500; font-size: 0.72rem; color: #472B18;
-      letter-spacing: 0.02em; line-height: 1; display: block; text-align: left;
+    .nav-bes-dot { color: #D8622A; font-family: 'Space Grotesk', sans-serif; font-style: normal; }
+    .nav-bes-s {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 800;
+      font-size: 11px; letter-spacing: 0.18em; color: #D8622A;
+      text-transform: uppercase;
     }
 
     /* ── HERO ── */
@@ -244,6 +238,47 @@
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
+    /* ── TEAM CIRCLES ── */
+    .team-section {
+      padding: 52px 24px 40px;
+      display: flex; flex-direction: column; align-items: center;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+    }
+    .team-circles {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .team-circle {
+      width: 148px; height: 148px;
+      border-radius: 50%; overflow: hidden;
+      border: 3px solid #fff;
+      box-shadow: 0 6px 24px rgba(15,23,42,.12);
+      flex-shrink: 0; position: relative;
+    }
+    .tc-martin { z-index: 2; margin-right: -24px; }
+    .tc-hanna  { z-index: 1; }
+    .tc-martin::after, .tc-hanna::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      box-shadow: inset 0 0 0 2.5px rgba(216,98,42,.35);
+    }
+    .team-circle img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top;
+    }
+    .team-names {
+      margin-top: 18px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.04em; color: var(--text-muted);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .team-names .tn-amp {
+      color: #D8622A; font-family: 'Cormorant', serif;
+      font-style: italic; font-size: 17px; font-weight: 500;
+    }
+    .team-names .tn-name { color: #160C05; }
 
     /* ── SECTIONS ── */
     .section { padding: 84px 0; }
@@ -641,18 +676,12 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" aria-label="Startseite">
-    <table class="logo-table" aria-hidden="true">
-      <tr>
-        <td><span class="hanna-name">Hanna Marzian</span></td>
-        <td class="td-divider" rowspan="2"><span class="divider-line"></span></td>
-        <td><span class="martin-name">Martin Thun</span></td>
-      </tr>
-      <tr>
-        <td><span class="hanna-handle">@hanna.gpt</span></td>
-        <td><span class="martin-handle">@martin_thun_</span></td>
-      </tr>
-    </table>
+  <a href="index.html" class="nav-bes" aria-label="Business. einfach. smart.">
+    <span class="nav-bes-b">Business<span class="nav-bes-dot">.</span></span>
+    <span class="nav-bes-mid">
+      <span class="nav-bes-e">einfach<span class="nav-bes-dot">.</span></span>
+      <span class="nav-bes-s">Smart<span class="nav-bes-dot">.</span></span>
+    </span>
   </a>
 </nav>
 
@@ -668,6 +697,23 @@
     <div class="bes-w2">EINFACH<em class="bes-dot">.</em>SMART</div>
   </div>
 </section>
+
+<!-- TEAM -->
+<div class="team-section reveal">
+  <div class="team-circles">
+    <div class="team-circle tc-martin">
+      <img src="martin.jpg" alt="Martin Thun">
+    </div>
+    <div class="team-circle tc-hanna">
+      <img src="hanna.jpg" alt="Hanna Marzian">
+    </div>
+  </div>
+  <div class="team-names">
+    <span class="tn-name">Martin Thun</span>
+    <span class="tn-amp">&amp;</span>
+    <span class="tn-name">Hanna Marzian</span>
+  </div>
+</div>
 
 <!-- BEZAHLTE PRODUKTE -->
 <section class="section">
