@@ -239,29 +239,19 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── TEAM CIRCLES ── */
+    /* ── TEAM CIRCLE ── */
     .team-section {
       padding: 52px 24px 40px;
       display: flex; flex-direction: column; align-items: center;
       background: #FFFFFF;
       border-bottom: 1px solid var(--border);
     }
-    .team-circles {
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
     .team-circle {
-      width: 148px; height: 148px;
+      width: 220px; height: 220px;
       border-radius: 50%; overflow: hidden;
-      border: 3px solid #fff;
-      box-shadow: 0 6px 24px rgba(15,23,42,.12);
-      flex-shrink: 0; position: relative;
-    }
-    .tc-martin { z-index: 2; margin-right: -24px; }
-    .tc-hanna  { z-index: 1; }
-    .tc-martin::after, .tc-hanna::after {
-      content: ''; position: absolute; inset: 0; border-radius: 50%;
-      box-shadow: inset 0 0 0 2.5px rgba(216,98,42,.35);
+      border: 4px solid #fff;
+      box-shadow: 0 0 0 2.5px rgba(216,98,42,.4), 0 10px 32px rgba(15,23,42,.14);
+      position: relative;
     }
     .team-circle img {
       width: 100%; height: 100%; object-fit: cover;
@@ -271,7 +261,7 @@
       margin-top: 18px;
       font-family: 'Space Grotesk', sans-serif;
       font-size: 13px; font-weight: 600;
-      letter-spacing: 0.04em; color: var(--text-muted);
+      letter-spacing: 0.04em;
       display: flex; align-items: center; gap: 10px;
     }
     .team-names .tn-amp {
@@ -700,13 +690,8 @@
 
 <!-- TEAM -->
 <div class="team-section reveal">
-  <div class="team-circles">
-    <div class="team-circle tc-martin">
-      <img src="martin.jpg" alt="Martin Thun">
-    </div>
-    <div class="team-circle tc-hanna">
-      <img src="hanna.jpg" alt="Hanna Marzian">
-    </div>
+  <div class="team-circle">
+    <img src="Fotos/Design ohne Titel.jpg" alt="Martin Thun &amp; Hanna Marzian">
   </div>
   <div class="team-names">
     <span class="tn-name">Martin Thun</span>
