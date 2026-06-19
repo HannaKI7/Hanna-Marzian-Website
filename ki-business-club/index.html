@@ -1486,6 +1486,68 @@ a { color: inherit; }
   margin-bottom: var(--s-4);
 }
 
+/* ── KI-Strategie-Coach Callout ── */
+.coach-callout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  margin: var(--s-12) 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(216,98,42,0.13), rgba(216,98,42,0.04));
+  border: 1px solid rgba(216,98,42,0.28);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 8px 32px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+.coach-callout::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, var(--orange) 20%, var(--orange) 80%, transparent);
+}
+.coach-callout__badge {
+  font-family: var(--f-brand);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--orange-bright), var(--orange-deep));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  padding-left: var(--s-4);
+}
+.coach-callout__label {
+  font-family: var(--f-brand);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange-bright);
+  display: block;
+  margin-bottom: var(--s-2);
+}
+.coach-callout__title {
+  font-size: var(--t-xl);
+  font-weight: 700;
+  color: var(--d-text);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--s-3);
+}
+.coach-callout__body {
+  font-size: var(--t-sm);
+  color: var(--d-text-soft);
+  line-height: 1.8;
+  max-width: 64ch;
+}
+@media (max-width: 560px) {
+  .coach-callout { grid-template-columns: 1fr; }
+}
+
 /* ── Price countdown (inside card) ── */
 .price-countdown {
   display: flex;
@@ -1805,7 +1867,7 @@ a { color: inherit; }
     <div data-reveal>
       <div class="kicker">Unser Ansatz</div>
       <h2 class="h2">Wir bauen deinen <em>digitalen Zwilling</em>.</h2>
-      <p class="lede">Wir erarbeiten gemeinsam deine Positionierung, deine Angebote, dein Branding und deinen Content-Stil und bauen daraus eine KI, die dich wirklich kennt. Kein generisches Tool, das irgendetwas produziert, sondern ein Co-Worker, der deinen Stil draufhat und dir bei den Dingen zuarbeitet, die sonst deine Zeit fressen: Content-Entwürfe, Texte, Prozesse, Ideen. <strong>Du behältst das Steuer und das letzte Wort. Aber du fängst nicht mehr bei null an.</strong></p>
+      <p class="lede">Wir erarbeiten gemeinsam deine Positionierung, deine Angebote und deinen Content-Stil und bauen daraus KI-Agenten, die dich wirklich kennen. Sie helfen dir beim Branding, erstellen Salespages und Website-Texte, übernehmen Instagram-Prozesse und arbeiten dir überall dort zu, wo du sonst Stunden verlierst. <strong>Du behältst das Steuer und das letzte Wort. Aber du fängst nicht mehr bei null an.</strong></p>
     </div>
 
     <div class="split-bar" data-reveal data-splitbar>
@@ -1815,8 +1877,17 @@ a { color: inherit; }
         <div class="split-bar__you"><span class="split-bar__pct">20&thinsp;%</span></div>
       </div>
       <div class="split-bar__legend">
-        <span><b>Dein KI-Co-Worker arbeitet zu</b> (Content, Prozesse, Routine)</span>
+        <span><b>Dein KI-Agent arbeitet zu</b> (Content, Prozesse, Routine)</span>
         <span><b>Du steuerst und entscheidest</b></span>
+      </div>
+    </div>
+
+    <div class="coach-callout" data-reveal>
+      <div class="coach-callout__badge">24/7</div>
+      <div>
+        <span class="coach-callout__label">Immer verfügbar</span>
+        <h3 class="coach-callout__title">Dein KI-Strategie-Coach</h3>
+        <p class="coach-callout__body">Ein KI-Coach, der deine Positionierung, deine Angebote und deinen Markt in- und auswendig kennt. Du hast abends einen Strategiegedanken, den du einordnen willst? Du fragst dich, ob ein neues Angebot zu deiner Positionierung passt? Der KI-Strategie-Coach gibt dir sofort Klarheit, auf Basis deines spezifischen Business, nicht von der Stange.</p>
       </div>
     </div>
 
