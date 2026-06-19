@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1:1 Coaching Bewerbung | business. einfach. smart</title>
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/consent.css">
+<style>
+  :root {
+    --orange: #B83A28;
+    --orange-deep: #7D2418;
+    --black: #111111;
+    --gray: #888888;
+    --gray-light: #f2f2f2;
+    --border: #e8e8e8;
+    --font-h: 'Cormorant', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-ui: 'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    background: #fff;
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--orange);
+    width: 0%;
+    transition: width .4s ease;
+    z-index: 100;
+  }
+
+  /* ── BACK BUTTON ── */
+  #back-btn {
+    position: fixed;
+    top: 28px; left: 28px;
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 50;
+    color: var(--gray);
+    font-size: 22px;
+    line-height: 1;
+    transition: color .15s;
+  }
+  #back-btn:hover { color: var(--black); }
+
+  /* ── SCREENS ── */
+  .screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(40px);
+    transition: opacity .35s ease, transform .35s ease;
+    overflow-y: auto;
+  }
+  .screen.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+  .screen.exit-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    pointer-events: none;
+  }
+
+  /* ── SCREEN 0 – INTRO ── */
+  #s0 {
+    text-align: center;
+    gap: 0;
+  }
+  #s0 .logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 56px;
+  }
+  #s0 .tag {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+  #s0 h1 {
+    font-family: var(--font-h);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.0;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  #s0 p {
+    font-size: .98rem;
+    color: var(--gray);
+    max-width: 38ch;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+
+  /* ── QUESTION SCREEN ── */
+  .q-wrap {
+    width: 100%;
+    max-width: 560px;
+  }
+  .q-counter {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 18px;
+  }
+  .q-counter span { color: var(--orange); }
+  .q-text {
+    font-family: var(--font-h);
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+  .q-hint {
+    font-size: .88rem;
+    color: var(--gray);
+    margin-bottom: 32px;
+  }
+
+  /* ── CHOICE CARDS ── */
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .choice {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    font-size: .96rem;
+    color: var(--black);
+    background: #fff;
+    text-align: left;
+    width: 100%;
+  }
+  .choice .c-key {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray);
+    transition: all .15s;
+  }
+  .choice:hover { border-color: #bbb; }
+  .choice.selected {
+    border-color: var(--orange);
+    background: #fdf7f6;
+  }
+  .choice.selected .c-key {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #fff;
+  }
+
+  /* ── TEXTAREA / INPUT ── */
+  .q-textarea {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--black);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border);
+    padding: 12px 0;
+    resize: none;
+    outline: none;
+    min-height: 120px;
+    line-height: 1.7;
+    transition: border-color .2s;
+    margin-bottom: 32px;
+  }
+  .q-textarea::placeholder { color: #ccc; }
+  .q-textarea:focus { border-color: var(--orange); }
+
+  .q-input {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--black);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border);
+    padding: 12px 0;
+    outline: none;
+    line-height: 1.7;
+    transition: border-color .2s;
+    margin-bottom: 20px;
+  }
+  .q-input::placeholder { color: #ccc; }
+  .q-input:focus { border-color: var(--orange); }
+
+  /* ── CONSENT ── */
+  .consent-line {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 16px 0;
+    margin-bottom: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .consent-line input { width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0; accent-color: var(--orange); }
+  .consent-line label { font-size: .82rem; color: var(--gray); line-height: 1.55; }
+  .consent-line a { color: var(--orange); }
+
+  /* ── BUTTONS ── */
+  .btn-next {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    background: var(--black);
+    color: #fff;
+    border: none;
+    padding: 16px 36px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .btn-next:hover { background: var(--orange); }
+  .btn-next:disabled { opacity: .4; cursor: not-allowed; }
+  .btn-next svg { flex-shrink: 0; }
+
+  .btn-start {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    padding: 18px 48px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .btn-start:hover { background: var(--orange-deep); }
+
+  /* ── HONEYPOT ── */
+  .hp { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+  /* ── SUCCESS ── */
+  #s-success { text-align: center; }
+  #s-success .check-ring {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 36px;
+    font-size: 28px;
+    color: var(--orange);
+  }
+  #s-success h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  #s-success p { color: var(--gray); max-width: 40ch; margin: 0 auto 36px; }
+  #s-success a {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+  }
+
+  /* ── ERROR ── */
+  .send-error { display: none; color: var(--orange); font-size: .85rem; margin-top: 14px; }
+  .send-error.show { display: block; }
+
+  /* ── FOOTER tiny ── */
+  .foot-link {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 24px;
+    z-index: 50;
+  }
+  .foot-link a {
+    font-family: var(--font-ui);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ccc;
+    text-decoration: none;
+  }
+  .foot-link a:hover { color: var(--gray); }
+
+  @media (max-width: 500px) {
+    #s0 h1 { font-size: 3rem; }
+    .btn-start { padding: 16px 36px; }
+    .foot-link { bottom: 14px; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<button id="back-btn" aria-label="Zurück">←</button>
+
+<!-- ══════════════════════════════════
+     SCREEN 0 – INTRO
+═══════════════════════════════════ -->
+<section class="screen active" id="s0">
+  <img class="logo" src="bes-logo.png" alt="business. einfach. smart">
+  <div class="tag">Exklusives Coaching</div>
+  <h1>1:1 Begleitungen</h1>
+  <p>Nicht für alle. Nur für die, bei denen ich wirklich etwas bewegen kann. Ab 25.000 € Invest. Drei Minuten, fünf Fragen.</p>
+  <button class="btn-start" id="start-btn">
+    Jetzt bewerben
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</section>
+
+<!-- ══════════════════════════════════
+     SCREEN 1 – HERAUSFORDERUNG
+═══════════════════════════════════ -->
+<section class="screen" id="s1">
+  <div class="q-wrap">
+    <div class="q-counter"><span>1</span> / 5</div>
+    <div class="q-text">Was bremst dich gerade wirklich aus?</div>
+    <div class="q-hint">Schreib, wie du es einem Freund erzählen würdest. Kein Bullshit.</div>
+    <textarea class="q-textarea" id="q1" placeholder="Ich stecke bei …" rows="4"></textarea>
+    <button class="btn-next" id="next1">
+      Weiter
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SCREEN 2 – AKTUELLE PHASE
+═══════════════════════════════════ -->
+<section class="screen" id="s2">
+  <div class="q-wrap">
+    <div class="q-counter"><span>2</span> / 5</div>
+    <div class="q-text">Wo stehst du heute?</div>
+    <div class="q-hint">Ungefährer monatlicher Umsatz aus deinem Business.</div>
+    <div class="choices" id="choices2">
+      <button class="choice" data-value="Kein nennenswerter Umsatz noch">
+        <span class="c-key">A</span>Noch kein nennenswerter Umsatz
+      </button>
+      <button class="choice" data-value="Bis 2.000 € / Monat">
+        <span class="c-key">B</span>Erste Einnahmen, bis 2.000 € / Monat
+      </button>
+      <button class="choice" data-value="2.000 – 5.000 € / Monat">
+        <span class="c-key">C</span>2.000 bis 5.000 € / Monat
+      </button>
+      <button class="choice" data-value="5.000 – 15.000 € / Monat">
+        <span class="c-key">D</span>5.000 bis 15.000 € / Monat
+      </button>
+      <button class="choice" data-value="Über 15.000 € / Monat">
+        <span class="c-key">E</span>Über 15.000 € / Monat
+      </button>
+    </div>
+    <button class="btn-next" id="next2" disabled>
+      Weiter
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SCREEN 3 – ZIEL
+═══════════════════════════════════ -->
+<section class="screen" id="s3">
+  <div class="q-wrap">
+    <div class="q-counter"><span>3</span> / 5</div>
+    <div class="q-text">Was soll in 6 Monaten anders sein?</div>
+    <div class="q-hint">Konkret. Kein „mehr Umsatz" — was genau, wie viel, warum.</div>
+    <textarea class="q-textarea" id="q3" placeholder="In 6 Monaten will ich …" rows="4"></textarea>
+    <button class="btn-next" id="next3">
+      Weiter
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SCREEN 4 – INVESTITION
+═══════════════════════════════════ -->
+<section class="screen" id="s4">
+  <div class="q-wrap">
+    <div class="q-counter"><span>4</span> / 5</div>
+    <div class="q-text">Was bist du bereit, in dich zu investieren?</div>
+    <div class="q-hint">Dieses Coaching beginnt bei 25.000 €. Kein Druck, aber Klarheit ist besser für alle.</div>
+    <div class="choices" id="choices4">
+      <button class="choice" data-value="Unter 5.000 €">
+        <span class="c-key">A</span>Unter 5.000 € — passt wahrscheinlich nicht
+      </button>
+      <button class="choice" data-value="5.000 – 15.000 €">
+        <span class="c-key">B</span>5.000 bis 15.000 €
+      </button>
+      <button class="choice" data-value="15.000 – 25.000 €">
+        <span class="c-key">C</span>15.000 bis 25.000 €
+      </button>
+      <button class="choice" data-value="25.000 € und mehr">
+        <span class="c-key">D</span>25.000 € und mehr — ich bin dabei
+      </button>
+    </div>
+    <button class="btn-next" id="next4" disabled>
+      Weiter
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SCREEN 5 – KONTAKT
+═══════════════════════════════════ -->
+<section class="screen" id="s5">
+  <div class="q-wrap">
+    <div class="q-counter"><span>5</span> / 5</div>
+    <div class="q-text">Letzte Frage.</div>
+    <div class="q-hint">Damit wir dich erreichen können.</div>
+
+    <form id="coaching-form" novalidate>
+      <!-- Web3Forms -->
+      <input type="hidden" name="access_key" value="DEIN-WEB3FORMS-ACCESS-KEY">
+      <input type="hidden" name="subject" value="Neue 1:1 Coaching-Bewerbung (25k+)">
+      <input type="hidden" name="from_name" value="b.e.s. Coaching-Bewerbung">
+      <!-- Qualifizierungs-Antworten werden per JS befüllt -->
+      <input type="hidden" id="hidden-challenge" name="1. Herausforderung" value="">
+      <input type="hidden" id="hidden-phase" name="2. Aktuelle Phase" value="">
+      <input type="hidden" id="hidden-goal" name="3. Ziel in 6 Monaten" value="">
+      <input type="hidden" id="hidden-invest" name="4. Investitionsbereitschaft" value="">
+      <!-- Honeypot -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+      <input class="q-input" type="text" name="Name" id="f-name" placeholder="Dein Name" required autocomplete="name">
+      <input class="q-input" type="email" name="E-Mail" id="f-email" placeholder="Deine E-Mail-Adresse" required autocomplete="email">
+
+      <div class="consent-line">
+        <input type="checkbox" id="f-consent" required>
+        <label for="f-consent">Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Details in der <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a>.</label>
+      </div>
+
+      <button type="submit" class="btn-next" id="submit-btn">
+        Bewerbung absenden
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="send-error" id="send-error">Etwas ist schiefgelaufen. Bitte versuche es nochmal.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SCREEN SUCCESS
+═══════════════════════════════════ -->
+<section class="screen" id="s-success">
+  <div class="check-ring">✓</div>
+  <h2>Danke, deine Bewerbung ist da.</h2>
+  <p>Wir schauen sie uns persönlich an und melden uns in den nächsten Tagen bei dir.</p>
+  <a href="https://www.hannamarzian.com">← Zurück zur Website</a>
+</section>
+
+<!-- ── Footer links ── -->
+<div class="foot-link">
+  <a href="/impressum.html">Impressum</a>
+  <a href="/datenschutz.html">Datenschutz</a>
+</div>
+
+<script src="assets/consent.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var screens = ['s0','s1','s2','s3','s4','s5','s-success'];
+  var current = 0;
+  var answers = { challenge: '', phase: '', goal: '', invest: '' };
+
+  var bar = document.getElementById('progress-bar');
+  var backBtn = document.getElementById('back-btn');
+
+  function setProgress(step) {
+    // steps 1-5 fill 0→100%, intro=0, success=100
+    var pct = step <= 0 ? 0 : step >= 5 ? 100 : (step / 5) * 100;
+    bar.style.width = pct + '%';
+  }
+
+  function goTo(idx) {
+    var prev = screens[current];
+    var next = screens[idx];
+    if (!next) return;
+
+    var prevEl = document.getElementById(prev);
+    var nextEl = document.getElementById(next);
+
+    if (idx > current) {
+      prevEl.classList.remove('active');
+      prevEl.classList.add('exit-left');
+      nextEl.style.transform = 'translateX(40px)';
+    } else {
+      prevEl.classList.remove('active');
+      prevEl.classList.add('exit-left');
+      nextEl.style.transform = 'translateX(-40px)';
+    }
+
+    setTimeout(function () {
+      prevEl.classList.remove('exit-left');
+      nextEl.style.transform = '';
+      nextEl.classList.add('active');
+    }, 40);
+
+    current = idx;
+    setProgress(idx);
+    backBtn.style.display = idx > 0 && idx < screens.length - 1 ? 'block' : 'none';
+  }
+
+  // ── Start ──
+  document.getElementById('start-btn').addEventListener('click', function () {
+    goTo(1);
+  });
+
+  // ── Back ──
+  backBtn.addEventListener('click', function () {
+    if (current > 0) goTo(current - 1);
+  });
+
+  // ── Screen 1 – Herausforderung ──
+  var q1 = document.getElementById('q1');
+  document.getElementById('next1').addEventListener('click', function () {
+    if (!q1.value.trim()) { q1.focus(); return; }
+    answers.challenge = q1.value.trim();
+    goTo(2);
+  });
+
+  // ── Screen 2 – Phase (choice) ──
+  var choices2 = document.getElementById('choices2');
+  choices2.addEventListener('click', function (e) {
+    var btn = e.target.closest('.choice');
+    if (!btn) return;
+    choices2.querySelectorAll('.choice').forEach(function (c) { c.classList.remove('selected'); });
+    btn.classList.add('selected');
+    answers.phase = btn.dataset.value;
+    document.getElementById('next2').disabled = false;
+  });
+  document.getElementById('next2').addEventListener('click', function () {
+    if (!answers.phase) return;
+    goTo(3);
+  });
+
+  // ── Screen 3 – Ziel ──
+  var q3 = document.getElementById('q3');
+  document.getElementById('next3').addEventListener('click', function () {
+    if (!q3.value.trim()) { q3.focus(); return; }
+    answers.goal = q3.value.trim();
+    goTo(4);
+  });
+
+  // ── Screen 4 – Invest (choice) ──
+  var choices4 = document.getElementById('choices4');
+  choices4.addEventListener('click', function (e) {
+    var btn = e.target.closest('.choice');
+    if (!btn) return;
+    choices4.querySelectorAll('.choice').forEach(function (c) { c.classList.remove('selected'); });
+    btn.classList.add('selected');
+    answers.invest = btn.dataset.value;
+    document.getElementById('next4').disabled = false;
+  });
+  document.getElementById('next4').addEventListener('click', function () {
+    if (!answers.invest) return;
+    goTo(5);
+  });
+
+  // ── Screen 5 – Absenden ──
+  var form = document.getElementById('coaching-form');
+  var submitBtn = document.getElementById('submit-btn');
+  var sendError = document.getElementById('send-error');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    sendError.classList.remove('show');
+
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if (!document.getElementById('f-consent').checked) { return; }
+
+    // Qualifizierungs-Antworten in hidden fields schreiben
+    document.getElementById('hidden-challenge').value = answers.challenge;
+    document.getElementById('hidden-phase').value = answers.phase;
+    document.getElementById('hidden-goal').value = answers.goal;
+    document.getElementById('hidden-invest').value = answers.invest;
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Wird gesendet …';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(form)
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (j) {
+      if (j.success) {
+        goTo(6);
+      } else {
+        throw new Error(j.message);
+      }
+    })
+    .catch(function () {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Bewerbung absenden <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      sendError.classList.add('show');
+    });
+  });
+
+  // ── Keyboard: Enter auf Textareas mit Ctrl/Cmd ──
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      if (current === 1) document.getElementById('next1').click();
+      if (current === 3) document.getElementById('next3').click();
+    }
+  });
+
+  // init
+  setProgress(0);
+})();
+</script>
+</body>
+</html>
