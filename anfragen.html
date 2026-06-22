@@ -437,22 +437,9 @@
   <div class="q-wrap">
     <div class="q-counter"><span>4</span> / 5</div>
     <div class="q-text">Was bist du bereit, in dich zu investieren?</div>
-    <div class="q-hint">Dieses Coaching beginnt bei 25.000 €. Kein Druck, aber Klarheit ist besser für alle.</div>
-    <div class="choices" id="choices4">
-      <button class="choice" data-value="Unter 5.000 €">
-        <span class="c-key">A</span>Unter 5.000 € — passt wahrscheinlich nicht
-      </button>
-      <button class="choice" data-value="5.000 – 15.000 €">
-        <span class="c-key">B</span>5.000 bis 15.000 €
-      </button>
-      <button class="choice" data-value="15.000 – 25.000 €">
-        <span class="c-key">C</span>15.000 bis 25.000 €
-      </button>
-      <button class="choice" data-value="25.000 € und mehr">
-        <span class="c-key">D</span>25.000 € und mehr — ich bin dabei
-      </button>
-    </div>
-    <button class="btn-next" id="next4" disabled>
+    <div class="q-hint">Schreib einfach eine Zahl oder eine Spanne. Kein richtig oder falsch.</div>
+    <textarea class="q-textarea" id="q4" placeholder="z.B. 10.000 € oder ich weiß es noch nicht genau …" rows="3"></textarea>
+    <button class="btn-next" id="next4">
       Weiter
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
@@ -602,18 +589,11 @@
     goTo(4);
   });
 
-  // ── Screen 4 – Invest (choice) ──
-  var choices4 = document.getElementById('choices4');
-  choices4.addEventListener('click', function (e) {
-    var btn = e.target.closest('.choice');
-    if (!btn) return;
-    choices4.querySelectorAll('.choice').forEach(function (c) { c.classList.remove('selected'); });
-    btn.classList.add('selected');
-    answers.invest = btn.dataset.value;
-    document.getElementById('next4').disabled = false;
-  });
+  // ── Screen 4 – Invest (textarea) ──
+  var q4 = document.getElementById('q4');
   document.getElementById('next4').addEventListener('click', function () {
-    if (!answers.invest) return;
+    if (!q4.value.trim()) { q4.focus(); return; }
+    answers.invest = q4.value.trim();
     goTo(5);
   });
 
@@ -663,6 +643,7 @@
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
       if (current === 1) document.getElementById('next1').click();
       if (current === 3) document.getElementById('next3').click();
+      if (current === 4) document.getElementById('next4').click();
     }
   });
 
