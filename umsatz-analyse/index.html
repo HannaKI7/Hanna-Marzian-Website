@@ -74,6 +74,7 @@
   .opt:hover { border-color: #F5C4A8; background: #FFFaf6; }
   .opt.selected { border-color: #D8622A; background: #FFF4ED; box-shadow: 0 4px 14px rgba(216,98,42,0.13); }
   .opt.selected .dot { border-color: #D8622A; background: #D8622A; box-shadow: inset 0 0 0 3px #FFF4ED; }
+  .opts[data-multi] .dot { border-radius: 4px; }
 
   /* TEXTAREA + INPUTS */
   .field { margin-bottom: 14px; }
@@ -258,13 +259,15 @@
     <!-- STEP 8 -->
     <div class="step" data-q="8">
       <h2 class="q-title">Was hast du bisher probiert, um das zu lösen?</h2>
-      <div class="opts" data-radio="Bisher_probiert">
-        <label class="opt"><input type="radio" name="Bisher_probiert" value="Kurse gekauft"><span class="dot"></span>Kurse gekauft</label>
-        <label class="opt"><input type="radio" name="Bisher_probiert" value="Coachings"><span class="dot"></span>Coachings</label>
-        <label class="opt"><input type="radio" name="Bisher_probiert" value="Tools getestet"><span class="dot"></span>Tools getestet</label>
-        <label class="opt"><input type="radio" name="Bisher_probiert" value="Mehreres davon"><span class="dot"></span>Mehreres davon</label>
-        <label class="opt"><input type="radio" name="Bisher_probiert" value="Noch nichts richtig"><span class="dot"></span>Noch nichts richtig</label>
+      <p class="q-sub">Mehrere Antworten möglich.</p>
+      <div class="opts" data-multi="Bisher_probiert">
+        <label class="opt"><input type="checkbox" value="Kurse gekauft"><span class="dot"></span>Kurse gekauft</label>
+        <label class="opt"><input type="checkbox" value="Coachings"><span class="dot"></span>Coachings</label>
+        <label class="opt"><input type="checkbox" value="Tools getestet"><span class="dot"></span>Tools getestet</label>
+        <label class="opt"><input type="checkbox" value="Noch nichts richtig"><span class="dot"></span>Noch nichts richtig</label>
       </div>
+      <input type="hidden" name="Bisher_probiert" id="bisher_probiert_val">
+      <button type="button" class="btn" data-next style="margin-top:18px;">Weiter</button>
     </div>
 
     <!-- STEP 9 -->
@@ -357,14 +360,20 @@
   document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => go(cur + 1)));
   backBtn.addEventListener('click', () => go(cur - 1));
 
-  // Radio-Optionen: Auswahl markieren + automatisch weiter
+  // Optionen: Radio (auto-advance) oder Multi-Select (toggle, kein auto-advance)
   document.querySelectorAll('.opts').forEach(group => {
+    const isMulti = group.hasAttribute('data-multi');
     group.querySelectorAll('.opt').forEach(opt => {
       opt.addEventListener('click', () => {
-        group.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-        opt.classList.add('selected');
-        opt.querySelector('input').checked = true;
-        setTimeout(() => go(cur + 1), 280);
+        if (isMulti) {
+          opt.classList.toggle('selected');
+          opt.querySelector('input').checked = opt.classList.contains('selected');
+        } else {
+          group.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          opt.querySelector('input').checked = true;
+          setTimeout(() => go(cur + 1), 280);
+        }
       });
     });
   });
@@ -386,6 +395,13 @@
     const email = form.email.value.trim();
     if (!name) { errMsg.textContent = 'Bitte trag deinen Namen ein.'; return; }
     if (!/^\S+@\S+\.\S+$/.test(email)) { errMsg.textContent = 'Bitte trag eine gültige E-Mail ein.'; return; }
+
+    // Multi-Select Werte in hidden fields sammeln
+    document.querySelectorAll('.opts[data-multi]').forEach(group => {
+      const name = group.getAttribute('data-multi');
+      const vals = [...group.querySelectorAll('.opt.selected')].map(o => o.querySelector('input').value);
+      document.getElementById(name.toLowerCase() + '_val').value = vals.join(', ') || 'Nichts ausgewählt';
+    });
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wird gesendet ...';
