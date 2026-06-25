@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Der Format-Finder – Virale Reel-Formate finden | business. einfach. smart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:      #D8622A;
+    --orange-mid:  #E8894E;
+    --orange-pale: #F5CFA8;
+    --orange-deep: #B84E1E;
+    --warm-black:  #160C05;
+    --warm-dark:   #2A1608;
+    --warm-brown:  #472B18;
+    --mid-brown:   #6B4530;
+    --tan:         #A88960;
+    --sand:        #D0B896;
+    --beige:       #EDE4D7;
+    --cream:       #F6F0E6;
+    --off-white:   #FBF7F2;
+    --warm-gray:   #7A6A5A;
+    --mid-gray:    #BDB0A0;
+    --light-gray:  #D8CFC4;
+    --green:       #27C93F;
+    --green-deep:  #1a7a2a;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'Nunito', sans-serif;
+    --font-serif:   'Cormorant', Georgia, serif;
+    --font-sans:    'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #fff;
+    color: var(--warm-black);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  .site-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--beige);
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo-link { text-decoration: none; display: inline-flex; align-items: center; }
+  .nav-logo { height: 30px; width: auto; display: block; }
+  .nav-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--cream);
+    border: 1px solid var(--beige);
+    border-radius: 100px;
+    padding: 6px 14px 6px 10px;
+  }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+  .nav-badge-text { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--warm-gray); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--off-white);
+    border-bottom: 1px solid var(--beige);
+    padding: 80px 48px 72px;
+    text-align: center;
+  }
+  .hero-kicker {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-kicker::before, .hero-kicker::after {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--orange);
+    opacity: .5;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 8vw, 98px);
+    font-weight: 400;
+    color: var(--warm-black);
+    line-height: 0.93;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--warm-gray);
+    line-height: 1.75;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .hero-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    background: #fff;
+    border: 1px solid var(--beige);
+    border-radius: 100px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--warm-gray);
+  }
+  .hero-stat + .hero-stat { border-left: 1px solid var(--beige); }
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 30px;
+    color: var(--orange);
+    letter-spacing: 0.5px;
+    line-height: 1;
+  }
+
+  /* ─── INTRO ─── */
+  .intro {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 48px 8px;
+  }
+  .intro p {
+    font-size: 16px;
+    color: var(--warm-brown);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .intro p strong { color: var(--warm-black); font-weight: 700; }
+  .intro .lead {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--orange-deep);
+    line-height: 1.5;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 48px 28px;
+  }
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--orange); opacity: .4; }
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 400;
+    color: var(--warm-black);
+    line-height: 0.97;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .section-header h2 em { font-style: normal; color: var(--orange); }
+  .section-header p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    max-width: 540px;
+  }
+
+  /* ─── STEP CARDS ─── */
+  .steps {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 48px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .step {
+    border: 1px solid var(--beige);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 16px 16px 0;
+    background: #fff;
+    padding: 28px 32px 30px;
+    transition: box-shadow .2s, border-color .2s;
+  }
+  .step:hover { box-shadow: 0 4px 22px rgba(0,0,0,.05); }
+  .step-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 44px;
+    line-height: 0.8;
+    color: var(--orange-pale);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .step-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3.4vw, 32px);
+    font-weight: 400;
+    color: var(--warm-black);
+    line-height: 1;
+    letter-spacing: 0.5px;
+  }
+  .step-sub {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    margin-left: 60px;
+  }
+  .step-body { font-size: 15px; color: var(--warm-brown); line-height: 1.75; }
+  .step-body p { margin-bottom: 14px; }
+  .step-body strong { color: var(--warm-black); font-weight: 700; }
+  .step-list {
+    list-style: none;
+    margin: 4px 0 16px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .step-list li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 14.5px;
+    color: var(--warm-brown);
+    line-height: 1.6;
+  }
+  .step-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .step-list li strong { color: var(--warm-black); }
+
+  /* ─── TABLE ─── */
+  .signal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 16px;
+    font-size: 14px;
+    border: 1px solid var(--beige);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .signal-table th {
+    background: var(--cream);
+    color: var(--warm-black);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--beige);
+  }
+  .signal-table td {
+    padding: 12px 16px;
+    color: var(--warm-brown);
+    border-bottom: 1px solid var(--beige);
+  }
+  .signal-table tr:last-child td { border-bottom: none; }
+  .signal-table .faktor { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.5px; }
+  .signal-table tr.hot td { background: rgba(216,98,42,.06); }
+  .signal-table tr.hot .faktor { color: var(--orange); }
+  .signal-table tr.cold .faktor { color: var(--mid-gray); }
+
+  /* ─── ZERLEGE GRID ─── */
+  .zerlege {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 8px 0 16px;
+  }
+  .z-card {
+    background: var(--cream);
+    border: 1px solid var(--beige);
+    border-radius: 12px;
+    padding: 18px 18px 20px;
+  }
+  .z-card h4 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--orange-deep);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .z-card p { font-size: 13px; color: var(--warm-gray); line-height: 1.55; }
+
+  /* ─── NOTE BOX ─── */
+  .note {
+    background: var(--cream);
+    border: 1px solid var(--beige);
+    border-left: 4px solid var(--orange);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 22px;
+    font-size: 14px;
+    color: var(--warm-brown);
+    line-height: 1.65;
+    margin-top: 4px;
+  }
+  .note strong { color: var(--warm-black); }
+
+  /* ─── GEHEIMTIPP ─── */
+  .geheimtipp-wrap { max-width: 860px; margin: 0 auto; padding: 28px 48px 0; }
+  .geheimtipp {
+    background: var(--cream);
+    border: 1px solid var(--beige);
+    border-left: 4px solid var(--orange);
+    border-radius: 0 12px 12px 0;
+    padding: 26px 30px;
+  }
+  .geheimtipp-badge {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .geheimtipp-badge::before { content: ''; width: 16px; height: 1px; background: var(--orange); }
+  .geheimtipp-text { font-size: 15px; color: var(--warm-brown); line-height: 1.7; }
+  .geheimtipp-text strong { color: var(--warm-black); }
+
+  /* ─── PITCH ─── */
+  .pitch-wrap { padding: 64px 48px 0; max-width: 996px; margin: 0 auto; }
+  .pitch {
+    background: var(--warm-dark);
+    border-radius: 20px;
+    padding: 60px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pitch::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 340px; height: 340px;
+    background: radial-gradient(circle at 80% 20%, rgba(216,98,42,.18), transparent 70%);
+    pointer-events: none;
+  }
+  .pitch::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle at 20% 80%, rgba(216,98,42,.07), transparent 70%);
+    pointer-events: none;
+  }
+  .pitch-inner { position: relative; z-index: 1; }
+  .pitch-logo-chip {
+    display: inline-block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 9px 15px;
+    margin-bottom: 24px;
+  }
+  .pitch-logo-chip img { height: 24px; width: auto; display: block; }
+  .pitch-eye {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pitch-eye::after { content: ''; width: 24px; height: 1px; background: var(--orange); opacity: .5; }
+  .pitch h3 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 0.97;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+    max-width: 640px;
+  }
+  .pitch h3 em { font-style: normal; color: var(--orange-mid); }
+  .pitch-text {
+    font-size: 15px;
+    color: var(--sand);
+    line-height: 1.8;
+    margin-bottom: 26px;
+    max-width: 620px;
+  }
+  .pitch-text strong { color: var(--off-white); font-weight: 700; }
+  .pitch-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 28px;
+    margin-bottom: 32px;
+    max-width: 680px;
+  }
+  .pitch-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    font-size: 14px;
+    color: var(--sand);
+    line-height: 1.5;
+  }
+  .pitch-feature::before {
+    content: '✓';
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--orange);
+    background: rgba(216,98,42,.18);
+    border: 1px solid rgba(216,98,42,.3);
+    border-radius: 50%;
+    width: 19px; height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .pitch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(216,98,42,.35);
+    transition: background .2s, box-shadow .2s;
+  }
+  .pitch-btn:hover { background: var(--orange-deep); box-shadow: 0 6px 28px rgba(216,98,42,.5); }
+  .pitch-trust {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--tan);
+    opacity: .6;
+    margin-top: 14px;
+  }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    background: var(--warm-black);
+    padding: 44px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 72px;
+  }
+  .footer-logo-chip { background: #fff; border-radius: 10px; padding: 8px 13px; display: inline-block; }
+  .footer-logo-chip img { height: 22px; width: auto; display: block; }
+  .footer-copy { font-size: 11px; font-weight: 300; color: rgba(255,255,255,.45); }
+  .footer-links { display: flex; gap: 26px; }
+  .footer-link { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--warm-gray); text-decoration: none; transition: color .25s; }
+  .footer-link:hover { color: var(--orange); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 720px) {
+    .site-nav { padding: 12px 20px; }
+    .hero { padding: 44px 20px 44px; }
+    .hero h1 { font-size: clamp(40px, 12vw, 64px); }
+    .hero-stats { display: grid; grid-template-columns: 1fr; width: 100%; border-radius: 16px; }
+    .hero-stat + .hero-stat { border-left: none; border-top: 1px solid var(--beige); }
+    .hero-stat { justify-content: center; }
+    .intro { padding: 44px 20px 4px; }
+    .intro .lead { font-size: 20px; }
+    .section-header { padding: 44px 20px 22px; }
+    .steps { padding: 0 16px 16px; }
+    .step { padding: 22px 20px 24px; }
+    .step-sub { margin-left: 0; }
+    .zerlege { grid-template-columns: 1fr; }
+    .signal-table { font-size: 13px; }
+    .signal-table th, .signal-table td { padding: 10px 12px; }
+    .geheimtipp-wrap { padding: 22px 16px 0; }
+    .pitch-wrap { padding: 44px 16px 0; }
+    .pitch { padding: 38px 24px; }
+    .pitch-features { grid-template-columns: 1fr; }
+    .site-footer { padding: 30px 20px; flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 44px; }
+    .footer-links { flex-wrap: wrap; gap: 18px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="https://www.hannamarzian.com" class="nav-logo-link">
+      <img src="../bes-logo.png" alt="business. einfach. smart" class="nav-logo">
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="hero-kicker">Der Format-Finder</span>
+    <h1>Virale Reel-Formate finden, <em>bevor sie jeder kopiert</em></h1>
+    <p class="hero-sub">Du musst keine Trends raten und keine großen Accounts kopieren. Du brauchst nur ein System, mit dem du in 15 Minuten siehst, welches Format gerade durch die Decke geht. Hier ist es, Schritt für Schritt.</p>
+  </header>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <p class="lead">Die meisten suchen Reel-Ideen bei Accounts, die ohnehin schon Reichweite haben. Genau das ist der Fehler.</p>
+    <p>Wenn ein Account mit 200.000 Followern ein Reel postet und es 500.000 Views macht, beweist das gar nichts. Die Reichweite kommt von der bestehenden Community, nicht vom Format. Kopierst du das, kopierst du etwas, das bei dir <strong>nicht funktioniert</strong>, weil dir die Basis fehlt.</p>
+    <p>Was du brauchst, ist das Gegenteil: <strong>kleine Accounts, bei denen ein einzelnes Reel überproportional explodiert.</strong> Das ist kein Account-Erfolg. Das ist ein Format-Erfolg. Und ein Format kannst du klauen, ohne 100.000 Follower zu haben.</p>
+  </section>
+
+  <!-- SECTION HEADER -->
+  <div class="section-header">
+    <span class="eyebrow">Das System</span>
+    <h2>In 3 Schritten zum <em>bewährten Format</em></h2>
+    <p>Einmal verstanden, läuft das jede Woche in einer Viertelstunde. Keine Tools, kein Abo, nur dein Handy und dieses Raster.</p>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps">
+
+    <!-- STEP 1 -->
+    <article class="step">
+      <div class="step-head">
+        <span class="step-num">01</span>
+        <h3 class="step-title">Die Jagd-Liste bauen</h3>
+      </div>
+      <div class="step-sub">15 bis 20 kleine Accounts in deiner Nische</div>
+      <div class="step-body">
+        <p>Du brauchst eine Liste von Accounts mit <strong>1.000 bis 15.000 Followern</strong>, die zu deinem Thema posten. Klein genug, dass Reichweite dort nicht selbstverständlich ist. So findest du sie:</p>
+        <ul class="step-list">
+          <li><strong>Über „Ähnliche Accounts":</strong> Geh auf einen Account deiner Nische und tippe oben auf das Männchen-Symbol mit dem Plus (direkt über den Story-Highlights). Es öffnet sich eine Liste mit ähnlichen Accounts. Folge der Kette weiter, bis du im Bereich kleiner Accounts landest.</li>
+          <li><strong>Über Kommentarspalten:</strong> Unter viralen Posts deiner Nische kommentieren oft kleinere Creator aus demselben Feld. Genau die willst du.</li>
+        </ul>
+        <div class="note"><strong>Tipp:</strong> Speicher die 15 bis 20 Accounts in einer Instagram-Sammlung („Format-Jagd"). Dann hast du deine Liste immer griffbereit und musst nicht jede Woche neu suchen.</div>
+      </div>
+    </article>
+
+    <!-- STEP 2 -->
+    <article class="step">
+      <div class="step-head">
+        <span class="step-num">02</span>
+        <h3 class="step-title">Das Überproportional-Signal lesen</h3>
+      </div>
+      <div class="step-sub">Eine einzige Kennzahl entscheidet</div>
+      <div class="step-body">
+        <p>Geh deine Liste durch und such pro Account das Reel mit den meisten Views. Dann rechnest du nur eine Zahl: <strong>Views geteilt durch Follower.</strong> Das ist dein Faktor.</p>
+        <p>Ein Reel mit dem 1-fachen der Followerzahl ist normal. Ab dem <strong>5-fachen</strong> wird es interessant. Alles darüber ist ein klares Format-Signal. So sieht das in der Praxis aus:</p>
+        <table class="signal-table">
+          <thead>
+            <tr><th>Account</th><th>Follower</th><th>Views</th><th>Faktor</th></tr>
+          </thead>
+          <tbody>
+            <tr class="hot"><td>Account A</td><td>3.200</td><td>84.000</td><td class="faktor">26×</td></tr>
+            <tr class="hot"><td>Account B</td><td>6.800</td><td>61.000</td><td class="faktor">9×</td></tr>
+            <tr class="cold"><td>Account C</td><td>9.000</td><td>11.000</td><td class="faktor">1,2×</td></tr>
+            <tr class="cold"><td>Account D</td><td>2.100</td><td>2.600</td><td class="faktor">1,2×</td></tr>
+          </tbody>
+        </table>
+        <p>Account A und B haben ein Format gefunden, das funktioniert. Account C und D posten solide, aber ohne Hebel. Du interessierst dich nur für die heißen Zeilen. Den Rest ignorierst du.</p>
+        <div class="note"><strong>Warum das so stark ist:</strong> Du klaust nicht den Account, du klaust die <strong>Mechanik</strong>. Ein Faktor von 26 heißt, das Format hat den Algorithmus überzeugt, obwohl die Community winzig ist. Genau das willst du.</div>
+      </div>
+    </article>
+
+    <!-- STEP 3 -->
+    <article class="step">
+      <div class="step-head">
+        <span class="step-num">03</span>
+        <h3 class="step-title">Das Format zerlegen</h3>
+      </div>
+      <div class="step-sub">Drei Bausteine, die du extrahierst</div>
+      <div class="step-body">
+        <p>Jetzt schaust du dir die heißen Reels genau an und ziehst drei Dinge heraus. Nicht das Thema 1 zu 1, sondern die <strong>Struktur dahinter</strong>, übersetzt auf dein eigenes Thema.</p>
+        <div class="zerlege">
+          <div class="z-card">
+            <h4>Hook</h4>
+            <p>Die ersten 1,5 Sekunden. Was wird gesagt, was steht auf dem Screen, was sieht man im Bild? Der Hook entscheidet, ob jemand bleibt.</p>
+          </div>
+          <div class="z-card">
+            <h4>Struktur</h4>
+            <p>Länge, Schnittrhythmus, Text-Einblendungen, Aufbau. Ist es ein Talking-Head, ein B-Roll-Schnitt, eine Liste, eine Story?</p>
+          </div>
+          <div class="z-card">
+            <h4>Thema-Winkel</h4>
+            <p>Warum zieht genau dieses Thema gerade? Welcher Schmerz, welche Neugier, welcher Streitpunkt steckt drin?</p>
+          </div>
+        </div>
+        <p>Schreib dir die drei Punkte pro heißem Reel kurz auf. Nach zwei, drei Runden siehst du Muster: bestimmte Hook-Typen und Strukturen tauchen immer wieder auf. <strong>Das sind deine Vorlagen.</strong> Die baust du mit deinem eigenen Thema nach, nicht als Kopie, sondern als bewährtes Gerüst.</p>
+        <div class="note"><strong>Wichtig:</strong> Format klauen heißt nie Inhalt klauen. Du nimmst das Gerüst, das nachweislich funktioniert, und füllst es mit deiner Expertise und deiner Stimme.</div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <a href="https://www.hannamarzian.com" class="footer-logo-chip">
+      <img src="../bes-logo.png" alt="business. einfach. smart">
+    </a>
+    <span class="footer-copy">© 2026 Hanna Marzian &amp; Martin Thun</span>
+    <div class="footer-links">
+      <a href="https://www.hannamarzian.com" class="footer-link">Website</a>
+      <a href="https://www.hannamarzian.com/impressum" class="footer-link">Impressum</a>
+      <a href="https://www.hannamarzian.com/datenschutz" class="footer-link">Datenschutz</a>
+    </div>
+  </footer>
+
+</body>
+</html>
