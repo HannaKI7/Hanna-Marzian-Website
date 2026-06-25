@@ -74,7 +74,6 @@
   .opt:hover { border-color: #F5C4A8; background: #FFFaf6; }
   .opt.selected { border-color: #D8622A; background: #FFF4ED; box-shadow: 0 4px 14px rgba(216,98,42,0.13); }
   .opt.selected .dot { border-color: #D8622A; background: #D8622A; box-shadow: inset 0 0 0 3px #FFF4ED; }
-  .opts[data-multi] .dot { border-radius: 4px; }
 
   /* TEXTAREA + INPUTS */
   .field { margin-bottom: 14px; }
@@ -149,6 +148,8 @@
   #videoNote { display: none; }
 
   .err { color: #B83D14; font-size: 0.85rem; font-weight: 600; margin-top: 10px; text-align: center; min-height: 16px; }
+  .err-inline { color: #B83D14; font-size: 0.85rem; font-weight: 600; margin-top: 8px; min-height: 4px; }
+  .field-error { border-color: #B83D14 !important; }
 </style>
 </head>
 <body>
@@ -173,10 +174,10 @@
     <!-- STEP 0: OPT-IN -->
     <div class="step active" data-q="0">
       <h1 class="hero-h1">Individuelle Umsatzanalyse</h1>
-      <p class="hero-text">10 Fragen, die dir zeigen, warum dein Business mehr Frust als Geld bringt. Du bekommst deinen <strong>persönlichen 30-Tage-Fahrplan</strong> innerhalb von 24 Stunden als PDF, erstellt für genau deine Situation.</p>
+      <p class="hero-text">8 Fragen und ein Blick auf dein Profil zeigen dir, warum dein Business mehr Frust als Geld bringt. Du bekommst deinen <strong>persönlichen 30-Tage-Fahrplan</strong> innerhalb von 24 Stunden als PDF, erstellt für genau deine Situation.</p>
       <div class="scarcity"><span class="pulse"></span> 0€ für die ersten 10 Analysen bis 30.06.</div>
       <button type="button" class="btn" data-next>Analyse starten</button>
-      <div class="hint">3 Minuten · 10 kurze Fragen</div>
+      <div class="hint">3 Minuten · 8 kurze Fragen</div>
       <p class="transparency">Transparenz-Hinweis: Wenn die Analyse zeigt, dass du eine Lücke hast, die du alleine nicht schließen kannst, melden wir uns bei dir mit einem Angebot. Egal, ob du das Angebot annimmst oder nicht: Deinen 30-Tage-Fahrplan bekommst du so oder so.</p>
     </div>
 
@@ -204,39 +205,30 @@
       </div>
     </div>
 
-    <!-- STEP 3: offen, früh damit KI-Kontext hat -->
+    <!-- STEP 3: Instagram als Pflicht-Anker -->
     <div class="step" data-q="3">
-      <h2 class="q-title">Was genau ist dein Angebot, in welcher Nische bist du tätig?</h2>
-      <p class="q-sub">Ein, zwei Sätze reichen. Je konkreter, desto schärfer deine Analyse.</p>
+      <h2 class="q-title">Auf welches Instagram-Profil sollen wir schauen?</h2>
+      <p class="q-sub">Wir schauen uns dein Profil wirklich an, deine Bio, deinen Content, deinen roten Faden. Genau daraus entsteht der konkrete Teil deiner Analyse.</p>
       <div class="field">
-        <textarea name="Angebot_Nische" placeholder="Zum Beispiel: Ich biete 1:1-Coaching für ... an, meine Nische ist ..."></textarea>
+        <input type="text" name="Instagram" data-required placeholder="@deinhandle">
       </div>
+      <div class="err-inline" id="err_3"></div>
       <button type="button" class="btn" data-next>Weiter</button>
     </div>
 
-    <!-- STEP 4 -->
+    <!-- STEP 4: offen, Pflicht -->
     <div class="step" data-q="4">
-      <h2 class="q-title">Könntest du in einem Satz sagen, was du anbietest und warum genau du?</h2>
-      <div class="opts" data-radio="Positionierung">
-        <label class="opt"><input type="radio" name="Positionierung" value="Ja, sofort und glasklar"><span class="dot"></span>Ja, sofort und glasklar</label>
-        <label class="opt"><input type="radio" name="Positionierung" value="Manchmal, aber ohne System dahinter"><span class="dot"></span>Manchmal, aber ohne System dahinter</label>
-        <label class="opt"><input type="radio" name="Positionierung" value="Nein, ich erkläre es jedes Mal neu"><span class="dot"></span>Nein, ich erkläre es jedes Mal neu</label>
+      <h2 class="q-title">Was genau ist dein Angebot, in welcher Nische bist du tätig?</h2>
+      <p class="q-sub">Ein, zwei Sätze reichen. Je konkreter, desto schärfer deine Analyse.</p>
+      <div class="field">
+        <textarea name="Angebot_Nische" data-required placeholder="Zum Beispiel: Ich biete 1:1-Coaching für ... an, meine Nische ist ..."></textarea>
       </div>
+      <div class="err-inline" id="err_4"></div>
+      <button type="button" class="btn" data-next>Weiter</button>
     </div>
 
     <!-- STEP 5 -->
     <div class="step" data-q="5">
-      <h2 class="q-title">Wie kommen neue Kunden zu dir?</h2>
-      <div class="opts" data-radio="Kundengewinnung">
-        <label class="opt"><input type="radio" name="Kundengewinnung" value="Über einen planbaren Weg von Sichtbarkeit bis Abschluss"><span class="dot"></span>Über einen planbaren Weg von Sichtbarkeit bis Abschluss</label>
-        <label class="opt"><input type="radio" name="Kundengewinnung" value="Über DMs und Zufall"><span class="dot"></span>Über DMs und Zufall</label>
-        <label class="opt"><input type="radio" name="Kundengewinnung" value="Über Empfehlungen, aber unplanbar"><span class="dot"></span>Über Empfehlungen, aber unplanbar</label>
-        <label class="opt"><input type="radio" name="Kundengewinnung" value="Weiß ich selbst nicht genau"><span class="dot"></span>Weiß ich selbst nicht genau</label>
-      </div>
-    </div>
-
-    <!-- STEP 6: neu -->
-    <div class="step" data-q="6">
       <h2 class="q-title">Was blockiert dich gerade am meisten beim Wachstum?</h2>
       <div class="opts" data-radio="Wachstumsblockade">
         <label class="opt"><input type="radio" name="Wachstumsblockade" value="Zu wenig qualifizierte Anfragen"><span class="dot"></span>Zu wenig qualifizierte Anfragen</label>
@@ -246,42 +238,19 @@
       </div>
     </div>
 
-    <!-- STEP 7 -->
-    <div class="step" data-q="7">
-      <h2 class="q-title">Wie gut kannst du deinen nächsten Monat vorhersagen?</h2>
-      <div class="opts" data-radio="Planbarkeit">
-        <label class="opt"><input type="radio" name="Planbarkeit" value="Gar nicht, jeder Monat ist Glück"><span class="dot"></span>Gar nicht, jeder Monat ist Glück</label>
-        <label class="opt"><input type="radio" name="Planbarkeit" value="Manchmal, aber ohne System dahinter"><span class="dot"></span>Manchmal, aber ohne System dahinter</label>
-        <label class="opt"><input type="radio" name="Planbarkeit" value="Ziemlich gut, ich habe einen groben Plan"><span class="dot"></span>Ziemlich gut, ich habe einen groben Plan</label>
-      </div>
-    </div>
-
-    <!-- STEP 8: multi-select -->
-    <div class="step" data-q="8">
-      <h2 class="q-title">Was hast du bisher probiert, um das zu lösen?</h2>
-      <p class="q-sub">Mehrere Antworten möglich.</p>
-      <div class="opts" data-multi="Bisher_probiert">
-        <label class="opt"><input type="checkbox" value="Kurse gekauft"><span class="dot"></span>Kurse gekauft</label>
-        <label class="opt"><input type="checkbox" value="Coachings"><span class="dot"></span>Coachings</label>
-        <label class="opt"><input type="checkbox" value="Tools getestet"><span class="dot"></span>Tools getestet</label>
-        <label class="opt"><input type="checkbox" value="Noch nichts richtig"><span class="dot"></span>Noch nichts richtig</label>
-      </div>
-      <input type="hidden" name="Bisher_probiert" id="bisher_probiert_val">
-      <button type="button" class="btn" data-next style="margin-top:18px;">Weiter</button>
-    </div>
-
-    <!-- STEP 9: offen, das Gold -->
-    <div class="step" data-q="9">
-      <h2 class="q-title">Was frustriert dich gerade am meisten in deinem Business?</h2>
-      <p class="q-sub">Schreib es so, wie du es einer Freundin erzählen würdest. Genau das schauen wir uns für dich an.</p>
+    <!-- STEP 6: offen, Pflicht -->
+    <div class="step" data-q="6">
+      <h2 class="q-title">Was willst du in den nächsten 90 Tagen konkret erreichen?</h2>
+      <p class="q-sub">Eine Zahl, ein Ziel, ein Zustand. Was wäre für dich ein klarer Erfolg?</p>
       <div class="field">
-        <textarea name="Frust" placeholder="Was sich gerade am meisten wie der Engpass anfühlt ..."></textarea>
+        <textarea name="Ziel_90_Tage" data-required placeholder="Zum Beispiel: konstant 5.000€ im Monat, oder endlich planbar Anfragen ..."></textarea>
       </div>
+      <div class="err-inline" id="err_6"></div>
       <button type="button" class="btn" data-next>Weiter</button>
     </div>
 
-    <!-- STEP 10 -->
-    <div class="step" data-q="10">
+    <!-- STEP 7 -->
+    <div class="step" data-q="7">
       <h2 class="q-title">Wie dringend willst du das ändern?</h2>
       <div class="opts" data-radio="Dringlichkeit">
         <label class="opt"><input type="radio" name="Dringlichkeit" value="Sofort, der Zustand zermürbt mich"><span class="dot"></span>Sofort, der Zustand zermürbt mich</label>
@@ -290,8 +259,19 @@
       </div>
     </div>
 
-    <!-- STEP 11: KONTAKT -->
-    <div class="step" data-q="11">
+    <!-- STEP 8: offen, das Gold -->
+    <div class="step" data-q="8">
+      <h2 class="q-title">Was frustriert dich gerade am meisten in deinem Business?</h2>
+      <p class="q-sub">Schreib es so, wie du es einer Freundin erzählen würdest. Genau das schauen wir uns für dich an.</p>
+      <div class="field">
+        <textarea name="Frust" data-required placeholder="Was sich gerade am meisten wie der Engpass anfühlt ..."></textarea>
+      </div>
+      <div class="err-inline" id="err_8"></div>
+      <button type="button" class="btn" data-next>Weiter</button>
+    </div>
+
+    <!-- STEP 9: KONTAKT -->
+    <div class="step" data-q="9">
       <h2 class="q-title">Wohin dürfen wir deinen 30-Tage-Fahrplan schicken?</h2>
       <div class="field">
         <label>Name</label>
@@ -300,10 +280,6 @@
       <div class="field">
         <label>E-Mail</label>
         <input type="email" name="email" placeholder="deine@mail.de">
-      </div>
-      <div class="field">
-        <label>Instagram-Handle</label>
-        <input type="text" name="Instagram" placeholder="@deinhandle">
       </div>
 
       <label class="upgrade" id="upgrade">
@@ -317,8 +293,8 @@
       <div class="hint">Du bekommst deine Analyse innerhalb von 24 Stunden.</div>
     </div>
 
-    <!-- STEP 12: DANKE -->
-    <div class="step" data-q="12">
+    <!-- STEP 10: DANKE -->
+    <div class="step" data-q="10">
       <div class="thanks-icon">✓</div>
       <h2 class="q-title">Deine Anfrage ist drin.</h2>
       <p class="hero-text">Deine individuelle Umsatz-Analyse kommt innerhalb von 24 Stunden, als PDF per Mail und über Telegram.</p>
@@ -339,42 +315,54 @@
   const progLabel = document.getElementById('progLabel');
   const backBtn = document.getElementById('backBtn');
   const form = document.getElementById('funnel');
-  const totalQ = 11; // Schritte 1..11 zählen für den Fortschritt
+  const totalQ = 9; // Schritte 1..9 (8 Fragen + Kontakt) zählen für den Fortschritt
   let cur = 0;
 
   function render() {
     steps.forEach((s, i) => s.classList.toggle('active', i === cur));
     const pct = cur === 0 ? 0 : Math.min(cur, totalQ) / totalQ * 100;
     bar.style.width = pct + '%';
-    if (cur === 0 || cur === 12) { progLabel.textContent = ''; }
-    else if (cur === 11) { progLabel.textContent = 'Fast geschafft'; }
-    else { progLabel.textContent = 'Frage ' + cur + ' von 10'; }
-    backBtn.classList.toggle('show', cur > 0 && cur < 12);
+    if (cur === 0 || cur === 10) { progLabel.textContent = ''; }
+    else if (cur === 9) { progLabel.textContent = 'Fast geschafft'; }
+    else { progLabel.textContent = 'Frage ' + cur + ' von 8'; }
+    backBtn.classList.toggle('show', cur > 0 && cur < 10);
     document.querySelector('.topbar').classList.toggle('topbar--hero', cur === 0);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function go(i) { cur = Math.max(0, Math.min(steps.length - 1, i)); render(); }
 
+  // Pflichtfeld im aktuellen Step prüfen
+  function validateStep(step) {
+    const field = step.querySelector('[data-required]');
+    if (!field) return true;
+    const errBox = step.querySelector('.err-inline');
+    if (!field.value.trim()) {
+      field.classList.add('field-error');
+      if (errBox) errBox.textContent = 'Bitte füll das kurz aus, das macht deine Analyse erst persönlich.';
+      field.focus();
+      return false;
+    }
+    field.classList.remove('field-error');
+    if (errBox) errBox.textContent = '';
+    return true;
+  }
+
   // Buttons "Weiter" / "Analyse starten"
-  document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => go(cur + 1)));
+  document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
+    if (!validateStep(b.closest('.step'))) return;
+    go(cur + 1);
+  }));
   backBtn.addEventListener('click', () => go(cur - 1));
 
-  // Optionen: Radio (auto-advance) oder Multi-Select (toggle, kein auto-advance)
+  // Radio-Optionen: Auswahl markieren + automatisch weiter
   document.querySelectorAll('.opts').forEach(group => {
-    const isMulti = group.hasAttribute('data-multi');
     group.querySelectorAll('.opt').forEach(opt => {
       opt.addEventListener('click', () => {
-        if (isMulti) {
-          e.preventDefault();
-          opt.classList.toggle('selected');
-          opt.querySelector('input').checked = opt.classList.contains('selected');
-        } else {
-          group.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-          opt.classList.add('selected');
-          opt.querySelector('input').checked = true;
-          setTimeout(() => go(cur + 1), 280);
-        }
+        group.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        opt.querySelector('input').checked = true;
+        setTimeout(() => go(cur + 1), 280);
       });
     });
   });
@@ -397,13 +385,6 @@
     if (!name) { errMsg.textContent = 'Bitte trag deinen Namen ein.'; return; }
     if (!/^\S+@\S+\.\S+$/.test(email)) { errMsg.textContent = 'Bitte trag eine gültige E-Mail ein.'; return; }
 
-    // Multi-Select Werte in hidden fields sammeln
-    document.querySelectorAll('.opts[data-multi]').forEach(group => {
-      const name = group.getAttribute('data-multi');
-      const vals = [...group.querySelectorAll('.opt.selected')].map(o => o.querySelector('input').value);
-      document.getElementById(name.toLowerCase() + '_val').value = vals.join(', ') || 'Nichts ausgewählt';
-    });
-
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wird gesendet ...';
 
@@ -418,7 +399,7 @@
         if (form.Persoenliches_Video.checked) {
           document.getElementById('videoNote').style.display = 'block';
         }
-        go(12);
+        go(10);
       } else {
         throw new Error(data.message || 'Fehler');
       }
