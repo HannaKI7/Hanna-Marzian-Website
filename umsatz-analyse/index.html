@@ -52,7 +52,8 @@
   .step.active { display: block; }
   @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-  .hero-logo { display: block; height: 75px; width: auto; margin: 0 auto 24px; }
+  .topbar--hero { justify-content: center; }
+  .topbar--hero .brand-logo { height: 75px; }
   .q-kicker { font-size: 0.74rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #C0511E; margin-bottom: 10px; }
   .q-title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 8px; }
   .q-sub { font-size: 0.95rem; color: #6B5146; margin-bottom: 22px; }
@@ -126,9 +127,8 @@
   .hero-h1 em { color: #D8622A; font-style: normal; }
   .hero-text { font-size: 1rem; color: #2C231C; margin-bottom: 18px; }
   .scarcity {
-    display: flex; gap: 10px; align-items: center;
-    background: #FFF4ED; border: 1.5px solid #F5C4A8; border-radius: 12px;
-    padding: 13px 16px; font-size: 0.9rem; font-weight: 700; color: #B83D14; margin-bottom: 4px;
+    display: flex; gap: 8px; align-items: center;
+    font-size: 0.88rem; font-weight: 600; color: #B83D14; margin-bottom: 4px;
   }
   .scarcity .pulse { width: 9px; height: 9px; border-radius: 50%; background: #D8622A; flex-shrink: 0; animation: pulse 1.6s infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
@@ -170,7 +170,6 @@
 
     <!-- STEP 0: OPT-IN -->
     <div class="step active" data-q="0">
-      <img class="hero-logo" src="bes-logo.png" alt="business.einfach.smart">
       <h1 class="hero-h1">Individuelle Umsatzanalyse</h1>
       <p class="hero-text">10 Fragen, die dir zeigen, warum dein Business mehr Frust als Geld bringt. Du bekommst deinen <strong>persönlichen 30-Tage-Fahrplan</strong> innerhalb von 24 Stunden als PDF, erstellt für genau deine Situation.</p>
       <div class="scarcity"><span class="pulse"></span> 0€ für die ersten 10 Analysen bis 30.06.</div>
@@ -346,7 +345,7 @@
     else if (cur === 11) { progLabel.textContent = 'Fast geschafft'; }
     else { progLabel.textContent = 'Frage ' + cur + ' von 10'; }
     backBtn.classList.toggle('show', cur > 0 && cur < 12);
-    document.getElementById('topbarLogo').style.display = cur === 0 ? 'none' : 'block';
+    document.querySelector('.topbar').classList.toggle('topbar--hero', cur === 0);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
