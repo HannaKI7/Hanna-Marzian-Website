@@ -86,24 +86,6 @@
   textarea { min-height: 120px; }
   textarea:focus, input:focus { outline: none; border-color: #D8622A; }
 
-  /* CHECKBOX UPGRADE */
-  .upgrade {
-    display: flex; gap: 12px; align-items: flex-start;
-    background: #160C05; border-radius: 12px; padding: 16px 18px; margin: 18px 0 4px;
-    cursor: pointer;
-  }
-  .upgrade input { position: absolute; opacity: 0; pointer-events: none; }
-  .upgrade .box {
-    flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px;
-    border: 2px solid #6B5146; margin-top: 1px; transition: all 0.15s ease;
-    display: flex; align-items: center; justify-content: center;
-    color: #160C05; font-size: 0.8rem; font-weight: 800;
-  }
-  .upgrade.checked .box { background: #E8894E; border-color: #E8894E; }
-  .upgrade.checked .box::after { content: "✓"; }
-  .upgrade .up-text { font-size: 0.9rem; color: #FBF3EC; line-height: 1.5; }
-  .upgrade .up-text b { color: #E8894E; }
-
   /* BUTTON */
   .btn {
     width: 100%; font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 700;
@@ -145,7 +127,6 @@
     padding: 14px 18px; margin: 18px 0; font-size: 0.94rem; color: #2C231C; line-height: 1.55;
   }
   .thanks-important b { color: #B83D14; }
-  #videoNote { display: none; }
 
   .err { color: #B83D14; font-size: 0.85rem; font-weight: 600; margin-top: 10px; text-align: center; min-height: 16px; }
   .err-inline { color: #B83D14; font-size: 0.85rem; font-weight: 600; margin-top: 8px; min-height: 4px; }
@@ -271,25 +252,14 @@
 
     <!-- STEP 9: KONTAKT -->
     <div class="step" data-q="9">
-      <h2 class="q-title">Wohin dürfen wir deinen 30-Tage-Fahrplan schicken?</h2>
+      <h2 class="q-title">Wie heißt du?</h2>
+      <p class="q-sub">Damit wir deinen Fahrplan persönlich für dich machen.</p>
       <div class="field">
-        <label>Name</label>
         <input type="text" name="Name" placeholder="Dein Vorname">
       </div>
-      <div class="field">
-        <label>E-Mail</label>
-        <input type="email" name="email" placeholder="deine@mail.de">
-      </div>
-
-      <label class="upgrade" id="upgrade">
-        <input type="checkbox" name="Persoenliches_Video" value="JA - persönliche Video-Analyse angefordert">
-        <span class="box"></span>
-        <span class="up-text"><b>Ja, ich will mehr:</b> Schick mir zusätzlich eine persönliche Video-Analyse von Martin auf Basis meiner Angaben. (Begrenzte Plätze.)</span>
-      </label>
-
       <button type="submit" class="btn" id="submitBtn">Meine Analyse anfordern</button>
       <div class="err" id="errMsg"></div>
-      <div class="hint">Du bekommst deine Analyse innerhalb von 24 Stunden.</div>
+      <div class="hint">Du bekommst deine Analyse innerhalb von 24 Stunden per WhatsApp.</div>
     </div>
 
     <!-- STEP 10: DANKE -->
@@ -297,7 +267,6 @@
       <div class="thanks-icon">✓</div>
       <h2 class="q-title">Deine Anfrage ist drin.</h2>
       <p class="hero-text">Deine individuelle Umsatz-Analyse kommt innerhalb von 24 Stunden als PDF. Du erhältst sie per WhatsApp.</p>
-      <p class="hero-text" id="videoNote">Deine persönliche Video-Analyse von Martin ist vorgemerkt. Sie kommt direkt per WhatsApp.</p>
     </div>
 
   </form>
@@ -362,12 +331,6 @@
     });
   });
 
-  // Upgrade-Checkbox visuell
-  const upgrade = document.getElementById('upgrade');
-  upgrade.addEventListener('click', () => {
-    setTimeout(() => upgrade.classList.toggle('checked', upgrade.querySelector('input').checked), 0);
-  });
-
   // Absenden via Web3Forms
   const submitBtn = document.getElementById('submitBtn');
   const errMsg = document.getElementById('errMsg');
@@ -376,9 +339,7 @@
     e.preventDefault();
     errMsg.textContent = '';
     const name = form.Name.value.trim();
-    const email = form.email.value.trim();
     if (!name) { errMsg.textContent = 'Bitte trag deinen Namen ein.'; return; }
-    if (!/^\S+@\S+\.\S+$/.test(email)) { errMsg.textContent = 'Bitte trag eine gültige E-Mail ein.'; return; }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wird gesendet ...';
@@ -391,9 +352,6 @@
       });
       const data = await res.json();
       if (data.success) {
-        if (form.Persoenliches_Video.checked) {
-          document.getElementById('videoNote').style.display = 'block';
-        }
         go(10);
       } else {
         throw new Error(data.message || 'Fehler');
