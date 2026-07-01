@@ -1486,6 +1486,71 @@ a { color: inherit; }
   margin-bottom: var(--s-4);
 }
 
+/* ── Promise Strip (Kein Dauer-Abo) ── */
+.promise-strip {
+  position: relative;
+  padding: clamp(5rem, 12vw, 9rem) 0;
+  background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80');
+  background-size: cover;
+  background-position: center 40%;
+  overflow: hidden;
+  text-align: center;
+}
+.promise-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, rgba(14,6,2,0.93) 0%, rgba(30,12,4,0.82) 50%, rgba(14,6,2,0.93) 100%);
+}
+.promise-strip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.promise-strip__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+.promise-strip__label {
+  font-family: var(--f-brand);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange-bright);
+  margin-bottom: var(--s-4);
+}
+.promise-strip__title {
+  font-family: var(--f-brand);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  letter-spacing: -0.03em;
+  color: var(--d-text);
+  line-height: 1;
+  margin-bottom: var(--s-6);
+}
+.promise-strip__title em {
+  font-style: italic;
+  font-family: var(--f-serif);
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--orange-bright), var(--orange-deep));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.promise-strip__body {
+  font-size: var(--t-lg);
+  color: var(--d-text-soft);
+  line-height: 1.8;
+}
+
 /* ── KI-Strategie-Coach Callout ── */
 .coach-callout {
   display: grid;
@@ -1904,10 +1969,6 @@ a { color: inherit; }
         <h3>Kein Theorie-Programm</h3>
         <p>Wir bauen mit dir echte Systeme. Du verlässt den Club nicht mit einem Zertifikat, sondern mit einem Business, das läuft.</p>
       </article>
-      <article class="a-card" data-reveal style="--reveal-delay: 270ms;">
-        <h3>Kein Dauer-Abo</h3>
-        <p>Andere wollen dich als Stammkunden behalten. Wir bringen dir bei, uns nicht mehr zu brauchen. Nach sechs Monaten läuft dein System ohne uns. Das ist das letzte Programm, das du dafür buchst.</p>
-      </article>
     </div>
 
     <div class="cred-line" data-reveal>
@@ -1915,6 +1976,15 @@ a { color: inherit; }
     </div>
   </div>
 </section>
+
+<!-- ═══════════ PROMISE STRIP ═══════════ -->
+<div class="promise-strip" data-reveal>
+  <div class="promise-strip__inner">
+    <div class="promise-strip__label">Unser Versprechen</div>
+    <h2 class="promise-strip__title">Kein Dauer-Abo.</h2>
+    <p class="promise-strip__body">Andere wollen dich als Stammkunden behalten. Wir bringen dir bei, uns nicht mehr zu brauchen. Nach sechs Monaten läuft dein System ohne uns. Das ist das letzte Programm, das du dafür buchst.</p>
+  </div>
+</div>
 
 <!-- ═══════════ DELIVERABLES (BENTO) ═══════════ -->
 <section class="section" id="leistungen">
