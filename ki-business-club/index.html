@@ -674,6 +674,30 @@ a { color: inherit; }
 .approach .lede { color: var(--d-text-soft); }
 .approach .lede strong { color: var(--d-text); font-weight: 600; }
 
+/* Approach 2-col header */
+.approach-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  margin-bottom: var(--s-16);
+}
+.approach-header__img {
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.approach-header__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 768px) {
+  .approach-header { grid-template-columns: 1fr; }
+  .approach-header__img { order: -1; aspect-ratio: 3/2; }
+}
+
 /* 80/20 bar */
 .split-bar { margin: var(--s-16) 0; }
 .split-bar__title {
@@ -1929,10 +1953,15 @@ a { color: inherit; }
 <!-- ═══════════ APPROACH (DARK) ═══════════ -->
 <section class="section approach has-noise" id="ansatz">
   <div class="wrap" style="position: relative; z-index: 2;">
-    <div data-reveal>
-      <div class="kicker">Unser Ansatz</div>
-      <h2 class="h2">Erst das Fundament. <em>Dann multipliziert die KI.</em></h2>
-      <p class="lede">Die meisten setzen KI auf ein wackliges Fundament und wundern sich, warum nichts kommt. KI multipliziert nur, was schon da ist. Deshalb bauen wir mit dir zuerst das Fundament, deine Positionierung, deine Angebote, deinen Verkauf, damit es überhaupt etwas zu multiplizieren gibt. Erst dann bauen wir daraus deinen digitalen Zwilling: KI-Agenten, die dich wirklich kennen, dein Branding und deine Salespages übernehmen, deine Instagram-Prozesse steuern und dir überall dort zuarbeiten, wo du sonst Stunden verlierst. <strong>Du behältst das Steuer und das letzte Wort. Aber du fängst nicht mehr bei null an.</strong></p>
+    <div class="approach-header" data-reveal>
+      <div class="approach-header__text">
+        <div class="kicker">Unser Ansatz</div>
+        <h2 class="h2">Erst das Fundament. <em>Dann multipliziert die KI.</em></h2>
+        <p class="lede">Die meisten setzen KI auf ein wackliges Fundament und wundern sich, warum nichts kommt. KI multipliziert nur, was schon da ist. Deshalb bauen wir mit dir zuerst das Fundament, deine Positionierung, deine Angebote, deinen Verkauf, damit es überhaupt etwas zu multiplizieren gibt. Erst dann bauen wir daraus deinen digitalen Zwilling: KI-Agenten, die dich wirklich kennen, dein Branding und deine Salespages übernehmen, deine Instagram-Prozesse steuern und dir überall dort zuarbeiten, wo du sonst Stunden verlierst. <strong>Du behältst das Steuer und das letzte Wort. Aber du fängst nicht mehr bei null an.</strong></p>
+      </div>
+      <div class="approach-header__img">
+        <img src="../Fotos/Design%20ohne%20Titel.jpg" alt="KI Business Club">
+      </div>
     </div>
 
     <div class="split-bar" data-reveal data-splitbar>
@@ -2099,7 +2128,6 @@ a { color: inherit; }
           <img class="host__photo host__photo--hanna" src="hanna-portrait.jpg" alt="Hanna Marzian">
         </div>
         <h3>Hanna Marzian</h3>
-        <div class="host__handle">@hanna.gpt</div>
         <div class="host__tags"><span>Content</span><span>Reichweite</span><span>Instagram</span></div>
         <p>100.000 Follower auf Instagram. Hanna hat ihr eigenes Business von manueller Schwerstarbeit auf ein KI-gesteuertes System umgebaut und diesen Weg öffentlich dokumentiert. Sie zeigt dir, wie Reichweite entsteht und wie aus deinem Content ein System wird, das verkauft.</p>
       </article>
@@ -2108,7 +2136,6 @@ a { color: inherit; }
           <img class="host__photo host__photo--martin" src="martin-portrait.jpg" alt="Martin Thun">
         </div>
         <h3>Martin Thun</h3>
-        <div class="host__handle">@martin_thun_</div>
         <div class="host__tags"><span>Funnel</span><span>Technik</span><span>Angebot</span><span>Sales</span></div>
         <p>7 Jahre Online-Unternehmer und Gründer der KI-Agentur scale². Hat selbst mehrfach 5-stellige Launches gemacht und Kunden mit 150.000-€-Umsatzmonaten begleitet. Martin bringt die technische Tiefe und die Angebots-Mechanik mit, die aus einem Kurs ein funktionierendes System machen.</p>
       </article>
