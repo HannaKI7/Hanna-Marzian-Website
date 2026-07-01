@@ -908,7 +908,30 @@ a { color: inherit; }
 /* ════════════════════════════════════════════
    MODULES
    ════════════════════════════════════════════ */
-.modules { margin-top: var(--s-12); border-top: 1px solid var(--line); }
+.modules-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+  margin-top: var(--s-12);
+}
+.modules-layout__img {
+  position: sticky;
+  top: 6rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(22,12,5,0.14);
+}
+.modules-layout__img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 900px) {
+  .modules-layout { grid-template-columns: 1fr; }
+  .modules-layout__img { position: static; order: -1; border-radius: 0.8rem; }
+}
+.modules { border-top: 1px solid var(--line); }
 .module {
   display: grid;
   grid-template-columns: minmax(70px, 110px) 1fr;
@@ -2074,41 +2097,46 @@ a { color: inherit; }
       <h2 class="h2">Fünf Bausteine, <em>ein System</em>.</h2>
     </div>
 
-    <div class="modules">
-      <div class="module" data-reveal>
-        <div class="module__num">01</div>
-        <div>
-          <h3>Positionierung &amp; Branding</h3>
-          <p>Wer du bist, für wen du das machst und warum genau das zählt. Die Grundlage für alles andere.</p>
+    <div class="modules-layout">
+      <div class="modules">
+        <div class="module" data-reveal>
+          <div class="module__num">01</div>
+          <div>
+            <h3>Positionierung &amp; Branding</h3>
+            <p>Wer du bist, für wen du das machst und warum genau das zählt. Die Grundlage für alles andere.</p>
+          </div>
+        </div>
+        <div class="module" data-reveal style="--reveal-delay: 60ms;">
+          <div class="module__num">02</div>
+          <div>
+            <h3>Angebotsstrategie</h3>
+            <p>Angebote, die perfekt aufeinander abgestimmt sind und gekauft werden, ohne dass du druckbehaftet verkaufen musst.</p>
+          </div>
+        </div>
+        <div class="module" data-reveal style="--reveal-delay: 120ms;">
+          <div class="module__num">03</div>
+          <div>
+            <h3>Content &amp; Reichweite</h3>
+            <p>Content, der dein Angebot verkauft, ohne dass du jeden Post von Hand schreibst und jeden Tag auf der Plattform kämpfst.</p>
+          </div>
+        </div>
+        <div class="module" data-reveal style="--reveal-delay: 180ms;">
+          <div class="module__num">04</div>
+          <div>
+            <h3>Sales</h3>
+            <p>Vom ersten Kontakt bis zum Ja. Ein Verkaufsprozess, der sich nicht wie Verkaufen anfühlt, weder für dich noch für deinen Kunden.</p>
+          </div>
+        </div>
+        <div class="module" data-reveal style="--reveal-delay: 240ms;">
+          <div class="module__num">05</div>
+          <div>
+            <h3>KI &amp; Technik</h3>
+            <p>Die konkreten Systeme, die deinen digitalen Zwilling bauen und am Laufen halten. Keine Vorkenntnisse nötig. Wir halten dich über die KI-Entwicklungen auf dem Laufenden, die wirklich relevant für dein Business sind (nicht die Spielereien und Zeitfresser).</p>
+          </div>
         </div>
       </div>
-      <div class="module" data-reveal style="--reveal-delay: 60ms;">
-        <div class="module__num">02</div>
-        <div>
-          <h3>Angebotsstrategie</h3>
-          <p>Angebote, die perfekt aufeinander abgestimmt sind und gekauft werden, ohne dass du druckbehaftet verkaufen musst.</p>
-        </div>
-      </div>
-      <div class="module" data-reveal style="--reveal-delay: 120ms;">
-        <div class="module__num">03</div>
-        <div>
-          <h3>Content &amp; Reichweite</h3>
-          <p>Content, der dein Angebot verkauft, ohne dass du jeden Post von Hand schreibst und jeden Tag auf der Plattform kämpfst.</p>
-        </div>
-      </div>
-      <div class="module" data-reveal style="--reveal-delay: 180ms;">
-        <div class="module__num">04</div>
-        <div>
-          <h3>Sales</h3>
-          <p>Vom ersten Kontakt bis zum Ja. Ein Verkaufsprozess, der sich nicht wie Verkaufen anfühlt, weder für dich noch für deinen Kunden.</p>
-        </div>
-      </div>
-      <div class="module" data-reveal style="--reveal-delay: 240ms;">
-        <div class="module__num">05</div>
-        <div>
-          <h3>KI &amp; Technik</h3>
-          <p>Die konkreten Systeme, die deinen digitalen Zwilling bauen und am Laufen halten. Keine Vorkenntnisse nötig. Wir halten dich über die KI-Entwicklungen auf dem Laufenden, die wirklich relevant für dein Business sind (nicht die Spielereien und Zeitfresser).</p>
-        </div>
+      <div class="modules-layout__img" data-reveal>
+        <img src="../Fotos/Photos%20Hanna/5352588596369626863.jpg" alt="Hanna Marzian">
       </div>
     </div>
   </div>
