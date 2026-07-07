@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/consent.css">
 <style>
   :root {
     --orange:      #D8622A;
@@ -471,21 +472,21 @@
   }
   .pitch-btn {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
     background: var(--orange);
     color: #fff;
     font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 16px 32px;
+    padding: 14px 32px;
     border-radius: 8px;
     text-decoration: none;
+    text-align: center;
     box-shadow: 0 4px 20px rgba(216,98,42,.35);
     transition: background .2s, box-shadow .2s;
   }
+  .pitch-btn-main { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+  .pitch-btn-sub { font-size: 10px; font-weight: 600; letter-spacing: 0.3px; opacity: .85; }
   .pitch-btn:hover { background: var(--orange-deep); box-shadow: 0 6px 28px rgba(216,98,42,.5); }
   .pitch-trust {
     font-size: 11px;
@@ -647,16 +648,17 @@
 
   </div>
 
-  <!-- PITCH: UMSATZANALYSE -->
+  <!-- PITCH: NEWSLETTER -->
   <div class="pitch-wrap">
     <div class="pitch">
       <div class="pitch-inner">
         <span class="pitch-logo-chip"><img src="../../bes-logo.png" alt="business. einfach. smart"></span>
-        <span class="pitch-eye">Kostenlose Umsatzanalyse</span>
-        <h3>Deine individuelle Umsatzanalyse, <em>0 €</em></h3>
-        <p class="pitch-text">8 Fragen und ein Blick auf dein Profil zeigen dir, warum dein Business mehr Frust als Geld bringt. Du bekommst deinen persönlichen 30-Tage-Fahrplan innerhalb von 24 Stunden als PDF, erstellt für genau deine Situation.</p>
-        <a href="https://www.hannamarzian.com/umsatzanalyse/" class="pitch-btn">Zur kostenlosen Umsatzanalyse &rarr;</a>
-        <p class="pitch-trust">Antwort innerhalb von 24 Stunden, ohne Verpflichtung</p>
+        <span class="pitch-eye">Newsletter</span>
+        <h3>Prompt &amp; <em>Praktisch</em></h3>
+        <p class="pitch-text">Jeden Mittwoch und Sonntag eine E-Mail, die im Alltag konkret hilft. Kurz und knackig.</p>
+        <div class="nl-form-wrap">
+          <script id="form-script-tag-24664096" src="https://member.hannamarzian.com/public/remote/page/42362777bcdd99471fbebfd8d3d9af5fa09b2b4d.js"></script>
+        </div>
       </div>
     </div>
   </div>
@@ -671,8 +673,10 @@
       <a href="https://www.hannamarzian.com" class="footer-link">Website</a>
       <a href="https://www.hannamarzian.com/impressum" class="footer-link">Impressum</a>
       <a href="https://www.hannamarzian.com/datenschutz" class="footer-link">Datenschutz</a>
+      <button id="consent-reopen" style="background:none;border:none;font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid-gray);text-decoration:underline;cursor:pointer;padding:0;">Cookie-Einstellungen</button>
     </div>
   </footer>
 
+<script src="../../assets/consent.js"></script>
 </body>
 </html>
