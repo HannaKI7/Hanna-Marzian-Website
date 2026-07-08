@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Du bist dabei! · 0€ Live-Webinar · BUSINESS.EINFACH.SMART</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange:        #D8622A;
+  --orange-bright: #E8894E;
+  --orange-deep:   #B24E1E;
+  --ink:           #160C05;
+  --cream:         #FBF7F2;
+  --paper:         #FFFDFA;
+
+  --orange-100: color-mix(in oklab, var(--orange), white 88%);
+
+  --text-primary:   #1E140C;
+  --text-secondary: #5C5048;
+  --text-tertiary:  #8E8076;
+  --line:           rgba(22, 12, 5, 0.09);
+
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+  --s-6: 1.5rem;  --s-8: 2rem;   --s-12: 3rem;   --s-16: 4rem;
+
+  --t-xs:   clamp(0.72rem, 0.68rem + 0.2vw, 0.8rem);
+  --t-sm:   clamp(0.85rem, 0.8rem + 0.25vw, 0.95rem);
+  --t-base: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+  --t-lg:   clamp(1.1rem, 1rem + 0.6vw, 1.3rem);
+  --t-2xl:  clamp(1.7rem, 1.4rem + 1.5vw, 2.4rem);
+  --t-hero: clamp(2.2rem, 1.6rem + 3.2vw, 3.4rem);
+
+  --shadow-sm: 0 1px 2px rgba(22,12,5,0.04), 0 2px 5px rgba(22,12,5,0.04);
+  --shadow-md: 0 1px 2px rgba(22,12,5,0.04), 0 4px 9px rgba(22,12,5,0.05), 0 14px 28px rgba(22,12,5,0.07);
+  --shadow-brand: 0 1px 2px rgba(22,12,5,0.06), 0 5px 12px rgba(216,98,42,0.22), 0 18px 38px rgba(216,98,42,0.24);
+
+  --ease-out:    cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.4, 1);
+  --fast: 160ms; --normal: 280ms;
+
+  --f-serif: 'Cormorant', Georgia, serif;
+  --f-sans:  'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --f-brand: 'Montserrat', 'Inter', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--f-sans);
+  font-size: var(--t-base);
+  color: var(--text-primary);
+  line-height: 1.7;
+  background:
+    radial-gradient(ellipse 90% 40% at 50% 0%, rgba(216,98,42,0.06), transparent 65%),
+    linear-gradient(175deg, var(--paper) 0%, var(--cream) 100%);
+  min-height: 100vh;
+}
+::selection { background: var(--orange); color: #fff; }
+h1, h2 { text-wrap: balance; letter-spacing: -0.02em; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+
+.wrap { width: min(640px, 100% - clamp(2rem, 8vw, 4rem)); margin-inline: auto; }
+
+/* NAV */
+.nav {
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--s-6) 0 var(--s-4);
+}
+.brandmark {
+  font-family: var(--f-brand); font-weight: 800;
+  font-size: clamp(0.72rem, 0.6rem + 0.5vw, 0.9rem);
+  letter-spacing: 0.14em; color: var(--ink); text-decoration: none;
+}
+.brandmark .dot { color: var(--orange); }
+
+/* HERO / CONFIRMATION */
+.confirm { text-align: center; padding: var(--s-8) 0 var(--s-12); }
+.check-icon {
+  width: 58px; height: 58px; border-radius: 50%; margin: 0 auto var(--s-6);
+  background: var(--orange-100); border: 1.5px solid rgba(216,98,42,0.3);
+  display: grid; place-items: center;
+}
+.check-icon svg { width: 26px; height: 26px; stroke: var(--orange-deep); }
+.confirm__eyebrow {
+  font-family: var(--f-brand); font-size: var(--t-xs); font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-deep);
+  margin-bottom: var(--s-4);
+}
+.confirm h1 {
+  font-family: var(--f-serif); font-weight: 600; font-style: italic;
+  font-size: var(--t-hero); color: var(--ink); line-height: 1.08; margin-bottom: var(--s-4);
+}
+.confirm h1 em {
+  font-style: italic;
+  background: linear-gradient(120deg, var(--orange-bright), var(--orange) 60%, var(--orange-deep));
+  background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.confirm p { font-size: var(--t-base); color: var(--text-secondary); max-width: 46ch; margin: 0 auto var(--s-6); }
+.confirm__when {
+  display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: var(--s-3);
+  font-family: var(--f-brand); font-weight: 600; font-size: var(--t-sm);
+  color: var(--ink);
+}
+.confirm__when .chip {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 999px; padding: 0.5em 1.1em; box-shadow: var(--shadow-sm);
+}
+.confirm__when .chip svg { width: 15px; height: 15px; color: var(--orange); }
+
+.cal-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-3); margin-top: var(--s-6); }
+.cal-btn {
+  display: inline-flex; align-items: center; gap: 0.6em;
+  font-family: var(--f-brand); font-weight: 700; font-size: var(--t-xs);
+  letter-spacing: 0.04em; text-decoration: none; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--line); border-radius: 999px;
+  padding: 0.75em 1.35em; box-shadow: var(--shadow-sm);
+  transition: all var(--fast) var(--ease-out);
+}
+.cal-btn svg { width: 16px; height: 16px; color: var(--orange); }
+.cal-btn:hover { border-color: var(--orange); background: var(--orange-100); transform: translateY(-2px); }
+
+.cal-btn--google { background: #fff; border-color: #DADCE0; color: #3C4043; }
+.cal-btn--google:hover { background: #F8F9FA; border-color: #C6C9CC; }
+
+.cal-btn--apple { background: #000; border-color: #000; color: #fff; }
+.cal-btn--apple svg { color: #fff; }
+.cal-btn--apple:hover { background: #1A1A1A; border-color: #1A1A1A; }
+
+/* SURVEY CARD */
+.survey {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 22px;
+  padding: clamp(1.6rem, 4vw, 2.4rem); box-shadow: var(--shadow-md);
+  position: relative; overflow: hidden; margin-bottom: var(--s-16);
+}
+.survey::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--orange-bright), var(--orange-deep));
+}
+.progress-wrap { height: 6px; background: var(--orange-100); border-radius: 100px; overflow: hidden; margin-bottom: var(--s-2); }
+.progress-bar { height: 100%; width: 0%; background: var(--orange); border-radius: 100px; transition: width 0.35s var(--ease-out); }
+.progress-label {
+  font-family: var(--f-brand); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-tertiary); margin-bottom: var(--s-6); min-height: 14px;
+}
+
+.step { display: none; animation: fade 0.35s var(--ease-out); }
+.step.active { display: block; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.survey__kicker {
+  font-family: var(--f-brand); font-size: var(--t-xs); font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-deep);
+  margin-bottom: var(--s-2);
+}
+.q-title {
+  font-family: var(--f-serif); font-weight: 600; font-size: var(--t-2xl);
+  color: var(--ink); line-height: 1.2; margin-bottom: var(--s-2);
+}
+.q-sub { font-size: var(--t-sm); color: var(--text-secondary); margin-bottom: var(--s-6); }
+
+.opts { display: flex; flex-direction: column; gap: var(--s-3); }
+.opt {
+  position: relative; display: flex; align-items: center; gap: var(--s-3);
+  background: var(--cream); border: 1.5px solid var(--line); border-radius: 14px;
+  padding: 1em 1.2em; cursor: pointer; transition: all var(--fast) var(--ease-out);
+  font-size: var(--t-base); font-weight: 600; color: var(--text-primary);
+}
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt .dot { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(22,12,5,0.16); transition: all var(--fast) var(--ease-out); }
+.opt:hover { border-color: rgba(216,98,42,0.35); background: var(--orange-100); }
+.opt.selected { border-color: var(--orange); background: var(--orange-100); box-shadow: 0 4px 14px rgba(216,98,42,0.14); }
+.opt.selected .dot { border-color: var(--orange); background: var(--orange); box-shadow: inset 0 0 0 3px var(--orange-100); }
+
+.field { margin-bottom: var(--s-3); }
+.field textarea, .field input[type="text"] {
+  width: 100%; font-family: var(--f-sans); font-size: var(--t-base);
+  color: var(--text-primary); background: var(--cream);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 0.95em 1.1em;
+  transition: border-color var(--fast) var(--ease-out), box-shadow var(--fast) var(--ease-out);
+}
+.field textarea { min-height: 110px; resize: vertical; }
+.field textarea::placeholder, .field input::placeholder { color: var(--text-tertiary); }
+.field textarea:focus, .field input:focus {
+  outline: none; border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(216,98,42,0.14);
+}
+.field .field-error { border-color: var(--orange-deep) !important; }
+.err-inline { color: var(--orange-deep); font-size: var(--t-xs); font-weight: 600; margin-top: var(--s-2); min-height: 4px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6em;
+  font-family: var(--f-brand); font-weight: 700; font-size: var(--t-sm);
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  border-radius: 999px; padding: 1.05em 2.2em; cursor: pointer; border: none;
+  transition: transform var(--fast) var(--ease-spring), box-shadow var(--normal) var(--ease-expo);
+  width: 100%; color: #fff;
+  background: linear-gradient(135deg, var(--orange-bright), var(--orange) 55%, var(--orange-deep));
+  box-shadow: var(--shadow-brand); margin-top: var(--s-6);
+}
+.btn:hover { transform: translateY(-2px) scale(1.01); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.back-btn {
+  background: none; border: none; cursor: pointer; font-family: var(--f-sans);
+  font-size: var(--t-xs); font-weight: 600; color: var(--text-tertiary);
+  display: none; align-items: center; gap: 0.4em; margin-bottom: var(--s-4);
+}
+.back-btn.show { display: inline-flex; }
+.back-btn:hover { color: var(--ink); }
+
+.err { color: var(--orange-deep); font-size: var(--t-xs); font-weight: 600; margin-top: var(--s-3); text-align: center; min-height: 16px; }
+
+.thanks-icon {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--orange-100);
+  color: var(--orange-deep); display: grid; place-items: center; font-size: 1.4rem; font-weight: 800;
+  margin-bottom: var(--s-4);
+}
+
+/* FOOTER */
+.footer { padding: var(--s-8) 0 var(--s-12); text-align: center; }
+.footer__jv {
+  display: inline-flex; align-items: center; gap: var(--s-3);
+  font-family: var(--f-serif); font-style: italic; font-size: var(--t-base);
+  color: var(--text-secondary); margin-bottom: var(--s-3);
+}
+.footer__jv .x { color: var(--orange); font-style: normal; }
+.footer__links { display: flex; justify-content: center; gap: var(--s-6); margin-bottom: var(--s-3); flex-wrap: wrap; }
+.footer__links a { font-size: var(--t-xs); color: var(--text-secondary); text-decoration: none; }
+.footer__links a:hover { color: var(--orange); }
+.footer__copy { font-size: var(--t-xs); color: var(--text-tertiary); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brandmark" href="/">BUSINESS<span class="dot">.</span>EINFACH<span class="dot">.</span>SMART</a>
+</nav>
+
+<div class="wrap">
+
+  <section class="confirm">
+    <div class="check-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="confirm__eyebrow">Anmeldung bestätigt</div>
+    <h1>Du bist <em>dabei!</em></h1>
+    <p>Du hast dir deinen Platz im 0€ Live-Webinar <b>am 16.07.26 um 20 Uhr</b> gesichert! Füge den Termin deinem Kalender hinzu, damit du es auf dem Schirm hast, wenn es losgeht!</p>
+    <div class="cal-actions">
+      <a class="cal-btn cal-btn--google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Live%20Webinar%20%40business.einfach.smart&dates=20260716T180000Z%2F20260716T190000Z&details=Google%20Meet-Teilnahmeinformationen%0ALink%20f%C3%BCr%20Videoanruf%3A%20https%3A%2F%2Fmeet.google.com%2Fvct-fctr-khu&location=https%3A%2F%2Fmeet.google.com%2Fvct-fctr-khu&ctz=Europe%2FBerlin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29A11.95 11.95 0 000 12c0 1.92.46 3.74 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+        Google Kalender
+      </a>
+      <a class="cal-btn cal-btn--apple" href="webinar-termin.ics">
+        <svg viewBox="0 0 384 512" width="15" height="15" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        Apple Kalender
+      </a>
+      <a class="cal-btn" href="webinar-termin.ics" download="webinar-termin.ics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Andere Kalender
+      </a>
+    </div>
+  </section>
+
+  <section class="survey">
+    <button type="button" class="back-btn" id="backBtn">&larr; zurück</button>
+    <div class="progress-wrap"><div class="progress-bar" id="bar"></div></div>
+    <div class="progress-label" id="progLabel"></div>
+
+    <form id="surveyForm" autocomplete="off">
+
+      <!-- Web3Forms Pflichtfelder -->
+      <input type="hidden" name="access_key" value="3d828486-1a19-4e51-b3af-779faa4c34e4">
+      <input type="hidden" name="subject" value="Neue Webinar-Umfrage Antwort">
+      <input type="hidden" name="from_name" value="Webinar Dankesseite">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+      <!-- STEP 0: Einladung zur Umfrage -->
+      <div class="step active" data-q="0">
+        <div class="survey__kicker">Bevor du gehst</div>
+        <h2 class="q-title">4 kurze Fragen, damit das Webinar für dich Gold wert wird.</h2>
+        <p class="q-sub">Dauert keine 30 Sekunden. So können wir das Webinar genau auf dich zuschneiden. Anonyme Umfrage, damit wir den Abend für dich genial machen.</p>
+        <button type="button" class="btn" data-next>Umfrage starten</button>
+      </div>
+
+      <!-- STEP 1: Alter -->
+      <div class="step" data-q="1">
+        <h2 class="q-title">Wie alt bist du?</h2>
+        <div class="opts" data-radio="Alter">
+          <label class="opt"><input type="radio" name="Alter" value="unter 20"><span class="dot"></span>unter 20</label>
+          <label class="opt"><input type="radio" name="Alter" value="20–29"><span class="dot"></span>20&ndash;29</label>
+          <label class="opt"><input type="radio" name="Alter" value="30–39"><span class="dot"></span>30&ndash;39</label>
+          <label class="opt"><input type="radio" name="Alter" value="40–49"><span class="dot"></span>40&ndash;49</label>
+          <label class="opt"><input type="radio" name="Alter" value="50–59"><span class="dot"></span>50&ndash;59</label>
+          <label class="opt"><input type="radio" name="Alter" value="60 und älter"><span class="dot"></span>60 und älter</label>
+        </div>
+      </div>
+
+      <!-- STEP 2: Erfolgsdefinition -->
+      <div class="step" data-q="2">
+        <h2 class="q-title">Vervollständige diesen Satz:</h2>
+        <p class="q-sub">„Dieses Webinar ist ein Erfolg für mich, wenn …"</p>
+        <div class="field">
+          <textarea name="Erfolgsdefinition" data-required placeholder="… wenn ich endlich verstehe, wie …"></textarea>
+        </div>
+        <div class="err-inline" id="err_2"></div>
+        <button type="button" class="btn" data-next>Weiter</button>
+      </div>
+
+      <!-- STEP 3: Größte Herausforderung -->
+      <div class="step" data-q="3">
+        <h2 class="q-title">Vervollständige diesen Satz:</h2>
+        <p class="q-sub">„Meine größte Herausforderung im Online Business ist …"</p>
+        <div class="field">
+          <textarea name="Groesste_Herausforderung" data-required placeholder="… dass ich …"></textarea>
+        </div>
+        <div class="err-inline" id="err_3"></div>
+        <button type="button" class="btn" data-next>Weiter</button>
+      </div>
+
+      <!-- STEP 4: Business-Typ -->
+      <div class="step" data-q="4">
+        <h2 class="q-title">Welche Bezeichnung beschreibt dein Online Business am besten?</h2>
+        <div class="opts" data-radio="Business_Typ">
+          <label class="opt"><input type="radio" name="Business_Typ" value="Coaching / Beratung"><span class="dot"></span>Coaching / Beratung</label>
+          <label class="opt"><input type="radio" name="Business_Typ" value="Online-Kurse"><span class="dot"></span>Online-Kurse</label>
+          <label class="opt"><input type="radio" name="Business_Typ" value="Freelancer / Dienstleistung"><span class="dot"></span>Freelancer / Dienstleistung</label>
+          <label class="opt"><input type="radio" name="Business_Typ" value="anderes"><span class="dot"></span>anderes</label>
+        </div>
+        <div class="field" id="businessOtherField" style="display:none; margin-top: var(--s-4);">
+          <input type="text" name="Business_Typ_Sonstiges" placeholder="Sag uns kurz, was du machst">
+          <div class="err-inline" id="err_4"></div>
+          <button type="button" class="btn" id="businessOtherNext">Weiter</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: Auto-Submit-Puffer -->
+      <div class="step" data-q="5">
+        <h2 class="q-title">Fast fertig …</h2>
+        <p class="q-sub">Deine Antworten werden übermittelt.</p>
+        <div class="err" id="errMsg"></div>
+      </div>
+
+      <!-- STEP 6: DANKE -->
+      <div class="step" data-q="6">
+        <div class="thanks-icon">✓</div>
+        <h2 class="q-title">Danke dir!</h2>
+        <p class="q-sub">Wir sehen uns am 16. Juli um 20:00 Uhr live. Bis dahin!</p>
+      </div>
+
+    </form>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__jv"><b>Hanna Marzian</b><span class="x">×</span><b>Martin Thun</b></div>
+    <div class="footer__links">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+      <a href="/agb.html">AGB</a>
+    </div>
+    <div class="footer__copy">© 2026 Hanna Marzian &amp; Martin Thun · Alle Rechte vorbehalten</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var steps = Array.from(document.querySelectorAll('.step'));
+  var bar = document.getElementById('bar');
+  var progLabel = document.getElementById('progLabel');
+  var backBtn = document.getElementById('backBtn');
+  var form = document.getElementById('surveyForm');
+  var errMsg = document.getElementById('errMsg');
+  var totalQ = 4;
+  var bufferStep = 5;
+  var thanksStep = 6;
+  var cur = 0;
+
+  function render() {
+    steps.forEach(function (s, i) { s.classList.toggle('active', i === cur); });
+    var pct = (cur === 0 || cur === bufferStep || cur === thanksStep) ? (cur === 0 ? 0 : 100) : Math.min(cur, totalQ) / totalQ * 100;
+    bar.style.width = pct + '%';
+    if (cur === 0 || cur === bufferStep || cur === thanksStep) { progLabel.textContent = ''; }
+    else { progLabel.textContent = 'Frage ' + cur + ' von ' + totalQ; }
+    backBtn.classList.toggle('show', cur > 0 && cur < bufferStep);
+  }
+
+  function go(i) { cur = Math.max(0, Math.min(steps.length - 1, i)); render(); }
+
+  function validateField(field, errBox, msg) {
+    if (!field.value.trim()) {
+      field.classList.add('field-error');
+      if (errBox) errBox.textContent = msg;
+      field.focus();
+      return false;
+    }
+    field.classList.remove('field-error');
+    if (errBox) errBox.textContent = '';
+    return true;
+  }
+
+  document.querySelectorAll('[data-next]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var step = b.closest('.step');
+      var field = step.querySelector('[data-required]');
+      if (field) {
+        var errBox = step.querySelector('.err-inline');
+        if (!validateField(field, errBox, 'Bitte füll das kurz aus.')) return;
+      }
+      go(cur + 1);
+    });
+  });
+  backBtn.addEventListener('click', function () { go(cur - 1); });
+
+  document.querySelectorAll('.opts').forEach(function (group) {
+    group.querySelectorAll('.opt').forEach(function (opt) {
+      opt.addEventListener('click', function (e) {
+        e.preventDefault();
+        group.querySelectorAll('.opt').forEach(function (o) { o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        var input = opt.querySelector('input');
+        input.checked = true;
+
+        if (group.dataset.radio === 'Business_Typ') {
+          var otherField = document.getElementById('businessOtherField');
+          if (input.value === 'anderes') {
+            otherField.style.display = 'block';
+            otherField.querySelector('input[type="text"]').focus();
+            return;
+          }
+          otherField.style.display = 'none';
+        }
+
+        setTimeout(function () {
+          if (cur === totalQ) { go(cur + 1); submitSurvey(); }
+          else { go(cur + 1); }
+        }, 260);
+      });
+    });
+  });
+
+  var businessOtherNext = document.getElementById('businessOtherNext');
+  businessOtherNext.addEventListener('click', function () {
+    var field = document.querySelector('input[name="Business_Typ_Sonstiges"]');
+    var errBox = document.getElementById('err_4');
+    if (!validateField(field, errBox, 'Sag uns kurz, was du machst.')) return;
+    go(cur + 1);
+    submitSurvey();
+  });
+
+  function submitSurvey() {
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) { go(thanksStep); }
+        else { throw new Error(data.message || 'Fehler'); }
+      })
+      .catch(function () {
+        errMsg.textContent = 'Etwas ist schiefgelaufen. Deine Anmeldung zum Webinar ist trotzdem gültig.';
+        setTimeout(function () { go(thanksStep); }, 1400);
+      });
+  }
+
+  render();
+})();
+</script>
+
+</body>
+</html>

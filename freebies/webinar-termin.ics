@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//business.einfach.smart//Webinar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:webinar-16072026@business.einfach.smart
+DTSTAMP:20260708T000000Z
+DTSTART:20260716T180000Z
+DTEND:20260716T190000Z
+SUMMARY:Live Webinar @business.einfach.smart
+DESCRIPTION:Google Meet-Teilnahmeinformationen\nLink für Videoanruf: https://meet.google.com/vct-fctr-khu
+LOCATION:https://meet.google.com/vct-fctr-khu
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT12H
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
